@@ -11,16 +11,18 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// ---------- RELACIONADES AMB FRONTEND CONTROLLER ----------- //
 
-// ---------- RELACIONADES AMB FRONTEND CONTROLLER -----------
+// Juan: Comento la següent part del codi perque falta fer el FrontendController i em dona errors (l'acabo de crear!)
 
+/*
 // Pàgina principal
 Route::get('/', 'FrontendController@index')->name('index');
 
@@ -47,12 +49,11 @@ Route::get('search', 'FrontendController@search')->name('search');
 Route::get('search/result_search', 'FrontendController@resultSearch')->name('result_search');
 
 
-
 // ------------ RELACIONADES AMB FUNCIONALITAT LOGIN------------
 Route::group(['middleware' => 'auth'], function () {
 
     // Pàgina principal de configuació: segons el rol de l'user tindrà més o menys funcionalitats
-    Route::get('home','HomeController@home');
+    Route::get('home', 'HomeController@home');
 
 
     // ADMINISTRADOR: Per fer CRUD de quasi tots els elements de la web: categories, events, rumors, artistes, users i missatges:
@@ -66,10 +67,6 @@ Route::group(['middleware' => 'auth'], function () {
             'users' => 'UserController',
             'messages' => 'MessageController'
         ]);
-
     });
-
 });
-
-
-
+*/
