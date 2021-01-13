@@ -19,9 +19,8 @@ class CreateEventsTable extends Migration
             $table->foreignId('User_id')->references('id')->on('Users')->onDelete('cascade');; //qui el pot editar/ qui l'ha fet
             $table->foreignId('EventMaker_id')->references('id')->on('EventMakers')->onDelete('cascade');
             $table->foreingId('Location_id')->null();
-
-            $table->string('ImgEvent', 150)->null();
-            $table->string('ImgPreview', 150)->null();
+            $table->foreingId('ImgEvent_id')->references('id')->on('Files')->onDelete('null')->null();
+            $table->foreingId('ImgPreview_id')->references('id')->on('Files')->onDelete('null')->null();
 
             $table->date('InitDate')->null();
             $table->datetime('Duration')->null();

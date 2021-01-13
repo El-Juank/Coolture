@@ -16,9 +16,8 @@ class CreateEventMakersTable extends Migration
         Schema::create('EventMakers', function (Blueprint $table) {
             $table->id();
             $table->foreing('User_id')->references('id')->on('EventMakers')->onDelete('null')->null();//si es null vol dir que s'en cuida la comunitat
-            $table->string('ImgCover',150)->null();
-            $table->string('ImgProfile',150)->null();
-
+            $table->foreingId('ImgProfile_id')->references('id')->on('Files')->onDelete('null')->null();
+            $table->foreingId('ImgCover_id')->references('id')->on('Files')->onDelete('null')->null();
 
             $table->softDeletes();
             $table->timestamps();
