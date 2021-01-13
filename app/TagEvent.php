@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TagsRumour extends Model
+class TagEvent extends Model
 {
     //
 }

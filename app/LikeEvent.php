@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class NotificationChangesEventMaker extends Model
+class LikeEvent extends Model
 {
     //
 }
