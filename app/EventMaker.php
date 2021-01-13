@@ -13,4 +13,8 @@ class EventMaker extends Model
     use SoftDeletes;
 
     public $translatedAttributes=['Name','Description'];
+
+    public function Users(){
+        return $this->hasMany(User::class);
+    }
 }
