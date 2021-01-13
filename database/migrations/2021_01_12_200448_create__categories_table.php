@@ -15,16 +15,16 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('Categories', function (Blueprint $table) {
             $table->id();
-            $table->foreingId('ImgIcon_id')->references('id')->on('Files')->onDelete('null')->null();
+            $table->foreignId('ImgIcon_id')->nullable()->references('id')->on('Files')->onDelete('set null');
 
 
             $table->softDeletes();
             $table->timestamps();
         });
-        Schema::create('Categories_translations', function (Blueprint $table) {
+        Schema::create('Category_translations', function (Blueprint $table) {
             $table->id();
           
-            $table->foreign('Category_id')->references('id')->on('Categories')->onDelete('cascade');
+            $table->foreignId('Category_id')->references('id')->on('Categories')->onDelete('cascade');
             $table->string('Name',50);
 
             $table->string('locale')->index();
@@ -43,6 +43,6 @@ class CreateCategoriesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('Categories');
-        Schema::dropIfExists('Categories_translations');
+        Schema::dropIfExists('Category_translations');
     }
 }

@@ -16,8 +16,8 @@ class CreateNotificationChangesEventMakersTable extends Migration
         Schema::create('NotificationChangesEventMaker', function (Blueprint $table) {
             $table->id();
 
-            $table->foreingId('EventMaker_id')->references('id')->on('EventMakers')->onDelete('cascade');
-            $table->foreingId('User_id')->references('id')->on('Users')->onDelete('cascade');
+            $table->foreignId('EventMaker_id')->references('id')->on('EventMakers')->onDelete('cascade');
+            $table->foreignId('User_id')->references('id')->on('users')->onDelete('cascade');
 
             //last update is last user sight
             $table->unique(['User_id','EventMaker_id']);

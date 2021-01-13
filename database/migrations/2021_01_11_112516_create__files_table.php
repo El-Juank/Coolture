@@ -15,7 +15,7 @@ class CreateFilesTable extends Migration
     {
         Schema::create('Files', function (Blueprint $table) {
             $table->id();
-            $table->foreingId('Path_id')->references('id')->on('Paths')->onDelete('cascade');//aixi no repeteixo el path fins arribar al fitxer
+            $table->foreignId('Path_id')->references('id')->on('Paths')->onDelete('cascade');//aixi no repeteixo el path fins arribar al fitxer
             $table->string('Name',50)->unique();
             $table->string('Format',10);
 

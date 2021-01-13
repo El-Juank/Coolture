@@ -15,19 +15,19 @@ class CreateEventMakersTable extends Migration
     {
         Schema::create('EventMakers', function (Blueprint $table) {
             $table->id();
-            $table->foreing('User_id')->references('id')->on('EventMakers')->onDelete('null')->null();//si es null vol dir que s'en cuida la comunitat
-            $table->foreingId('ImgProfile_id')->references('id')->on('Files')->onDelete('null')->null();
-            $table->foreingId('ImgCover_id')->references('id')->on('Files')->onDelete('null')->null();
+            $table->foreignId('User_id')->nullable()->references('id')->on('users')->onDelete('set null');//si es null vol dir que s'en cuida la comunitat
+            $table->foreignId('ImgProfile_id')->nullable()->references('id')->on('Files')->onDelete('set null');
+            $table->foreignId('ImgCover_id')->nullable()->references('id')->on('Files')->onDelete('set null');
 
             $table->softDeletes();
             $table->timestamps();
         });
-        Schema::create('EventMakers_translations', function (Blueprint $table) {
+        Schema::create('EventMaker_translations', function (Blueprint $table) {
             $table->id();
-            $table->foreingId('EventMaker_id')->references('id')->on('EventMakers')->onDelete('cascade');
+            $table->foreignId('EventMaker_id')->references('id')->on('EventMakers')->onDelete('cascade');
 
             $table->string('Name',50);
-            $table->string('Description',500)->null();
+            $table->string('Description',500)->nullable();
 
             $table->string('locale')->index();
 
@@ -45,6 +45,6 @@ class CreateEventMakersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('EventMakers');
-        Schema::dropIfExists('EventMakers_translations');
+        Schema::dropIfExists('EventMaker_translations');
     }
 }

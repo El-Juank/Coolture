@@ -20,9 +20,9 @@ class CreateRolesTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
-        Schema::create('Roles_translations', function (Blueprint $table) {
+        Schema::create('Role_translations', function (Blueprint $table) {
             $table->id();
-            $table->foreingId('Role_id')->references('id')->on('Roles')->onDelete('cascade');
+            $table->foreignId('Role_id')->references('id')->on('Roles')->onDelete('cascade');
 
             $table->string('Name',50);
             $table->string('locale');
@@ -40,6 +40,6 @@ class CreateRolesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('Roles');
-        Schema::dropIfExists('Roles_translations');
+        Schema::dropIfExists('Role_translations');
     }
 }

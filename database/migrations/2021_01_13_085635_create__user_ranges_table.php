@@ -16,8 +16,8 @@ class CreateUserRangesTable extends Migration
         Schema::create('UserRanges', function (Blueprint $table) {
             $table->id();
 
-            $table->foreingId('User_id')->references('id')->on('Users')->onDelete('cascade');
-            $table->foreingId('EventMaker_id')->references('id')->on('EventMakers')->onDelete('cascade');
+            $table->foreignId('User_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('EventMaker_id')->references('id')->on('EventMakers')->onDelete('cascade');
 
             $table->decimal('Range',10,2);
 

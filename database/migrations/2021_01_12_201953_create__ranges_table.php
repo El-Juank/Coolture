@@ -16,8 +16,8 @@ class CreateRangesTable extends Migration
         Schema::create('Ranges', function (Blueprint $table) {
             $table->id();
 
-            $table->foreingId('Location_id')->references('id')->on('Locations')->onDelete('cascade');
-            $table->foreingId('Event_id')->references('id')->on('Events')->onDelete('cascade');
+            $table->foreignId('Location_id')->references('id')->on('Locations')->onDelete('cascade');
+            $table->foreignId('Event_id')->references('id')->on('Events')->onDelete('cascade');
             $table->decimal('Range',10,2);
             $table->unique(['Location_id','Event_id']);
             $table->timestamps();

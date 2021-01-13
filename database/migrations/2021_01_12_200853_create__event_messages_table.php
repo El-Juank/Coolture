@@ -16,8 +16,8 @@ class CreateEventMessagesTable extends Migration
         Schema::create('EventMessages', function (Blueprint $table) {
             $table->id();
 
-            $table->foreingId('Event_id')->references('id')->on('Event')->onDelete('cascade');
-            $table->foreingId('User_id')->references('id')->on('Users')->onDelete('cascade');
+            $table->foreignId('Event_id')->references('id')->on('Events')->onDelete('cascade');
+            $table->foreignId('User_id')->references('id')->on('users')->onDelete('cascade');
 
 
             $table->boolean('Visible');
@@ -26,9 +26,9 @@ class CreateEventMessagesTable extends Migration
             $table->timestamps();
             
         });
-        Schema::create('EventMessages_translations', function (Blueprint $table) {
+        Schema::create('EventMessage_translations', function (Blueprint $table) {
             $table->id();
-            $table->foreingId('EventMessage_id')->references('id')->on('EventMessages')->onDelete('cascade');
+            $table->foreignId('EventMessage_id')->references('id')->on('EventMessages')->onDelete('cascade');
         
             $table->string('Message',750);
             $table->string('locale')->index();
@@ -44,6 +44,6 @@ class CreateEventMessagesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('EventMessages');
-        Schema::dropIfExists('EventMessages_translations');
+        Schema::dropIfExists('EventMessage_translations');
     }
 }

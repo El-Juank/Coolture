@@ -17,7 +17,7 @@ class CreateLikesRumourTable extends Migration
             $table->id();
 
             $table->foreignId('Rumour_id')->references('id')->on('Rumours')->onDelete('cascade');
-            $table->foreignId('User_id')->references('id')->on('Users')->onDelete('cascade');
+            $table->foreignId('User_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->boolean('Like');
             $table->boolean('Trust');

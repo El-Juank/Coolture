@@ -16,8 +16,8 @@ class CreateTagsRumourTable extends Migration
         Schema::create('TagsRumour', function (Blueprint $table) {
             $table->id();
 
-            $table->foreingId('Rumour_id')->references('id')->on('Rumours')->onDelete('cascade');
-            $table->foreingId('Tag_id')->references('id')->on('Tags')->onDelete('cascade');
+            $table->foreignId('Rumour_id')->references('id')->on('Rumours')->onDelete('cascade');
+            $table->foreignId('Tag_id')->references('id')->on('Tags')->onDelete('cascade');
             $table->unique(['Rumour_id','Tag_id']);
             $table->timestamps();
         });

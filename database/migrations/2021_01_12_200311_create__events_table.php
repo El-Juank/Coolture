@@ -16,26 +16,26 @@ class CreateEventsTable extends Migration
         Schema::create('Events', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('User_id')->references('id')->on('Users')->onDelete('cascade');; //qui el pot editar/ qui l'ha fet
+            $table->foreignId('User_id')->references('id')->on('users')->onDelete('cascade');; //qui el pot editar/ qui l'ha fet
             $table->foreignId('EventMaker_id')->references('id')->on('EventMakers')->onDelete('cascade');
-            $table->foreingId('Location_id')->null();
-            $table->foreingId('ImgEvent_id')->references('id')->on('Files')->onDelete('null')->null();
-            $table->foreingId('ImgPreview_id')->references('id')->on('Files')->onDelete('null')->null();
+            $table->foreignId('Location_id')->nullable()->references('id')->on('Locations')->onDelete('set null');
+            $table->foreignId('ImgEvent_id')->nullable()->references('id')->on('Files')->onDelete('set null');
+            $table->foreignId('ImgPreview_id')->nullable()->references('id')->on('Files')->onDelete('set null');
 
-            $table->date('InitDate')->null();
-            $table->datetime('Duration')->null();
+            $table->date('InitDate')->nullable();
+            $table->datetime('Duration')->nullable();
 
             $table->boolean('Published'); //per si es vol fer poc a poc fins publicar-ho
 
             $table->softDeletes(); //per evitar problemes ja que hi ha molt derrere i s'ha de poder revisar
             $table->timestamps();
         });
-        Schema::create('Events_translations', function (Blueprint $table) {
+        Schema::create('Event_translations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('Event_id')->references('id')->on('Event')->onDelete('cascade');
+            $table->foreignId('Event_id')->references('id')->on('Events')->onDelete('cascade');
 
             $table->string('Title', 150);
-            $table->string('Descripcion', 750)->null();
+            $table->string('Descripcion', 750)->nullable();
 
             $table->string('locale')->index();
 
@@ -53,6 +53,6 @@ class CreateEventsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('Events');
-        Schema::dropIfExists('Events_translations');
+        Schema::dropIfExists('Event_translations');
     }
 }
