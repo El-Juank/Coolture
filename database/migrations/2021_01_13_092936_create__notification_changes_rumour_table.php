@@ -16,9 +16,10 @@ class CreateNotificationChangesRumourTable extends Migration
         Schema::create('NotificationChangesRumour', function (Blueprint $table) {
             $table->id();
 
-            $table->foreingId('Rumour_id');
-            $table->foreingId('User_id');
+            $table->foreingId('Rumour_id')->references('id')->on('Rumours')->onDelete('cascade');
+            $table->foreingId('User_id')->references('id')->on('Users')->onDelete('cascade');
             //last update is last user sight
+            $table->unique(['User_id','Rumour_id']);
             $table->timestamps();
         });
     }

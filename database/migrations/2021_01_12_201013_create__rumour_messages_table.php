@@ -15,13 +15,21 @@ class CreateRumourMessagesTable extends Migration
     {
         Schema::create('RumourMessages', function (Blueprint $table) {
             $table->id();
-            $table->foreingId('Rumour_id');
-            $table->foreingId('User_id');
-            $table->string('Message',750);
+            $table->foreingId('Rumour_id')->references('id')->on('Rumours')->onDelete('cascade');
+            $table->foreingId('User_id')->references('id')->on('Users')->onDelete('cascade');
+   
  
             $table->boolean('Visible');
             $table->boolean('CanDelete');
+
             $table->timestamps();
+        });
+        Schema::create('RumourMessage_translations', function (Blueprint $table) {
+            $table->id();
+            $table->foreingId('RumourMessage_id')->references('id')->on('RumourMessages')->onDelete('cascade');
+        
+            $table->string('Message',750);
+            $table->string('locale')->index();
         });
     }
 
@@ -32,6 +40,7 @@ class CreateRumourMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_rumour_messages');
+        Schema::dropIfExists('RumourMessages');
+        Schema::dropIfExists('RumourMessages_translations');
     }
 }

@@ -15,6 +15,12 @@ class CreateNotificationsTable extends Migration
     {
         Schema::create('Notifications', function (Blueprint $table) {
             $table->id();
+            $table->softDeletes();
+            $table->timestamps();
+        });
+        Schema::create('Notifications_translations', function (Blueprint $table) {
+            $table->id();
+            $table->foreingId('Notification_id')->references('id')->on('Notification')->onDelete('cascade');
             $table->string('Message',500);
 
             $table->softDeletes();
@@ -30,5 +36,6 @@ class CreateNotificationsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('Notifications');
+        Schema::dropIfExists('Notifications_translations');
     }
 }

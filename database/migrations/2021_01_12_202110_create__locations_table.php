@@ -15,10 +15,18 @@ class CreateLocationsTable extends Migration
     {
         Schema::create('Locations', function (Blueprint $table) {
             $table->id();
-            $table->string('Name',50);
             $table->point('Lat');
             $table->point('Lon');
-            
+
+            $table->softDeletes();
+            $table->timestamps();
+        });
+        Schema::create('Locations_translations', function (Blueprint $table) {
+            $table->id();
+            $table->foreingId('Location_id')->references('id')->on('Locations')->onDelete('cascade');
+            $table->string('Name',50);
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -31,5 +39,6 @@ class CreateLocationsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('Locations');
+        Schema::dropIfExists('Locations_translations');
     }
 }

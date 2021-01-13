@@ -15,8 +15,9 @@ class CreateTagsEventTable extends Migration
     {
         Schema::create('TagsEvent', function (Blueprint $table) {
             $table->id();
-            $table->foreingId('Event_id');
-            $table->foreingId('Tag_id');
+            $table->foreingId('Event_id')->references('id')->on('Events')->onDelete('cascade');
+            $table->foreingId('Tag_id')->references('id')->on('Tags')->onDelete('cascade');
+            $table->unique(['Event_id','Tag_id']);
             $table->timestamps();
         });
     }

@@ -16,9 +16,10 @@ class CreateLikesEventMessageTable extends Migration
         Schema::create('LikesEventMessage', function (Blueprint $table) {
             $table->id();
 
-            $table->foreingId('User_id');
-            $table->foreingId('Event_id');
-            
+            $table->foreingId('User_id')->references('id')->on('Users')->onDelete('cascade');
+            $table->foreingId('Event_id')->references('id')->on('Events')->onDelete('cascade');
+
+            $table->unique(['User_id','Event_id']);
             $table->timestamps();
         });
     }

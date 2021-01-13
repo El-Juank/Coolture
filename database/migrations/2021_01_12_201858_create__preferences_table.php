@@ -15,8 +15,10 @@ class CreatePreferencesTable extends Migration
     {
         Schema::create('Preferences', function (Blueprint $table) {
             $table->id();
-            $table->foreingId('User_id');
+            $table->foreingId('User_id')->references('id')->on('Users')->onDelete('cascade');
             $table->json('UserConfig');
+
+            $table->unique('User_id');
             $table->timestamps();
         });
     }

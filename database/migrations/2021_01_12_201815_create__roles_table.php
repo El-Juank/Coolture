@@ -15,8 +15,17 @@ class CreateRolesTable extends Migration
     {
         Schema::create('Roles', function (Blueprint $table) {
             $table->id();
-            $table->string('Name',50);
             $table->integer('Priority');
+
+            $table->softDeletes();
+            $table->timestamps();
+        });
+        Schema::create('Roles_translations', function (Blueprint $table) {
+            $table->id();
+            $table->foreingId('Role_id')->references('id')->on('Roles')->onDelete('cascade');
+
+            $table->string('Name',50);
+            $table->string('locale');
 
             $table->softDeletes();
             $table->timestamps();
@@ -31,5 +40,6 @@ class CreateRolesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('Roles');
+        Schema::dropIfExists('Roles_translations');
     }
 }

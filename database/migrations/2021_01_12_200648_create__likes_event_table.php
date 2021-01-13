@@ -15,8 +15,9 @@ class CreateLikesEventTable extends Migration
     {
         Schema::create('LikesEvent', function (Blueprint $table) {
             $table->id();
-            $table->foreingId('Event_id');
-            $table->foreignId('User_id');
+            $table->foreingId('Event_id')->references('id')->on('Events')->onDelete('cascade');
+            $table->foreignId('User_id')->references('id')->on('Users')->onDelete('cascade');
+            $table->unique(['User_id','Event_id']);
             $table->timestamps();
         });
     }

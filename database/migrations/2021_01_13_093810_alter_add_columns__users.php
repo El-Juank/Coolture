@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTagsTable extends Migration
+class AlterAddColumnsUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,19 @@ class CreateTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('Tags', function (Blueprint $table) {
-            $table->id();
-            $table->string('Name',150);
-
-            $table->softDeletes();
-            $table->timestamps();
-        });
+        //
+        /*
+        pais
+        data de naixament
+        verificat
+        imatge perfil i portada
+        //genere can be null->other
+        defaultLocation_id->nullable
+        
+        
+        
+        
+        */
     }
 
     /**
@@ -29,6 +35,6 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Tags');
+        //
     }
 }
