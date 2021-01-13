@@ -7,6 +7,17 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+## Init Project
+
+mysql->create dataBase
+project->.env.exemple->copy and rename to .env
+project->.env-> configure access to database
+VSCode->Project->Terminal->composer install
+VSCode->Project->Terminal->php artisan key:generate
+VSCode->Project->Terminal->php artisan migrate
+VSCode->Project->Terminal->php artisan //insertar comando para hacer el SEED generico
+move project to htdocs to run with Xampp
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
