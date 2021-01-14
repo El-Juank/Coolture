@@ -6,6 +6,7 @@
 
 :root {
     --colorCorp: #f82249;
+    --colorCorpHover: #b41c38;
 }
 
 body {
@@ -179,30 +180,43 @@ h6 {
     transition: all 0.5s;
 }
 
-#header #logo h1 {
-    font-size: 36px;
-    margin: 0;
-    padding: 6px 0;
-    line-height: 1;
-    font-family: "Poppins", sans-serif;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+#header #logo {
+    transition: all 0.5s;
 }
 
-#header #logo h1 span {
-    color: var(--colorCorp);
-}
-
-#header #logo h1 a,
-#header #logo h1 a:hover {
-    color: #fff;
+@media (max-width: 991px) {
+    #header #logo {
+        margin-left: 5%;
+        transition: all 0.5s;
+    }
 }
 
 #header #logo img {
     padding: 0;
     margin: 0;
     max-height: 45px;
+}
+
+#header #logo2 img {
+    padding: 0;
+    margin: 0;
+    max-height: 45px;
+}
+
+@media only screen and (min-width: 600px) {
+    #header #logo2 {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 600px) and (max-width: 790px) {
+    #header #logo {
+        display: none;
+    }
+    #header #logo2 {
+        display: block;
+        margin-left: 8%;
+    }
 }
 
 /*--------------------------------------------------------------
@@ -233,10 +247,10 @@ h6 {
     float: left;
 }
 
-.nav-menu li:hover > ul,
+/*.nav-menu li:hover > ul,
 .nav-menu li.sfHover > ul {
     display: block;
-}
+}*/
 
 .nav-menu ul ul {
     top: 0;
@@ -282,7 +296,6 @@ h6 {
     padding: 8px;
     text-decoration: none;
     display: inline-block;
-    color: rgba(202, 206, 221, 0.8);
     font-family: "Poppins", sans-serif;
     font-weight: 600;
     font-size: 14px;
@@ -297,7 +310,7 @@ h6 {
 
 .nav-menu .menu-active a,
 .nav-menu a:hover {
-    color: #fff;
+    color: var(--colorCorp);
 }
 
 .nav-menu > li {
@@ -316,15 +329,16 @@ h6 {
     transition: all 0.3s ease-in-out 0s;
 }
 
-.nav-menu a:hover:before,
+/*.nav-menu a:hover:before,
 .nav-menu li:hover > a:before,
 .nav-menu .menu-active > a:before {
     visibility: visible;
     width: 100%;
-}
+}*/
 
 .nav-menu li.btn-login a {
     height: 48px;
+    width: auto;
     color: #fff;
     background: var(--colorCorp);
     padding: 15px 22px;
@@ -344,6 +358,35 @@ h6 {
 .nav-menu li.btn-login:hover a:before,
 .nav-menu li.btn-login.menu-active a:before {
     visibility: hidden;
+}
+
+.nav-menu li.btn-login a p {
+    transition: all 0.5s;
+}
+.nav-menu li.btn-login a i {
+    display: none;
+    -webkit-text-stroke: 0.5px var(--colorCorp);
+}
+
+.nav-menu li.btn-login a i:hover {
+    -webkit-text-stroke: 0.5px rgba(6, 12, 34, 0.98);
+}
+
+@media (max-width: 991px) {
+    .nav-menu li.btn-login a {
+        height: 48px;
+        width: 48px;
+    }
+    .nav-menu li.btn-login a p {
+        display: none;
+        transition: all 0.5s;
+    }
+    .nav-menu li.btn-login a i {
+        display: block;
+        font-size: 25px;
+        margin-top: -6px;
+        margin-left: -11px;
+    }
 }
 
 .nav-menu ul {
@@ -377,8 +420,12 @@ h6 {
     margin: 0;
 }
 
+.nav-menu .search {
+    width: 55%;
+    transition: all 0.5s;
+}
+
 .nav-menu #searcher {
-    width: 600px;
     margin-left: 8px;
 }
 
@@ -392,6 +439,10 @@ h6 {
 
 .nav-menu #btn-search:hover {
     color: var(--colorCorp);
+}
+
+.dropdown-menu {
+    min-width: 120px;
 }
 
 .nav-menu .dropdown {
@@ -424,6 +475,52 @@ h6 {
 
 .nav-menu #btn-language img {
     width: 40px;
+}
+.nav-menu .user-profile a:hover {
+    color: var(--colorCorpHover);
+}
+
+.nav-menu .user-profile-pic {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--colorCorp);
+    border-bottom-right-radius: 0px;
+}
+
+/* Modal ("Popup per iniciar sessió/registrar-se") */
+.modal-content h2 {
+    color: #000;
+}
+
+.modal-content .nav-link {
+    display: inline;
+    transition: all 0.5s;
+}
+
+.modal-content .nav-link:hover {
+    color: var(--colorCorpHover);
+    transition: all 0.5s;
+}
+
+.modal-content .login-separator {
+    margin: 0 32px;
+    border: 1px solid var(--colorCorp);
+}
+
+.modal-content .login-terms {
+    color: #cfd8dc;
+    font-size: 0.625rem;
+    line-height: 1.6;
+}
+
+.modal-content .login-terms a {
+    color: #90a4ae;
+    text-decoration: underline;
+}
+
+.modal-content .login-terms a:hover {
+    color: #607d8b;
 }
 
 /*--------------------------------------------------------------
@@ -509,7 +606,7 @@ h6 {
 }
 
 /* medium - display 2 (col-lg-6 | 100/2=50) */
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .carousel-inner .carousel-item-right.active,
     .carousel-inner .carousel-item-next {
         transform: translateX(50%);
@@ -530,16 +627,6 @@ h6 {
     .carousel-inner .carousel-item-left.active,
     .carousel-inner .carousel-item-prev {
         transform: translateX(-16.6%);
-    }
-}
-
-@media (max-width: 768px) {
-    .carousel-inner .carousel-item > div {
-        display: none;
-    }
-
-    .carousel-inner .carousel-item > div:first-child {
-        display: block;
     }
 }
 

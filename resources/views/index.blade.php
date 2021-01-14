@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-    <!-- ======= Intro Section ======= -->
     <section id="intro">
         <div class="intro-container" data-aos="zoom-in" data-aos-delay="100">
             <h1 class="mb-4 pb-0 mb-5">Què et ve de gust escoltar?</h1>
@@ -14,39 +13,51 @@
                 <div id="myCarousel" class="carousel slide w-100" data-ride="carousel">
                     <div class="carousel-inner w-100" role="listbox">
                         <div class="carousel-item active">
-                            <div class="col-lg-2 col-md-6">
-                                <img class="img-fluid" src="{{ asset('img/icons/prueba.png') }}">
-                                <h2>Rock</h2>
+                            <div class="col-lg-2 col-6">
+                                <a href="">
+                                    <img class="img-fluid" src="{{ asset('img/icons/prueba.png') }}">
+                                    <h2>Rock</h2>
+                                </a>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <div class="col-lg-2 col-md-6">
-                                <img class="img-fluid" src="{{ asset('img/icons/prueba.png') }}">
-                                <h2>Pop</h2>
+                            <div class="col-lg-2 col-6">
+                                <a href="">
+                                    <img class="img-fluid" src="{{ asset('img/icons/prueba.png') }}">
+                                    <h2>Pop</h2>
+                                </a>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <div class="col-lg-2 col-md-6">
-                                <img class="img-fluid" src="{{ asset('img/icons/prueba.png') }}">
-                                <h2>Indie</h2>
+                            <div class="col-lg-2 col-6">
+                                <a href="">
+                                    <img class="img-fluid" src="{{ asset('img/icons/prueba.png') }}">
+                                    <h2>Indie</h2>
+                                </a>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <div class="col-lg-2 col-md-6">
-                                <img class="img-fluid" src="{{ asset('img/icons/prueba.png') }}">
-                                <h2>Reggae</h2>
+                            <div class="col-lg-2 col-6">
+                                <a href="">
+                                    <img class="img-fluid" src="{{ asset('img/icons/prueba.png') }}">
+                                    <h2>Reggae</h2>
+                                </a>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <div class="col-lg-2 col-md-6">
-                                <img class="img-fluid" src="{{ asset('img/icons/prueba.png') }}">
-                                <h2>Soul</h2>
+                            <div class="col-lg-2 col-6">
+                                <a href="">
+                                    <img class="img-fluid" src="{{ asset('img/icons/prueba.png') }}">
+                                    <h2>Soul</h2>
+                                </a>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <div class="col-lg-2 col-md-6">
-                                <img class="img-fluid" src="{{ asset('img/icons/prueba.png') }}">
-                                <h2>Jazz</h2>
+                            <div class="col-lg-2 col-6">
+                                <a href="">
+                                    <img class="img-fluid" src="{{ asset('img/icons/prueba.png') }}">
+                                    <h2>Jazz</h2>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -66,8 +77,6 @@
     </section>
 
     <main id="main">
-
-        <!-- ======= Featured Section ======= -->
         <section id="featured-genres">
             <div class="container" data-aos="fade-up">
                 <div class="section-header">
@@ -122,9 +131,7 @@
                     </a>
                 </div>
             </div>
-
         </section>
-
     </main>
 
 

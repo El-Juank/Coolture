@@ -20,12 +20,12 @@ class AlterAddColumnsUsers extends Migration
             $table->foreignId('UserVerified_id')->nullable()->after('DefaultLocation_id')->references('id')->on('Users');//qui l'ha verificat si es null es que no ho està
             $table->foreignId('ImgProfile_id')->nullable()->after('UserVerified_id')->references('id')->on('Files')->onDelete('set null');
             $table->foreignId('ImgCover_id')->nullable()->after('ImgProfile_id')->references('id')->on('Files')->onDelete('set null');
-            
-            $table->date('BirthDate')->after('ImgCover_id');
+
+            $table->date('BirthDate')->nullable($value = true)->after('ImgCover_id');
             $table->boolean('Gender')->nullable()->after('BirthDate');//si es null es que es other
 
             $table->softDeletes();
-            
+
         });
         Schema::create('user_translations', function ($table) {
             $table->id();
@@ -35,7 +35,7 @@ class AlterAddColumnsUsers extends Migration
 
             $table->boolean('Visible')->default(true);
             $table->boolean('CanDelete')->default(false);
-        
+
         });
 
     }
