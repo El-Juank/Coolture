@@ -12,7 +12,7 @@ class User extends Authenticatable
     use Notifiable;
     use Translatable;
 
-    public $translatedAttributes=['CamDelete','Description','Visible'];
+    public $translatedAttributes=['CanDelete','Description','Visible'];
 
     /**
      * The attributes that are mass assignable.
