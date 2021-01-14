@@ -13,6 +13,6 @@ class NotificationChangeEvent extends Model
         return $this->belongsTo(Event::class);
     }
     public function UnRead(){
-        return $this->updated_at!=$this->LastRead;//per possar
+        return $this->updated_at!=$this->Event->updated_at;
     }
 }

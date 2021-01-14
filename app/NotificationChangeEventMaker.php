@@ -12,4 +12,7 @@ class NotificationChangeEventMaker extends Model
     public function EventMaker(){
         return $this->belongsTo(EventMaker::class);
     }
+    public function UnRead(){
+        return $this->updated_at!=$this->EventMaker->updated_at;
+    }
 }

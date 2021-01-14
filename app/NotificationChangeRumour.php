@@ -12,4 +12,7 @@ class NotificationChangeRumour extends Model
     public function Rumour(){
         return $this->belongsTo(Rumour::class);
     }
+    public function UnRead(){
+        return $this->updated_at!=$this->Rumour->updated_at;
+    }
 }

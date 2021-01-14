@@ -96,16 +96,26 @@ class User extends Authenticatable
     public function Roles(){
         return $this->hasMany(Role::class);
     }
-    //quan estigui probat copy and paste amb
+    //falta testing
     public function NotificationChangesEvent($onlyUnRead=true){
-        $notificacions= $this->hasMany(NotificationChangeEvent::class);
-        
-        return $this->FilterOnlyUnRead($notificacions,$onlyUnRead);
+       
+        return $this->FilterOnlyUnRead(NotificationChangeEvent::class,$onlyUnRead);
+
+    }
+    public function NotificationChangesEventMaker($onlyUnRead=true){
+       
+        return $this->FilterOnlyUnRead(NotificationChangeEventMaker::class,$onlyUnRead);
+
+    }
+    public function NotificationChangesRumour($onlyUnRead=true){
+       
+        return $this->FilterOnlyUnRead(NotificationChangeRumour::class,$onlyUnRead);
 
     }
 
     //aixi serveix per totes les notificacions
-    private function FilterOnlyUnRead($notifications,$onlyUnRead){
+    private function FilterOnlyUnRead($notificationsType,$onlyUnRead){
+        $notifications= $this->hasMany($notificationsType);
         if($onlyUnRead){
             $toShow=array();
             foreach($notifications as $notification){
