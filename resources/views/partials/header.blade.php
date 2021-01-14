@@ -1,6 +1,5 @@
 <header id="header">
     <div class="container d-flex justify-content-center">
-
         <div id="logo" class="pull-left">
             <a href="{{ url('/') }}" class="scrollto"><img src="{{ asset('img/logo.png') }}" alt=""
                     title="Coolture Logo"></a>
@@ -10,7 +9,7 @@
                     title="Coolture Logo"></a>
         </div>
 
-        <nav>
+        <nav class="ml-lg-5 ml-md-3 w-100">
             <ul class="nav-menu">
                 <li class="search">
                     <form id="searcher" method="" action="">
@@ -48,7 +47,7 @@
                         </a>
                     </li>
                 @else
-                    <li class="nav-item user-profile ml-4">
+                    <li class="nav-item user-profile">
                         <a class="nav-link p-0" href="{{ route('home') }}">
                             <img class="user-profile-pic" src="{{ Auth::user()->picture }}" alt="">
                             <span class="ml-2">{{ Auth::user()->name }}</span>
@@ -60,27 +59,29 @@
     </div>
 </header>
 
-<div class="modal fade" id="modalRegisterCenter" tabindex="-1" role="dialog" aria-labelledby="modalRegisterCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h2 class="mt-4 mb-1">Benvingut a Coolture</h2>
-                <p>Registra't o inicia sessió</p>
-                <div class="mt-5 mb-5">
-                    <a class="nav-link" href="{{ route('login') }}">Inicia sessió</a>
-                    <span class="login-separator"></span>
-                    <a class="nav-link" href="{{ route('register') }}">Registra't</a>
-                </div>
-                <div class="login-terms">
-                    <p class="mb-1">Registrant acceptes les nostres</p>
-                    <p><a href="/toc" rel="nofollow" target="_blank">Condicions d'ús</a>&nbsp;y&nbsp;<a href="/priv"
-                            rel="nofollow" target="_blank">Política de privacitat</a></p>
+@guest
+    <div class="modal fade" id="modalRegisterCenter" tabindex="-1" role="dialog" aria-labelledby="modalRegisterCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h2 class="mt-4 mb-1">Benvingut a Coolture</h2>
+                    <p>Registra't o inicia sessió</p>
+                    <div class="mt-5 mb-5">
+                        <a class="nav-link" href="{{ route('login') }}">Inicia sessió</a>
+                        <span class="login-separator"></span>
+                        <a class="nav-link" href="{{ route('register') }}">Registra't</a>
+                    </div>
+                    <div class="login-terms">
+                        <p class="mb-1">Registrant-te acceptes les nostres</p>
+                        <p><a href="/toc" rel="nofollow" target="_blank">Condicions d'ús</a>&nbsp;i&nbsp;<a href="/priv"
+                                rel="nofollow" target="_blank">Política de privacitat</a></p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+@endguest
