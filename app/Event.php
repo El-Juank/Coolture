@@ -13,6 +13,7 @@ class Event extends Model
     use SoftDeletes;
 
     public $translatedAttributes=['Title','Description'];//change
+
     public function Users(){
         return $this->hasMany(User::class);
     }
@@ -27,9 +28,7 @@ class Event extends Model
         return $this->hasMany(MessageEvent::class);
     }
     public function Tags(){
-        //aun no se como va...
-        return $this->belongsToMany(TagEvent::class)
-                    ->withPivot('Tag_id','Name');
+        return $this->morphMany(TagEvent::class,'EventTags');
     }
 
 }
