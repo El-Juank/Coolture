@@ -11,5 +11,26 @@ class Rumour extends Model
     use Translatable;
     use SoftDeletes;
 
-    public $translatedAttributes=['Title','Description'];
+    public $translatedAttributes = ['Title', 'Description'];
+
+    public function EventMaker()
+    {
+        return $this->belongsTo(EventMaker::class);
+    }
+    public function HasEventMaker()
+    {
+        return $this->EventMaker != null;
+    }
+    public function StillAlive()
+    {
+        return $this->Url_OfficialDenied == null || $this->Url_OfficialConfirmed == null;
+    }
+    public function IsTrue()
+    {
+        $isTrue = null;
+        if (!$this->StillAlive) {
+            $isTrue = $this->Url_OfficialConfirmed != null;
+        }
+        return $isTrue;
+    }
 }

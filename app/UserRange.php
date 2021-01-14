@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserRange extends Model
 {
-    //
+    public function EventMaker(){
+        return $this->belongsTo(EventMaker::class);
+    }
+    public function User(){
+        return $this->belongsTo(User::class);
+    }
 }
