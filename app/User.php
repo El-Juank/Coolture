@@ -53,11 +53,11 @@ class User extends Authenticatable
     public function ImgCover(){
         return $this->belongsTo(File::class,'ImgCover_id');
     }
-    public function UserVerified(){
+    public function VerifiedBy(){
         return $this->belongsTo(User::class,'UserVerified_id');
     }
     public function IsVerified(){
-        return $this->UserVerified!=null;
+        return $this->VerifiedBy!=null;
     }
 
     public function AssitenceList(){

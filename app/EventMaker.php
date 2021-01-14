@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Support\Facades\DB;
+
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -13,6 +15,7 @@ class EventMaker extends Model
     use SoftDeletes;
 
     public $translatedAttributes=['Name','Description'];
+    
     public function User()
     {
         return $this->belongsTo(User::class);
@@ -52,23 +55,41 @@ class EventMaker extends Model
         return $this->morphMany(Location::class, 'Events');
     }
 
-    public function EventsTags(){
-    //$eventIds=array_keys($this->Events);
-        //$tags=TagEvent::where('event_id','in',$eventIds)->get();
-        //pasar dic key=tag,velue=numRepeticio
-   
-       // return $tags;
+    public function EventTags(){
+        return $this->GetDictionaryTags($this->Events,'Event');
     }
-    public function RumoursTags(){
-    //$rumoursIds=array_keys($this->Rumours);
-        //$tags=TagRumour::where('event_id','in',$rumourIds)->get();
-        //pasar dic key=tag,velue=numRepeticio
-        //tags Rumours,Tags Events
-       // return $tags;
+    public function RumourTags(){
+        return $this->GetDictionaryTags($this->Rumours,'Rumour');
+    }
+    private function GetDictionaryTags($objs,$name){//falta testing
+        $objIds=array();
+        foreach($objs as $objId){
+          array_push( $objIds,$objId->Id);
+        }
+        $ids=DB::table('Tags'.$name)->where($name.'_Id','in',$objIds)->get()->pluck('Tag_Id');
+        $tags=Tag::select(['Name' ,DB::raw('COUNT(Name) as Total')])->where('Id','in',$ids)->groupBy('Name')->orderBy('Name')->pluck('Name','Total');
+        $dic=array();
+        foreach($tags as $tagName=>$total){
+           $dic[$tagName]=$total;
+        }
+        return $tags;
     }
 
     public function Tags()
-    {
+    {//falta testing
+        $tagsEvents=$this->EventsTags;
+        $tagsRumours=$this->RumoursTags;
+        $tags=$tagsEvents;
+
+        foreach($tagsRumours as $tagRumour){
+            if(array_key_exists($tagRumour,$tags)){
+                $tags[$tagRumour]+=$tagsRumours[$tagRumour];
+            }else{
+                $tags+=[$tagRumour=>$tagsRumours[$tagRumour]];
+            }
+        }
+
+        return $tags;
     
     }
     
