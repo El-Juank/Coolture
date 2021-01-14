@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class AssistanceList extends Model
 {
-    public function Users(){
-        return $this->hasMany(User::class);
+    public function User(){
+        return $this->belongsTo(User::class);
+    }
+    public function Event(){
+        return $this->belongsTo(Event::class);
     }
 }

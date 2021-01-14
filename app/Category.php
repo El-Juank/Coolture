@@ -14,4 +14,12 @@ class Category extends Model
     use SoftDeletes;
 
     public $translatedAttributes=['Name'];
+
+    public function Image(){
+        return $this->belongsTo(File::class);
+    }
+    public function UrlImage(){
+        $file=$this->Image;
+        return $file->Url;
+    }
 }
