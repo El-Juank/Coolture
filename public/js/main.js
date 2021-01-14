@@ -126,7 +126,7 @@
 
 
     // Carousel genres (index.blade.php)
-    $("#myCarousel").carousel({
+    $("#genresCarousel").carousel({
         interval: 3000
     });
 
