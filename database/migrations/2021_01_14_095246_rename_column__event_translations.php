@@ -13,7 +13,7 @@ class RenameColumnEventTranslations extends Migration
      */
     public function up()
     {
-        Schema::table('Events_translations',function (Blueprint $table){
+        Schema::table('Event_translations',function (Blueprint $table){
             $table->renameColumn('Descripcion','Description');
         });
     }
@@ -25,7 +25,7 @@ class RenameColumnEventTranslations extends Migration
      */
     public function down()
     {
-        Schema::table('Events_translations',function (Blueprint $table){
+        Schema::table('Event_translations',function (Blueprint $table){
             $table->renameColumn('Description','Descripcion');
         });
     }
