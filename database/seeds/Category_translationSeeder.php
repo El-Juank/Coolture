@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Database\Seeder;
 
 class Category_translationSeeder extends Seeder
@@ -11,6 +12,6 @@ class Category_translationSeeder extends Seeder
      */
     public function run()
     {
-        //
+       //
     }
 }
