@@ -25,16 +25,54 @@
                 </li>
 
                 <li>
+
+                    @php $locale = App::getLocale(); @endphp
+
                     <div class="dropdown">
                         <button id="btn-language" class="btn" type="button" id="dropdownMenuButton"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Tria l'idioma">
-                            <img src="{{ asset('img/flags/ca_round.png') }}">
+
+                            @switch($locale)
+                                @case('ca')
+                                <img src="{{ asset('img/flags/ca_round.png') }}">
+                                @break
+                                @case('es')
+                                <img src="{{ asset('img/flags/es_round.png') }}">
+                                @break
+                                @case('en')
+                                <img src="{{ asset('img/flags/en_round.png') }}">
+                                @break
+                            @endswitch
+
                         </button>
                         <div class="dropdown-menu dropdown-menu-right language">
-                            <a class="dropdown-item" href="#fr"><img src="{{ asset('img/flags/es.png') }}">
-                                {{ __('lang.header_lang_spanish') }}</a>
-                            <a class="dropdown-item" href="#it"><img src="{{ asset('img/flags/en.png') }}">
-                                {{ __('lang.header_lang_english') }}</a>
+
+                            @switch(true)
+                                @case($locale == "es")
+                                <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('ca') }}"><img
+                                        src="{{ asset('img/flags/ca.png') }}">
+                                    {{ __('lang.header_lang_catalan') }}</a>
+                                <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('en') }}"><img
+                                        src="{{ asset('img/flags/en.png') }}">
+                                    {{ __('lang.header_lang_english') }}</a>
+                                @break
+                                @case($locale == "en")
+                                <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('ca') }}"><img
+                                        src="{{ asset('img/flags/ca.png') }}">
+                                    {{ __('lang.header_lang_catalan') }}</a>
+                                <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('es') }}"><img
+                                        src="{{ asset('img/flags/es.png') }}">
+                                    {{ __('lang.header_lang_spanish') }}</a>
+                                @break
+                                @case($locale == "ca")
+                                <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('en') }}"><img
+                                        src="{{ asset('img/flags/en.png') }}">
+                                    {{ __('lang.header_lang_english') }}</a>
+                                <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('es') }}"><img
+                                        src="{{ asset('img/flags/es.png') }}">
+                                    {{ __('lang.header_lang_spanish') }}</a>
+                                @break
+                            @endswitch
                         </div>
                     </div>
                 </li>
@@ -77,7 +115,8 @@
                     </div>
                     <div class="login-terms">
                         <p class="mb-1">{{ __('lang.header_register_message') }}</p>
-                        <p><a href="/toc" rel="nofollow" target="_blank">{{ __('lang.header_conditions') }}</a>&nbsp;i&nbsp;<a href="/priv"
+                        <p><a href="/toc" rel="nofollow"
+                                target="_blank">{{ __('lang.header_conditions') }}</a>&nbsp;i&nbsp;<a href="/priv"
                                 rel="nofollow" target="_blank">{{ __('lang.header_privacity') }}</a></p>
                     </div>
                 </div>

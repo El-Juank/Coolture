@@ -8,6 +8,9 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 //Prefix de l'idioma, quan implementem translations:
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
+    Route::get('/', function () {
+        return view('index');
+    });
 
 Route::get('/test','Controller@test');
 Route::get('/', function () {
@@ -35,43 +38,41 @@ Route::get('privacy-policy', 'FrontendController@privacyPolicy')->name('privacy_
 //Route::get('help', 'FrontendController@help')->name('help');
 
 
-//Gèneres (en anglès genres/genre)
-Route::get('genres', 'FrontendController@genres')->name('genres');
-Route::get('genres/{genre}', 'FrontendController@genre')->name('genre');
+    //Gèneres (en anglès genres/genre)
+    Route::get('genres', 'FrontendController@genres')->name('genres');
+    Route::get('genres/{genre}', 'FrontendController@genre')->name('genre');
 
-//Events
-Route::get('events', 'FrontendController@events')->name('events');
-Route::get('events/{event}', 'FrontendController@event')->name('event');
+    //Events
+    Route::get('events', 'FrontendController@events')->name('events');
+    Route::get('events/{event}', 'FrontendController@event')->name('event');
 
-//Rumors (els que poden posar els usuaris)
-Route::get('rumours', 'FrontendController@rumours')->name('rumours');
-Route::get('rumours/{rumour}', 'FrontendController@rumour')->name('rumour');
+    //Rumors (els que poden posar els usuaris)
+    Route::get('rumours', 'FrontendController@rumours')->name('rumours');
+    Route::get('rumours/{rumour}', 'FrontendController@rumour')->name('rumour');
 
-//Buscador
-Route::get('search', 'FrontendController@search')->name('search');
-Route::get('search/result_search', 'FrontendController@resultSearch')->name('result_search');
-
-
-// ------------ RELACIONADES AMB FUNCIONALITAT LOGIN------------ //
-Route::group(['middleware' => 'auth'], function () {
-
-    // Pàgina principal de configuació: segons el rol de l'user tindrà més o menys funcionalitats
-    Route::get('home', 'FrontendController@home')->name('home');
+    //Buscador
+    Route::get('search', 'FrontendController@search')->name('search');
+    Route::get('search/result_search', 'FrontendController@resultSearch')->name('result_search');
 
 
-    // ADMINISTRADOR: Per fer CRUD de quasi tots els elements de la web: categories, events, rumors, artistes, users i missatges:
-    Route::group(['prefix' => 'admin'], function () {
+    // ------------ RELACIONADES AMB FUNCIONALITAT LOGIN------------ //
+    Route::group(['middleware' => 'auth'], function () {
 
-        Route::resources([
-            'categories' => 'CategoryController',
-            'events' => 'EventController',
-            'rumours' => 'RumourController',
-            'artists' => 'ArtistController',
-            'users' => 'UserController',
-            'messages' => 'MessageController'
-        ]);
+        // Pàgina principal de configuació: segons el rol de l'user tindrà més o menys funcionalitats
+        Route::get('home', 'FrontendController@home')->name('home');
+
+
+        // ADMINISTRADOR: Per fer CRUD de quasi tots els elements de la web: categories, events, rumors, artistes, users i missatges:
+        Route::group(['prefix' => 'admin'], function () {
+
+            Route::resources([
+                'categories' => 'CategoryController',
+                'events' => 'EventController',
+                'rumours' => 'RumourController',
+                'artists' => 'ArtistController',
+                'users' => 'UserController',
+                'messages' => 'MessageController'
+            ]);
+        });
     });
-});
-
-
 });
