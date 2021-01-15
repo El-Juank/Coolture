@@ -5,7 +5,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
 
-//Caldrà posar abans de tot el prefix de l'idioma, quan implementem translations:
+//Prefix de l'idioma, quan implementem translations:
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
 
@@ -18,11 +18,22 @@ Auth::routes();
 
 // ---------- RELACIONADES AMB FRONTEND CONTROLLER ----------- //
 
-//Elements corporatius de l'empresa (footer): redirigir a una part de la pàgina o fer una ruta per cada enllaç amb la seva vista.
+//Elements corporatius de l'empresa (footer):
+Route::get('how-it-works', 'FrontendController@howItWorks')->name('howItWorks');
 Route::get('about-us', 'FrontendController@aboutUs')->name('aboutUs');
-Route::get('help', 'FrontendController@help')->name('help');
-Route::get('legal', 'FrontendController@legal')->name('legal');
-Route::get('contact', 'FrontendController@contact')->name('contact');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('post-concert', 'FrontendController@postConcert')->name('post_concert');
+});
+
+Route::get('post-concert-rules', 'FrontendController@postConcertRules')->name('post_concert_rules');
+
+Route::get('terms-and-conditions', 'FrontendController@termsAndConditions')->name('terms_and_conditions');
+
+Route::get('privacy-policy', 'FrontendController@privacyPolicy')->name('privacy_policy');
+
+//Route::get('help', 'FrontendController@help')->name('help');
+
 
 //Gèneres (en anglès genres/genre)
 Route::get('genres', 'FrontendController@genres')->name('genres');
