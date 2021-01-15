@@ -17,8 +17,6 @@ class CategorySeeder extends Seeder
     public function run()
     {
 
-
-
         $faker = Faker\Factory::create();
         $imgs = File::where('Path_id', self::PATH_ID_CATEGORIES)->get();
         $icons = File::where('Path_id', self::PATH_ID_CATEGORIES_ICO)->get();
