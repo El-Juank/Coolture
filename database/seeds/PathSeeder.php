@@ -12,12 +12,13 @@ class PathSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create();
-
-        for ($i = 0; $i < 10; $i++) {
-            $path = new Path();
-            $path->Url = "img/";
+        $root='img';
+        $directories = ['flags','gender','icons'];
+        foreach($directories as $dir){
+            $path=new Path();
+            $path->Url=$root.'\\'.$dir;
             $path->save();
         }
     }
+
 }

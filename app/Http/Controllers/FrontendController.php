@@ -20,4 +20,5 @@ class FrontendController extends Controller
     {
         return view('home');
     }
+
 }

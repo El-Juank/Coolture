@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 // Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 // });
 
-
+Route::get('/test','Controller@test');
 Route::get('/', function () {
     return view('index');
 });
