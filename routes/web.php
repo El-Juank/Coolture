@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-
-
 
 //Prefix de l'idioma, quan implementem translations:
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
@@ -12,30 +11,30 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         return view('index');
     });
 
-Route::get('/test','Controller@test');
-Route::get('/', function () {
-    return view('index');
-});
+    Route::get('/test', 'Controller@test');
+    Route::get('/', function () {
+        return view('index');
+    });
 
-Auth::routes();
+    Auth::routes();
 
-// ---------- RELACIONADES AMB FRONTEND CONTROLLER ----------- //
+    // ---------- RELACIONADES AMB FRONTEND CONTROLLER ----------- //
 
-//Elements corporatius de l'empresa (footer):
-Route::get('how-it-works', 'FrontendController@howItWorks')->name('howItWorks');
-Route::get('about-us', 'FrontendController@aboutUs')->name('aboutUs');
+    //Elements corporatius de l'empresa (footer):
+    Route::get('how-it-works', 'FrontendController@howItWorks')->name('howItWorks');
+    Route::get('about-us', 'FrontendController@aboutUs')->name('aboutUs');
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('post-concert', 'FrontendController@postConcert')->name('post_concert');
-});
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('post-concert', 'FrontendController@postConcert')->name('post_concert');
+    });
 
-Route::get('post-concert-rules', 'FrontendController@postConcertRules')->name('post_concert_rules');
+    Route::get('post-concert-rules', 'FrontendController@postConcertRules')->name('post_concert_rules');
 
-Route::get('terms-and-conditions', 'FrontendController@termsAndConditions')->name('terms_and_conditions');
+    Route::get('terms-and-conditions', 'FrontendController@termsAndConditions')->name('terms_and_conditions');
 
-Route::get('privacy-policy', 'FrontendController@privacyPolicy')->name('privacy_policy');
+    Route::get('privacy-policy', 'FrontendController@privacyPolicy')->name('privacy_policy');
 
-//Route::get('help', 'FrontendController@help')->name('help');
+    //Route::get('help', 'FrontendController@help')->name('help');
 
 
     //Gèneres (en anglès genres/genre)
@@ -61,6 +60,8 @@ Route::get('privacy-policy', 'FrontendController@privacyPolicy')->name('privacy_
         // Pàgina principal de configuació: segons el rol de l'user tindrà més o menys funcionalitats
         Route::get('home', 'FrontendController@home')->name('home');
 
+        //Editor perfil
+        Route::resource('profile', 'ProfileController');
 
         // ADMINISTRADOR: Per fer CRUD de quasi tots els elements de la web: categories, events, rumors, artistes, users i missatges:
         Route::group(['prefix' => 'admin'], function () {

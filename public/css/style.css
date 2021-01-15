@@ -54,12 +54,32 @@ h6 {
     color: var(--colorCorp);
 }
 
-.btn-link {
+link {
     color: var(--colorCorp);
 }
 
-.btn-link:hover {
+link:hover {
     color: var(--colorCorpHover);
+}
+
+.btn-coolture {
+    height: 48px;
+    width: auto;
+    color: #fff;
+    background: var(--colorCorp);
+    padding: 15px 22px;
+    border-radius: 50px;
+    border: 2px solid var(--colorCorp);
+    transition: all ease-in-out 0.3s;
+    font-weight: 500;
+    line-height: 1;
+    font-size: 13px;
+}
+
+.btn-coolture:hover {
+    color: #fff;
+    background: var(--colorCorpHover);
+    border: 2px solid var(--colorCorpHover);
 }
 
 /* Prelaoder */
@@ -86,6 +106,7 @@ h6 {
     border-radius: 50px;
     right: 15px;
     bottom: 15px;
+    z-index: 2;
     transition: background 0.5s ease-in-out;
 }
 
@@ -434,7 +455,7 @@ h6 {
 }
 
 .nav-menu .search {
-    width: 55%;
+    width: 60%;
     transition: all 0.5s;
 }
 
@@ -1686,27 +1707,18 @@ h6 {
     top: 70px;
 }
 
-#footer {
-    position: -webkit-sticky;
+.profile-content {
+    margin-left: 15%;
 }
 
-@media (max-width: 768px) {
-    .dashboard-menu {
-        z-index: 1;
-    }
+#footer {
+    position: -webkit-sticky;
 }
 
 .dashboard-menu ul li {
     height: 10px;
     overflow: hidden;
     padding: 80px 0px;
-}
-
-@media (max-width: 768px) {
-    .dashboard-menu ul li {
-        padding: 10px 0px;
-        padding-bottom: 50px;
-    }
 }
 
 .dashboard-menu .nav-link img {
@@ -1717,6 +1729,19 @@ h6 {
 }
 
 @media (max-width: 768px) {
+    .dashboard-menu {
+        z-index: 1;
+    }
+
+    .profile-content {
+        margin-left: auto;
+    }
+
+    .dashboard-menu ul li {
+        padding: 10px 0px;
+        padding-bottom: 50px;
+    }
+
     .dashboard-menu .nav-link img {
         height: 35px;
     }

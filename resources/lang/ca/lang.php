@@ -6,7 +6,10 @@ return [
     "header_lang_spanish" => "Castellà",
     "header_lang_english" => "Anglès",
     "header_lang_catalan" => "Català",
+    "header_search" => "Buscar",
+    "lang_picker" => "Tria l'idioma",
     "header_login_register" => "Registra't o inicia sessió",
+    "user_area" => "Anar al perfil",
     "header_welcome" => "Benvingut a Coolture",
     "header_login" => "Inicia sessió",
     "header_register" => "Registra't",
@@ -30,5 +33,13 @@ return [
     "footer_legal" => "Legal",
     "footer_conditions" => "Condicions d'ús",
     "footer_privacity" => "Política de Privacitat",
+
+    //Traduccions pàgina "Home" (Dashboard)
+    "dash_profile" => "Perfil",
+    "dash_following" => "En seguiment",
+    "logout" => "Tancar sessió",
+    //Traduccions perfil
+    "profile_seo" => "Perfil de :name",
+    "edit_profile_seo" => "Editar perfil",
 
 ];

@@ -9,17 +9,17 @@
                     title="Coolture Logo"></a>
         </div>
 
-        <nav class="ml-lg-5 ml-md-3 w-100">
+        <nav class="ml-lg-5 ml-md-3">
             <ul class="nav-menu">
                 <li class="search">
                     <form id="searcher" method="" action="">
                         <div class="input-group mb-4 border rounded-pill p-1">
                             <div class="input-group-prepend border-0">
-                                <button id="btn-search" type="button" class="btn btn-link color-corp"><i
+                                <button id="btn-search" type="button" class="btn link color-corp"><i
                                         class="fa fa-search"></i></button>
                             </div>
-                            <input type="search" placeholder="Buscar" aria-describedby="btn-search"
-                                class="form-control bg-none border-0">
+                            <input type="search" placeholder="{{ __('lang.header_search') }}"
+                                aria-describedby="btn-search" class="form-control bg-none border-0">
                         </div>
                     </form>
                 </li>
@@ -30,7 +30,7 @@
 
                     <div class="dropdown">
                         <button id="btn-language" class="btn" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Tria l'idioma">
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="{{ __('lang.lang_picker') }}">
 
                             @switch($locale)
                                 @case('ca')
@@ -86,7 +86,7 @@
                     </li>
                 @else
                     <li class="nav-item user-profile">
-                        <a class="nav-link p-0" href="{{ route('home') }}">
+                        <a class="nav-link p-0" href="{{ route('home') }}" title="{{ __('lang.user_area') }}">
                             <img class="user-profile-pic" src="{{ Auth::user()->picture }}" alt="">
                             <span class="ml-2">{{ Auth::user()->name }}</span>
                         </a>

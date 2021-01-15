@@ -12,35 +12,38 @@ class FrontendController extends Controller
      * @return void
      */
 
-
-
     public function home()
     {
         return view('home');
     }
 
-    public function howItWorks(){
+    public function howItWorks()
+    {
         return view('frontend.how-it-works');
     }
 
-    public function aboutUs(){
+    public function aboutUs()
+    {
         return view('frontend.about-us');
     }
 
-    public function postConcert(){
+    public function postConcert()
+    {
         return view('frontend.post_concert');
     }
 
-    public function postConcertRules(){
+    public function postConcertRules()
+    {
         return view('frontend.post_concert_rules');
     }
 
-    public function termsAndConditions(){
+    public function termsAndConditions()
+    {
         return view('frontend.terms_and_conditions');
     }
 
-    public function privacyPolicy(){
+    public function privacyPolicy()
+    {
         return view('frontend.privacy_policy');
     }
-
 }
