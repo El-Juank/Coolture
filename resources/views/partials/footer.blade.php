@@ -10,7 +10,7 @@
                             document.write(new Date().getFullYear() + ".");
 
                         </script>
-                        Llicència MIT
+                        {{ __('lang.footer_licence') }}
                     </p>
                     <div class="social-links mt-3">
                         <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
@@ -23,24 +23,24 @@
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Coolture</h4>
                     <ul>
-                        <li><i class="fa fa-angle-right"></i> <a href="#">Com funciona?</a></li>
-                        <li><i class="fa fa-angle-right"></i> <a href="#">Qui som?</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#">{{ __('lang.footer_howitworks') }}</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#">{{ __('lang.footer_whoweare') }}</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-links">
-                    <h4>Suport</h4>
+                    <h4>{{ __('lang.footer_support') }}</h4>
                     <ul>
-                        <li><i class="fa fa-angle-right"></i> <a href="#">Publica un concert</a></li>
-                        <li><i class="fa fa-angle-right"></i> <a href="#">Normes de publicació</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#">{{ __('lang.footer_post') }}</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#">{{ __('lang.footer_post_rules') }}</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-links">
-                    <h4>Legal</h4>
+                    <h4>{{ __('lang.footer_legal') }}</h4>
                     <ul>
-                        <li><i class="fa fa-angle-right"></i> <a href="#">Condicions d'ús</a></li>
-                        <li><i class="fa fa-angle-right"></i> <a href="#">Política de Privacitat</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#">{{ __('lang.footer_conditions') }}</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="#">{{ __('lang.footer_privacity') }}</a></li>
                     </ul>
                 </div>
             </div>
