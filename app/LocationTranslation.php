@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Notification_translation extends Model
+class LocationTranslation extends Model
 {
-    use SoftDeletes;
+   use SoftDeletes;
 }
