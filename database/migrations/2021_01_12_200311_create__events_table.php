@@ -35,7 +35,7 @@ class CreateEventsTable extends Migration
             $table->foreignId('Event_id')->references('id')->on('Events')->onDelete('cascade');
 
             $table->string('Title', 150);
-            $table->string('Descripcion', 750)->nullable();
+            $table->string('Description', 750)->nullable();
 
             $table->string('locale')->index();
 
