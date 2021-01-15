@@ -5,6 +5,7 @@ return [
     //Traduccions "Header"
     "header_lang_spanish" => "Castellà",
     "header_lang_english" => "Anglès",
+    "header_lang_catalan" => "Català",
     "header_login_register" => "Registra't o inicia sessió",
     "header_welcome" => "Benvingut a Coolture",
     "header_login" => "Inicia sessió",
@@ -12,7 +13,6 @@ return [
     "header_register_message" => "Registrant-te acceptes les nostres",
     "header_conditions" => "Condicions d'ús",
     "header_privacity" => "Política de privacitat",
-
 
     //Traduccions pàgina "Home"
     "home_seo_title" => "Inici",
@@ -30,7 +30,5 @@ return [
     "footer_legal" => "Legal",
     "footer_conditions" => "Condicions d'ús",
     "footer_privacity" => "Política de Privacitat",
-
-
 
 ];
