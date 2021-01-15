@@ -9,7 +9,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
 
-
+Route::get('/test','Controller@test');
 Route::get('/', function () {
     return view('index');
 });
