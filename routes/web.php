@@ -14,8 +14,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/home', 'FrontendController@index');
-
 Auth::routes();
 
 // ---------- RELACIONADES AMB FRONTEND CONTROLLER ----------- //

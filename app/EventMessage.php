@@ -11,7 +11,7 @@ class EventMessage extends Model
     use Translatable;
 
     public $translatedAttributes=['Message'];
-    
+
     public function User(){
         return $this->belongsTo(User::class);
     }
