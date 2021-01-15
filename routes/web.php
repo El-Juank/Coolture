@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-// use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
 
 //Caldrà posar abans de tot el prefix de l'idioma, quan implementem translations:
-// Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
-// });
+Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
+
 
 
 Route::get('/', function () {
@@ -60,4 +60,7 @@ Route::group(['middleware' => 'auth'], function () {
             'messages' => 'MessageController'
         ]);
     });
+});
+
+
 });

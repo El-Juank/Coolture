@@ -32,9 +32,9 @@
                         </button>
                         <div class="dropdown-menu dropdown-menu-right language">
                             <a class="dropdown-item" href="#fr"><img src="{{ asset('img/flags/es.png') }}">
-                                Castellà</a>
+                                {{ __('lang.header_lang_spanish') }}</a>
                             <a class="dropdown-item" href="#it"><img src="{{ asset('img/flags/en.png') }}">
-                                Anglès</a>
+                                {{ __('lang.header_lang_english') }}</a>
                         </div>
                     </div>
                 </li>
@@ -42,7 +42,7 @@
                 @guest
                     <li class="btn-login">
                         <a href="#" data-toggle="modal" data-target="#modalRegisterCenter">
-                            <p>Registra't o inicia sessió</p>
+                            <p>{{ __('lang.header_login_register') }}</p>
                             <i class="fa fa-user-o"></i>
                         </a>
                     </li>
@@ -68,17 +68,17 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h2 class="mt-4 mb-1">Benvingut a Coolture</h2>
-                    <p>Registra't o inicia sessió</p>
+                    <h2 class="mt-4 mb-1">{{ __('lang.header_welcome') }}</h2>
+                    <p>{{ __('lang.header_login_register') }}</p>
                     <div class="mt-5 mb-5">
-                        <a class="nav-link" href="{{ route('login') }}">Inicia sessió</a>
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('lang.header_login') }}</a>
                         <span class="login-separator"></span>
-                        <a class="nav-link" href="{{ route('register') }}">Registra't</a>
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('lang.header_register') }}</a>
                     </div>
                     <div class="login-terms">
-                        <p class="mb-1">Registrant-te acceptes les nostres</p>
-                        <p><a href="/toc" rel="nofollow" target="_blank">Condicions d'ús</a>&nbsp;i&nbsp;<a href="/priv"
-                                rel="nofollow" target="_blank">Política de privacitat</a></p>
+                        <p class="mb-1">{{ __('lang.header_register_message') }}</p>
+                        <p><a href="/toc" rel="nofollow" target="_blank">{{ __('lang.header_conditions') }}</a>&nbsp;i&nbsp;<a href="/priv"
+                                rel="nofollow" target="_blank">{{ __('lang.header_privacity') }}</a></p>
                     </div>
                 </div>
             </div>
