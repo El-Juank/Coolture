@@ -15,7 +15,30 @@ class DatabaseSeeder extends Seeder
         $this->call(PathSeeder::class);
         $this->call(FileSeeder::class);
         $this->call(LocationSeeder::class);
-        $this->call(RumoursSeeder::class);
+        $this->call(RumourSeeder::class);
+        $this->call(EventMakerSeeder::class);
+        $this->call(EventSeeder::class);
+        $this->call(CategorySeeder::class);
+        $this->call(LikeEventSeeder::class);
+        $this->call(AssistenceListSeeder::class);
+        $this->call(MessageSeeder::class);
+        $this->call(EventMessageSeeder::class);
+        $this->call(RumourMessageSeeder::class);
+        $this->call(LikeRumourSeeder::class);
+        $this->call(RoleSeeder::class);
+        $this->call(PreferenceSeeder::class);
+        $this->call(RangeSeeder::class);
+        $this->call(PermissionSeeder::class);
+        $this->call(SubcategorySeeder::class);
+        $this->call(TagSeeder::class);
+        $this->call(TagEventSeeder::class);
+        $this->call(TagRumourSeeder::class);
+        $this->call(LikeEventMessageSeeder::class);
+        $this->call(UserRangeSeeder::class);
+        $this->call(NotificationSeeder::class);
+        $this->call(NotificationChangeEventSeeder::class);
+        $this->call(NotificationChangeEventMakerSeeder::class);
+        $this->call(NotificationChangeRumourSeeder::class);
   
     }
 }
