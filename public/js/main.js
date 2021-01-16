@@ -123,8 +123,6 @@
         }
     });
 
-
-
     // Carousel genres (index.blade.php)
     $("#genresCarousel").carousel({
         interval: 3000
