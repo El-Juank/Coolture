@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-//Prefix de l'idioma, quan implementem translations:
+//Prefix de l'idioma, translations implementat:
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
     Route::get('/', function () {

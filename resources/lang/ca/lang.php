@@ -42,4 +42,5 @@ return [
     "profile_seo" => "Perfil de :name",
     "edit_profile_seo" => "Editar perfil",
 
+
 ];
