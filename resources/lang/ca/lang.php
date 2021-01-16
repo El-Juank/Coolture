@@ -34,6 +34,9 @@ return [
     "footer_conditions" => "Condicions d'ús",
     "footer_privacity" => "Política de Privacitat",
 
+    //Traduccions formularis
+    "form_name" => "Nom",
+
     //Traduccions pàgina "Home" (Dashboard)
     "dash_profile" => "Perfil",
     "dash_following" => "En seguiment",
@@ -41,6 +44,8 @@ return [
     //Traduccions perfil
     "profile_seo" => "Perfil de :name",
     "edit_profile_seo" => "Editar perfil",
+    "your_profile" => "El teu perfil",
+    "your_profile_tagline" => "Aquí podràs veure i editar les dades del teu perfil",
 
 
 ];

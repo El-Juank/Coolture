@@ -12,7 +12,7 @@
                     <div class="card-body">
                         <h2 class="mt-3 mb-1">Benvingut de nou!</h2>
                         <p class="text-secondary mb-5">Escriu les teves dedes avall</p>
-                        <form method="POST" action="{{ route('login') }}">
+                        <form method="POST" action="{{ LaravelLocalization::localizeUrl('login') }}">
                             @csrf
 
                             <div class="form-group row">
@@ -68,7 +68,7 @@
                                     </button>
                                     <br>
                                     @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        <a class="btn btn-link" href="{{ LaravelLocalization::localizeUrl('password.request') }}">
                                             {{ __('Has oblidat la teva contrasenya?') }}
                                         </a>
                                     @endif

@@ -16,12 +16,13 @@
                                 <span class="d-none d-md-inline">{{ __('lang.dash_following') }}</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link p-0 text-center" href="{{ route('logout') }}"
+                            <a class="nav-link p-0 text-center" href="{{ LaravelLocalization::localizeUrl('logout') }}"
                                 onclick="event.preventDefault();
                                                                                                                                                 document.getElementById('logout-form').submit();"><img
                                     src="{{ asset('img/icons/close.svg') }}">
                                 <span class="d-none d-md-inline">{{ __('lang.logout') }}</span></a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            <form id="logout-form" action="{{ LaravelLocalization::localizeUrl('logout') }}"
+                                method="POST" class="d-none">
                                 @csrf
                             </form>
                         </li>

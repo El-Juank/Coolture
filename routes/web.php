@@ -2,19 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\App;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 //Prefix de l'idioma, translations implementat:
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
     Route::get('/', function () {
-        return view('index');
+        $locale = App::getLocale();
+        return view('index')
+            ->with('locale', $locale);
     });
 
     Route::get('/test', 'Controller@test');
-    Route::get('/', function () {
-        return view('index');
-    });
 
     Auth::routes();
 
