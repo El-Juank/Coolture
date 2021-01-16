@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('layouts.dashboard')
 
 @section('seoTitle')
     | {{ __('lang.profile_seo', ['name' => Auth::user()->name]) }}

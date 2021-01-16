@@ -12,7 +12,7 @@
                     <div class="card-body text-center">
                         <h2 class="mt-3 mb-1">Registra't en Coolture</h2>
                         <p class="text-secondary mb-5">Escriu les teves dedes</p>
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ LaravelLocalization::localizeUrl('register') }}">
                             @csrf
 
                             <div class="form-group row">

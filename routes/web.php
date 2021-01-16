@@ -2,19 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\App;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-//Prefix de l'idioma, quan implementem translations:
+//Prefix de l'idioma, translations implementat:
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
     Route::get('/', function () {
-        return view('index');
+        $locale = App::getLocale();
+        return view('index')
+            ->with('locale', $locale);
     });
 
     Route::get('/test', 'Controller@test');
-    Route::get('/', function () {
-        return view('index');
-    });
 
     Auth::routes();
 
@@ -37,9 +37,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     //Route::get('help', 'FrontendController@help')->name('help');
 
 
-    //Gèneres (en anglès genres/genre)
-    Route::get('genres', 'FrontendController@genres')->name('genres');
-    Route::get('genres/{genre}', 'FrontendController@genre')->name('genre');
+    //Gèneres (en anglès categories/category)
+    Route::get('categories', 'FrontendController@categories')->name('categories');
+    Route::get('categories/{category}', 'FrontendController@category')->name('category');
 
     //Events
     Route::get('events', 'FrontendController@events')->name('events');

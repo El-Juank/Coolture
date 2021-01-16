@@ -1,11 +1,16 @@
+@php
+if (!isset($locale)) {
+$locale = App::getLocale();
+}
+@endphp
 <header id="header">
     <div class="container d-flex justify-content-center">
         <div id="logo" class="pull-left">
-            <a href="{{ url('/') }}" class="scrollto"><img src="{{ asset('img/logo.png') }}" alt=""
+            <a href="{{ url('/', $locale) }}" class="scrollto"><img src="{{ asset('img/logo.png') }}" alt=""
                     title="Coolture Logo"></a>
         </div>
         <div id="logo2" class="pull-left">
-            <a href="{{ url('/') }}" class="scrollto"><img src="{{ asset('img/favicon.png') }}" alt=""
+            <a href="{{ url('/', $locale) }}" class="scrollto"><img src="{{ asset('img/favicon.png') }}" alt=""
                     title="Coolture Logo"></a>
         </div>
 
@@ -25,12 +30,10 @@
                 </li>
 
                 <li>
-
-                    @php $locale = App::getLocale(); @endphp
-
                     <div class="dropdown">
                         <button id="btn-language" class="btn" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="{{ __('lang.lang_picker') }}">
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            title="{{ __('lang.lang_picker') }}">
 
                             @switch($locale)
                                 @case('ca')
@@ -48,6 +51,14 @@
                         <div class="dropdown-menu dropdown-menu-right language">
 
                             @switch(true)
+                                @case($locale == "ca")
+                                <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('en') }}"><img
+                                        src="{{ asset('img/flags/en.png') }}">
+                                    {{ __('lang.header_lang_english') }}</a>
+                                <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('es') }}"><img
+                                        src="{{ asset('img/flags/es.png') }}">
+                                    {{ __('lang.header_lang_spanish') }}</a>
+                                @break
                                 @case($locale == "es")
                                 <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('ca') }}"><img
                                         src="{{ asset('img/flags/ca.png') }}">
@@ -60,14 +71,6 @@
                                 <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('ca') }}"><img
                                         src="{{ asset('img/flags/ca.png') }}">
                                     {{ __('lang.header_lang_catalan') }}</a>
-                                <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('es') }}"><img
-                                        src="{{ asset('img/flags/es.png') }}">
-                                    {{ __('lang.header_lang_spanish') }}</a>
-                                @break
-                                @case($locale == "ca")
-                                <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('en') }}"><img
-                                        src="{{ asset('img/flags/en.png') }}">
-                                    {{ __('lang.header_lang_english') }}</a>
                                 <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('es') }}"><img
                                         src="{{ asset('img/flags/es.png') }}">
                                     {{ __('lang.header_lang_spanish') }}</a>
@@ -86,7 +89,8 @@
                     </li>
                 @else
                     <li class="nav-item user-profile">
-                        <a class="nav-link p-0" href="{{ route('home') }}" title="{{ __('lang.user_area') }}">
+                        <a class="nav-link p-0" href="{{ LaravelLocalization::localizeUrl('home') }}"
+                            title="{{ __('lang.user_area') }}">
                             <img class="user-profile-pic" src="{{ Auth::user()->picture }}" alt="">
                             <span class="ml-2">{{ Auth::user()->name }}</span>
                         </a>
@@ -109,9 +113,11 @@
                     <h2 class="mt-4 mb-1">{{ __('lang.header_welcome') }}</h2>
                     <p>{{ __('lang.header_login_register') }}</p>
                     <div class="mt-5 mb-5">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('lang.header_login') }}</a>
+                        <a class="nav-link"
+                            href="{{ LaravelLocalization::localizeUrl('login') }}">{{ __('lang.header_login') }}</a>
                         <span class="login-separator"></span>
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('lang.header_register') }}</a>
+                        <a class="nav-link"
+                            href="{{ LaravelLocalization::localizeUrl('register') }}">{{ __('lang.header_register') }}</a>
                     </div>
                     <div class="login-terms">
                         <p class="mb-1">{{ __('lang.header_register_message') }}</p>
