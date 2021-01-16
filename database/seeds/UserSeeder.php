@@ -47,13 +47,13 @@ class UserSeeder extends Seeder
                 $user->Gender = $num < (self::PROBABILITAT_GENERE/2); //si es mes petit de 5 es home, si no es home
             }
 
-            $user->{'Description:es'}=$faker->sentence(2);
-            $user->{'Description:ca'}=$faker->sentence(2);
-            $user->{'Description:en'}=$faker->sentence(2);
+            $user->{'Description:es'}=$faker->sentence(1);
+            $user->{'Description:ca'}=$faker->sentence(1);
+            $user->{'Description:en'}=$faker->sentence(1);
 
             $user->{'Visible:es'}=true;
             $user->{'Visible:ca'}=true;
-            $user->{'Visible:en'}=true;
+            $user->{'Visible:en'}=false;
 
             $user->save();
         }
