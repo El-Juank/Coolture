@@ -1,8 +1,6 @@
 @php
-if (isset($locale)) {
+if (!isset($locale)) {
 $locale = App::getLocale();
-} else {
-$locale="ca";
 }
 @endphp
 <header id="header">
