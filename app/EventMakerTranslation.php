@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class EventMakerTranslation extends Model
 {
     use SoftDeletes;
+    protected $table="EventMaker_Translations";
 }

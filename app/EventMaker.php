@@ -15,6 +15,7 @@ class EventMaker extends Model
     use SoftDeletes;
 
     public $translatedAttributes=['Name','Description'];
+    protected $table="EventMakers";
     
     public function User()
     {
