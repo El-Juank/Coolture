@@ -54,11 +54,11 @@ h6 {
     color: var(--colorCorp);
 }
 
-link {
+.link {
     color: var(--colorCorp);
 }
 
-link:hover {
+.link:hover {
     color: var(--colorCorpHover);
 }
 
@@ -80,6 +80,11 @@ link:hover {
     color: #fff;
     background: var(--colorCorpHover);
     border: 2px solid var(--colorCorpHover);
+}
+
+.generic-container {
+    margin-top: 25vh;
+    margin-bottom: 10vh;
 }
 
 /* Prelaoder */
@@ -522,6 +527,17 @@ link:hover {
 }
 
 /* Modal ("Popup per iniciar sessió/registrar-se") */
+
+.modal {
+    overflow-y: auto;
+}
+
+/* Solucionem el problema de que al obrir el model se'ns mogui la pàgina */
+.modal-open {
+    overflow: auto;
+    padding-right: 0px !important;
+}
+
 .modal-content h2 {
     color: #000;
 }
@@ -1150,12 +1166,8 @@ link:hover {
 }
 
 /*--------------------------------------------------------------
-# F.A.Q Section
+# Pàgina "Com funciona"
 --------------------------------------------------------------*/
-#faq {
-    padding: 60px 0;
-}
-
 #faq #faq-list {
     padding: 0;
     list-style: none;
@@ -1206,6 +1218,15 @@ link:hover {
 
 #faq #faq-list a.collapsed i::before {
     content: "\f055" !important;
+}
+
+.inner-link {
+    padding: 0 !important;
+    display: inline !important;
+}
+
+.inner-link:hover {
+    color: var(--colorCorpHover);
 }
 
 /*--------------------------------------------------------------
@@ -1756,3 +1777,15 @@ link:hover {
 .dashboard-menu .nav-link:hover {
     color: var(--colorCorpHover);
 }
+
+/*--------------------------------------------------------------
+# Pàgina Normes de publicació
+--------------------------------------------------------------*/
+
+#post-rules ul li {
+    padding: 10px;
+}
+
+/*--------------------------------------------------------------
+# Pàgina Privacitat
+--------------------------------------------------------------*/

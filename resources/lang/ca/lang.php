@@ -47,5 +47,21 @@ return [
     "your_profile" => "El teu perfil",
     "your_profile_tagline" => "Aquí podràs veure i editar les dades del teu perfil",
 
+    //Traduccions pàgina "About Us"
+    "about_seo_title" => "Qui som?",
 
+    //Traduccions pàgina "Com funciona"
+    "how_it_works_seo_title" => "Com funciona?",
+
+    //Traduccions pàgina "Normes de publicació"
+    "post_rules_seo_title" => "Normes de publicació",
+
+    //Traduccions pàgina "Publica un concert"
+    "post_concert_seo_title" => "Publica un concert",
+
+    //Traduccions pàgina "Política de privacitat"
+    "privacy_policy_seo_title" => "Política de privacitat",
+
+    //Traduccions pàgina "Condicions d'ús"
+    "terms_and_condition_seo_title" => "Condicions d'ús"
 ];

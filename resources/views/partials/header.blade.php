@@ -121,9 +121,9 @@ $locale = App::getLocale();
                     </div>
                     <div class="login-terms">
                         <p class="mb-1">{{ __('lang.header_register_message') }}</p>
-                        <p><a href="/toc" rel="nofollow"
-                                target="_blank">{{ __('lang.header_conditions') }}</a>&nbsp;i&nbsp;<a href="/priv"
-                                rel="nofollow" target="_blank">{{ __('lang.header_privacity') }}</a></p>
+                        <p><a href="" rel="nofollow">{{ __('lang.header_conditions') }}</a>&nbsp;i&nbsp;<a
+                                href="{{ route('privacy_policy') }}" rel="nofollow">{{ __('lang.header_privacity') }}</a>
+                        </p>
                     </div>
                 </div>
             </div>
