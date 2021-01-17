@@ -11,15 +11,8 @@
     <div class="container dashboard">
         <div class="row justify-content-center profile-content" data-aos="fade-up">
             <div class="col-md-12">
-                <div class="row">
-                    <div class="col-9">
-                        <h2 class="mb-1">{{ __('lang.your_posts') }}</h2>
-                        <p class="text-secondary">{{ __('lang.your_posts_tagline') }}</p>
-                    </div>
-                    <div class="col-3 justify-content-end v-center">
-                        <a href="{{ route('post_concert') }}" class="btn btn-coolture">{{ __('lang.post_event') }}</a>
-                    </div>
-                </div>
+                <h2 class="mb-1">{{ __('lang.following_posts') }}</h2>
+                <p class="text-secondary">{{ __('lang.following_posts_tagline') }}</p>
                 <div class="card">
                     <div class="card-header">{{ __('Dashboard') }}</div>
 

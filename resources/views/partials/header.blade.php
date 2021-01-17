@@ -5,16 +5,16 @@ $locale = App::getLocale();
 @endphp
 <header id="header">
     <div class="container d-flex justify-content-center">
-        <div id="logo" class="pull-left">
-            <a href="{{ url('/', $locale) }}" class="scrollto"><img src="{{ asset('img/logo.png') }}" alt=""
+        <div id="logo" class="pull-left ml-4">
+            <a href="{{ url('/', $locale) }}" class="scrollto"><img src="{{ asset('img/logo.svg') }}" alt=""
                     title="Coolture Logo"></a>
         </div>
         <div id="logo2" class="pull-left">
-            <a href="{{ url('/', $locale) }}" class="scrollto"><img src="{{ asset('img/favicon.png') }}" alt=""
+            <a href="{{ url('/', $locale) }}" class="scrollto"><img src="{{ asset('img/logo_small.svg') }}" alt=""
                     title="Coolture Logo"></a>
         </div>
 
-        <nav class="ml-lg-5 ml-md-3">
+        <nav class="ml-lg-5 ml-md-3 w-100">
             <ul class="nav-menu">
                 <li class="search">
                     <form id="searcher" method="" action="">
@@ -121,7 +121,8 @@ $locale = App::getLocale();
                     </div>
                     <div class="login-terms">
                         <p class="mb-1">{{ __('lang.header_register_message') }}</p>
-                        <p><a href="" rel="nofollow">{{ __('lang.header_conditions') }}</a>&nbsp;i&nbsp;<a
+                        <p><a href="{{ route('terms_and_conditions') }}"
+                                rel="nofollow">{{ __('lang.header_conditions') }}</a>&nbsp;i&nbsp;<a
                                 href="{{ route('privacy_policy') }}" rel="nofollow">{{ __('lang.header_privacity') }}</a>
                         </p>
                     </div>

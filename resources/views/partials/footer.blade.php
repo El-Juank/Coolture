@@ -4,7 +4,7 @@
             <div class="row">
 
                 <div class="col-lg-3 col-md-6 footer-info">
-                    <img src="{{ asset('img/logo.png') }}" alt="Coolture">
+                    <img src="{{ asset('img/logo.svg') }}" alt="Coolture">
                     <p>Copyright
                         <script>
                             document.write(new Date().getFullYear() + ".");

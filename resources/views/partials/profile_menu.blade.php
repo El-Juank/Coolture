@@ -12,14 +12,20 @@
                                 <span class="d-none d-md-inline">{{ __('lang.dash_profile') }}</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link p-0 text-center" href="#"><img src="{{ asset('img/icons/like.svg') }}">
+                            <a class="nav-link p-0 text-center" href="{{ route('home') }}"><img
+                                    src="{{ asset('img/icons/posts.svg') }}">
+                                <span class="d-none d-md-inline">{{ __('lang.dash_posts') }}</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-0 text-center"
+                                href="{{ route('following', ['id' => Auth::user()->id]) }}"><img
+                                    src="{{ asset('img/icons/like.svg') }}">
                                 <span class="d-none d-md-inline">{{ __('lang.dash_following') }}</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link p-0 text-center" href="{{ LaravelLocalization::localizeUrl('logout') }}"
-                                onclick="event.preventDefault();
-                                                                                                                                                document.getElementById('logout-form').submit();"><img
-                                    src="{{ asset('img/icons/close.svg') }}">
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <img src="{{ asset('img/icons/close.svg') }}">
                                 <span class="d-none d-md-inline">{{ __('lang.logout') }}</span></a>
                             <form id="logout-form" action="{{ LaravelLocalization::localizeUrl('logout') }}"
                                 method="POST" class="d-none">

@@ -63,6 +63,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         //Editor perfil
         Route::resource('profile', 'ProfileController');
 
+        //Pàgina per veure els events que l'usuari està seguint
+        Route::get('following/{id}', 'FrontendController@following')->name('following');
+
         // ADMINISTRADOR: Per fer CRUD de quasi tots els elements de la web: categories, events, rumors, artistes, users i missatges:
         Route::group(['prefix' => 'admin'], function () {
 
