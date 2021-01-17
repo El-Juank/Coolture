@@ -26,10 +26,11 @@ class CreateRumourMessagesTable extends Migration
         });
         Schema::create('RumourMessage_translations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('RumourMessage_id')->references('id')->on('RumourMessages')->onDelete('cascade');
+            $table->foreignId('Rumour_Message_id')->references('id')->on('RumourMessages')->onDelete('cascade');
         
             $table->string('Message',750);
             $table->string('locale')->index();
+            $table->timestamps();
         });
     }
 

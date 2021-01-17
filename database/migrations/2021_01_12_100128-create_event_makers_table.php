@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEventMakersTable extends Migration
+class EventMakersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -24,14 +24,14 @@ class CreateEventMakersTable extends Migration
         });
         Schema::create('EventMaker_translations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('EventMaker_id')->references('id')->on('EventMakers')->onDelete('cascade');
+            $table->foreignId('Event_Maker_id')->references('id')->on('EventMakers')->onDelete('cascade');
 
             $table->string('Name',50);
             $table->string('Description',500)->nullable();
 
             $table->string('locale')->index();
 
-            $table->unique(['EventMaker_id','locale']);
+            $table->unique(['Event_Maker_id','locale']);
             $table->softDeletes();
             $table->timestamps();
         });

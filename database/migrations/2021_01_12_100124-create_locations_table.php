@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLocationsTable extends Migration
+class LocationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -25,6 +25,7 @@ class CreateLocationsTable extends Migration
             $table->id();
             $table->foreignId('Location_id')->references('id')->on('Locations')->onDelete('cascade');
             $table->string('Name',50);
+            $table->string('locale')->index();
 
             $table->softDeletes();
             $table->timestamps();

@@ -25,7 +25,7 @@ class CreateRolesTable extends Migration
             $table->foreignId('Role_id')->references('id')->on('Roles')->onDelete('cascade');
 
             $table->string('Name',50);
-            $table->string('locale');
+            $table->string('locale')->index();
 
             $table->softDeletes();
             $table->timestamps();

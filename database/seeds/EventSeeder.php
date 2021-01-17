@@ -26,7 +26,7 @@ class EventSeeder extends Seeder
         $imgsEvents=File::where('Path_id',self::IMG_EVENT_ID)->get();
         $imgsPreview=File::where('Path_id',self::IMG_PREVIEW_ID)->get();
 
-        $totalLocations=count($locations)-1;
+        $totalLocations=count($locations)-1;//s'ha de restar perque el numberBetween inclu el màxim, per tant sortiria de la taula i donaria error
         $totalImgsEvent=count($imgsEvents)-1;
         $totalImgsPreview=count($imgsPreview)-1;
         $totalEventMakers=count($eventMakers)-1;

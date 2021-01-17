@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeUniqueFiles extends Migration
+class FilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +14,15 @@ class ChangeUniqueFiles extends Migration
     const UNIQUE_RULE="unique_file_path_name_format";
     public function up()
     {
-
-        Schema::table('Files', function (Blueprint $table){
-            $table->dropUnique('files_name_unique');
+        Schema::create('Files', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('Path_id')->references('id')->on('Paths')->onDelete('cascade');//aixi no repeteixo el path fins arribar al fitxer
+            $table->string('Name',50);
+            $table->string('Format',10);
+            
             $table->unique(['Path_id','Name','Format'],self::UNIQUE_RULE);
+
+            $table->timestamps();
         });
     }
 
@@ -28,9 +33,6 @@ class ChangeUniqueFiles extends Migration
      */
     public function down()
     {
-        Schema::table('Files', function (Blueprint $table){
-            $table->dropUnique(self::UNIQUE_RULE);
-            $table->unique('Name');
-        });
+        Schema::dropIfExists('Files');
     }
 }

@@ -28,10 +28,11 @@ class CreateEventMessagesTable extends Migration
         });
         Schema::create('EventMessage_translations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('EventMessage_id')->references('id')->on('EventMessages')->onDelete('cascade');
+            $table->foreignId('Event_Message_id')->references('id')->on('EventMessages')->onDelete('cascade');
         
             $table->string('Message',750);
             $table->string('locale')->index();
+            $table->timestamps();
         });
 
     }

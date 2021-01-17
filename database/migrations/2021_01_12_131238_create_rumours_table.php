@@ -15,11 +15,14 @@ class CreateRumoursTable extends Migration
     {
         Schema::create('Rumours', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('User_id')->nullable()->references('Id')->on('users')->onDelete('set null');
+            $table->foreignId('Event_Maker_id')->nullable()->references('Id')->on('EventMakers')->onDelete('set null');
+      
             $table->boolean('IsVisible');
             $table->integer('OwnTrust');
 
-            $table->string('Url_OfficialDenied',500)->nullable();//si es un rumor desmentit
-            $table->string('Url_OfficialConfirmed',500)->nullable();//si es un rumor que ha passat a ser oficial ->si tenen els dos es que al final han fet oficial algo que en un principi deien que no.
+            $table->string('UrlOfficialDenied',500)->nullable();//si es un rumor desmentit
+            $table->string('UrlOfficialConfirmed',500)->nullable();//si es un rumor que ha passat a ser oficial ->si tenen els dos es que al final han fet oficial algo que en un principi deien que no.
 
 
             $table->softDeletes();
@@ -28,9 +31,10 @@ class CreateRumoursTable extends Migration
         Schema::create('Rumour_translations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('Rumour_id')->references('id')->on('Rumours')->onDelete('cascade');
+       
             $table->string('Title',150);
             $table->string('Description',750);
-            $table->string('locale');
+            $table->string('locale')->index();
 
             
             $table->softDeletes();

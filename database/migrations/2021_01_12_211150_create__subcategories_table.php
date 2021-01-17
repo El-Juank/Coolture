@@ -17,9 +17,9 @@ class CreateSubcategoriesTable extends Migration
             $table->id();
 
             $table->foreignId('Category_id')->references('id')->on('Categories')->onDelete('cascade');
-            $table->foreignId('EventMaker_id')->references('id')->on('EventMakers')->onDelete('cascade');
+            $table->foreignId('Event_Maker_id')->references('id')->on('EventMakers')->onDelete('cascade');
 
-            $table->unique(['Category_id','EventMaker_id']);
+            $table->unique(['Category_id','Event_Maker_id']);
             $table->timestamps();
         });
     }

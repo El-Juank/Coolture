@@ -22,6 +22,7 @@ class CreateNotificationsTable extends Migration
             $table->id();
             $table->foreignId('Notification_id')->references('id')->on('Notifications')->onDelete('cascade');
             $table->string('Message',500);
+            $table->string('locale')->index();
 
             $table->softDeletes();
             $table->timestamps();

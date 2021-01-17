@@ -16,7 +16,8 @@ class CreateCategoriesTable extends Migration
         Schema::create('Categories', function (Blueprint $table) {
             $table->id();
             $table->foreignId('ImgIcon_id')->nullable()->references('id')->on('Files')->onDelete('set null');
-
+            $table->foreignId('Img_id')->nullable()->references('id')->on('Files')->onDelete('set null');
+       
 
             $table->softDeletes();
             $table->timestamps();
