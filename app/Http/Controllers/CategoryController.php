@@ -3,24 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Permission;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $categories = Category::get();
+        $permissions = Permission::get();
 
         return view('categories.index')
-            ->with('categories', $categories);
+            ->with('categories', $categories)
+            ->with('permissions', $permissions);
     }
 
-    public function create(){
-        $categories = Category::get();
+    public function create()
+    {
+        $categories = Category::orderBy('Name', 'ASC')->get();
 
         return view('categories.create')
             ->with('categories', $categories);
     }
-
 
     public function store(Request $request){
         //Falten definir validity rules
@@ -40,18 +44,19 @@ class CategoryController extends Controller
 
         //Mostra index
         return redirect()->route('categories.index');
-
     }
 
 
-    public function edit($id){
+    public function edit($id)
+    {
         $category = Category::find($id);
 
         return view('categories.edit')
-            -> with('category', $category);
+            ->with('category', $category);
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
 
         //Validació:
         $validation = $request->validate(
@@ -72,16 +77,13 @@ class CategoryController extends Controller
         $category->save();
 
         return redirect()->route('categories.index');
-
     }
 
-    public function destroy($id){
-        $category= Category::find($id);
+    public function destroy($id)
+    {
+        $category = Category::find($id);
         $category->delete();
 
         return redirect()->route('categories.index');
-
     }
-
-
 }

@@ -41,8 +41,11 @@ return [
     "dash_profile" => "Perfil",
     "dash_posts" => "Publicacions",
     "dash_following" => "En seguiment",
+    "dash_genders" => "Gèneres",
+    "dash_events" => "Esdeveniments",
+    "dash_users" => "Usuaris",
     "logout" => "Tancar sessió",
-    "post_event" => "Publicar event",
+    "post_event" => "Publicar esdeveniment",
     "your_posts" => "Les teves publicacions",
     "your_posts_tagline" => "Aquí podràs publicar esdeveniments i gestionar els que ja tens",
 
@@ -55,6 +58,11 @@ return [
     //Traduccions apartat "Esdeveniments en seguiment"
     "following_posts" => "Esdeveniments que segueixes",
     "following_posts_tagline" => "Aquests són els esdeveniments que més t'agraden",
+
+    //Traduccions pàgina "Gèneres"
+    "gender_admin" => "Tots els gèneres",
+    "gender_admin_tagline" => "Aquí es gestionen els gèneres",
+    "add_gender" => "Afegir gènere",
 
     //Traduccions pàgina "About Us"
     "about_title" => "Qui som?",

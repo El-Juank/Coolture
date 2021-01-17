@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\Permission;
 use App\Rumour;
+use App\User;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -16,7 +18,10 @@ class FrontendController extends Controller
 
     public function home()
     {
-        return view('home');
+        //Per veure els permissos de l'usuari
+        $permissions = Permission::get();
+        return view('home')
+            ->with('permissions', $permissions);
     }
 
     public function howItWorks()
@@ -52,10 +57,14 @@ class FrontendController extends Controller
     //Pàgina per veure els events que l'usuari està seguint
     public function following($id)
     {
+        //Per veure els permissos de l'usuari
+        $permissions = Permission::get();
+
         $events = Event::find($id);
         $rumours = Rumour::find($id);
         return view('following')
             ->with('events', $events)
-            ->with('rumours', $rumours);
+            ->with('rumours', $rumours)
+            ->with('permissions', $permissions);
     }
 }

@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
+use App\Permission;
 
 class ProfileController extends Controller
 {
@@ -18,10 +19,15 @@ class ProfileController extends Controller
 
     public function edit($id)
     {
+
         //A partir de l'id passat per el "Auth::user" busquem l'usuari a la BD
         $user = User::find($id);
+
+        //Per veure els permissos de l'usuari
+        $permissions = Permission::get();
         return view('profile.edit')
-            ->with('user', $user);
+            ->with('user', $user)
+            ->with('permissions', $permissions);
         //Anem a la vista "edit" amb l'usuari de la BD per modificar-lo
     }
 

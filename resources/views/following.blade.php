@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('seoTitle')
-    | {{ __('lang.profile_seo', ['name' => Auth::user()->name]) }}
+    | {{ __('lang.dash_following') }}
 @endsection
 
 @section('content')
