@@ -1,9 +1,12 @@
 
 <table>
+    <tr>
+        <td>COL1</td>
+        <td>COL2</td>
+    </tr>
     @foreach ($categories as $category)
-
         <tr>
-            <td>{{$category->name}}</td>
+            <td>{{$category->Name}}</td>
             <td>
                 <a href="{{route('categories.edit', ['category'=>$category->id])}}" class="btn btn-info">Editar</a>
 

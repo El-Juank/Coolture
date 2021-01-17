@@ -15,7 +15,7 @@ class CategoryController extends Controller
     }
 
     public function create(){
-        $categories = Category::orderBy('Name','ASC')->get();
+        $categories = Category::get();
 
         return view('categories.create')
             ->with('categories', $categories);
@@ -23,15 +23,17 @@ class CategoryController extends Controller
 
 
     public function store(Request $request){
-        //Falten definir rules al model
-        //$validation = $request->validate(Category::$rules);
+        //Falten definir validity rules
+        $validated = $request->validate([
+            'name' => 'required|min:4',
+        ]);
 
-        //Capta camps del formular
-        //$name = $_POST['name'];
+        //Capta camps del formulari
+        $name = $_POST['name'];
 
         //Crear  i posa valors del formulari
         $category = new Category;
-        //$category->name = $name;
+        $category->name = $name;
 
         //Guarda
         $category->save();
