@@ -20,7 +20,7 @@ class CategoryController extends Controller
 
     public function create()
     {
-        $categories = Category::orderBy('Name', 'ASC')->get();
+        $categories = Category::get();
 
         return view('categories.create')
             ->with('categories', $categories);
