@@ -23,9 +23,9 @@ class EventMakerSeeder extends Seeder
         $imgsProfile=File::where('Path_id',self::IMG_PROFILE_ID)->get();
         $imgsCover=File::where('Path_id',self::IMG_COVER_ID)->get();
 
-        $totalUsers=count($users);
-        $totalImgProfiles=count($imgsProfile);
-        $totalImgCovers=count($imgsCover);
+        $totalUsers=count($users)-1;
+        $totalImgProfiles=count($imgsProfile)-1;
+        $totalImgCovers=count($imgsCover)-1;
 
         for($i=0;$i<7;$i++){
             $eventMaker=new EventMaker();
