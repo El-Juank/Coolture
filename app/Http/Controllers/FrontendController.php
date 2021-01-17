@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
+use App\Rumour;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -45,5 +47,15 @@ class FrontendController extends Controller
     public function privacyPolicy()
     {
         return view('frontend.privacy_policy');
+    }
+
+    //Pàgina per veure els events que l'usuari està seguint
+    public function following($id)
+    {
+        $events = Event::find($id);
+        $rumours = Rumour::find($id);
+        return view('following')
+            ->with('events', $events)
+            ->with('rumours', $rumours);
     }
 }
