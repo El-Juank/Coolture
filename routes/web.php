@@ -72,10 +72,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
             Route::resources([
                 'categories' => 'CategoryController',
                 'events' => 'EventController',
-                'rumours' => 'RumourController',
-                'artists' => 'ArtistController',
                 'users' => 'UserController',
-                'messages' => 'MessageController'
+                // 'rumours' => 'RumourController',
+                // 'eventmaker' => 'EventMakerController',
+                // 'messages' => 'MessageController'
             ]);
         });
     });
