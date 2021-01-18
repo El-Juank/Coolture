@@ -2,28 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\Event;
 use App\Permission;
+use App\User;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class EventController extends Controller
 {
     public function index()
     {
-        $categories = Category::get();
+        $events = Event::get();
         $permissions = Permission::get();
 
-        return view('categories.index')
-            ->with('categories', $categories)
+        return view('events.index')
+            ->with('events', $events)
             ->with('permissions', $permissions);
     }
 
     public function create()
     {
-        $categories = Category::get();
+        $events = Event::get();
 
-        return view('categories.create')
-            ->with('categories', $categories);
+        return view('events.create')
+            ->with('events', $events);
     }
 
     public function store(Request $request)
@@ -37,23 +38,23 @@ class CategoryController extends Controller
         $name = $request['name'];
 
         //Crear  i posa valors del formulari
-        $category = new Category;
-        $category->name = $name;
+        $event = new Event;
+        $event->name = $name;
 
         //Guarda
-        $category->save();
+        $event->save();
 
         //Mostra index
-        return redirect()->route('categories.index');
+        return redirect()->route('events.index');
     }
 
 
     public function edit($id)
     {
-        $category = Category::find($id);
+        $event = Event::find($id);
 
-        return view('categories.edit')
-            ->with('category', $category);
+        return view('events.edit')
+            ->with('event', $event);
     }
 
     public function update(Request $request, $id)
@@ -69,21 +70,21 @@ class CategoryController extends Controller
         $name = $request["name"];
 
         //Busques object
-        $category = Category::find($id);
+        $event = Event::find($id);
 
         //Posa els valors del form
-        $category->name = $name;
+        $event->name = $name;
 
-        $category->save();
+        $event->save();
 
-        return redirect()->route('categories.index');
+        return redirect()->route('events.index');
     }
 
     public function destroy($id)
     {
-        $category = Category::find($id);
-        $category->delete();
+        $event = Event::find($id);
+        $event->delete();
 
-        return redirect()->route('categories.index');
+        return redirect()->route('events.index');
     }
 }

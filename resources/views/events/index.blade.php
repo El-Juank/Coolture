@@ -16,7 +16,7 @@
                         <p class="text-secondary">{{ __('lang.gender_admin_tagline') }}</p>
                     </div>
                     <div class="col-3 justify-content-end v-center">
-                        <a href="{{ route('categories.create') }}" class="btn btn-coolture">{{ __('lang.add_gender') }}</a>
+                        <a href="{{ route('events.create') }}" class="btn btn-coolture">{{ __('lang.add_gender') }}</a>
                     </div>
                 </div>
                 <div class="card">
@@ -25,23 +25,26 @@
                             <tr>
                                 <td>COL1</td>
                                 <td>COL2</td>
+                                <td>COL3</td>
                             </tr>
-                            @foreach ($categories as $category)
+                            @foreach ($events as $event)
                                 <tr>
-                                    <td>{{ $category->Name }}</td>
+                                    <td>{{ $event->Title }}</td>
+                                    <td>{{ $event->User_id }}</td>
+
                                     <td>
-                                        <a href="{{ route('categories.edit', ['category' => $category->id]) }}"
+                                        <a href="{{ route('events.edit', ['event' => $event->id]) }}"
                                             class="btn btn-info">Editar</a>
 
-                                        @if (is_null($category->deleted_at))
-                                            <form action="{{ route('categories.destroy', ['category' => $category->id]) }}"
+                                        @if (is_null($event->deleted_at))
+                                            <form action="{{ route('events.destroy', ['event' => $event->id]) }}"
                                                 method="POST" style="display:inline">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="submit" value="Eliminar" class="btn btn-danger">
                                             </form>
                                         @else
-                                            <a href="{{ route('categories.restore', ['category' => $category->id]) }}"
+                                            <a href="{{ route('events.restore', ['event' => $event->id]) }}"
                                                 class="btn btn-success">Recuperar</a>
                                         @endif
                                     </td>

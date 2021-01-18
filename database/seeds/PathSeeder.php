@@ -12,13 +12,12 @@ class PathSeeder extends Seeder
      */
     public function run()
     {
-        $root='img';
-        $directories = ['flags','gender','icons'];
-        foreach($directories as $dir){
-            $path=new Path();
-            $path->Url=$root.'\\'.$dir;
+        $root = 'img';
+        $directories = ['flags', 'gender', 'icons'];
+        foreach ($directories as $dir) {
+            $path = new Path();
+            $path->Url = $root . '/' . $dir;
             $path->save();
         }
     }
-
 }
