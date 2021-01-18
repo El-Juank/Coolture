@@ -22,11 +22,13 @@ class RangeSeeder extends Seeder
         $totalLocations=count($locations);
 
         foreach($events as $event){
+            if($faker->boolean()||$faker->boolean()){//posso dos per tenir més probabilitats de tenir 
             $range=new Range();
             $range->Event_id=$event->id;
             $range->Location_id=$locations[$faker->numberBetween(0, $totalLocations)]->id;
             $range->Range=$faker->randomFloat(2,1,1000000);
             $range->save();
+            }
         }
         
     }
