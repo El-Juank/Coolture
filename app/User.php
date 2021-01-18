@@ -72,7 +72,8 @@ class User extends Authenticatable
     }
     public function Events()
     {
-        return $this->hasMany(Events::class, 'User_id', 'id');
+        return $this->hasMany(Events::class);
+
     }
     public function Messages()
     {
@@ -130,6 +131,7 @@ class User extends Authenticatable
 
         return Permission::where('User_id', $this->id)->where('Role_id', $roleId)->count() == 1;
     }
+
     //falta testing
     public function NotificationChangesEvent($onlyUnRead = true)
     {
@@ -162,5 +164,37 @@ class User extends Authenticatable
             $toShow = $notifications;
         }
         return $toShow;
+    }
+
+    public static function CanEditPermission($userAdmin, $userToDelete, $roleId)
+    {
+        $canEdit = $userAdmin->IsAdmin();
+        if ($canEdit) {
+            //un administrador no pot deixar ell mateix el càrrec ha de ser un altre qui ho faci
+            $canEdit =! ($roleId == Role::ADMIN && $userToDelete->IsAdmin() && $userAdmin->id==$userToDelete->id);
+          
+        }
+        return $canEdit;
+    }
+    public static function DeletePermission($userAdmin, $userToDelete,$roleId){
+        $deleted=$userToDelete->Is($roleId) && self::CanEditPermission($userAdmin,$userToDelete,$roleId);
+        if($deleted){
+           Permission::where('User_id',$userToDelete->id)
+                     ->where('Role_id',$roleId)
+                     ->first()->delete();
+        }
+        return $deleted;
+    }
+    public static function GrantPermission($userAdmin, $userToGrant,$roleId){
+        $granted=!$userToGrant->Is($roleId) && self::CanEditPermission($userAdmin,$userToGrant,$roleId);
+        if($granted){
+           $permission= new Permission();
+           $permission->GrantedBy_id=$userAdmin->id;
+           $permission->User_id=$userToGrant->id;
+           $permission->Role_id=$roleId;
+
+           $permission->save();
+        }
+        return $granted;
     }
 }

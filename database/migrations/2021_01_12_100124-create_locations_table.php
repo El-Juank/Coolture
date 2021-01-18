@@ -39,7 +39,8 @@ class LocationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Locations');
         Schema::dropIfExists('Location_translations');
+        Schema::dropIfExists('Locations');
+
     }
 }

@@ -34,6 +34,6 @@ class CreateMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_messages');
+        Schema::dropIfExists('Messages');
     }
 }

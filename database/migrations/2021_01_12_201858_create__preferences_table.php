@@ -15,7 +15,7 @@ class CreatePreferencesTable extends Migration
     {
         Schema::create('Preferences', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('User_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->json('UserConfig');
 
             $table->unique('User_id');

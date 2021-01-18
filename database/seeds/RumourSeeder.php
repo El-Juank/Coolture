@@ -28,7 +28,7 @@ class RumourSeeder extends Seeder
         for($i=0;$i<15;$i++){
             $rumour=new Rumour();
             $rumour->Event_Maker_id=$eventMakers[$faker->numberBetween(0,$totalEventMakers)]->id;
-            $rumour->User_id=$users[$faker->numberBetween(0,$totalUsers)]->id;
+            $rumour->user_id=$users[$faker->numberBetween(0,$totalUsers)]->id;
 
             $rumour->IsVisible=$faker->boolean();
             $rumour->OwnTrust=$faker->numberBetween(self::TRUST_MIN,self::TRUST_MAX);
