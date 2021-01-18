@@ -78,4 +78,14 @@ class FrontendController extends Controller
             ->with('rumours', $rumours)
             ->with('permissions', $permissions);
     }
+
+    public function event($id)
+    {
+        //Torna event
+        $event = Event::find($id);
+
+        // Elements de l'event (event_detall)
+        return view('frontend.event_detall')
+            ->with('event', $event);
+    }
 }

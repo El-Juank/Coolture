@@ -23,7 +23,7 @@ class Event extends Model
     }
     public function Location()
     {
-        return $this->belongsTo(Location::class);
+        return $this->belongsTo(Location::class, 'Location_id');
     }
     public function ImgEvent()
     {
