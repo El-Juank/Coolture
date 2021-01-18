@@ -12,7 +12,7 @@ class Event extends Model
     use Translatable;
     use SoftDeletes;
 
-    public $translatedAttributes = ['Title', 'Description']; //change
+    public $translatedAttributes = ['Title', 'Description'];
     public function User()
     {
         return $this->belongsTo(User::class);
