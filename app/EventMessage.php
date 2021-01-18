@@ -9,6 +9,7 @@ use Astrotomic\Translatable\Translatable;
 class EventMessage extends Model
 {
     use Translatable;
+    protected $table="EventMessages";
 
     public $translatedAttributes=['Message'];
 
@@ -16,6 +17,6 @@ class EventMessage extends Model
         return $this->belongsTo(User::class);
     }
     public function Event(){
-        return $this->belongsTo(Event::class);
+        return $this->belongsTo(Event::class, 'Event_id');
     }
 }
