@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
       
         //fins aqui
       
-        $this->call(AssistenceListSeeder::class);
+        $this->call(AssistenceSeeder::class);
         $this->call(MessageSeeder::class);
         $this->call(PreferenceSeeder::class);
         $this->call(RangeSeeder::class);

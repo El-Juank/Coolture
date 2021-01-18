@@ -19,7 +19,7 @@ class Category extends Model
         return $this->belongsTo(File::class);
     }
     public function UrlImage(){
-        $file=$this->Image;
+        $file=$this->Image();
         return $file->Url;
     }
 }

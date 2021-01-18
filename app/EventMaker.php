@@ -57,15 +57,15 @@ class EventMaker extends Model
     }
 
     public function EventTags(){
-        return $this->GetDictionaryTags($this->Events,'Event');
+        return $this->GetDictionaryTags($this->Events(),'Event');
     }
     public function RumourTags(){
-        return $this->GetDictionaryTags($this->Rumours,'Rumour');
+        return $this->GetDictionaryTags($this->Rumours(),'Rumour');
     }
     private function GetDictionaryTags($objs,$name){//falta testing
         $objIds=array();
         foreach($objs as $objId){
-          array_push( $objIds,$objId->Id);
+          array_push( $objIds,$objId->id);
         }
         $ids=DB::table('Tags'.$name)->where($name.'_Id','in',$objIds)->get()->pluck('Tag_Id');
         $tags=Tag::select(['Name' ,DB::raw('COUNT(Name) as Total')])->where('Id','in',$ids)->groupBy('Name')->orderBy('Name')->pluck('Name','Total');
@@ -78,8 +78,8 @@ class EventMaker extends Model
 
     public function Tags()
     {//falta testing
-        $tagsEvents=$this->EventsTags;
-        $tagsRumours=$this->RumoursTags;
+        $tagsEvents=$this->EventsTags();
+        $tagsRumours=$this->RumoursTags();
         $tags=$tagsEvents;
 
         foreach($tagsRumours as $tagRumour){

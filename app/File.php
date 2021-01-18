@@ -10,7 +10,7 @@ class File extends Model
         return $this->belongsTo(Path::class);
     }
     public function Url(){
-        $path=$this->Path;
-        return join($path->ExternalUrl,$this->Name.'.'.$this->Format);
+        $path=$this->Path();
+        return join($path->ExternalUrl(),$this->Name.'.'.$this->Format);
     }
 }
