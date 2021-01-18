@@ -107,7 +107,7 @@ class User extends Authenticatable
     }
     public function Is($roleId){
         
-        return Permission::where('User_id',$this->User_id)->where('Role_id',$roleId)->count()==1;
+        return Permission::where('User_id',$this->id)->where('Role_id',$roleId)->count()==1;
     }
     //falta testing
     public function NotificationChangesEvent($onlyUnRead=true){
