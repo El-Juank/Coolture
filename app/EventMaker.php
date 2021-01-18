@@ -47,6 +47,10 @@ class EventMaker extends Model
     {
         return $this->hasMany(UserRange::class, 'UserRanges');
     }
+    public function Subcategories()
+    {
+        return $this->hasMany(Subcategory::class, 'Subcategories');
+    }
     public function NotificationChangesList()
     {
         return $this->morphMany(User::class, 'NotificationChangesEventMaker');

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class TagRumour extends Model
 {
+    protected $table="TagsRumour";
+    
     public function Tag(){
         return $this->belongsTo(Tag::class);
     }
