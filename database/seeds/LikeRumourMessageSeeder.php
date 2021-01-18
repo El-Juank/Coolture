@@ -16,15 +16,15 @@ class LikeEventMessageSeeder extends Seeder
     public function run()
     {
         $faker= Faker\Factory::create();
-        $eventMessages=RumourMessage::get();
+        $rumourMessages=RumourMessage::get();
         $users=User::get();
         
-        for($i=0,$iF=count($eventMessages),$jF=count($users);$i<$iF;$i++){
+        for($i=0,$iF=count($rumourMessages),$jF=count($users);$i<$iF;$i++){
             for($j=0;$j<$jF;$j++){
                 if($faker->boolean()){
                     $like=new LikeRumourMessage();
                     $like->user_id=$users[$j]->id;
-                    $like->Rumour_Message_id=$eventMessages[$i]->id;
+                    $like->Rumour_Message_id=$rumourMessages[$i]->id;
                     $like->save();
                 }
             }
