@@ -39,7 +39,7 @@ class EventMakerSeeder extends Seeder
             $eventMaker->{'Name:ca'}=$name.'_CA';
             $eventMaker->{'Name:en'}=$name.'_EN';
 
-            $desc=$faker->sentence(50);
+            $desc=$faker->sentence(25);
             $eventMaker->{'Description:es'}=$desc.'_ES';
             $eventMaker->{'Description:ca'}=$desc.'_CA';
             $eventMaker->{'Description:en'}=$desc.'_EN';

@@ -8,6 +8,7 @@ use Astrotomic\Translatable\Translatable;
 class RumourMessage extends Model
 {
     use Translatable;
+    protected $table="RumourMessages";
 
     public $translatedAttributes=['Message'];
 

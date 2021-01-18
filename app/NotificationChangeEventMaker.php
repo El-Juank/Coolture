@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class NotificationChangeEventMaker extends Model
 {
+    protected $table="NotificationChengesEventMaker";
+
     public function User(){
         return $this->belongsTo(User::class);
     }
