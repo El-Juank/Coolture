@@ -37,7 +37,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     //Route::get('help', 'FrontendController@help')->name('help');
 
 
-    //Gèneres (en anglès categories/category)
+    //Categories (en anglès categories/category)
     Route::get('categories', 'FrontendController@categories')->name('categories');
     Route::get('categories/{category}', 'FrontendController@category')->name('category');
 
@@ -73,7 +73,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
                 'categories' => 'CategoryController',
                 'events' => 'EventController',
                 'users' => 'UserController',
-                // 'rumours' => 'RumourController',
+                'rumours' => 'RumourController',
                 // 'eventmaker' => 'EventMakerController',
                 // 'messages' => 'MessageController'
             ]);
