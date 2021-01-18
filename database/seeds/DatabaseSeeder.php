@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MessageSeeder::class);
        
         //fins aqui
-       $this->call(PreferenceSeeder::class);
+      // $this->call(PreferenceSeeder::class);//s'ha de mirar com fer-ho desde el front end
         $this->call(RangeSeeder::class);
         $this->call(SubcategorySeeder::class);
         $this->call(TagSeeder::class);

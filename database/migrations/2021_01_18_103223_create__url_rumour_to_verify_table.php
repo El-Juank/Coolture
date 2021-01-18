@@ -16,7 +16,7 @@ class CreateUrlRumourToVerifyTable extends Migration
         Schema::create('UrlRumoursToVerify', function (Blueprint $table) {
             $table->id();
             $table->foreignId('Rumour_id')->references('id')->on('Rumours')->onDelete('cascade');
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('set null');
+            $table->foreignId('user_id')->nullable()->references('id')->on('users')->onDelete('set null');//si eliminen el compte que no elimini tot el que ha donat a la comunitat
             $table->string('Url',500);
             $table->boolean('ToConfirmed');
             $table->foreignId('VerifiedBy_id')->nullable()->references('id')->on('users')->onDelete('set null');

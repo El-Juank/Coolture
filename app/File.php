@@ -11,6 +11,6 @@ class File extends Model
     }
     public function Url(){
         $path=$this->Path();
-        return join($path->Url,$this->Name.'.'.$this->Format);
+        return $path->Url.'\\'.$this->Name.'.'.$this->Format;
     }
 }

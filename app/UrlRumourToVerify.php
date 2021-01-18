@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class UrlRumourToVerify extends Model
 {
+    protected $table="UrlRumoursToVerify";
+    
     public function User()
     {
         return $this->belongsTo(User::class);
@@ -21,6 +23,10 @@ class UrlRumourToVerify extends Model
     public function IsVerified()
     {
         return $this->VerifiedBy()!=null;
+    }
+    public function IsComunityArchived()
+    {
+        return $this->User()==null;
     }
     public function Verified($userVerifiedBy, $isTrue)
     {
