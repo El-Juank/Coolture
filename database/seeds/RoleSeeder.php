@@ -13,10 +13,10 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $rolesEN=['Administrator','Moderator','Editor EventMaker'];
-        $rolesES=['Administrador','Moderador','Editor EventMaker'];
-        $rolesCA=['Administrador','Moderador','Editor EventMaker'];
-        $priority=[1,2,3];//ara son consecutius però no es lo normal
+        $rolesEN=['Administrator','Moderator','EventMaker Editor','Url Verifier'];
+        $rolesES=['Administrador','Moderador','Editor EventMaker','Verificador de Url'];
+        $rolesCA=['Administrador','Moderador','Editor EventMaker','Verificador de Url'];
+        $priority=[1,2,3,10];//ara son consecutius però no es lo normal
         
         $total=count($rolesEN);
         for($i=0;$i<$total;$i++){

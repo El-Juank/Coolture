@@ -32,12 +32,6 @@ class RumourSeeder extends Seeder
 
             $rumour->IsVisible=$faker->boolean();
             $rumour->OwnTrust=$faker->numberBetween(self::TRUST_MIN,self::TRUST_MAX);
-            if($faker->boolean()){
-                $rumour->UrlOfficialConfirmed=$faker->url();
-            }
-            if($faker->boolean()){
-                $rumour->UrlOfficialDenied=$faker->url();
-            }
 
             $title=$faker->sentence(5);
             $rumour->{'Title:es'}=$title.'_ES';

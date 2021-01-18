@@ -144,6 +144,16 @@ class User extends Authenticatable
 
         return $this->Is(Role::MOD);
     }
+    public function IsUrlVerified()
+    {
+
+        return $this->Is(Role::URL_VERIFIED);
+    }
+    public function IsEventMakerEditor()
+    {
+
+        return $this->Is(Role::EVENTMAKER_EDITOR);
+    }
     public function Is($roleId)
     {
 
