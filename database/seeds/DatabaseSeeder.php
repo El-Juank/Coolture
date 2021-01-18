@@ -30,14 +30,15 @@ class DatabaseSeeder extends Seeder
         $this->call(LikeRumourSeeder::class);
         $this->call(LikeEventMessageSeeder::class);
         $this->call(LikeRumourMessageSeeder::class);
-        $this->call(AssistenceSeeder::class);
+        $this->call(AssistanceSeeder::class);
       
         $this->call(MessageSeeder::class);
-       
-        //fins aqui
-      // $this->call(PreferenceSeeder::class);//s'ha de mirar com fer-ho desde el front end
         $this->call(RangeSeeder::class);
         $this->call(SubcategorySeeder::class);
+        //fins aqui
+      // $this->call(PreferenceSeeder::class);//s'ha de mirar com fer-ho desde el front end
+
+     
         $this->call(TagSeeder::class);
         $this->call(TagEventSeeder::class);
         $this->call(TagRumourSeeder::class);

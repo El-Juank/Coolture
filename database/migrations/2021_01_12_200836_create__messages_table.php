@@ -20,8 +20,8 @@ class CreateMessagesTable extends Migration
             $table->foreignId('ToUser_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('Message',500);
 
-            $table->date('Trashed')->null();//per si l'esborra l'usuari que es pugui veure fins que s'arregli el problema o s'esborra cada X temps
-            $table->boolean('CanDelete');//si està pendent de ser revisat
+            $table->date('Trashed')->nullable();//per si l'esborra l'usuari que es pugui veure fins que s'arregli el problema o s'esborra cada X temps
+            $table->boolean('CanDelete')->default(false);//si està pendent de ser revisat
 
             $table->timestamps();
         });

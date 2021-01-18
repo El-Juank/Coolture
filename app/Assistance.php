@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Assistance extends Model
 {
-    protected $table="AssistenceList";
+    protected $table="AssistanceList";
     
     public function User(){
         return $this->belongsTo(User::class);

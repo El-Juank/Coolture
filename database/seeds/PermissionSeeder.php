@@ -26,7 +26,7 @@ class PermissionSeeder extends Seeder
                 
                 if($faker->boolean()){
                     $permission=new Permission();
-                    $permission->GrantedBy=$users[$faker->numberBetween(0,$totalUsers)]->id;
+                    $permission->GrantedBy_id=$users[$faker->numberBetween(0,$totalUsers)]->id;
                     $permission->Role_id=$roles[$j]->id;
                     $permission->User_id=$users[$i]->id;
                     $permission->save();

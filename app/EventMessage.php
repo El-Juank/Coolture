@@ -9,7 +9,8 @@ use Astrotomic\Translatable\Translatable;
 class EventMessage extends Model
 {
     use Translatable;
-
+    
+    protected $table="EventMessages";
     public $translatedAttributes=['Message'];
 
     public function User(){

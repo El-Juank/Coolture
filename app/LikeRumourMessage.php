@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class LikeRumourMessage extends Model
 {
+    protected $table="LikesRumourMessage";
+    
     public function User(){
         return $this->belongsTo(User::class);
     }
