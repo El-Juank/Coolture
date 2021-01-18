@@ -35,10 +35,14 @@ class UserController extends Controller
 
         //Capta camps del formulari
         $name = $request['name'];
+        $email = $request['email'];
+        $password = $request['password'];
 
-        //Crear  i posa valors del formulari
+        //Crear i posa valors del formulari
         $user = new user;
         $user->name = $name;
+        $user->email = $email;
+        $user->password = $password;
 
         //Guarda
         $user->save();

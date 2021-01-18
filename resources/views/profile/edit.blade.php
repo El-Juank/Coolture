@@ -31,8 +31,7 @@
                             <div class="form-group row">
                                 <label for="name"
                                     class="col-md-4 col-form-label text-md-right">{{ __('lang.form_name') }}</label>
-
-                                <div class="col-md-6">
+                                <div class="col-md-6 mb-3">
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
                                         name="name" value="{{ old('name', Auth::user()->name) }}" required
                                         autocomplete="name">
@@ -43,12 +42,27 @@
                                         </span>
                                     @enderror
                                 </div>
+
+                                <label for="name"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('lang.email') }}</label>
+                                <div class="col-md-6 mb-3">
+                                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror"
+                                        name="email" value="{{ old('email', Auth::user()->email) }}" required
+                                        autocomplete="email">
+
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
                             </div>
 
                             <div class="form-group row mt-4 justify-content-center">
                                 <div class="col-md-6 text-center">
                                     <button type="submit" class="btn btn-coolture">
-                                        {{ __('Actualitza') }}
+                                        {{ __('lang.update') }}
                                     </button>
                                 </div>
                             </div>

@@ -16,7 +16,8 @@
                         <p class="text-secondary">{{ __('lang.event_admin_tagline') }}</p>
                     </div>
                     <div class="col-3 justify-content-end v-center">
-                        <a href="{{ route('events.create') }}" class="btn btn-coolture">{{ __('lang.add_event') }}</a>
+                        <a href="{{ route('events.create') }}"
+                            class="btn btn-coolture btn-post">{{ __('lang.add_event') }}</a>
                     </div>
                 </div>
                 <div class="card">
@@ -24,9 +25,9 @@
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">COL1</th>
-                                    <th scope="col">COL2</th>
-                                    <th scope="col">COL3</th>
+                                    <th scope="col">{{ __('lang.event_col_title') }}</th>
+                                    <th scope="col">{{ __('lang.event_col_user') }}</th>
+                                    <th scope="col" class="w-20">{{ __('lang.col_actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,29 +36,28 @@
                                         <td>{{ $event->Title }}</td>
                                         <td>{{ $event->User->name }}</td>
 
-                                        <td>
+                                        <td class="align-middle">
                                             <a href="{{ route('events.edit', ['event' => $event->id]) }}"
-                                                class="btn btn-info">Editar</a>
+                                                class="btn btn-info btn-sm">{{ __('lang.edit') }}</a>
 
                                             @if (is_null($event->deleted_at))
                                                 <form action="{{ route('events.destroy', ['event' => $event->id]) }}"
                                                     method="POST" style="display:inline">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="DELETE">
-                                                    <input type="submit" value="Eliminar" class="btn btn-danger">
+                                                    <input type="submit" value="{{ __('lang.delete') }}"
+                                                        onclick="return confirm('{{ __('lang.delete_event_confirm') }}')"
+                                                        class="btn btn-danger btn-sm">
                                                 </form>
                                             @else
                                                 <a href="{{ route('events.restore', ['event' => $event->id]) }}"
-                                                    class="btn btn-success">Recuperar</a>
+                                                    class="btn btn-success btn-sm">{{ __('lang.restore') }}</a>
                                             @endif
                                         </td>
                                     </tr>
-
                                 @endforeach
                             </tbody>
-
                         </table>
-
                     </div>
                 </div>
             </div>

@@ -1,9 +1,10 @@
 <div class="container-fluid dashboard-menu">
-    <div class="row min-vh-100 flex-column flex-md-row">
+    <div class="row flex-column flex-md-row">
         <aside class="col-12 col-md-2 p-0 bg-light flex-shrink-1">
             <nav class="navbar navbar-expand bg-light flex-md-column flex-row align-items-center py-2">
                 <div class="collapse navbar-collapse ">
-                    <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-around" data-aos="fade-up">
+                    <ul class="flex-md-column flex-row navbar-nav navbar-menu w-100 justify-content-around"
+                        data-aos="fade-up">
                         <!-- Enllaç per editar el perfil mitjançant id tret del "Auth::user" -->
                         <li class="nav-item">
                             <a class="nav-link p-0 text-center"
@@ -67,12 +68,12 @@
 @if (Auth::user()->IsAdmin())
     <script type="text/javascript">
         setTimeout(function() {
-            $(".nav-item").css("padding-top", "0px");
+            $(".navbar-menu .nav-item").css("padding-top", "0px");
             $(window).resize(function() {
                 if (window.matchMedia('(max-width: 767px)').matches) {
-                    $(".nav-item").css("padding-bottom", "40px");
+                    $(".navbar-menu .nav-item").css("padding-bottom", "40px");
                 } else {
-                    $(".nav-item").css("padding-bottom", "90px");
+                    $(".navbar-menu .nav-item").css("padding-bottom", "100px");
                 }
             });
         }, 1);
