@@ -180,7 +180,7 @@
         modal.find("#ticket-type").val(ticketType);
     });
 
-    // Init AOS
+    // Init AOS (Animate on Scroll)
     function aos_init() {
         AOS.init({
             duration: 1000,

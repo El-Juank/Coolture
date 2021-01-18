@@ -1,6 +1,19 @@
 <?php
 
 return [
+    //Traduccions generals
+    "back" => "Enrere",
+    "events" => "Esdeventiments",
+    "rumours" => "Rumors",
+    "created_at" => "Publicat",
+    "edit" => "Editar",
+    "delete" => "Eliminar",
+    "restore" => "Recuperar",
+    "create" => "Crear",
+    "update" => "Actualitzar",
+    "email" => "Correu electònic",
+    "country" => "País",
+    "password" => "Contrasenya",
 
     //Traduccions "Header"
     "header_lang_spanish" => "Castellà",
@@ -36,6 +49,8 @@ return [
 
     //Traduccions formularis
     "form_name" => "Nom",
+    "form_title" => "Títol",
+    "form_user" => "Usuari",
 
     //Traduccions pàgina "Home" (Dashboard)
     "dash_profile" => "Perfil",
@@ -58,21 +73,36 @@ return [
     //Traduccions apartat "Esdeveniments en seguiment"
     "following_posts" => "Esdeveniments que segueixes",
     "following_posts_tagline" => "Aquests són els esdeveniments que més t'agraden",
+    "dash_events_edit" => "Editar esdeveniment",
 
     //Traduccions pàgina "Gèneres"
     "gender_admin" => "Tots els gèneres",
     "gender_admin_tagline" => "Aquí es gestionen els gèneres",
     "add_gender" => "Afegir gènere",
+    "gender_col_name" => "Gènere",
+    "col_actions" => "Accions",
+    "dash_genders_edit" => "Editar gènere",
+    "dash_genders_new" => "Nou gènere",
+    "genders_name" => "Nom del gènere",
+    "delete_gender_confirm" => "Estàs segur de que vols borrar aquest gènere?",
 
-    //Traduccions pàgina "Gèneres"
-    "gender_admin" => "Tots els gèneres",
-    "gender_admin_tagline" => "Aquí es gestionen els gèneres",
-    "add_gender" => "Afegir gènere",
-
-    //Traduccions pàgina "Events"
+    //Traduccions pàgina "Esdeveniments"
+    "event_col_title" => "Títol",
+    "event_col_user" => "Usurari",
+    "event_title" => "Títol de l'esdeveniment",
     "event_admin" => "Tots els esdeveniments",
     "event_admin_tagline" => "Aquí es gestionen els esdeveniments",
     "add_event" => "Afegir esdeveniment",
+    "delete_event_confirm" => "Estàs segur de que vols borrar aquest esdeveniment?",
+    "delete_rumour_confirm" => "Estàs segur de que vols borrar aquest rumor?",
+
+    //Traduccions pàgina "Usuaris"
+    "user_admin" => "Usuaris",
+    "user_admin_tagline" => "Llistat amb tots els usuaris",
+    "add_user" => "Afegir usuari",
+    "user_admin_edit" => "Editar usuari",
+    "user_admin_new" => "Crear usuari",
+    "delete_user_confirm" => "Estàs segur de que vols borrar aquest usuari?",
 
     //Traduccions pàgina "About Us"
     "about_title" => "Qui som?",
