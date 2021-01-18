@@ -99,6 +99,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(LikeRumour::class);
     }
+    public function LikeRumourMessages()
+    {
+        return $this->hasMany(LikeRumourMessage::class);
+    }
     public function Ranges()
     {
         return $this->hasMany(UserRange::class);
