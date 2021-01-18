@@ -20,37 +20,41 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-body">
-                        <table>
-                            <tr>
-                                <td>COL1</td>
-                                <td>COL2</td>
-                                <td>COL3</td>
-                            </tr>
-                            @foreach ($events as $event)
+                    <div class="card-body table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
                                 <tr>
-                                    <td>{{ $event->Title }}</td>
-                                    <td>{{ $event->User_id }}</td>
-
-                                    <td>
-                                        <a href="{{ route('events.edit', ['event' => $event->id]) }}"
-                                            class="btn btn-info">Editar</a>
-
-                                        @if (is_null($event->deleted_at))
-                                            <form action="{{ route('events.destroy', ['event' => $event->id]) }}"
-                                                method="POST" style="display:inline">
-                                                @csrf
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <input type="submit" value="Eliminar" class="btn btn-danger">
-                                            </form>
-                                        @else
-                                            <a href="{{ route('events.restore', ['event' => $event->id]) }}"
-                                                class="btn btn-success">Recuperar</a>
-                                        @endif
-                                    </td>
+                                    <th scope="col">COL1</th>
+                                    <th scope="col">COL2</th>
+                                    <th scope="col">COL3</th>
                                 </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($events as $event)
+                                    <tr>
+                                        <td>{{ $event->Title }}</td>
+                                        <td>{{ $event->User_id }}</td>
 
-                            @endforeach
+                                        <td>
+                                            <a href="{{ route('events.edit', ['event' => $event->id]) }}"
+                                                class="btn btn-info">Editar</a>
+
+                                            @if (is_null($event->deleted_at))
+                                                <form action="{{ route('events.destroy', ['event' => $event->id]) }}"
+                                                    method="POST" style="display:inline">
+                                                    @csrf
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <input type="submit" value="Eliminar" class="btn btn-danger">
+                                                </form>
+                                            @else
+                                                <a href="{{ route('events.restore', ['event' => $event->id]) }}"
+                                                    class="btn btn-success">Recuperar</a>
+                                            @endif
+                                        </td>
+                                    </tr>
+
+                                @endforeach
+                            </tbody>
 
                         </table>
 

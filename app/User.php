@@ -12,7 +12,7 @@ class User extends Authenticatable
     use Notifiable;
     use Translatable;
 
-    public $translatedAttributes=['CanDelete','Description','Visible'];
+    public $translatedAttributes = ['CanDelete', 'Description', 'Visible'];
 
     /**
      * The attributes that are mass assignable.
@@ -41,104 +41,125 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function Country(){
-        return $this->belongsTo(Location::class,'Country_id');
+    public function Country()
+    {
+        return $this->belongsTo(Location::class, 'Country_id');
     }
-    public function DefaultLocation(){
-        return $this->belongsTo(Location::class,'DefaultLocation_id');
+    public function DefaultLocation()
+    {
+        return $this->belongsTo(Location::class, 'DefaultLocation_id');
     }
-    public function ImgProfile(){
-        return $this->belongsTo(File::class,'ImgProfile_id');
+    public function ImgProfile()
+    {
+        return $this->belongsTo(File::class, 'ImgProfile_id');
     }
-    public function ImgCover(){
-        return $this->belongsTo(File::class,'ImgCover_id');
+    public function ImgCover()
+    {
+        return $this->belongsTo(File::class, 'ImgCover_id');
     }
-    public function VerifiedBy(){
-        return $this->belongsTo(User::class,'UserVerified_id');
+    public function VerifiedBy()
+    {
+        return $this->belongsTo(User::class, 'UserVerified_id');
     }
-    public function IsVerified(){
-        return $this->VerifiedBy!=null;
+    public function IsVerified()
+    {
+        return $this->VerifiedBy != null;
     }
 
-    public function AssitenceList(){
+    public function AssitenceList()
+    {
         return $this->hasMany(AssitenceList::class);
     }
-    public function Events(){
+    public function Events()
+    {
         return $this->hasMany(Events::class);
     }
-    public function Messages(){
+    public function Messages()
+    {
         return $this->hasMany(Message::class);
     }
-    public function RumourMessages(){
+    public function RumourMessages()
+    {
         return $this->hasMany(RumourMessage::class);
     }
-    public function EventMessages(){
+    public function EventMessages()
+    {
         return $this->hasMany(EventMessage::class);
     }
-    public function LikeEvent(){
+    public function LikeEvent()
+    {
         return $this->hasMany(LikeEvent::class);
     }
-    public function LikeEventMessages(){
+    public function LikeEventMessages()
+    {
         return $this->hasMany(LikeEventMessage::class);
     }
-    public function LikeRumours(){
+    public function LikeRumours()
+    {
         return $this->hasMany(LikeRumour::class);
     }
-    public function Ranges(){
+    public function Ranges()
+    {
         return $this->hasMany(UserRange::class);
     }
-    public function EventMakers(){
+    public function EventMakers()
+    {
         return $this->hasMany(EventMaker::class);
     }
-    public function Permissions(){
+    public function Permissions()
+    {
         return $this->hasMany(Permission::class);
     }
-    public function Roles(){
+    public function Roles()
+    {
         return $this->hasMany(Role::class);
     }
 
-    public function IsAdmin(){
-        
-      return $this->Is(Role::ADMIN);
+    public function IsAdmin()
+    {
+
+        return $this->Is(Role::ADMIN);
     }
-    public function IsMod(){
-        
+    public function IsMod()
+    {
+
         return $this->Is(Role::MOD);
     }
-    public function Is($roleId){
-        
-        return Permission::where('User_id',$this->id)->where('Role_id',$roleId)->count()==1;
+    public function Is($roleId)
+    {
+
+        return Permission::where('User_id', $this->id)->where('Role_id', $roleId)->count() == 1;
     }
     //falta testing
-    public function NotificationChangesEvent($onlyUnRead=true){
-       
-        return $this->FilterOnlyUnRead(NotificationChangeEvent::class,$onlyUnRead);
+    public function NotificationChangesEvent($onlyUnRead = true)
+    {
 
+        return $this->FilterOnlyUnRead(NotificationChangeEvent::class, $onlyUnRead);
     }
-    public function NotificationChangesEventMaker($onlyUnRead=true){
-       
-        return $this->FilterOnlyUnRead(NotificationChangeEventMaker::class,$onlyUnRead);
+    public function NotificationChangesEventMaker($onlyUnRead = true)
+    {
 
+        return $this->FilterOnlyUnRead(NotificationChangeEventMaker::class, $onlyUnRead);
     }
-    public function NotificationChangesRumour($onlyUnRead=true){
-       
-        return $this->FilterOnlyUnRead(NotificationChangeRumour::class,$onlyUnRead);
+    public function NotificationChangesRumour($onlyUnRead = true)
+    {
 
+        return $this->FilterOnlyUnRead(NotificationChangeRumour::class, $onlyUnRead);
     }
 
     //aixi serveix per totes les notificacions
-    private function FilterOnlyUnRead($notificationsType,$onlyUnRead){
-        $notifications= $this->hasMany($notificationsType);
-        if($onlyUnRead){
-            $toShow=array();
-            foreach($notifications as $notification){
-                if($notification->UnRead)
-                {
-                    $toShow+=[$notification];
+    private function FilterOnlyUnRead($notificationsType, $onlyUnRead)
+    {
+        $notifications = $this->hasMany($notificationsType);
+        if ($onlyUnRead) {
+            $toShow = array();
+            foreach ($notifications as $notification) {
+                if ($notification->UnRead) {
+                    $toShow += [$notification];
                 }
             }
-        }else{
-            $toShow=$notifications;
+        } else {
+            $toShow = $notifications;
         }
         return $toShow;
     }
