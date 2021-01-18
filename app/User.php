@@ -96,6 +96,19 @@ class User extends Authenticatable
     public function Roles(){
         return $this->hasMany(Role::class);
     }
+
+    public function IsAdmin(){
+        
+      return $this->Is(Role::ADMIN);
+    }
+    public function IsMod(){
+        
+        return $this->Is(Role::MOD);
+    }
+    public function Is($roleId){
+        
+        return Permission::where('User_id',$this->User_id)->where('Role_id',$roleId)->count()==1;
+    }
     //falta testing
     public function NotificationChangesEvent($onlyUnRead=true){
        
