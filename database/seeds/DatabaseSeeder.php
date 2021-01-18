@@ -30,12 +30,12 @@ class DatabaseSeeder extends Seeder
         $this->call(LikeRumourSeeder::class);
         $this->call(LikeEventMessageSeeder::class);
         $this->call(LikeRumourMessageSeeder::class);
-      
-        //fins aqui
-      
         $this->call(AssistenceSeeder::class);
+      
         $this->call(MessageSeeder::class);
-        $this->call(PreferenceSeeder::class);
+       
+        //fins aqui
+       $this->call(PreferenceSeeder::class);
         $this->call(RangeSeeder::class);
         $this->call(SubcategorySeeder::class);
         $this->call(TagSeeder::class);
