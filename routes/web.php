@@ -73,7 +73,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
                 'categories' => 'CategoryController',
                 'events' => 'EventController',
                 'users' => 'UserController',
-                // 'rumours' => 'RumourController',
+                'rumours' => 'RumourController',
                 // 'eventmaker' => 'EventMakerController',
                 // 'messages' => 'MessageController'
             ]);

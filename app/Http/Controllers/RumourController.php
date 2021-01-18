@@ -2,28 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Event;
 use App\Permission;
+use App\Rumour;
 use Illuminate\Http\Request;
 
-class EventController extends Controller
+class RumourController extends Controller
 {
     public function index()
     {
-        $events = Event::get();
+        $rumours = Rumour::get();
         $permissions = Permission::get();
 
-        return view('events.index')
-            ->with('events', $events)
+        return view('rumours.index')
+            ->with('rumours', $rumours)
             ->with('permissions', $permissions);
     }
 
     public function create()
     {
-        $events = Event::get();
+        $rumours = Rumour::get();
 
-        return view('events.create')
-            ->with('events', $events);
+        return view('rumours.create')
+            ->with('rumours', $rumours);
     }
 
     public function store(Request $request)
@@ -37,23 +37,23 @@ class EventController extends Controller
         $name = $request['name'];
 
         //Crear  i posa valors del formulari
-        $event = new Event;
-        $event->name = $name;
+        $rumour = new Rumour;
+        $rumour->name = $name;
 
         //Guarda
-        $event->save();
+        $rumour->save();
 
         //Mostra index
-        return redirect()->route('events.index');
+        return redirect()->route('rumours.index');
     }
 
 
     public function edit($id)
     {
-        $event = Event::find($id);
+        $rumour = Rumour::find($id);
 
-        return view('events.edit')
-            ->with('event', $event);
+        return view('rumours.edit')
+            ->with('rumour', $rumour);
     }
 
     public function update(Request $request, $id)
@@ -69,21 +69,21 @@ class EventController extends Controller
         $name = $request["name"];
 
         //Busques object
-        $event = Event::find($id);
+        $rumour = Rumour::find($id);
 
         //Posa els valors del form
-        $event->name = $name;
+        $rumour->name = $name;
 
-        $event->save();
+        $rumour->save();
 
-        return redirect()->route('events.index');
+        return redirect()->route('rumours.index');
     }
 
     public function destroy($id)
     {
-        $event = Event::find($id);
-        $event->delete();
+        $rumour = Rumour::find($id);
+        $rumour->delete();
 
-        return redirect()->route('events.index');
+        return redirect()->route('rumours.index');
     }
 }

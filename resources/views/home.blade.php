@@ -102,8 +102,8 @@
                                         <td>{{ $rumour->EventMaker->Name }}</td>
 
                                         <td>
-                                            FUNCIONALITATS NO OPERATIVES ENCARA
-                                            {{-- <a href="{{ route('rumours.edit', ['rumour' => $rumour->id]) }}"
+
+                                            <a href="{{ route('rumours.edit', ['rumour' => $rumour->id]) }}"
                                                 class="btn btn-info">Editar</a>
 
                                             @if (is_null($rumour->deleted_at))
@@ -116,7 +116,7 @@
                                             @else
                                                 <a href="{{ route('rumours.restore', ['rumour' => $rumour->id]) }}"
                                                     class="btn btn-success">Recuperar</a>
-                                            @endif --}}
+                                            @endif
                                         </td>
                                     </tr>
 
