@@ -64,6 +64,16 @@ return [
     "gender_admin_tagline" => "Aquí es gestionen els gèneres",
     "add_gender" => "Afegir gènere",
 
+    //Traduccions pàgina "Gèneres"
+    "gender_admin" => "Tots els gèneres",
+    "gender_admin_tagline" => "Aquí es gestionen els gèneres",
+    "add_gender" => "Afegir gènere",
+
+    //Traduccions pàgina "Events"
+    "event_admin" => "Tots els esdeveniments",
+    "event_admin_tagline" => "Aquí es gestionen els esdeveniments",
+    "add_event" => "Afegir esdeveniment",
+
     //Traduccions pàgina "About Us"
     "about_title" => "Qui som?",
     "about_tagline" => "Sobre nosaltres",

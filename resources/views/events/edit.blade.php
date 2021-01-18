@@ -1,20 +1,16 @@
-
-
 Edit page
 
 <div class="card-body">
     <!-- Amb l'id que hem agafat del "Auth::user" enviem el formulari per modificar l'usuari en concret -->
-    <form method="POST" action="{{ route('categories.update', ['category' => $category->id]) }}" class="mt-3">
+    <form method="POST" action="{{ route('events.update', ['event' => $event->id]) }}" class="mt-3">
         @csrf
         <input type="hidden" name="_method" value="PUT">
         <div class="form-group row">
-            <label for="name"
-                class="col-md-4 col-form-label text-md-right">{{ __('lang.form_name') }}</label>
+            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('lang.form_name') }}</label>
 
             <div class="col-md-6">
-                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                    name="name" value="{{ old('name', $category->name) }}" required
-                    autocomplete="name">
+                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                    value="{{ old('name', $event->Title) }}" required autocomplete="name">
 
                 @error('name')
                     <span class="invalid-feedback" role="alert">

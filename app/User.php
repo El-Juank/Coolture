@@ -72,7 +72,7 @@ class User extends Authenticatable
     }
     public function Events()
     {
-        return $this->hasMany(Events::class);
+        return $this->hasMany(Events::class, 'User_id', 'id');
     }
     public function Messages()
     {
