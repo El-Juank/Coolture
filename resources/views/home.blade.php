@@ -32,7 +32,103 @@
 
                         {{ __('You are logged in!') }}
                     </div>
+
                 </div>
+
+                {{-- Taula on mostra els events que ha publicat l'usuari --}}
+                <div class="card">
+                    <div class="card-body table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Data creació</th>
+                                    <th scope="col">Title event</th>
+                                    <th scope="col">EventMaker name</th>
+                                    <th scope="col">Funcions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($events as $event)
+                                    <tr>
+                                        <td>{{ $event->created_at }}</td>
+                                        <td>{{ $event->Title }}</td>
+                                        <td>{{ $event->EventMaker->Name }}</td>
+
+                                        <td>
+                                            <a href="{{ route('events.edit', ['event' => $event->id]) }}"
+                                                class="btn btn-info">Editar</a>
+
+                                            @if (is_null($event->deleted_at))
+                                                <form action="{{ route('events.destroy', ['event' => $event->id]) }}"
+                                                    method="POST" style="display:inline">
+                                                    @csrf
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <input type="submit" value="Eliminar" class="btn btn-danger">
+                                                </form>
+                                            @else
+                                                <a href="{{ route('events.restore', ['event' => $event->id]) }}"
+                                                    class="btn btn-success">Recuperar</a>
+                                            @endif
+                                        </td>
+                                    </tr>
+
+                                @endforeach
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+
+
+
+                {{-- Taula on mostra els rumors que ha publicat l'usuari --}}
+                <div class="card">
+                    <div class="card-body table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Data creació</th>
+                                    <th scope="col">Title rumor</th>
+                                    <th scope="col">EventMaker rumor</th>
+                                    <th scope="col">Funcions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($rumours as $rumour)
+                                    <tr>
+                                        <td>{{ $rumour->created_at }}</td>
+                                        <td>{{ $rumour->Title }}</td>
+                                        <td>{{ $rumour->EventMaker->Name }}</td>
+
+                                        <td>
+                                            FUNCIONALITATS NO OPERATIVES ENCARA
+                                            {{-- <a href="{{ route('rumours.edit', ['rumour' => $rumour->id]) }}"
+                                                class="btn btn-info">Editar</a>
+
+                                            @if (is_null($rumour->deleted_at))
+                                                <form action="{{ route('rumours.destroy', ['rumour' => $rumour->id]) }}"
+                                                    method="POST" style="display:inline">
+                                                    @csrf
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <input type="submit" value="Eliminar" class="btn btn-danger">
+                                                </form>
+                                            @else
+                                                <a href="{{ route('rumours.restore', ['rumour' => $rumour->id]) }}"
+                                                    class="btn btn-success">Recuperar</a>
+                                            @endif --}}
+                                        </td>
+                                    </tr>
+
+                                @endforeach
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>

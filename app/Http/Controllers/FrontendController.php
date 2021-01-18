@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Event;
 use App\Permission;
 use App\Rumour;
-use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
 {
@@ -18,10 +18,21 @@ class FrontendController extends Controller
 
     public function home()
     {
+        //Agafa propietats de l'user loggejat en aquell moment
+        $user_id = Auth::user()->id;
+        $events = Event::where('User_id', $user_id)
+            ->orderBy('created_at', 'DESC')
+            ->get();
+        $rumours = Rumour::where('User_id', $user_id)
+            ->orderBy('created_at', 'DESC')
+            ->get();
+
         //Per veure els permissos de l'usuari
         $permissions = Permission::get();
         return view('home')
-            ->with('permissions', $permissions);
+            ->with('permissions', $permissions)
+            ->with('events', $events)
+            ->with('rumours', $rumours);
     }
 
     public function howItWorks()
