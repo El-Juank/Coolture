@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\EventMessage;
 use App\Permission;
 use App\Rumour;
 use Illuminate\Http\Request;
@@ -81,11 +82,19 @@ class FrontendController extends Controller
 
     public function event($id)
     {
-        //Torna event
+        //Informació bàsica sobre aquell event
         $event = Event::find($id);
 
-        // Elements de l'event (event_detall)
         return view('frontend.event_detall')
             ->with('event', $event);
+    }
+
+    public function rumour($id)
+    {
+        //Informació bàsica sobre aquell event
+        $rumour = Rumour::find($id);
+
+        return view('frontend.rumour_detall')
+            ->with('rumour', $rumour);
     }
 }
