@@ -4,7 +4,7 @@ Edit page
 
 <div class="card-body">
     <!-- Amb l'id que hem agafat del "Auth::user" enviem el formulari per modificar l'usuari en concret -->
-    <form method="POST" action="{{ route('categories.update', ['category' => $category->id]) }}" class="mt-3">
+    <form method="POST" action="{{ route('events.update', ['event' => $event->id]) }}" class="mt-3">
         @csrf
         <input type="hidden" name="_method" value="PUT">
         <div class="form-group row">
@@ -13,7 +13,7 @@ Edit page
 
             <div class="col-md-6">
                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                    name="name" value="{{ old('name', $category->name) }}" required
+                    name="name" value="{{ old('name', $event->name) }}" required
                     autocomplete="name">
 
                 @error('name')

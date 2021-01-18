@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('seoTitle')
-    | {{ __('lang.dash_genders') }}
+    | {{ __('lang.dash_events') }}
 @endsection
 
 @section('content')
@@ -12,11 +12,11 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-9">
-                        <h2 class="mb-1">{{ __('lang.gender_admin') }}</h2>
-                        <p class="text-secondary">{{ __('lang.gender_admin_tagline') }}</p>
+                        <h2 class="mb-1">{{ __('lang.event_admin') }}</h2>
+                        <p class="text-secondary">{{ __('lang.event_admin_tagline') }}</p>
                     </div>
                     <div class="col-3 justify-content-end v-center">
-                        <a href="{{ route('events.create') }}" class="btn btn-coolture">{{ __('lang.add_gender') }}</a>
+                        <a href="{{ route('events.create') }}" class="btn btn-coolture">{{ __('lang.add_event') }}</a>
                     </div>
                 </div>
                 <div class="card">
@@ -30,7 +30,7 @@
                             @foreach ($events as $event)
                                 <tr>
                                     <td>{{ $event->Title }}</td>
-                                    <td>{{ $event->User_id }}</td>
+                                    <td>{{ $event->User->name }}</td>
 
                                     <td>
                                         <a href="{{ route('events.edit', ['event' => $event->id]) }}"
