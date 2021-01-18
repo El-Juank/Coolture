@@ -17,7 +17,7 @@ class CreateEventMessagesTable extends Migration
             $table->id();
 
             $table->foreignId('Event_id')->references('id')->on('Events')->onDelete('cascade');
-            $table->foreignId('User_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
 
 
             $table->boolean('Visible');
@@ -44,7 +44,8 @@ class CreateEventMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('EventMessages');
         Schema::dropIfExists('EventMessage_translations');
+        Schema::dropIfExists('EventMessages');
+
     }
 }

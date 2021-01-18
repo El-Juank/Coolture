@@ -55,7 +55,8 @@ class UsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
         Schema::dropIfExists('user_translations');
+        Schema::dropIfExists('users');
+
     }
 }

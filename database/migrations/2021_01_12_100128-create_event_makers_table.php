@@ -15,7 +15,7 @@ class EventMakersTable extends Migration
     {
         Schema::create('EventMakers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('User_id')->nullable()->references('id')->on('users')->onDelete('set null');//si es null vol dir que s'en cuida la comunitat
+            $table->foreignId('user_id')->nullable()->references('id')->on('users')->onDelete('set null');//si es null vol dir que s'en cuida la comunitat
             $table->foreignId('ImgProfile_id')->nullable()->references('id')->on('Files')->onDelete('set null');
             $table->foreignId('ImgCover_id')->nullable()->references('id')->on('Files')->onDelete('set null');
 
@@ -44,7 +44,8 @@ class EventMakersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('EventMakers');
         Schema::dropIfExists('EventMaker_translations');
+        Schema::dropIfExists('EventMakers');
+      
     }
 }

@@ -16,7 +16,7 @@ class CreateRumourMessagesTable extends Migration
         Schema::create('RumourMessages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('Rumour_id')->references('id')->on('Rumours')->onDelete('cascade');
-            $table->foreignId('User_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
    
  
             $table->boolean('Visible');
@@ -41,7 +41,8 @@ class CreateRumourMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('RumourMessages');
         Schema::dropIfExists('RumourMessage_translations');
+        Schema::dropIfExists('RumourMessages');
+
     }
 }

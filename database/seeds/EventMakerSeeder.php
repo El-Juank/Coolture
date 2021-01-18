@@ -30,7 +30,7 @@ class EventMakerSeeder extends Seeder
         for($i=0;$i<7;$i++){
             $eventMaker=new EventMaker();
 
-            $eventMaker->User_id=$users[$faker->numberBetween(0,$totalUsers)]->id;
+            $eventMaker->user_id=$users[$faker->numberBetween(0,$totalUsers)]->id;
             $eventMaker->ImgProfile_id=$imgsProfile[$faker->numberBetween(0,$totalImgProfiles)]->id;
             $eventMaker->ImgCover_id=$imgsCover[$faker->numberBetween(0,$totalImgCovers)]->id;
 

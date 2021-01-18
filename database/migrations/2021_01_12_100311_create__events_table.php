@@ -16,7 +16,7 @@ class CreateEventsTable extends Migration
         Schema::create('Events', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('User_id')->references('id')->on('users')->onDelete('cascade');; //qui el pot editar/ qui l'ha fet
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');; //qui el pot editar/ qui l'ha fet
             $table->foreignId('Event_Maker_id')->references('id')->on('EventMakers')->onDelete('cascade');
             $table->foreignId('Location_id')->nullable()->references('id')->on('Locations')->onDelete('set null');
             $table->foreignId('ImgEvent_id')->nullable()->references('id')->on('Files')->onDelete('set null');
@@ -52,7 +52,8 @@ class CreateEventsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Events');
         Schema::dropIfExists('Event_translations');
+        Schema::dropIfExists('Events');
+    
     }
 }

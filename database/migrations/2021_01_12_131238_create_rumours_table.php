@@ -15,7 +15,7 @@ class CreateRumoursTable extends Migration
     {
         Schema::create('Rumours', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('User_id')->nullable()->references('Id')->on('users')->onDelete('set null');
+            $table->foreignId('user_id')->nullable()->references('Id')->on('users')->onDelete('set null');
             $table->foreignId('Event_Maker_id')->nullable()->references('Id')->on('EventMakers')->onDelete('set null');
       
             $table->boolean('IsVisible');
@@ -50,7 +50,8 @@ class CreateRumoursTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Rumours');
         Schema::dropIfExists('Rumour_translations');
+        Schema::dropIfExists('Rumours');
+
     }
 }

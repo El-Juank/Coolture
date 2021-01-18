@@ -17,10 +17,10 @@ class CreateNotificationChangesEventMakersTable extends Migration
             $table->id();
 
             $table->foreignId('Event_Maker_id')->references('id')->on('EventMakers')->onDelete('cascade');
-            $table->foreignId('User_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
 
             //last update is last user sight
-            $table->unique(['User_id','Event_Maker_id']);
+            $table->unique(['user_id','Event_Maker_id']);
             $table->timestamps();
         });
     }

@@ -16,12 +16,12 @@ class CreateUserRangesTable extends Migration
         Schema::create('UserRanges', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('User_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('Event_Maker_id')->references('id')->on('EventMakers')->onDelete('cascade');
 
             $table->decimal('Range',10,2);
 
-            $table->unique(['User_id','Event_Maker_id']);
+            $table->unique(['user_id','Event_Maker_id']);
 
             $table->timestamps();
         });
