@@ -6,7 +6,7 @@ use App\User;
 use App\RumourMessage;
 use App\LikeRumourMessage;
 
-class LikeEventMessageSeeder extends Seeder
+class LikeRumourMessageSeeder extends Seeder
 {
     /**
      * Run the database seeds.

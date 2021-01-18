@@ -19,17 +19,28 @@ class Rumour extends Model
     }
     public function HasEventMaker()
     {
-        return $this->EventMaker != null;
+        return $this->EventMaker() != null;
+    }
+    public function UrlOfficialDenied(){
+        return $this->UrlOfficial(false);
+    }
+    public function UrlOfficialConfirmed(){
+        return $this->UrlOfficial(true);
+    }
+     function UrlOfficial($isConfirmed){
+        return UrlRumourToVerify::where('Rumour_id',$this->id)
+                                ->where('IsConfirmed',$isConfirmed)
+                                ->first();
     }
     public function StillAlive()
     {
-        return $this->Url_OfficialDenied == null || $this->Url_OfficialConfirmed == null;
+        return $this->UrlOfficialDenied() == null || $this->UrlOfficialConfirmed() == null;
     }
     public function IsTrue()
     {
         $isTrue = null;
-        if (!$this->StillAlive) {
-            $isTrue = $this->Url_OfficialConfirmed != null;
+        if (!$this->StillAlive()) {
+            $isTrue = $this->UrlOfficialConfirmed() != null;
         }
         return $isTrue;
     }

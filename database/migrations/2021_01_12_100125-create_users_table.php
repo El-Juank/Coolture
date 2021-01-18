@@ -38,7 +38,7 @@ class UsersTable extends Migration
  
         Schema::create('user_translations', function ($table) {
             $table->id();
-            $table->foreignId('User_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('Description',1500);
             $table->boolean('Visible')->default(true);
             $table->boolean('CanDelete')->default(false);

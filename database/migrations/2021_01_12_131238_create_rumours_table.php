@@ -21,9 +21,6 @@ class CreateRumoursTable extends Migration
             $table->boolean('IsVisible');
             $table->integer('OwnTrust');
 
-            $table->string('UrlOfficialDenied',500)->nullable();//si es un rumor desmentit
-            $table->string('UrlOfficialConfirmed',500)->nullable();//si es un rumor que ha passat a ser oficial ->si tenen els dos es que al final han fet oficial algo que en un principi deien que no.
-
 
             $table->softDeletes();
             $table->timestamps();
