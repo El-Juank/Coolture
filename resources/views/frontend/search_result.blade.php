@@ -14,7 +14,8 @@
                         <a href="">
                             <div class="col-lg-4">
                                 <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                    <img src="{{ asset('img/gender/1.jpg') }}" alt="Rock" class="img-fluid">
+                                    <img src="" alt="Rock" class="img-fluid"
+                                        onerror="this.onerror=null;this.src='{{ asset('img/image-not-available.png') }}';">
                                     <div class="details">
                                         <h3><a href="">{{ $result->Title }}</a></h3>
                                         {{-- Per limitar la mida dels textos
