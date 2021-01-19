@@ -1,7 +1,7 @@
 
 ELEMENTS DEL RUMOR
 
-{{-- INFORMACIÓ SOBRE L'EVENT --}}
+{{-- INFORMACIÓ SOBRE EL RUMOR --}}
 {{$rumour->Title}}
 {{$rumour->Description}}
 

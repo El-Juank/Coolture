@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-     
+
         $this->call(PathSeeder::class);
         $this->call(FileSeeder::class);
         $this->call(LocationSeeder::class);
@@ -31,12 +31,12 @@ class DatabaseSeeder extends Seeder
         $this->call(LikeEventMessageSeeder::class);
         $this->call(LikeRumourMessageSeeder::class);
         $this->call(AssistanceSeeder::class);
-      
+
         $this->call(MessageSeeder::class);
         $this->call(RangeSeeder::class);
         $this->call(SubcategorySeeder::class);
         $this->call(TagSeeder::class);
-        $this->call(TagEventSeeder::class);    
+        $this->call(TagEventSeeder::class);
         $this->call(TagRumourSeeder::class);
         $this->call(UserRangeSeeder::class);
         $this->call(NotificationSeeder::class);
@@ -48,5 +48,6 @@ class DatabaseSeeder extends Seeder
       // $this->call(PreferenceSeeder::class);//s'ha de mirar com fer-ho desde el front end
 
    
+
     }
 }
