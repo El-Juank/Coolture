@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserRange extends Model
 {
-    protected $table="Userranges";
+    protected $table="UserRanges";
     
     public function EventMaker(){
         return $this->belongsTo(EventMaker::class);
