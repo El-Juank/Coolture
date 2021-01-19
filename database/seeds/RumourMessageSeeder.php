@@ -16,8 +16,8 @@ class RumourMessageSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-        $users = User::all();
-        $rumours = Rumour::all();
+        $users = User::get();
+        $rumours = Rumour::get();
 
         $totalUsers = count($users) - 1;
         foreach ($rumours as $rumour) {
