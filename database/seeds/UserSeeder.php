@@ -30,6 +30,8 @@ class UserSeeder extends Seeder
         $totalProfiles = count($imgsProfile) - 1;
         $totalCovers = count($imgsCover) - 1;
 
+  
+
         for ($i = 0; $i < 15; $i++) {
             $user = new User();
 

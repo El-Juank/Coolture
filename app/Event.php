@@ -15,7 +15,12 @@ class Event extends Model
     public $translatedAttributes = ['Title', 'Description'];
     public function User()
     {
-        return $this->belongsTo(User::class, 'User_id');
+        $user= $this->belongsTo(User::class, 'User_id');
+        if($user==null)
+        {
+            $user=User::CommunityUser();
+        }
+        return $user;
     }
     public function EventMaker()
     {

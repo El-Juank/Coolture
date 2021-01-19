@@ -19,7 +19,12 @@ class EventMaker extends Model
     
     public function User()
     {
-        return $this->belongsTo(User::class);
+        $user= $this->belongsTo(User::class, 'User_id');
+        if($user==null)
+        {
+            $user=User::CommunityUser();
+        }
+        return $user;
     }
     public function ComunityManage(){
         return $this->User==null;

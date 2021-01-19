@@ -16,11 +16,11 @@ class CreateRumourMessagesTable extends Migration
         Schema::create('RumourMessages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('Rumour_id')->references('id')->on('Rumours')->onDelete('cascade');
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->references('id')->on('users')->onDelete('set null');
    
  
-            $table->boolean('Visible');
-            $table->boolean('CanDelete');
+            $table->boolean('Visible')->default(true);
+            $table->boolean('CanDelete')->default(false);
 
             $table->timestamps();
         });

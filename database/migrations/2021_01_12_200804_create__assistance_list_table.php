@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use App\User;
+
 class CreateAssistanceListTable extends Migration
 {
     /**
@@ -19,8 +21,8 @@ class CreateAssistanceListTable extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('Event_id')->references('id')->on('Events')->onDelete('cascade');
 
-            $table->boolean('WantToAssist');
-            $table->boolean('Assisted');
+            $table->boolean('WantToAssist')->default(false);
+            $table->boolean('Assisted')->default(false);
             
             $table->unique(['Event_id','User_id']);
 

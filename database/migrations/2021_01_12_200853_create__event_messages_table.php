@@ -17,11 +17,11 @@ class CreateEventMessagesTable extends Migration
             $table->id();
 
             $table->foreignId('Event_id')->references('id')->on('Events')->onDelete('cascade');
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->references('id')->on('users')->onDelete('set null');
 
 
-            $table->boolean('Visible');
-            $table->boolean('CanDelete');
+            $table->boolean('Visible')->default(true);
+            $table->boolean('CanDelete')->default(false);
 
             $table->timestamps();
             

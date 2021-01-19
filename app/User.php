@@ -11,6 +11,8 @@ class User extends Authenticatable
 {
     use Notifiable;
     use Translatable;
+    public const COMUNITY_ID=0;
+
 
     public $translatedAttributes = ['CanDelete', 'Description', 'Visible'];
 
@@ -224,5 +226,8 @@ class User extends Authenticatable
            $permission->save();
         }
         return $granted;
+    }
+    public static function CommunityUser(){
+        return User::find(self::COMUNITY_ID);
     }
 }

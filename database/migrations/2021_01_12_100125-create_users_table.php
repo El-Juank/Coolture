@@ -4,6 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Seeder;
+
+use App\User;
+
 class UsersTable extends Migration
 {
     /**
@@ -46,6 +51,13 @@ class UsersTable extends Migration
             $table->timestamps();
 
         });
+
+        $comunityUser= new User();
+        $comunityUser->id=User::COMUNITY_ID;
+        $comunityUser->name='Community';
+        $comunityUser->email='comunity@coolutre.com';
+        $comunityUser->password=Hash::make(Faker\Factory::create()->word());
+        $comunityUser->save();
     }
 
     /**

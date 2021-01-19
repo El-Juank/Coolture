@@ -16,8 +16,8 @@ class CreateMessagesTable extends Migration
         Schema::create('Messages', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('FromUser_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('ToUser_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('FromUser_id')->nullable()->references('id')->on('users')->onDelete('set null');
+            $table->foreignId('ToUser_id')->nullable()->references('id')->on('users')->onDelete('set null');
             $table->string('Message',500);
 
             $table->date('Trashed')->nullable();//per si l'esborra l'usuari que es pugui veure fins que s'arregli el problema o s'esborra cada X temps

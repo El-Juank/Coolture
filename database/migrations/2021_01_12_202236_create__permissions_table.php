@@ -18,7 +18,7 @@ class CreatePermissionsTable extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('Role_id')->references('id')->on('Roles')->onDelete('cascade');
 
-            $table->foreignId('GrantedBy_id')->references('id')->on('users');//qui li ha donat el rol
+            $table->foreignId('GrantedBy_id')->nullable()->references('id')->on('users')->onDelete('set null');//qui li ha donat el rol
         
             $table->unique(['user_id','Role_id']);
             $table->softDeletes();
