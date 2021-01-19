@@ -50,8 +50,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::get('rumours/{rumour}', 'FrontendController@rumour')->name('rumour');
 
     //Buscador
-    Route::get('search', 'FrontendController@search')->name('search');
-    Route::get('search/result_search', 'FrontendController@resultSearch')->name('result_search');
+    //Route::get('search', 'FrontendController@search')->name('search');
+    Route::get('search/search_result', 'FrontendController@searchResult')->name('search_result');
 
 
     // ------------ RELACIONADES AMB FUNCIONALITAT LOGIN------------ //

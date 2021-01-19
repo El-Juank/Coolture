@@ -22,7 +22,6 @@
                     </div>
                 </div>
                 <div class="container">
-
                     <ul class="nav nav-tabs">
                         <li class="nav-item active"><a class="nav-link active" data-toggle="tab"
                                 href="#events">{{ __('lang.events') }}</a></li>

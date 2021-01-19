@@ -19,7 +19,7 @@ return [
     "header_lang_spanish" => "Castellà",
     "header_lang_english" => "Anglès",
     "header_lang_catalan" => "Català",
-    "header_search" => "Buscar",
+    "header_search" => "Cerca",
     "lang_picker" => "Tria l'idioma",
     "header_login_register" => "Registra't o inicia sessió",
     "user_area" => "Anar al perfil",
@@ -46,6 +46,9 @@ return [
     "footer_legal" => "Legal",
     "footer_conditions" => "Condicions d'ús",
     "footer_privacity" => "Política de Privacitat",
+
+    //Traduccions cercador
+    "search_result" => "Resultats",
 
     //Traduccions formularis
     "form_name" => "Nom",
@@ -163,4 +166,8 @@ return [
 
     //Traduccions pàgina "Condicions d'ús"
     "terms_and_condition_seo_title" => "Condicions d'ús",
+
+    //Traduccions pàgina "Error 404"
+    "back_home" => "Torna a l'inici",
+    "page_not_found" => "Pàgina no trobada.",
 ];

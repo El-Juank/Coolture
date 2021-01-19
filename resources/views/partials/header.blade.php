@@ -5,6 +5,7 @@ $locale = App::getLocale();
 @endphp
 <header id="header">
     <div class="container d-flex justify-content-center">
+        {{-- Logo responsiu --}}
         <div id="logo" class="pull-left ml-4">
             <a href="{{ url('/', $locale) }}" class="scrollto"><img src="{{ asset('img/logo.svg') }}" alt=""
                     title="Coolture Logo"></a>
@@ -16,19 +17,22 @@ $locale = App::getLocale();
 
         <nav class="ml-lg-5 ml-md-3 w-100">
             <ul class="nav-menu">
+                {{-- Buscador d'esdeveniment/rumors --}}
                 <li class="search">
-                    <form id="searcher" method="" action="">
+                    <form id="searcher" method="GET" action="{{ route('search_result') }}">
+                        @csrf
                         <div class="input-group mb-4 border rounded-pill p-1">
                             <div class="input-group-prepend border-0">
                                 <button id="btn-search" type="button" class="btn link color-corp"><i
                                         class="fa fa-search"></i></button>
                             </div>
-                            <input type="search" placeholder="{{ __('lang.header_search') }}"
+                            <input type="search" name="title" id="title" placeholder="{{ __('lang.header_search') }}"
                                 aria-describedby="btn-search" class="form-control bg-none border-0">
                         </div>
                     </form>
                 </li>
 
+                {{-- Selector d'idioma --}}
                 <li>
                     <div class="dropdown">
                         <button id="btn-language" class="btn" type="button" id="dropdownMenuButton"
@@ -80,6 +84,8 @@ $locale = App::getLocale();
                     </div>
                 </li>
 
+                {{-- Botó inici sessió o usuari en funció de si ha iniciat sessió
+                --}}
                 @guest
                     <li class="btn-login">
                         <a href="#" data-toggle="modal" data-target="#modalRegisterCenter">
@@ -101,6 +107,8 @@ $locale = App::getLocale();
     </div>
 </header>
 
+{{-- Model de Bootsrap amb els links per inicar sessió o registrar-se
+--}}
 @guest
     <div class="modal fade" id="modalRegisterCenter" tabindex="-1" role="dialog" aria-labelledby="modalRegisterCenterTitle"
         aria-hidden="true">
