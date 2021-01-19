@@ -131,6 +131,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Permission::class);
     }
+    public function PermissionsGranted()
+    {//per probar
+        return $this->hasMany(Permission::class,'GrantedBy_id');
+    }
     public function Roles()
     {
         return $this->hasMany(Role::class);

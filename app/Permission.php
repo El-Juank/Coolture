@@ -15,7 +15,12 @@ class Permission extends Model
         return $this->belongsTo(User::class);
     }
     public function GrantedBy(){
-        return $this->belongsTo(User::class,'GrantedBy_id');
+        $user= $this->belongsTo(User::class, 'GrantedBy_id');
+        if($user==null)
+        {
+            $user=User::CommunityUser();
+        }
+        return $user;
     }
     public function Role(){
         return $this->belongsTo(Role::class);

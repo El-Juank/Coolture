@@ -21,15 +21,16 @@ class EventMessageSeeder extends Seeder
         $events = Event::get();
 
         $totalUsers = count($users) - 1;
-        
-        foreach ($events as $event) {
+
+        for($k=0,$kF=count($events);$k<$kF;$k++){
+            $event=$events[$k];
             if ($faker->boolean() || $faker->boolean()) {
                 for ($i = 0, $f = $faker->numberBetween(0, $totalUsers); $i <= $f; $i++) {
                     $user = $users[$faker->numberBetween(0, $totalUsers)];
                     for ($j = 0, $jF = $faker->numberBetween(0, self::MAX); $j < $jF; $j++) {
                         $eventMessage = new EventMessage();
                         $eventMessage->user_id = $user->id;
-                        $eventMessage->Event_id->$event->id;
+                        $eventMessage->Event_id=$event->id;
                         $message = $faker->sentence(5);
                         $eventMessage->{'Message:ca'} = 'CA_' . $message . '_CA';
                         if ($faker->boolean()) {

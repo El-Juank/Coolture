@@ -20,12 +20,13 @@ class RumourMessageSeeder extends Seeder
         $rumours = Rumour::get();
 
         $totalUsers = count($users) - 1;
-        foreach ($rumours as $rumour) {
+        for ($i = 0, $f = count($rumours); $i < $f; $i++) {
+            $rumour = $rumours[$i];
             if ($faker->boolean() || $faker->boolean()) {
                 for ($i = 0, $f = $faker->numberBetween(0, $totalUsers); $i <= $f; $i++) {
 
-                    $user = $users[$faker->numberBetween(0, $totalUsers)];
-                    
+                    $user =$users[$faker->numberBetween(0, $totalUsers)];
+
                     for ($j = 0, $jF = $faker->numberBetween(0, self::MAX); $j < $jF; $j++) {
                         $rumourMessage = new RumourMessage();
                         $rumourMessage->user_id = $user->id;
