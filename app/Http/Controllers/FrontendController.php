@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use App\EventMessage;
+use App\EventTranslation;
 use App\Permission;
 use App\Rumour;
+use App\RumourTranslation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class FrontendController extends Controller
 {
@@ -96,5 +99,22 @@ class FrontendController extends Controller
 
         return view('frontend.rumour_detall')
             ->with('rumour', $rumour);
+    }
+
+    //Controlador para la página "searchResult"
+    public function searchResult()
+    {
+        $title = $_GET["title"];
+        $locale = LaravelLocalization::getCurrentLocale(); //Agafar l'idioma de l'usuari
+
+        //Agafem els events i els rumors
+        $events = EventTranslation::where('locale', $locale)->where('Title', 'like', '%' . $title . '%')->get();
+        $rumours = RumourTranslation::where('locale', $locale)->where('Title', 'like', '%' . $title . '%')->get();
+
+        //Els posem en una única col·lecció perque ens retorni els resultats barrejats
+        $results = collect($events)->merge($rumours);
+
+        return view('frontend.search_result')
+            ->with('results', $results);
     }
 }

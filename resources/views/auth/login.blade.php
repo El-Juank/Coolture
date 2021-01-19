@@ -68,7 +68,8 @@
                                     </button>
                                     <br>
                                     @if (Route::has('password.request'))
-                                        <a class="btn link" href="{{ LaravelLocalization::localizeUrl('password.request') }}">
+                                        <a class="btn link"
+                                            href="{{ LaravelLocalization::localizeUrl('password.request') }}">
                                             {{ __('Has oblidat la teva contrasenya?') }}
                                         </a>
                                     @endif
@@ -80,4 +81,11 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        setTimeout(function() {
+            $("#header").addClass("header-fixed");
+        }, 1);
+
+    </script>
 @endsection

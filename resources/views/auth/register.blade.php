@@ -86,4 +86,11 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        setTimeout(function() {
+            $("#header").addClass("header-fixed");
+        }, 1);
+
+    </script>
 @endsection
