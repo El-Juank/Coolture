@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Event;
 use App\EventMessage;
 use App\EventTranslation;
+use App\LikeEvent;
+use App\LikeEventMessage;
 use App\Permission;
 use App\Rumour;
 use App\RumourTranslation;
@@ -88,8 +90,36 @@ class FrontendController extends Controller
         //Informació bàsica sobre aquell event
         $event = Event::find($id);
 
+        //Missatges de l'event
+        $messages = EventMessage::where('Event_id', $id)
+            ->orderBy('created_at', 'DESC')
+            ->get();
+
+        //Likes de l'event
+        $likes = LikeEvent::where('Event_id', $id)->count();
+
         return view('frontend.event_detall')
-            ->with('event', $event);
+            ->with('event', $event)
+            ->with('messages', $messages)
+            ->with('likes', $likes);
+    }
+
+    public function eventmessage(Request $request, $id)
+    {
+        $request->validate([
+            'eventmessage_text' => 'required|min:4',
+        ]);
+
+        $eventmessage = new EventMessage;
+        $eventmessage->Event_id = $id;
+        $eventmessage->User_id = Auth::user()->id;
+        $eventmessage->Visible = 1;
+        $eventmessage->Message = $_POST['eventmessage_text'];
+        $eventmessage->CanDelete = 1;
+
+        $eventmessage->save();
+
+        return redirect("/events/{$eventmessage->Event_id}");
     }
 
     public function rumour($id)

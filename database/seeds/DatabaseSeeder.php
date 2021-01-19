@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleSeeder::class);
         $this->call(PermissionSeeder::class);
 
-        $this->call(EventMessageSeeder::class);
+        // $this->call(EventMessageSeeder::class);
         $this->call(RumourMessageSeeder::class);
 
         $this->call(LikeEventSeeder::class);
@@ -43,11 +43,11 @@ class DatabaseSeeder extends Seeder
         $this->call(NotificationChangeEventSeeder::class);
         $this->call(NotificationChangeEventMakerSeeder::class);
         $this->call(NotificationChangeRumourSeeder::class);
- 
+
         //fins aqui
       // $this->call(PreferenceSeeder::class);//s'ha de mirar com fer-ho desde el front end
 
-   
+
 
     }
 }
