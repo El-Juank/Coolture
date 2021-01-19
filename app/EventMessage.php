@@ -27,4 +27,12 @@ class EventMessage extends Model
     public function Event(){
         return $this->belongsTo(Event::class, 'Event_id');
     }
+    public static function Purgue(){
+        $messages=self::all();
+        for($i=0,$f=count($messages);$i<$f;$i++){
+            if($messages[$i]->CanDelete){
+                $messages[$i]->delete();
+            }
+        }
+    }
 }

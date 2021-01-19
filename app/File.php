@@ -13,4 +13,14 @@ class File extends Model
         $path=$this->Path();
         return $path->Url.'\\'.$this->Name.'.'.$this->Format;
     }
+    public static function Purgue(){
+        $files=self::all();
+        for($i=0,$f=count($files);$i<$f;$i++){
+            $esPotEsborrar=false;
+            //mirar que no s'utilitzi a cap lloc
+            if($esPotEsborrar){
+                $files[$i]->delete();
+            }
+        }
+    }
 }

@@ -18,4 +18,12 @@ class RumourMessage extends Model
     public function Rumour(){
         return $this->belongsTo(Rumour::class);
     }
+    public static function Purgue(){
+        $messages=self::all();
+        for($i=0,$f=count($messages);$i<$f;$i++){
+            if($messages[$i]->CanDelete){
+                $messages[$i]->delete();
+            }
+        }
+    }
 }
