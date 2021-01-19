@@ -45,6 +45,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::get('events', 'FrontendController@events')->name('events');
     Route::get('events/{event}', 'FrontendController@event')->name('event');
 
+
+
     //Rumors (els que poden posar els usuaris)
     Route::get('rumours', 'FrontendController@rumours')->name('rumours');
     Route::get('rumours/{rumour}', 'FrontendController@rumour')->name('rumour');
@@ -78,5 +80,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
                 // 'messages' => 'MessageController'
             ]);
         });
+
+        //Ruta per fer posts de missatges d'EVENTS (només usuaris logguejats):
+        Route::post('events/{event}/eventmessage', 'FrontendController@eventmessage')->name('eventmessage');
+
+        
     });
 });
