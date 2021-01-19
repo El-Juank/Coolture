@@ -13,7 +13,16 @@ class File extends Model
         $path=$this->Path();
         return $path->Url.'\\'.$this->Name.'.'.$this->Format;
     }
-    public static function Purgue(){
+    public function Purgue(){
+        //esborro del disc
+        $root = "public/";
+        $path=$this->Path();
+         //esborro el fitxer del disc dur
+        unlink($root.$path->Url.'/'.$this->Name.'.'.$this->Format);
+        //esborro el path del fitxer de la BD
+        $this->delete();
+    }
+    public static function PurgueAll(){
         $files=self::all();
         for($i=0,$f=count($files);$i<$f;$i++){
             $file=$files[$i];
@@ -21,7 +30,7 @@ class File extends Model
             //mirar que no s'utilitzi a cap lloc
             //per fer
             if($esPotEsborrar){
-                $file->delete();
+                $file->Purgue();
             }
         }
     }

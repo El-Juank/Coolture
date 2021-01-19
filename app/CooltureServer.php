@@ -6,7 +6,7 @@ class Server{
 
     public static function Purgue(){
         //així no ens oblidem cap!
-        File::Purgue();
+        File::PurgueAll();
         EventMessage::Purgue();
         RumourMessage::Purgue();
         Message::Purgue();

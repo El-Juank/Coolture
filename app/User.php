@@ -215,7 +215,7 @@ class User extends Authenticatable
         if($deleted){
            Permission::where('User_id',$userToDelete->id)
                      ->where('Role_id',$roleId)
-                     ->first()->delete();
+                     ->delete();
         }
         return $deleted;
     }

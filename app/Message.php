@@ -22,17 +22,12 @@ class Message extends Model
         }
         return $user;
     }
-    public function CanDrop(){
-        $fromId=$this->From()->id;
-        return $this->CanDelete||$this->To()->id==$fromId && $fromId==User::COMUNITY_ID;
-    }
+
     public static function Purgue(){
-        $messages=Message::all();
-        for($i=0,$f=count($messages);$i<$f;$i++){
-            if($messages[$i]->CanDrop())
-            {
-                $messages[$i]->delete();
-            }
-        }
+        self::where('CanDelete',true)->orWhere(function($query){
+                $query->where('ToUser_id',User::COMUNITY_ID)
+                      ->where('FromUser_id',User::COMUNITY_ID);
+        })->delete();//mirar que funcioni
+      
     }
 }
