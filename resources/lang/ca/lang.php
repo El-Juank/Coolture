@@ -14,6 +14,8 @@ return [
     "email" => "Correu electònic",
     "country" => "País",
     "password" => "Contrasenya",
+    "yes" => "Si",
+    "no" => "No",
 
     //Traduccions "Header"
     "header_lang_spanish" => "Castellà",
@@ -72,6 +74,9 @@ return [
     "edit_profile_seo" => "Editar perfil",
     "your_profile" => "El teu perfil",
     "your_profile_tagline" => "Aquí podràs veure i editar les dades del teu perfil",
+    "delete_account" => "Donar-se de baixa",
+    "delete_account_confirm" => "Estàs segur de que et vols donar de baixa?",
+    "delete_account_confirm_tagline" => "El teu compte serà esborrat permanentment",
 
     //Traduccions apartat "Esdeveniments en seguiment"
     "following_posts" => "Esdeveniments que segueixes",

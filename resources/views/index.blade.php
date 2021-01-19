@@ -77,6 +77,8 @@
     </section>
 
     <main id="main">
+
+        {{-- Aquesta secció s'ha de fer dinàmica --}}
         <section id="featured-genders">
             <div class="container" data-aos="fade-up">
                 <div class="section-header">
@@ -88,7 +90,8 @@
                     <a href="">
                         <div class="col-lg-6">
                             <div class="gender" data-aos="fade-up" data-aos-delay="100">
-                                <img src="{{ asset('img/gender/1.jpg') }}" alt="Rock" class="img-fluid">
+                                <img src="{{ asset('img/gender/1.jpg') }}" alt="Rock" class="img-fluid"
+                                    onerror="this.onerror=null;this.src='{{ asset('img/image-not-available.png') }}';">
                                 <div class="details">
                                     <h3><a href="">Rock</a></h3>
                                     <p>Quas alias incidunt</p>
@@ -99,7 +102,8 @@
                     <a href="">
                         <div class="col-lg-6">
                             <div class="gender" data-aos="fade-up" data-aos-delay="200">
-                                <img src="{{ asset('img/gender/2.jpg') }}" alt="Pop" class="img-fluid">
+                                <img src="{{ asset('img/gender/2.jpg') }}" alt="Pop" class="img-fluid"
+                                    onerror="this.onerror=null;this.src='{{ asset('img/image-not-available.png') }}';">
                                 <div class="details">
                                     <h3><a href="">Pop</a></h3>
                                     <p>Consequuntur odio aut</p>
@@ -110,7 +114,8 @@
                     <a href="">
                         <div class="col-lg-6">
                             <div class="gender" data-aos="fade-up" data-aos-delay="300">
-                                <img src="{{ asset('img/gender/3.jpg') }}" alt="Indie" class="img-fluid">
+                                <img src="{{ asset('img/gender/3.jpg') }}" alt="Indie" class="img-fluid"
+                                    onerror="this.onerror=null;this.src='{{ asset('img/image-not-available.png') }}';">
                                 <div class="details">
                                     <h3><a href="">Indie</a></h3>
                                     <p>Fugiat laborum et</p>
@@ -121,7 +126,8 @@
                     <a href="">
                         <div class="col-lg-6">
                             <div class="gender" data-aos="fade-up" data-aos-delay="100">
-                                <img src="{{ asset('img/gender/4.jpg') }}" alt="Electrònica" class="img-fluid">
+                                <img src="{{ asset('img/gender/4.jpg') }}" alt="Electrònica" class="img-fluid"
+                                    onerror="this.onerror=null;this.src='{{ asset('img/image-not-available.png') }}';">
                                 <div class="details">
                                     <h3><a href="">Electrònica</a></h3>
                                     <p>Debitis iure vero</p>

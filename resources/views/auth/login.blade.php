@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('seoTitle')
-    | Login
+    | {{ __('lang.header_login') }}
 @endsection
 
 @section('content')
