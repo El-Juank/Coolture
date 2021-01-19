@@ -39,13 +39,14 @@ class DatabaseSeeder extends Seeder
         $this->call(TagEventSeeder::class);    
         $this->call(TagRumourSeeder::class);
         $this->call(UserRangeSeeder::class);
-   
-        //fins aqui
-      // $this->call(PreferenceSeeder::class);//s'ha de mirar com fer-ho desde el front end
         $this->call(NotificationSeeder::class);
         $this->call(NotificationChangeEventSeeder::class);
         $this->call(NotificationChangeEventMakerSeeder::class);
         $this->call(NotificationChangeRumourSeeder::class);
-  
+ 
+        //fins aqui
+      // $this->call(PreferenceSeeder::class);//s'ha de mirar com fer-ho desde el front end
+
+   
     }
 }

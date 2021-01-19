@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class RoleTranslation extends Model
 {
     use SoftDeletes;
+    public function Role(){
+        return $this->belongsTo(Role::class);
+    }
 }

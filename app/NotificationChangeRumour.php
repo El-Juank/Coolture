@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class NotificationChangeRumour extends Model
 {
-    protected $table="NotificationChengesRumour";
+    protected $table="NotificationChangesRumour";
     public function User(){
         return $this->belongsTo(User::class);
     }
