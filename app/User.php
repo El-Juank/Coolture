@@ -11,7 +11,7 @@ class User extends Authenticatable
 {
     use Notifiable;
     use Translatable;
-    public const COMUNITY_ID=0;
+    public const COMUNITY_ID=1;
 
 
     public $translatedAttributes = ['CanDelete', 'Description', 'Visible'];
