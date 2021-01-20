@@ -23,6 +23,6 @@ class RumourMessage extends Model
     }
     public static function Purgue(){
         self::where('CanDelete',true)->delete();//mirar que funcioni
-
+      
     }
 }

@@ -26,11 +26,11 @@ class UrlRumourToVerify extends Model
     }
     public function IsVerified()
     {
-        return $this->VerifiedBy()!=null;
+        return $this->VerifiedBy_id!=null;
     }
     public function IsComunityArchived()
     {
-        return $this->User()==null;
+        return $this->User_id==null;
     }
     public function Verified($userVerifiedBy, $isTrue)
     {

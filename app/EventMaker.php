@@ -16,7 +16,7 @@ class EventMaker extends Model
 
     public $translatedAttributes=['Name','Description'];
     protected $table="EventMakers";
-
+    
     public function User()
     {
         $user= $this->belongsTo(User::class, 'User_id');
@@ -100,9 +100,9 @@ class EventMaker extends Model
         }
 
         return $tags;
-
+    
     }
+    
 
-
-
+    
 }

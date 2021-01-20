@@ -21,16 +21,19 @@ class CategorySeeder extends Seeder
         $imgs = File::where('Path_id', self::PATH_ID_CATEGORIES)->get();
         $icons = File::where('Path_id', self::PATH_ID_CATEGORIES_ICO)->get();
         $category_names = ['Music', 'Books', 'Theatre', 'Dance', 'Opera', 'Painting'];
-        $totalImgs = count($imgs)-1;
-        $totalIcons = count($icons)-1;
+        $totalImgs = count($imgs) - 1;
+        $totalIcons = count($icons) - 1;
         $i = 0;
 
         foreach ($category_names as $category_name) {
 
             $category = new Category;
-            $category->ImgIcon_id = $icons[$faker->numberBetween(0, $totalIcons)]->id; //Dona num de 0 a 10
-            $category->Img_id = $imgs[$faker->numberBetween(2, $totalImgs)]->id; //Dona num de 0 a 10
-
+            if ($faker->boolean() || $faker->boolean()) {
+                $category->ImgIcon_id = $icons[$faker->numberBetween(0, $totalIcons)]->id; //Dona num de 0 a 10
+            }
+            if ($faker->boolean() || $faker->boolean()) {
+                $category->Img_id = $imgs[$faker->numberBetween(2, $totalImgs)]->id; //Dona num de 0 a 10
+            }
             $category->{'Name:es'} = $category_name . '_ES';
             if ($i % 2 == 0) {
                 $category->{'Name:ca'} = $category_name . '_CA';

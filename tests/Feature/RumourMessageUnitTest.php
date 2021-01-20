@@ -26,7 +26,7 @@ class RumourMessageUnitTest extends TestCase
     public function testIsComunityManagedTrue(){
         try{
           
-            $correcte=RumourMessage::where('user_id','is','null')->first()->IsComunityManaged();
+            $correcte=RumourMessage::whereNull('user_id')->first()->IsComunityManaged();
 
         }catch(object $e){
             $correcte=false;
@@ -39,7 +39,7 @@ class RumourMessageUnitTest extends TestCase
     public function testIsComunityManagedFalse(){
         try{
           
-            $correcte=RumourMessage::where('user_id','is not','null')->first()->IsComunityManaged();
+            $correcte=RumourMessage::whereNotNull('user_id')->first()->IsComunityManaged();
 
         }catch(object $e){
             $correcte=false;

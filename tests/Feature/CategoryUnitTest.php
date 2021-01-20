@@ -10,8 +10,12 @@ use App\Category;
 
 class CategoryUnitTest extends TestCase
 {
-    public function testImage(){
-        $category=Category::where('Image_id','<>',null)->first();
+    public function testGetImage(){
+        $category=Category::whereNotNull('Img_id')->first();
         $this->assertTrue($category->Image()!=null);
+    }
+    public function testGetIcon(){
+        $category=Category::whereNotNull('ImgIcon_id')->first();
+        $this->assertTrue($category->Icon()!=null);
     }
 }
