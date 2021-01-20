@@ -81,8 +81,8 @@
                                     <a class="pull-left" href="#"><img class="media-object" src="" alt=""
                                             onerror="this.onerror=null;this.src='{{ asset('img/user-image-not-available.png') }}';"></a>
                                     <div class="media-body">
-                                        {{--<h4 class="media-heading">{{ $message->user->name }}
-                                        </h4>--}}
+                                        <h4 class="media-heading">{{ $message->User->name }}
+                                        </h4>
                                         <p>{{ $message->Message }}</p>
                                         <ul class="list-unstyled list-inline media-detail pull-left">
                                             <li><i class="fa fa-calendar"></i>{{ $message->created_at->diffForHumans() }}</li>

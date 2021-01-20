@@ -14,6 +14,7 @@ use App\RumourMessage;
 use App\RumourTranslation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class FrontendController extends Controller
@@ -100,10 +101,21 @@ class FrontendController extends Controller
         //Likes de l'event
         $likes = LikeEvent::where('Event_id', $id)->count();
 
+        //Informació localització
+        $lat=Event::find($id)->Location->Lat;
+        $lon=Event::find($id)->Location->Lon;
+        $city = Http::get('https://eu1.locationiq.com/v1/reverse.php?key=pk.e51380d19bd89346317f3ab725a12aaf&lat='.$lat.'&lon='.$lon.'&format=json&zoom=10');
+
+        $city = json_decode($city);
+
+
         return view('frontend.event_detall')
             ->with('event', $event)
             ->with('messages', $messages)
-            ->with('likes', $likes);
+            ->with('likes', $likes)
+            ->with('city', $city)
+            ->with('lat',$lat);
+
     }
 
     public function eventmessage(Request $request, $id)
@@ -175,4 +187,5 @@ class FrontendController extends Controller
         return view('frontend.search_result')
             ->with('results', $results);
     }
+
 }
