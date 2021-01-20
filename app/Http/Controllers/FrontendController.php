@@ -113,8 +113,7 @@ class FrontendController extends Controller
             ->with('event', $event)
             ->with('messages', $messages)
             ->with('likes', $likes)
-            ->with('city', $city)
-            ->with('lat',$lat);
+            ->with('city', $city);
 
     }
 

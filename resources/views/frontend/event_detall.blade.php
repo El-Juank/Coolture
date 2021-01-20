@@ -25,6 +25,14 @@
                             <p>{{ $event->Description }}</p>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item borderless">
+                                    <i class="fa fa-map-marker"></i>
+                                    @if (isset($city->error))
+                                        Localitat no disponible
+                                    @else
+                                        {{$city->display_name}}
+                                    @endif
+                                </li>
+                                <li class="list-group-item borderless">
                                     <i class="fa fa-calendar"></i>
                                     {{ $event->InitDate }}
                                 </li>
