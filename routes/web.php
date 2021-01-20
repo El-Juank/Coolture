@@ -84,6 +84,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         //Ruta per fer posts de missatges d'EVENTS (només usuaris logguejats):
         Route::post('events/{event}/eventmessage', 'FrontendController@eventmessage')->name('eventmessage');
 
-        
+        //Ruta per fer posts de missatges de RUMORS (només usuaris logguejats):
+        Route::post('rumours/{rumour}/rumourmessage', 'FrontendController@rumourmessage')->name('rumourmessage');
+
+
     });
 });

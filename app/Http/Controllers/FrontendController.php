@@ -7,8 +7,10 @@ use App\EventMessage;
 use App\EventTranslation;
 use App\LikeEvent;
 use App\LikeEventMessage;
+use App\LikeRumour;
 use App\Permission;
 use App\Rumour;
+use App\RumourMessage;
 use App\RumourTranslation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -112,7 +114,7 @@ class FrontendController extends Controller
 
         $eventmessage = new EventMessage;
         $eventmessage->Event_id = $id;
-        $eventmessage->User_id = Auth::user()->id;
+        $eventmessage->user_id = Auth::user()->id;
         $eventmessage->Visible = 1;
         $eventmessage->Message = $_POST['eventmessage_text'];
         $eventmessage->CanDelete = 1;
@@ -124,11 +126,37 @@ class FrontendController extends Controller
 
     public function rumour($id)
     {
-        //Informació bàsica sobre aquell event
+        //Informació bàsica sobre aquell rumor
         $rumour = Rumour::find($id);
 
+        //Missatges del rumor
+        $messages = RumourMessage::where('Rumour_id', $id)
+            ->orderBy('created_at', 'DESC')
+            ->get();
+
+        //Likes del rumor
+        $likes = LikeRumour::where('Rumour_id', $id)->count();
+
         return view('frontend.rumour_detall')
-            ->with('rumour', $rumour);
+            ->with('rumour', $rumour)
+            ->with('messages', $messages)
+            ->with('likes',$likes);
+    }
+
+    public function rumourmessage(Request $request, $id)
+    {
+        $request->validate([
+            'rumourmessage_text' => 'required|min:4',
+        ]);
+
+        $rumourmessage = new RumourMessage;
+        $rumourmessage->Rumour_id = $id;
+        $rumourmessage->user_id = Auth::user()->id;
+        $rumourmessage->Message = $_POST['rumourmessage_text'];
+
+        $rumourmessage->save();
+
+        return redirect("/rumours/{$rumourmessage->Rumour_id}");
     }
 
     //Controlador para la página "searchResult"

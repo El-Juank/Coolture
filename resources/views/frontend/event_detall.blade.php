@@ -47,7 +47,7 @@ ELEMENTS DE L'EVENT
 @forelse ($messages as $message)
     <div class="panel panel-default">
         <div class="panel-heading">
-            {{ $message->user->name }} says...
+            {{ $message->User->name }} says...
 
             <span class="pull-right">{{ $message->created_at->diffForHumans() }}</span>
         </div>
@@ -61,7 +61,7 @@ ELEMENTS DE L'EVENT
         <div class="panel-heading">Not Found!!</div>
 
         <div class="panel-body">
-            <p>Sorry! No comment found for this post.</p>
+            <p>Be the first to comment this event!</p>
         </div>
     </div>
 @endforelse
