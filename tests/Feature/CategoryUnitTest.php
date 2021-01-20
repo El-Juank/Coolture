@@ -11,11 +11,11 @@ use App\Category;
 class CategoryUnitTest extends TestCase
 {
     public function testGetImage(){
-        $category=Category::where('Img_id','is not',null)->first();
+        $category=Category::whereNotNull('Img_id')->first();
         $this->assertTrue($category->Image()!=null);
     }
     public function testGetIcon(){
-        $category=Category::where('ImgIcon_id','is not',null)->first();
+        $category=Category::whereNotNull('ImgIcon_id')->first();
         $this->assertTrue($category->Icon()!=null);
     }
 }

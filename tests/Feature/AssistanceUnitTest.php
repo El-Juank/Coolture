@@ -16,7 +16,7 @@ class AssistanceUnitTest extends TestCase
     {
         try {
 
-            $correcte = Assistance::all()->first()->User() != null;
+            $correcte = Assistance::get()->first()->User() != null;
         } catch (object $e) {
             $correcte = false;
         } finally {

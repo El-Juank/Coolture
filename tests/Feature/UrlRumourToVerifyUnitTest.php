@@ -16,6 +16,9 @@ class UrlRumourToVerifyUnitTest extends TestCase
         $this->assertTrue(UrlRumourToVerify::get()->first()->Rumour()!=null);
     }
     public function testGetVerifiedBy(){
-        $this->assertTrue(UrlRumourToVerify::where('VerifiedBy_id','is not',null)->first()->VerifiedBy()!=null);
+        $this->assertTrue(UrlRumourToVerify::whereNotNull('VerifiedBy_id')->first()->VerifiedBy()!=null);
+    }
+    public function testGetVerifiedByNull(){
+        $this->assertTrue(UrlRumourToVerify::whereNull('VerifiedBy_id')->first()->VerifiedBy()==null);
     }
 }

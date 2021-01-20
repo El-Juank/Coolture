@@ -14,15 +14,15 @@ class EventMakerUnitTest extends TestCase
         $this->assertTrue(EventMaker::get()->first()->User()!=null);
     }
     public function testComunityManageTrue(){
-        $this->assertTrue(EventMaker::where('user_id','is',null)->first()->ComunityManage());
+        $this->assertTrue(EventMaker::whereNull('user_id')->first()->ComunityManage());
     }
     public function testComunityManageFalse(){
-        $this->assertFalse(EventMaker::where('user_id','is not',null)->first()->ComunityManage());
+        $this->assertFalse(EventMaker::whereNotNull('user_id')->first()->ComunityManage());
     }
     public function testImgCover(){
         try{
            
-            $correcte= EventMaker::where('ImgCover_id','is not',null)->first()->ImgCover()!=null;
+            $correcte= EventMaker::whereNotNull('ImgCover_id')->first()->ImgCover()!=null;
 
         }catch(object $e){
             $correcte=false;
@@ -35,7 +35,7 @@ class EventMakerUnitTest extends TestCase
     public function testImgProfile(){
         try{
            
-            $correcte= EventMaker::where('ImgProfile_id','is not',null)->first()->ImgProfile()!=null;
+            $correcte= EventMaker::whereNotNull('ImgProfile_id')->first()->ImgProfile()!=null;
 
         }catch(object $e){
             $correcte=false;

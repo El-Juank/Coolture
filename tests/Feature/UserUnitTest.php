@@ -12,23 +12,23 @@ class UserUnitTest extends TestCase
 {
     public function testGetCountry()
     {
-        $this->assertTrue(User::where('Country_id', 'is not', null)->first()->Country() != null);
+        $this->assertTrue(User::whereNotNull('Country_id')->first()->Country() != null);
     }
     public function testGetDefaultLocation()
     {
-        $this->assertTrue(User::where('Default_Location_id', 'is not', null)->first()->DefaultLocation() != null);
+        $this->assertTrue(User::whereNotNull('Default_Location_id')->first()->DefaultLocation() != null);
     }
     public function testGetImgProfile()
     {
-        $this->assertTrue(User::where('ImgProfile_id', 'is not', null)->first()->ImgProfile() != null);
+        $this->assertTrue(User::whereNotNull('ImgProfile_id')->first()->ImgProfile() != null);
     }
     public function testGetImgCover()
     {
-        $this->assertTrue(User::where('ImgCover_id', 'is not', null)->first()->ImgCover() != null);
+        $this->assertTrue(User::whereNotNull('ImgCover_id')->first()->ImgCover() != null);
     }
     public function testGetVerifiedBy()
     {
-        $this->assertTrue(User::where('VerifiedBy_id', 'is not', null)->first()->VerifiedBy() != null);
+        $this->assertTrue(User::whereNotNull('VerifiedBy_id')->first()->VerifiedBy() != null);
     }
     public function testGetAssistenceEventList()
     {

@@ -26,7 +26,7 @@ class EventMessageUnitTest extends TestCase
     public function testIsComunityManagedTrue(){
         try{
           
-            $correcte=EventMessage::where('user_id','is','null')->first()->IsComunityManaged();
+            $correcte=EventMessage::where('user_id','is',null)->first()->IsComunityManaged();
 
         }catch(object $e){
             $correcte=false;
@@ -39,7 +39,7 @@ class EventMessageUnitTest extends TestCase
     public function testIsComunityManagedFalse(){
         try{
           
-            $correcte=EventMessage::where('user_id','is not','null')->first()->IsComunityManaged();
+            $correcte=EventMessage::where('user_id','is not',null)->first()->IsComunityManaged();
 
         }catch(object $e){
             $correcte=false;
