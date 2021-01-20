@@ -16,11 +16,10 @@ class Category extends Model
     public $translatedAttributes=['Name'];
 
     public function Image(){
-        return $this->belongsTo(File::class,'Image_id');
+        return $this->belongsTo(File::class,'Img_id');
     }
-    public function UrlImage(){
-        $file=$this->Image();
-        return $file->Url;
+    public function Icon(){
+        return $this->belongsTo(File::class,'ImgIcon_id');
     }
     public static function Categories(){
        

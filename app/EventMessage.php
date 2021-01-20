@@ -10,14 +10,14 @@ class EventMessage extends Model
 {
     use Translatable;
 
-
+    
     protected $table="EventMessages";
 
 
     public $translatedAttributes=['Message'];
 
     public function User(){
-        $user= $this->belongsTo(User::class);
+        $user= $this->belongsTo(User::class, 'User_id');
         if($user==null)
         {
             $user=User::CommunityUser();
@@ -32,6 +32,6 @@ class EventMessage extends Model
     }
     public static function Purgue(){
         self::where('CanDelete',true)->delete();//mirar que funcioni
-
+      
     }
 }
