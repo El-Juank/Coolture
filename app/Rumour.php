@@ -17,6 +17,15 @@ class Rumour extends Model
     {
         return $this->belongsTo(EventMaker::class, 'Event_Maker_id');
     }
+    public function User()
+    {
+        $user= $this->belongsTo(User::class, 'User_id');
+        if($user==null)
+        {
+            $user=User::CommunityUser();
+        }
+        return $user;
+    }
     public function HasEventMaker()
     {
         return $this->EventMaker() != null;

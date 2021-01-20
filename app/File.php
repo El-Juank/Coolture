@@ -28,6 +28,19 @@ class File extends Model
             $file=$files[$i];
             $esPotEsborrar=false;
             //mirar que no s'utilitzi a cap lloc
+            $esPotEsborrar=User::where('ImgProfile_id',$file->id)->orWhere('ImgCover_id',$file->id)->count()==0;
+            if(!$esPotEsborrar){
+                $esPotEsborrar=Category::where('Image_id',$file->id)->count()==0;
+                if(!$esPotEsborrar){
+                    $esPotEsborrar=Event::where('ImgEvent_id',$file->id)->orWhere('ImgPreview_id',$file->id)->count()==0;
+                    if(!$esPotEsborrar){
+                        $esPotEsborrar=EventMaker::where('ImgProfile_id',$file->id)->orWhere('ImgCover_id',$file->id)->count()==0;
+         
+                    }
+                }
+
+            }
+            
             //per fer
             if($esPotEsborrar){
                 $file->Purgue();

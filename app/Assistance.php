@@ -21,4 +21,7 @@ class Assistance extends Model
         }
         return $doit;
     }
+    public static function Purgue(){
+        Assistance::where('WantToAssist',false)->where('Assisted',false)->delete();
+    }
 }
