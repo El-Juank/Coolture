@@ -20,16 +20,15 @@ class AssistanceSeeder extends Seeder
         $users = User::get();
         $events = Event::get();
         for ($e = 0, $eF = count($events), $uF = count($users); $e < $eF; $e++) {
-            for ($u = 0; $u < $uF; $u++) {
+            for ($u = $uF / 10; $u < $uF; $u++) {
 
                 $assistance = new Assistance();
                 $assistance->user_id = $users[$u]->id;
                 $assistance->Event_id = $events[$e]->id;
                 $assistance->WantToAssist = $faker->boolean();
                 $assistance->Assisted = $faker->boolean();
-                if ($assistance->WantToAssist || $assistance->Assisted) {
-                    $assistance->save();
-                }
+
+                $assistance->save();
             }
         }
     }
