@@ -52,6 +52,13 @@ return [
     //Traduccions cercador
     "search_result" => "Resultats",
 
+    //Traduccions pàgina detall
+    "empty_comments" => "Encara no hi ha cap comentari. Sigues el primer en escriu-re'n un!",
+    "event_comments" => "Comentaris",
+    "new_comment" => "Nou comentari",
+    "comment_placeholder" => "Escriu el teu comentari",
+    "post_comment" => "Publicar",
+
     //Traduccions formularis
     "form_name" => "Nom",
     "form_title" => "Títol",

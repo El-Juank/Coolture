@@ -26,7 +26,7 @@
                             {{-- Si l'usuari és administrador no es pot donar de baixa
                             --}}
                             <input @if (Auth::user()->IsAdmin()) disabled style="cursor: not-allowed;
-                                                                                pointer-events: all !important; background-color:var(--colorCorp); border-color:var(--colorCorp);" @endif type="submit" value="{{ __('lang.yes') }}"
+                                                                                        pointer-events: all !important; background-color:var(--colorCorp); border-color:var(--colorCorp);" @endif type="submit" value="{{ __('lang.yes') }}"
                                 onclick="return confirm('{{ __('lang.delete_user_confirm') }}')" class="btn btn-coolture">
                         </form>
                         <a data-dismiss="modal" aria-label="Close" class="btn btn-coolture">{{ __('lang.no') }}</a>

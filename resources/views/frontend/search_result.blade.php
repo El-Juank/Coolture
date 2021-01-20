@@ -17,7 +17,8 @@
                                     <img src="" alt="Rock" class="img-fluid"
                                         onerror="this.onerror=null;this.src='{{ asset('img/image-not-available.png') }}';">
                                     <div class="details">
-                                        <h3><a href="">{{ $result->Title }}</a></h3>
+                                        <h3><a href="{{ route('event', ['event' => $result->id]) }}">{{ $result->Title }}</a>
+                                        </h3>
                                         {{-- Per limitar la mida dels textos
                                         --}}
                                         <p>{{ \Illuminate\Support\Str::limit($result->Description, 100, $end = '...') }}</p>

@@ -46,9 +46,13 @@
                                                     method="POST" style="display:inline">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="DELETE">
+                                                    {{-- Un admin no es pot borrar a ell
+                                                    mateix per tant si els ids coincideixen ho desactivem
+                                                    --}}
                                                     <input type="submit" value="{{ __('lang.delete') }}"
                                                         onclick="return confirm('{{ __('lang.delete_user_confirm') }}')"
-                                                        class="btn btn-danger btn-sm">
+                                                        class="btn btn-danger btn-sm" @if ($user->id == Auth::user()->id) disabled style="cursor: not-allowed;
+                                                                                            pointer-events: all !important; background-color:var(--colorCorp); border-color:var(--colorCorp);" @endif>
                                                 </form>
                                             @else
                                                 <a href="{{ route('users.restore', ['user' => $user->id]) }}"
