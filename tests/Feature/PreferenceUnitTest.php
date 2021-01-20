@@ -6,6 +6,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
+use App\Preference;
+
 class PreferenceUnitTest extends TestCase
 {
     /**
@@ -13,10 +15,8 @@ class PreferenceUnitTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
+    public function testGetConfig()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+       $this->assertTrue(Preference::get()->first()->Config()!=null);
     }
 }

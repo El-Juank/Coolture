@@ -27,7 +27,7 @@ class EventMaker extends Model
         return $user;
     }
     public function ComunityManage(){
-        return $this->User==null;
+        return $this->user_id==null;
     }
     public function ImgCover()
     {

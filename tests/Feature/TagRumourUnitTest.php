@@ -6,17 +6,14 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
+use App\TagRumour;
+
 class TagRumourUnitTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+    public function testGetRumour() {
+        $this->assertTrue(TagRumour::get()->first()->Rumour()!=null);
+    }
+    public function testGetTag(){
+        $this->assertTrue(TagRumour::get()->first()->Tag()!=null);
     }
 }

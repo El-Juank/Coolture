@@ -6,17 +6,12 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
+use App\Notification;
+
 class NotificationUnitTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testExample()
+    public function testGetMessage()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+       $this->assertTrue(Notification::get()->first()->Message!=null);
     }
 }

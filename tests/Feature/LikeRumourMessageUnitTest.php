@@ -6,17 +6,14 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
+use App\LikeRumourMessage;
+
 class LikeRumourMessageUnitTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+    public function testGetUser(){
+        $this->assertTrue(LikeRumourMessage::get()->first()->User()!=null);
+    }
+    public function testGetRumourMessage(){
+        $this->assertTrue(LikeRumourMessage::get()->first()->RumourMessage()!=null);
     }
 }

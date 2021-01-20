@@ -54,7 +54,7 @@ class Event extends Model
         return $this->hasMany(MessageEvent::class);
     }
 
-    public function AssistenceUserList()
+    public function AssistanceUserList()
     {
         return $this->morphMany(User::class, 'AssistenceList');
     }

@@ -6,17 +6,12 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
+use App\Category;
+
 class CategoryUnitTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+    public function testImage(){
+        $category=Category::where('Image_id','<>',null)->first();
+        $this->assertTrue($category->Image()!=null);
     }
 }
