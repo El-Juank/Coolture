@@ -206,7 +206,7 @@ class User extends Authenticatable
         if ($canEdit) {
             //un administrador no pot deixar ell mateix el càrrec ha de ser un altre qui ho faci
             $canEdit =! ($roleId == Role::ADMIN && $userToDelete->IsAdmin() && $userAdmin->id==$userToDelete->id);
-          
+
         }
         return $canEdit;
     }

@@ -29,10 +29,10 @@ class FrontendController extends Controller
     {
         //Agafa propietats de l'user loggejat en aquell moment
         $user_id = Auth::user()->id;
-        $events = Event::where('User_id', $user_id)
+        $events = Event::where('user_id', $user_id)
             ->orderBy('created_at', 'DESC')
             ->get();
-        $rumours = Rumour::where('User_id', $user_id)
+        $rumours = Rumour::where('user_id', $user_id)
             ->orderBy('created_at', 'DESC')
             ->get();
 
