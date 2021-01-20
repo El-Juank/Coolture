@@ -6,17 +6,14 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
+use App\LikeEventMessage;
+
 class LikeEventMessageUnitTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+    public function testGetUser(){
+        $this->assertTrue(LikeEventMessage::get()->first()->User()!=null);
+    }
+    public function testGetEventMessage(){
+        $this->assertTrue(LikeEventMessage::get()->first()->EventMessage()!=null);
     }
 }

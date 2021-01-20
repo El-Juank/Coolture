@@ -5,18 +5,12 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Tag;
 
 class TagUnitTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testExample()
+    public function testGetName()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+       $this->assertTrue(Tag::get()->first()->Name!=null);
     }
 }

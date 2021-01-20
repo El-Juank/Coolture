@@ -6,17 +6,13 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
+use App\File;
+
 class FileUnitTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testExample()
+    public function testGetUrl()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+       $this->assertTrue(File::get()->first()->Url()!=null);
     }
+    //falten més metodes
 }

@@ -24,6 +24,9 @@ class EventMessage extends Model
         }
         return $user;
     }
+    public function IsComunityManaged(){
+        return $this->user_id==null;
+    }
     public function Event(){
         return $this->belongsTo(Event::class, 'Event_id');
     }

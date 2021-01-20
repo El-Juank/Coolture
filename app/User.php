@@ -65,10 +65,10 @@ class User extends Authenticatable
     }
     public function IsVerified()
     {
-        return $this->VerifiedBy != null;
+        return $this->VerifiedBy_id != null;
     }
 
-    public function AssitenceEventList()
+    public function AssitanceEventList()
     {
         return $this->morphMany(Event::class,'AssistenceList');
     }
@@ -82,7 +82,7 @@ class User extends Authenticatable
         return $this->hasMany(UrlRumourToVerify::class);
 
     }
-    public function UrlsPendentToVerify(){
+    public function UrlRumoursPendentToVerify(){
         $verified=[];
         foreach($this->UrlRumourToVerify() as $url){
             if($url->IsVerified()){
@@ -103,7 +103,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(EventMessage::class);
     }
-    public function LikeEvent()
+    public function LikeEvents()
     {
         return $this->hasMany(LikeEvent::class);
     }

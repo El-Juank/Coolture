@@ -28,7 +28,7 @@ class Rumour extends Model
     }
     public function HasEventMaker()
     {
-        return $this->EventMaker() != null;
+        return $this->Event_Maker_id != null;
     }
     public function UrlOfficialDenied(){
         return $this->UrlOfficial(false);
