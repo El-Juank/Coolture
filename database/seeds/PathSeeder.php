@@ -13,7 +13,7 @@ class PathSeeder extends Seeder
     public function run()
     {
         $root = 'img';
-        $directories = ['flags', 'gender', 'icons'];
+        $directories = ['default','flags', 'gender', 'icons'];
         foreach ($directories as $dir) {
             $path = new Path();
             $path->Url = $root . '/' . $dir;

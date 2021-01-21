@@ -17,7 +17,7 @@
                     <div class="col-md-6 mb-lg-1 mb-5">
                         <img src="{{--{{ asset($event->ImgEvent->Url()) }}--}}"
                             alt="{{ $event->Title }}" class="img-fluid"
-                            onerror="this.onerror=null;this.src='{{ asset('img/image-not-available.png') }}';">
+                            onerror="this.onerror=null;this.src='{{ asset('img/default/image-not-available.png') }}';">
                     </div>
 
                     <div class="col-md-6">
@@ -29,7 +29,7 @@
                                     @if (isset($city->error))
                                         Localitat no disponible
                                     @else
-                                        {{$city->display_name}}
+                                        {{ $city->display_name }}
                                     @endif
                                 </li>
                                 <li class="list-group-item borderless">
@@ -47,8 +47,10 @@
                             {{--{{ $event->Location->Lat }}
                             {{ $event->Location->Lon }}--}}
                             {{-- LIKES TOTALS A L'EVENT --}}
-                            <i class="fa fa-thumbs-o-up"></i>
-                            {{ $likes }}
+                            <div class="pull-right h2">
+                                <i class="fa fa-thumbs-o-up"></i>
+                                {{ $likes }}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -68,7 +70,7 @@
                                     <div class="row">
                                         <div class="col-sm-3 col-lg-2 hidden-xs">
                                             <img class="user-img" src="" alt=""
-                                                onerror="this.onerror=null;this.src='{{ asset('img/user-image-not-available.png') }}';">
+                                                onerror="this.onerror=null;this.src='{{ asset('img/default/user-image-not-available.png') }}';">
                                         </div>
                                         <div class="form-group col-xs-12 col-sm-9 col-lg-10">
                                             <textarea name="eventmessage_text" id="eventmessage_text"
@@ -87,7 +89,7 @@
                             @forelse ($messages as $message)
                                 <div class="media">
                                     <a class="pull-left" href="#"><img class="media-object" src="" alt=""
-                                            onerror="this.onerror=null;this.src='{{ asset('img/user-image-not-available.png') }}';"></a>
+                                            onerror="this.onerror=null;this.src='{{ asset('img/default/user-image-not-available.png') }}';"></a>
                                     <div class="media-body">
                                         <h4 class="media-heading">{{ $message->User->name }}
                                         </h4>

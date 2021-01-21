@@ -15,9 +15,10 @@
                             <div class="col-lg-4">
                                 <div class="result" data-aos="fade-up" data-aos-delay="100">
                                     <img src="" alt="Rock" class="img-fluid"
-                                        onerror="this.onerror=null;this.src='{{ asset('img/image-not-available.png') }}';">
+                                        onerror="this.onerror=null;this.src='{{ asset('img/default/image-not-available.png') }}';">
                                     <div class="details">
-                                        <h3><a href="{{ route('event', ['event' => $result->id]) }}">{{ $result->Title }}</a>
+                                        <h3><a
+                                                href="{{ route('event', ['event' => $result->id]) }}">{{ $result->Title }}</a>
                                         </h3>
                                         {{-- Per limitar la mida dels textos
                                         --}}
