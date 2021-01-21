@@ -19,7 +19,7 @@ class CreateUserRangesTable extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('Event_Maker_id')->references('id')->on('EventMakers')->onDelete('cascade');
 
-            $table->decimal('Range',10,2);
+            $table->decimal('Range',9,2)->default(1000);
 
             $table->unique(['user_id','Event_Maker_id']);
 

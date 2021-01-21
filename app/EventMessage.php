@@ -16,11 +16,14 @@ class EventMessage extends Model
 
     public $translatedAttributes=['Message'];
 
-    public function User(){
-        $user= $this->belongsTo(User::class);
-        if($user==null)
+    public function User()
+    {
+     
+        if($this->IsComunityManaged())
         {
             $user=User::CommunityUser();
+        }else{
+            $user= $this->belongsTo(User::class);
         }
         return $user;
     }
@@ -28,7 +31,7 @@ class EventMessage extends Model
         return $this->user_id==null;
     }
     public function Event(){
-        return $this->belongsTo(Event::class, 'Event_id');
+        return $this->belongsTo(Event::class);
     }
     public static function Purgue(){
         self::where('CanDelete',true)->delete();//mirar que funcioni

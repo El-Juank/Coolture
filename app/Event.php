@@ -15,10 +15,12 @@ class Event extends Model
     public $translatedAttributes = ['Title', 'Description'];
     public function User()
     {
-        $user= $this->belongsTo(User::class);
-        if($user==null)
+     
+        if($this->user_id==null)
         {
             $user=User::CommunityUser();
+        }else{
+            $user= $this->belongsTo(User::class);
         }
         return $user;
     }
@@ -56,16 +58,16 @@ class Event extends Model
 
     public function AssistanceUserList()
     {
-        return $this->morphMany(User::class, 'AssistenceList');
+        return $this->hasManyThrough(User::class, Assistance::class);
     }
 
     public function Tags()
     {
-        return $this->morphMany(TagEvent::class, 'EventTags');
+        return $this->hasManyThrough(TagEvent::class, EventTag::class);
     }
 
     public function NotificationChangesList()
     {
-        return $this->morphMany(User::class, 'NotificationChangesEvent');
+        return $this->hasManyThrough(User::class, NotificationChangeEvent::class);
     }
 }

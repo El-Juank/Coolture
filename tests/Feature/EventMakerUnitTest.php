@@ -47,11 +47,9 @@ class EventMakerUnitTest extends TestCase
     }
     public function testGetUsers(){
         try{
+            $correcte=false;
             $total=count(EventMaker::get()->first()->Users());
             $correcte=true;
-
-        }catch(object $e){
-            $correcte=false;
 
         }finally{
             $this->assertTrue($correcte);
@@ -60,11 +58,9 @@ class EventMakerUnitTest extends TestCase
     }
     public function testGetEvents(){
         try{
+            $correcte=false;
             $total=count(EventMaker::get()->first()->Events());
             $correcte=true;
-
-        }catch(object $e){
-            $correcte=false;
 
         }finally{
             $this->assertTrue($correcte);
@@ -73,11 +69,9 @@ class EventMakerUnitTest extends TestCase
     }
     public function testGetRumours(){
         try{
+            $correcte=false;
             $total=count(EventMaker::get()->first()->Rumours());
             $correcte=true;
-
-        }catch(object $e){
-            $correcte=false;
 
         }finally{
             $this->assertTrue($correcte);
@@ -86,11 +80,9 @@ class EventMakerUnitTest extends TestCase
     }
     public function testGetRanges(){
         try{
+            $correcte=false;
             $total=count(EventMaker::get()->first()->Ranges());
             $correcte=true;
-
-        }catch(object $e){
-            $correcte=false;
 
         }finally{
             $this->assertTrue($correcte);
@@ -99,11 +91,9 @@ class EventMakerUnitTest extends TestCase
     }
     public function testSubcategories(){
         try{
+            $correcte=false;
             $total=count(EventMaker::get()->first()->Subcategories());
             $correcte=true;
-
-        }catch(object $e){
-            $correcte=false;
 
         }finally{
             $this->assertTrue($correcte);
@@ -112,11 +102,9 @@ class EventMakerUnitTest extends TestCase
     }
     public function testGetNotificationChangesList(){
         try{
+            $correcte=false;
             $total=count(EventMaker::get()->first()->NotificationChangesList());
             $correcte=true;
-
-        }catch(object $e){
-            $correcte=false;
 
         }finally{
             $this->assertTrue($correcte);
@@ -125,11 +113,9 @@ class EventMakerUnitTest extends TestCase
     }
     public function testGetLocations(){
         try{
+            $correcte=false;
             $total=count(EventMaker::get()->first()->Locations());
             $correcte=true;
-
-        }catch(object $e){
-            $correcte=false;
 
         }finally{
             $this->assertTrue($correcte);
@@ -138,11 +124,9 @@ class EventMakerUnitTest extends TestCase
     }
     public function testGetEventTags(){
         try{
+            $correcte=false;
             $total=count(EventMaker::get()->first()->EventTags());
             $correcte=true;
-
-        }catch(object $e){
-            $correcte=false;
 
         }finally{
             $this->assertTrue($correcte);
@@ -151,11 +135,9 @@ class EventMakerUnitTest extends TestCase
     }
     public function testGetRumourTags(){
         try{
+            $correcte=false;
             $total=count(EventMaker::get()->first()->RumourTags());
             $correcte=true;
-
-        }catch(object $e){
-            $correcte=false;
 
         }finally{
             $this->assertTrue($correcte);
@@ -164,11 +146,9 @@ class EventMakerUnitTest extends TestCase
     }
     public function testGetTags(){
         try{
+            $correcte=false;
             $total=count(EventMaker::get()->first()->Tags());
             $correcte=true;
-
-        }catch(object $e){
-            $correcte=false;
 
         }finally{
             $this->assertTrue($correcte);

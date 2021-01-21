@@ -70,7 +70,7 @@ class User extends Authenticatable
 
     public function AssitanceEventList()
     {
-        return $this->morphMany(Event::class,'AssistenceList');
+        return $this->hasManyThrough(Event::class,Assistance::class);
     }
     public function Events()
     {

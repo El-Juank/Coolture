@@ -23,7 +23,7 @@ class File extends Model
         $this->delete();
     }
     public static function PurgueAll(){
-        $files=self::all();
+        $files=self::where('Path_id','<>',Path::DEFAULT_PATH_ID)->get();
         for($i=0,$f=count($files);$i<$f;$i++){
             $file=$files[$i];
             $esPotEsborrar=false;

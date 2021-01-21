@@ -19,13 +19,26 @@ class EventMaker extends Model
 
     public function User()
     {
-        $user= $this->belongsTo(User::class);
-        if($user==null)
+        
+        if($this->user_id==null)
         {
             $user=User::CommunityUser();
+        }else{
+            $user= $this->belongsTo(User::class);
         }
         return $user;
     }
+    public function Follow($user){
+       if(UserRange::where('user_id',$user->id)->count()==0){
+           $userRange=new UserRange();
+           $userRange->user_id=$user->id;
+           $userRange->Event_Maker_id=$this->id;
+           $userRange->save();
+       } 
+    }
+    public function UnFollow($user){
+        UserRange::where('user_id',$user->id)->delete();
+     }
     public function ComunityManage(){
         return $this->user_id==null;
     }
@@ -38,8 +51,8 @@ class EventMaker extends Model
         return $this->belongsTo(File::class, 'ImgProfile_id');
     }
 
-    public function Users(){
-        return $this->hasMany(User::class);
+    public function Followers(){
+        return $this->hasManyThrough(User::class,UserRange::class);
     }
     public function Events(){
         return $this->hasMany(Event::class);
@@ -50,19 +63,19 @@ class EventMaker extends Model
 
     public function Ranges()
     {
-        return $this->hasMany(UserRange::class, 'UserRanges');
+        return $this->hasMany(UserRange::class);
     }
     public function Subcategories()
     {
-        return $this->hasMany(Subcategory::class, 'Subcategories');
+        return $this->hasManyThrough(Category::class,Subcategory::class);
     }
     public function NotificationChangesList()
     {
-        return $this->morphMany(User::class, 'NotificationChangesEventMaker');
+        return $this->hasManyThrough(User::class, NotificationChangeEventMaker::class);
     }
     public function Locations()
     {
-        return $this->morphMany(Location::class, 'Events');
+        return $this->hasManyThrough(Location::class, Event::class);
     }
 
     public function EventTags(){
