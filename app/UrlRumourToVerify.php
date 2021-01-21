@@ -32,7 +32,7 @@ class UrlRumourToVerify extends Model
     {
         return $this->user_id==null;
     }
-    public function Verified($userVerifiedBy, $isTrue)
+    public function SetVerified($userVerifiedBy, $isTrue)
     {
         if (!$isTrue) {
             $this->delete();

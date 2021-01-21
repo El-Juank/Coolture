@@ -12,11 +12,8 @@ class RumourMessageUnitTest extends TestCase
 {
     public function testGetUser(){
         try{
-          
-            $correcte=RumourMessage::get()->first()->User()!=null;
-
-        }catch(object $e){
             $correcte=false;
+            $correcte=RumourMessage::get()->first()->User()!=null;
 
         }finally{
             $this->assertTrue($correcte);
@@ -25,11 +22,8 @@ class RumourMessageUnitTest extends TestCase
     }
     public function testIsComunityManagedTrue(){
         try{
-          
-            $correcte=RumourMessage::whereNull('user_id')->first()->IsComunityManaged();
-
-        }catch(object $e){
             $correcte=false;
+            $correcte=RumourMessage::whereNull('user_id')->first()->IsComunityManaged();
 
         }finally{
             $this->assertTrue($correcte);
@@ -38,11 +32,8 @@ class RumourMessageUnitTest extends TestCase
     }
     public function testIsComunityManagedFalse(){
         try{
-          
-            $correcte=RumourMessage::whereNotNull('user_id')->first()->IsComunityManaged();
-
-        }catch(object $e){
             $correcte=false;
+            $correcte=RumourMessage::whereNotNull('user_id')->first()->IsComunityManaged();
 
         }finally{
             $this->assertFalse($correcte);
@@ -51,11 +42,8 @@ class RumourMessageUnitTest extends TestCase
     }
     public function testGetRumour(){
         try{
-          
-            $correcte=RumourMessage::get()->first()->Rumour()!=null;
-
-        }catch(object $e){
             $correcte=false;
+            $correcte=RumourMessage::get()->first()->Rumour()!=null;
 
         }finally{
             $this->assertTrue($correcte);

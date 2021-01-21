@@ -83,13 +83,13 @@ class User extends Authenticatable
 
     }
     public function UrlRumoursPendentToVerify(){
-        $verified=[];
+        $pendentToVerify=[];
         foreach($this->UrlRumourToVerify() as $url){
-            if($url->IsVerified()){
-                array_push($verified,$url);
+            if(!$url->IsVerified()){
+                array_push($pendentToVerify,$url);
             }
         }
-        return $verified;
+        return $pendentToVerify;
     }
     public function Messages()
     {
@@ -125,7 +125,7 @@ class User extends Authenticatable
     }
     public function EventMakers()
     {
-        return $this->hasMany(EventMaker::class);
+        return $this->hasManyThrow(EventMaker::class,UserRange::class);
     }
     public function Permissions()
     {

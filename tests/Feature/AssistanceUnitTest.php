@@ -41,7 +41,7 @@ class AssistanceUnitTest extends TestCase
         $assistance->user_id = User::all()->first()->id;
         $assistance->Event_id = Event::all()->first()->id;
         $assistance->WantToAssist = true;
-        $this->assertFalse($assistance->Delete());
+        $this->assertFalse($assistance->Delete(true));
     }
     public function testNoDeleteWithAssisted()
     {
@@ -49,7 +49,7 @@ class AssistanceUnitTest extends TestCase
         $assistance->user_id = User::all()->first()->id;
         $assistance->Event_id = Event::all()->first()->id;
         $assistance->Assisted = true;
-        $this->assertFalse($assistance->Delete());
+        $this->assertFalse($assistance->Delete(true));
     }
     public function testNoDeleteWithBoth()
     {
@@ -58,22 +58,22 @@ class AssistanceUnitTest extends TestCase
         $assistance->Event_id = Event::all()->first()->id;
         $assistance->WantToAssist = true;
         $assistance->Assisted = true;
-        $this->assertFalse($assistance->Delete());
+        $this->assertFalse($assistance->Delete(true));
     }
     public function testDeleteFalseAssisted()
     {
         $assistance = Assistance::where('WantToAssist', true)->where('Assisted', false)->first();
-        $this->assertFalse($assistance->Delete());
+        $this->assertFalse($assistance->Delete(true));
     }
     public function testDeleteFalseWantToAssist()
     {
         $assistance = Assistance::where('WantToAssist', false)->where('Assisted', true)->first();
-        $this->assertFalse($assistance->Delete());
+        $this->assertFalse($assistance->Delete(true));
     }
     public function testDeleteTrue()
     {
         $assistance = Assistance::where('WantToAssist', false)->where('Assisted', false)->first();
-        $this->assertTrue($assistance->Delete());
+        $this->assertTrue($assistance->Delete(true));
     }
  
 }

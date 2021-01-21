@@ -32,29 +32,31 @@ class EventMakerSeeder extends Seeder
             if ($faker->boolean()) {
                 $eventMaker->user_id = $users[$faker->numberBetween(0, $totalUsers)]->id;
             }
-            if ($faker->boolean()) {
+            if ($faker->boolean()||$faker->boolean()||$faker->boolean()) {
                 $eventMaker->ImgProfile_id = $imgsProfile[$faker->numberBetween(0, $totalImgProfiles)]->id;
             }
-            if ($faker->boolean()) {
+            if ($faker->boolean()||$faker->boolean()||$faker->boolean()) {
                 $eventMaker->ImgCover_id = $imgsCover[$faker->numberBetween(0, $totalImgCovers)]->id;
             }
             $name = $faker->name();
-            if ($faker->boolean()) {
-                $eventMaker->{'Name:es'} = $name . '_ES';
-            }
-            $eventMaker->{'Name:ca'} = $name . '_CA';
-            if ($faker->boolean()) {
-                $eventMaker->{'Name:en'} = $name . '_EN';
-            }
-
             $desc = $faker->sentence(25);
             if ($faker->boolean()) {
+                $eventMaker->{'Name:es'} = $name . '_ES';
                 $eventMaker->{'Description:es'} = $desc . '_ES';
             }
+
+            $eventMaker->{'Name:ca'} = $name . '_CA';
             $eventMaker->{'Description:ca'} = $desc . '_CA';
+            
             if ($faker->boolean()) {
+                $eventMaker->{'Name:en'} = $name . '_EN';
                 $eventMaker->{'Description:en'} = $desc . '_EN';
             }
+
+           
+          
+            
+         
 
             $eventMaker->save();
         }

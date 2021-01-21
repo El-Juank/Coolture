@@ -33,9 +33,8 @@ class UserUnitTest extends TestCase
     public function testGetAssistenceEventList()
     {
         try {
+            $correcte=false;
             $correcte = count(User::get()->first()->AssistanceEventList()) != null;
-        } catch (object $e) {
-            $correcte = false;
         } finally {
             $this->assertTrue($correcte);
         }
@@ -43,19 +42,17 @@ class UserUnitTest extends TestCase
     public function testGetEvents()
     {
         try {
+            $correcte=false;
             $correcte = count(User::get()->first()->Events()) != null;
-        } catch (object $e) {
-            $correcte = false;
-        } finally {
+        }finally {
             $this->assertTrue($correcte);
         }
     }
     public function testGetUrlRumoursToVerify()
     {
         try {
+            $correcte=false;
             $correcte = count(User::get()->first()->UrlRumoursToVerify()) != null;
-        } catch (object $e) {
-            $correcte = false;
         } finally {
             $this->assertTrue($correcte);
         }
@@ -63,19 +60,17 @@ class UserUnitTest extends TestCase
     public function testGetUrlPendentRumoursToVerify()
     {
         try {
+            $correcte=false;
             $correcte = count(User::get()->first()->UrlRumoursPendentToVerify()) != null;
-        } catch (object $e) {
-            $correcte = false;
-        } finally {
+        }finally {
             $this->assertTrue($correcte);
         }
     }
     public function testGetMessages()
     {
         try {
+            $correcte=false;
             $correcte = count(User::get()->first()->Messages()) != null;
-        } catch (object $e) {
-            $correcte = false;
         } finally {
             $this->assertTrue($correcte);
         }
@@ -83,59 +78,53 @@ class UserUnitTest extends TestCase
     public function testGetRumourMessages()
     {
         try {
+            $correcte=false;
             $correcte = count(User::get()->first()->RumourMessages()) != null;
-        } catch (object $e) {
-            $correcte = false;
-        } finally {
+        }finally {
             $this->assertTrue($correcte);
         }
     }
     public function testGetEventMessages()
     {
         try {
+            $correcte=false;
             $correcte = count(User::get()->first()->EventMessages()) != null;
-        } catch (object $e) {
-            $correcte = false;
-        } finally {
+        }finally {
             $this->assertTrue($correcte);
         }
     }
     public function testGetLikeEvents()
     {
         try {
+            $correcte=false;
             $correcte = count(User::get()->first()->LikeEvents()) != null;
-        } catch (object $e) {
-            $correcte = false;
-        } finally {
+        }finally {
             $this->assertTrue($correcte);
         }
     }
     public function testGetLikeEventMessages()
     {
         try {
+            $correcte=false;
             $correcte = count(User::get()->first()->LikeEventMessages()) != null;
-        } catch (object $e) {
-            $correcte = false;
-        } finally {
+        }finally {
             $this->assertTrue($correcte);
         }
     }
     public function testGetLikeRumours()
     {
         try {
+            $correcte=false;
             $correcte = count(User::get()->first()->LikeRumours()) != null;
-        } catch (object $e) {
-            $correcte = false;
-        } finally {
+        }finally {
             $this->assertTrue($correcte);
         }
     }
     public function testGetLikeRumourMessages()
     {
         try {
+            $correcte=false;
             $correcte = count(User::get()->first()->LikeRumourMessages()) != null;
-        } catch (object $e) {
-            $correcte = false;
         } finally {
             $this->assertTrue($correcte);
         }
@@ -143,29 +132,26 @@ class UserUnitTest extends TestCase
     public function testGetRanges()
     {
         try {
+            $correcte=false;
             $correcte = count(User::get()->first()->Ranges()) != null;
-        } catch (object $e) {
-            $correcte = false;
-        } finally {
+        }finally {
             $this->assertTrue($correcte);
         }
     }
     public function testGetEventMakers()
     {
         try {
+            $correcte=false;
             $correcte = count(User::get()->first()->EventMakers()) != null;
-        } catch (object $e) {
-            $correcte = false;
-        } finally {
+        }finally {
             $this->assertTrue($correcte);
         }
     }
     public function testGetPermissions()
     {
         try {
+            $correcte=false;
             $correcte = count(User::get()->first()->Permissions()) != null;
-        } catch (object $e) {
-            $correcte = false;
         } finally {
             $this->assertTrue($correcte);
         }
@@ -173,39 +159,35 @@ class UserUnitTest extends TestCase
     public function testGetPermissionGranted()
     {
         try {
+            $correcte=false;
             $correcte = count(User::get()->first()->PermissionGranted()) != null;
-        } catch (object $e) {
-            $correcte = false;
-        } finally {
+        }finally {
             $this->assertTrue($correcte);
         }
     }
     public function testGetRoles()
     {
         try {
+            $correcte=false;
             $correcte = count(User::get()->first()->Roles()) != null;
-        } catch (object $e) {
-            $correcte = false;
-        } finally {
+        }finally {
             $this->assertTrue($correcte);
         }
     }
     public function testGetNotificationChangesEvent()
     {
         try {
+            $correcte=false;
             $correcte = count(User::get()->first()->NotificationChangesEvent()) != null;
-        } catch (object $e) {
-            $correcte = false;
-        } finally {
+        }finally {
             $this->assertTrue($correcte);
         }
     }
     public function testGetNotificationChangesEventMaker()
     {
         try {
+            $correcte=false;
             $correcte = count(User::get()->first()->NotificationChangesEventMaker()) != null;
-        } catch (object $e) {
-            $correcte = false;
         } finally {
             $this->assertTrue($correcte);
         }
@@ -213,10 +195,9 @@ class UserUnitTest extends TestCase
     public function testGetNotificationChangesRumour()
     {
         try {
+            $correcte=false;
             $correcte = count(User::get()->first()->NotificationChangesRumour()) != null;
-        } catch (object $e) {
-            $correcte = false;
-        } finally {
+        }finally {
             $this->assertTrue($correcte);
         }
     }

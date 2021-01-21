@@ -29,10 +29,8 @@ class EventUnitTest extends TestCase
     public function testImgPreview()
     {
         try {
-
-            $correcte = Event::whereNotNull('ImgPreview_id')->first()->ImgPreview() != null;
-        } catch (object $e) {
             $correcte = false;
+            $correcte = Event::whereNotNull('ImgPreview_id')->first()->ImgPreview() != null;
         } finally {
             $this->assertTrue($correcte);
         }
@@ -40,10 +38,8 @@ class EventUnitTest extends TestCase
     public function testImgPreviewNull()
     {
         try {
-
-            $correcte = Event::whereNull('ImgPreview_id')->first()->ImgPreview() == null;
-        } catch (object $e) {
             $correcte = false;
+            $correcte = Event::whereNull('ImgPreview_id')->first()->ImgPreview() == null;
         } finally {
             $this->assertTrue($correcte);
         }
@@ -51,33 +47,27 @@ class EventUnitTest extends TestCase
     public function testImgEvent()
     {
         try {
-
-            $correcte = Event::whereNotNull('ImgEvent_id')->first()->ImgEvent() != null;
-        } catch (object $e) {
             $correcte = false;
-        } finally {
+            $correcte = Event::whereNotNull('ImgEvent_id')->first()->ImgEvent() != null;
+        }finally {
             $this->assertTrue($correcte);
         }
     }
     public function testImgEventNull()
     {
         try {
-
-            $correcte = Event::whereNull('ImgEvent_id')->first()->ImgEvent() == null;
-        } catch (object $e) {
             $correcte = false;
-        } finally {
+            $correcte = Event::whereNull('ImgEvent_id')->first()->ImgEvent() == null;
+        }finally {
             $this->assertTrue($correcte);
         }
     }
     public function testGetUsers()
     {
         try {
-
-            $total = count(Event::get()->first()->Users());
-            $correcte=true;
-        } catch (object $e) {
             $correcte = false;
+            count(Event::get()->first()->Users());
+            $correcte=true;
         } finally {
             $this->assertTrue($correcte);
         }
@@ -85,23 +75,19 @@ class EventUnitTest extends TestCase
     public function testGetLikes()
     {
         try {
-
-            $total = count(Event::get()->first()->Likes());
-            $correcte=true;
-        } catch (object $e) {
             $correcte = false;
-        } finally {
+            count(Event::get()->first()->Likes());
+            $correcte=true;
+        }finally {
             $this->assertTrue($correcte);
         }
     }
     public function testGetMessages()
     {
         try {
-
-            $total = count(Event::get()->first()->Messages());
-            $correcte=true;
-        } catch (object $e) {
             $correcte = false;
+            count(Event::get()->first()->Messages());
+            $correcte=true;
         } finally {
             $this->assertTrue($correcte);
         }
@@ -109,11 +95,9 @@ class EventUnitTest extends TestCase
     public function testGetAssistanceUserList()
     {
         try {
-
-            $total = count(Event::get()->first()->AssistanceUserList());
-            $correcte=true;
-        } catch (object $e) {
             $correcte = false;
+            count(Event::get()->first()->AssistanceUserList());
+            $correcte=true;
         } finally {
             $this->assertTrue($correcte);
         }
@@ -121,11 +105,9 @@ class EventUnitTest extends TestCase
     public function testGetTags()
     {
         try {
-
-            $total = count(Event::get()->first()->Tags());
-            $correcte=true;
-        } catch (object $e) {
             $correcte = false;
+            count(Event::get()->first()->Tags());
+            $correcte=true;
         } finally {
             $this->assertTrue($correcte);
         }
@@ -133,12 +115,10 @@ class EventUnitTest extends TestCase
     public function testGetNotificationChangesList()
     {
         try {
-
-            $total = count(Event::get()->first()->NotificationChangesList());
-            $correcte=true;
-        } catch (object $e) {
             $correcte = false;
-        } finally {
+            count(Event::get()->first()->NotificationChangesList());
+            $correcte=true;
+        }  finally {
             $this->assertTrue($correcte);
         }
     }

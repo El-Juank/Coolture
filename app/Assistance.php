@@ -14,9 +14,9 @@ class Assistance extends Model
     public function Event(){
         return $this->belongsTo(Event::class);
     }
-    public function Delete(){
+    public function Delete($test=false){
         $doit=!$this->WantToAssist && !$this->Assisted;
-        if($doit){
+        if($doit&&!$test){
             $this->delete();
         }
         return $doit;

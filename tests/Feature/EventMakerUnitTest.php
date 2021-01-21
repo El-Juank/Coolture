@@ -21,11 +21,8 @@ class EventMakerUnitTest extends TestCase
     }
     public function testImgCover(){
         try{
-           
-            $correcte= EventMaker::whereNotNull('ImgCover_id')->first()->ImgCover()!=null;
-
-        }catch(object $e){
             $correcte=false;
+            $correcte= EventMaker::whereNotNull('ImgCover_id')->first()->ImgCover()!=null;
 
         }finally{
             $this->assertTrue($correcte);
@@ -34,11 +31,8 @@ class EventMakerUnitTest extends TestCase
     }
     public function testImgProfile(){
         try{
-           
-            $correcte= EventMaker::whereNotNull('ImgProfile_id')->first()->ImgProfile()!=null;
-
-        }catch(object $e){
             $correcte=false;
+            $correcte= EventMaker::whereNotNull('ImgProfile_id')->first()->ImgProfile()!=null;
 
         }finally{
             $this->assertTrue($correcte);
