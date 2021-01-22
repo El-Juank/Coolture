@@ -40,7 +40,8 @@ class Rumour extends Model
     }
      function UrlOfficial($isConfirmed){
         return UrlRumourToVerify::where('Rumour_id',$this->id)
-                                ->where('IsConfirmed',$isConfirmed)
+                                ->where('ToConfirmed',$isConfirmed)
+                                ->whereNotNull('VerifiedBy_id')
                                 ->first();
     }
     public function StillAlive()

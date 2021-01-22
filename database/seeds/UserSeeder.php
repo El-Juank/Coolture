@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
     const IMG_COVER = 2;
 
     const PROBABILITAT_GENERE = 100;
+    const MAX=10;
 
     public function run()
     {
@@ -59,9 +60,17 @@ class UserSeeder extends Seeder
                 $user->{'Description:en'} = 'EN_' . $desc . '_EN';
                 $user->{'Visible:en'} = $faker->boolean();
             }
+        
 
 
             $user->save();
+        }
+        $users=User::get();
+        for($i=0,$f=count($users)-1;$i<=$f && $i<self::MAX;$i++){
+            if($faker->boolean()){
+                $user->UserVerified_id= $users[$faker->numberBetween(0, $f)]->id;
+                $user->save();
+            }
         }
     }
 }
