@@ -30,21 +30,29 @@ class RumourController extends Controller
     {
         //Validity rules
         $validated = $request->validate([
-            'name' => 'required|min:4',
+            'title' => 'required|min:5',
         ]);
 
         //Capta camps del formulari
-        $name = $request['name'];
+        $user_id = $request['user_id'];
+        $title = $request['title'];
+        $IsVisible = $request['IsVisible'];
+        $OwnTrust = $request['OwnTrust'];
+        $description = $request['description'];
 
         //Crear  i posa valors del formulari
         $rumour = new Rumour;
-        $rumour->name = $name;
+        $rumour->user_id = $user_id;
+        $rumour->Title = $title;
+        $rumour->IsVisible = $IsVisible;
+        $rumour->OwnTrust = $OwnTrust;
+        $rumour->Description = $description;
 
         //Guarda
         $rumour->save();
 
         //Mostra index
-        return redirect()->route('rumours.index');
+        return redirect()->route('home');
     }
 
 

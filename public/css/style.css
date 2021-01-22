@@ -84,7 +84,7 @@ h6 {
 
 .generic-container {
     margin-top: 25vh;
-    margin-bottom: 10vh;
+    margin-bottom: 15vh;
 }
 
 .v-center {
@@ -858,6 +858,34 @@ h6 {
     font-size: 15px;
     margin-bottom: 10px;
 }
+
+/*--------------------------------------------------------------
+# Publicar rumor
+--------------------------------------------------------------*/
+
+/*** Custom checkboxes (tencar/obrir ull) ***/
+
+input[type="checkbox"] {
+    display: none;
+} /* to hide the checkbox itself */
+input[type="checkbox"] + label:before {
+    font-family: FontAwesome;
+    display: inline-block;
+}
+
+input[type="checkbox"] + label:before {
+    content: "\f06e";
+} /* unchecked icon */
+input[type="checkbox"] + label:before {
+    letter-spacing: 10px;
+} /* space between checkbox and label */
+
+input[type="checkbox"]:checked + label:before {
+    content: "\f070";
+} /* checked icon */
+input[type="checkbox"]:checked + label:before {
+    letter-spacing: 5px;
+} /* allow space for check mark */
 
 /*--------------------------------------------------------------
 # Schedule Section
@@ -1811,6 +1839,12 @@ h6 {
 
 .nav-tabs {
     border-bottom: none;
+}
+
+@media (min-width: 768px) {
+    .dashboard-menu aside {
+        height: 100vh;
+    }
 }
 
 /*--------------------------------------------------------------
