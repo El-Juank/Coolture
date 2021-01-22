@@ -48,8 +48,15 @@
                             {{ $event->Location->Lon }}--}}
                             {{-- LIKES TOTALS A L'EVENT --}}
                             <div class="pull-right h2">
-                                <i class="fa fa-thumbs-o-up"></i>
-                                {{ $likes }}
+
+                                <form action="{{route('event_like', ['event' => $event->id])}}" method="post">
+                                    @csrf
+                                    <button type="submit" class="btn">
+                                        <i class="fa fa-thumbs-o-up"></i>
+                                        {{ $likes }}
+                                    </button>
+                                </form>
+
                             </div>
                         </div>
                     </div>

@@ -194,6 +194,17 @@ class FrontendController extends Controller
         return redirect("/eventmakers/{$eventmaker->id}");
     }
 
+    // LIKES Event:
+    public function event_like($id)
+    {
+        Event::find($id)->SetLike(Auth::user());
+
+        return redirect("/events/{$id}");
+    }
+
+    // LIKES Rumors:
+
+
     //Controlador para la página "searchResult"
     public function searchResult()
     {
