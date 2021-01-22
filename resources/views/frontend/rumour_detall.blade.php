@@ -10,7 +10,7 @@ ELEMENTS DEL RUMOR
 {{$rumour->User->name}}
 
 {{-- Artista --}}
-{{$rumour->EventMaker->Name}}
+{{$rumour->User->name}}
 
 {{-- No se si ho farem servir però és descripció de l'artista de que va el rumor --}}
 {{$rumour->EventMaker->Description}}
