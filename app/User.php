@@ -104,6 +104,7 @@ class User extends Authenticatable
     public function Messages(){
         //only first id!= from and To
         //per fer
+        //quan s'elimini un usuari definitivament l'unic que farem será canviar les dades personals per altres faker
     }
     public function MessagesFrom()
     {
