@@ -43,7 +43,7 @@ class EventMessageUnitTest extends TestCase
     public function testGetEvent(){
         try{
             $correcte=false;
-            $correcte=EventMessage::get()->first()->Event()!=null;
+            $correcte=EventMessage::get()->first()->Event!=null;
 
         }finally{
             $this->assertTrue($correcte);

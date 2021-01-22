@@ -110,20 +110,23 @@ class EventMaker extends Model
     }
 
     public function Tags()
-    {//falta testing
+    {
+        /*
         $tagsEvents=$this->EventsTags();
         $tagsRumours=$this->RumoursTags();
         $tags=$tagsEvents;
 
-        foreach($tagsRumours as $tagRumour){
+        foreach($tagsRumours as $tagRumour=>$tagValue){
             if(array_key_exists($tagRumour,$tags)){
-                $tags[$tagRumour]+=$tagsRumours[$tagRumour];
+                $tags[$tagRumour]+=$tagValue;
             }else{
-                $tags+=[$tagRumour=>$tagsRumours[$tagRumour]];
+                $tags+=[$tagRumour=>$tagValue];
             }
         }
 
         return $tags;
+        */
+        return array();
 
     }
 

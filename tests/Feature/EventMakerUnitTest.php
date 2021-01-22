@@ -22,7 +22,7 @@ class EventMakerUnitTest extends TestCase
     public function testImgCover(){
         try{
             $correcte=false;
-            $correcte= EventMaker::whereNotNull('ImgCover_id')->first()->ImgCover()!=null;
+            $correcte= EventMaker::whereNotNull('ImgCover_id')->first()->ImgCover!=null;
 
         }finally{
             $this->assertTrue($correcte);
@@ -32,17 +32,17 @@ class EventMakerUnitTest extends TestCase
     public function testImgProfile(){
         try{
             $correcte=false;
-            $correcte= EventMaker::whereNotNull('ImgProfile_id')->first()->ImgProfile()!=null;
+            $correcte= EventMaker::whereNotNull('ImgProfile_id')->first()->ImgProfile!=null;
 
         }finally{
             $this->assertTrue($correcte);
 
         }
     }
-    public function testGetUsers(){
+    public function testGetFollowers(){
         try{
             $correcte=false;
-            $total=count(EventMaker::get()->first()->Users());
+            count(EventMaker::get()->first()->Followers);
             $correcte=true;
 
         }finally{
@@ -53,7 +53,7 @@ class EventMakerUnitTest extends TestCase
     public function testGetEvents(){
         try{
             $correcte=false;
-            $total=count(EventMaker::get()->first()->Events());
+            $total=count(EventMaker::get()->first()->Events);
             $correcte=true;
 
         }finally{
@@ -64,7 +64,7 @@ class EventMakerUnitTest extends TestCase
     public function testGetRumours(){
         try{
             $correcte=false;
-            $total=count(EventMaker::get()->first()->Rumours());
+            count(EventMaker::get()->first()->Rumours);
             $correcte=true;
 
         }finally{
@@ -75,7 +75,7 @@ class EventMakerUnitTest extends TestCase
     public function testGetRanges(){
         try{
             $correcte=false;
-            $total=count(EventMaker::get()->first()->Ranges());
+            count(EventMaker::get()->first()->Ranges);
             $correcte=true;
 
         }finally{
@@ -86,7 +86,7 @@ class EventMakerUnitTest extends TestCase
     public function testSubcategories(){
         try{
             $correcte=false;
-            $total=count(EventMaker::get()->first()->Subcategories());
+            count(EventMaker::get()->first()->Subcategories);
             $correcte=true;
 
         }finally{
@@ -97,7 +97,7 @@ class EventMakerUnitTest extends TestCase
     public function testGetNotificationChangesList(){
         try{
             $correcte=false;
-            $total=count(EventMaker::get()->first()->NotificationChangesList());
+            count(EventMaker::get()->first()->NotificationChangesList);
             $correcte=true;
 
         }finally{
@@ -108,7 +108,7 @@ class EventMakerUnitTest extends TestCase
     public function testGetLocations(){
         try{
             $correcte=false;
-            $total=count(EventMaker::get()->first()->Locations());
+            count(EventMaker::get()->first()->Locations);
             $correcte=true;
 
         }finally{
@@ -119,7 +119,7 @@ class EventMakerUnitTest extends TestCase
     public function testGetEventTags(){
         try{
             $correcte=false;
-            $total=count(EventMaker::get()->first()->EventTags());
+            count(EventMaker::get()->first()->EventTags());
             $correcte=true;
 
         }finally{
@@ -130,7 +130,7 @@ class EventMakerUnitTest extends TestCase
     public function testGetRumourTags(){
         try{
             $correcte=false;
-            $total=count(EventMaker::get()->first()->RumourTags());
+            count(EventMaker::get()->first()->RumourTags());
             $correcte=true;
 
         }finally{
@@ -141,7 +141,7 @@ class EventMakerUnitTest extends TestCase
     public function testGetTags(){
         try{
             $correcte=false;
-            $total=count(EventMaker::get()->first()->Tags());
+            count(EventMaker::get()->first()->Tags());
             $correcte=true;
 
         }finally{

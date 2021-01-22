@@ -16,15 +16,15 @@ class EventUnitTest extends TestCase
     }
     public function testGetEventMaker()
     {
-        $this->assertTrue(Event::get()->first()->EventMaker() != null);
+        $this->assertTrue(Event::get()->first()->EventMaker != null);
     }
     public function testGetLocation()
     {
-        $this->assertTrue(Event::whereNotNull('Location_id')->first()->Location() != null);
+        $this->assertTrue(Event::whereNotNull('Location_id')->first()->Location != null);
     }
     public function testGetLocationNull()
     {
-        $this->assertTrue(Event::whereNull('Location_id')->first()->Location() == null);
+        $this->assertTrue(Event::whereNull('Location_id')->first()->Location == null);
     }
     public function testImgPreview()
     {
@@ -66,7 +66,7 @@ class EventUnitTest extends TestCase
     {
         try {
             $correcte = false;
-            count(Event::get()->first()->Users());
+            count(Event::get()->first()->Users);
             $correcte=true;
         } finally {
             $this->assertTrue($correcte);
@@ -76,7 +76,7 @@ class EventUnitTest extends TestCase
     {
         try {
             $correcte = false;
-            count(Event::get()->first()->Likes());
+            count(Event::get()->first()->Likes);
             $correcte=true;
         }finally {
             $this->assertTrue($correcte);
@@ -86,7 +86,7 @@ class EventUnitTest extends TestCase
     {
         try {
             $correcte = false;
-            count(Event::get()->first()->Messages());
+            count(Event::get()->first()->Messages);
             $correcte=true;
         } finally {
             $this->assertTrue($correcte);
@@ -96,7 +96,7 @@ class EventUnitTest extends TestCase
     {
         try {
             $correcte = false;
-            count(Event::get()->first()->AssistanceUserList());
+            count(Event::get()->first()->AssistanceUserList);
             $correcte=true;
         } finally {
             $this->assertTrue($correcte);
@@ -106,7 +106,7 @@ class EventUnitTest extends TestCase
     {
         try {
             $correcte = false;
-            count(Event::get()->first()->Tags());
+            count(Event::get()->first()->Tags);
             $correcte=true;
         } finally {
             $this->assertTrue($correcte);
@@ -116,7 +116,7 @@ class EventUnitTest extends TestCase
     {
         try {
             $correcte = false;
-            count(Event::get()->first()->NotificationChangesList());
+            count(Event::get()->first()->NotificationChangesList);
             $correcte=true;
         }  finally {
             $this->assertTrue($correcte);

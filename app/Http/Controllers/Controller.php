@@ -6,7 +6,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
-use App\User;
+use App\EventMaker;
 
 class Controller extends BaseController
 {
@@ -14,7 +14,7 @@ class Controller extends BaseController
 
     public function test(){
        
-        return view('test')->with('user',User::find(3));
+        return view('test')->with('eventMaker',EventMaker::find(1));
     }
 
     function getSubDirectories($dir)
