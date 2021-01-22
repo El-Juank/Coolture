@@ -72,6 +72,12 @@ class Event extends Model
             $notification->save();
         }
     }
+    public function UserWantToAssist($user){
+        return Assistance::where('user_id',$user->id)->where('event_id',$this->id)->where('WantToAssist',true)->count()!=0;
+    }
+    public function UserAssisted($user){
+        return Assistance::where('user_id',$user->id)->where('event_id',$this->id)->where('Assisted',true)->count()!=0;
+    }
     function GetLike($user){
         return LikeEvent::where('user_id',$user->id)->where('event_id',$this->id)->first();
     }

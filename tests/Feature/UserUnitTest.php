@@ -28,7 +28,7 @@ class UserUnitTest extends TestCase
     }
     public function testGetVerifiedBy()
     {
-        $this->assertTrue(User::whereNotNull('VerifiedBy_id')->first()->VerifiedBy() != null);
+        $this->assertTrue(User::whereNotNull('VerifiedBy_id')->first()->VerifiedBy != null);
     }
     public function testGetAssistenceEventList()
     {

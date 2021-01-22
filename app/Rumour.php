@@ -65,7 +65,12 @@ class Rumour extends Model
         return LikeRumour::where('user_id',$user->id)->where('rumour_id',$this->id)->first();
     }
     public function HasLike($user){
-        return $this->GetLike($user)!=null;
+        $like=$this->GetLike($user);
+        return $like!=null && $like->Like;
+    }
+    public function HasTrust($user){
+        $like=$this->GetLike($user);
+        return $like!=null && $like->Trust;
     }
     public function SetLike($user){
         $like=$this->GetLike($user);
@@ -73,13 +78,46 @@ class Rumour extends Model
             $like=new LikeRumour();
             $like->event_id=$this->id;
             $like->user_id=$user->id;
+            $like->Like=true;
+            $like->save();
+        }else if(!$like->Like){
+            $like->Like=true;
             $like->save();
         }
     }
     public function UnsetLike($user){
         $like=$this->GetLike($user);
         if($like!=null){
+            if(!$like->Trust){
             $like->delete();
+            }else{
+                $like->Like=false;
+                $like->save();
+            }
+        }
+    }
+    public function SetTrust($user){
+        $like=$this->GetLike($user);
+        if($like==null){
+            $like=new LikeRumour();
+            $like->event_id=$this->id;
+            $like->user_id=$user->id;
+            $like->Trust=true;
+            $like->save();
+        }else if(!$like->Trust){
+            $like->Trust=true;
+            $like->save();
+        }
+    }
+    public function UnsetTrust($user){
+        $like=$this->GetLike($user);
+        if($like!=null){
+            if(!$like->Like){
+            $like->delete();
+            }else{
+                $like->Trust=false;
+                $like->save();
+            }
         }
     }
 }
