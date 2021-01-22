@@ -34,26 +34,37 @@ class Event extends Model
     }
     public function ImgEvent()
     {
-        return $this->belongsTo(File::class, 'ImgEvent_id');
+        if($this->ImgEvent_id!=null){
+        $img= $this->belongsTo(File::class, 'ImgEvent_id');
+        }else{
+            $img=File::ImgDefaultCover();
+        }
+        return $img;
     }
     public function ImgPreview()
     {
-        return $this->belongsTo(File::class, 'ImgPreview_id');
+        if($this->ImgEvent_id!=null){
+            $img= $this->belongsTo(File::class, 'ImgPreview_id');
+            }else{
+                $img=File::ImgDefaultCover();
+            }
+            return $img;
+        
     }
 
 
     public function Users()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsToMany(User::class,Assistance::class);
     }
 
     public function Likes()
     {
-        return $this->hasMany(LikeEvent::class);
+        return $this->belongsToMany(User::class,LikeEvent::class);
     }
     public function Messages()
     {
-        return $this->hasMany(MessageEvent::class);
+        return $this->hasMany(EventMessage::class);
     }
     public function NotificationChangeSeen($user){
         $notification=NotificationChangeEvent::where('event_id',$this->id)->where('user_id',$user->id)->first();
@@ -90,7 +101,7 @@ class Event extends Model
 
     public function Tags()
     {
-        return $this->belongsToMany(TagEvent::class, EventTag::class);
+        return $this->belongsToMany(Tag::class, TagEvent::class);
     }
 
     public function NotificationChangesList()

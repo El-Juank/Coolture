@@ -39,7 +39,8 @@ class EventUnitTest extends TestCase
     {
         try {
             $correcte = false;
-            $correcte = Event::whereNull('ImgPreview_id')->first()->ImgPreview() == null;
+            $event=Event::whereNull('ImgPreview_id')->first();
+            $correcte = $event->ImgPreview_id == null && $event->ImgPreview()!=null;
         } finally {
             $this->assertTrue($correcte);
         }
@@ -57,7 +58,8 @@ class EventUnitTest extends TestCase
     {
         try {
             $correcte = false;
-            $correcte = Event::whereNull('ImgEvent_id')->first()->ImgEvent() == null;
+            $event=Event::whereNull('ImgEvent_id')->first();
+            $correcte = $event->ImgEvent_id == null && $event->ImgEvent()!=null;
         }finally {
             $this->assertTrue($correcte);
         }
@@ -92,6 +94,7 @@ class EventUnitTest extends TestCase
             $this->assertTrue($correcte);
         }
     }
+
     public function testGetAssistanceUserList()
     {
         try {

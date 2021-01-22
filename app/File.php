@@ -14,7 +14,7 @@ class File extends Model
         return $this->belongsTo(Path::class);
     }
     public function Url(){
-        $path=$this->Path();
+        $path=$this->Path;
         return $path->Url.'\\'.$this->Name.'.'.$this->Format;
     }
     public function Purgue(){

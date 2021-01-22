@@ -10,6 +10,8 @@ class Rumour extends Model
 {
     use Translatable;
     use SoftDeletes;
+    const MIN_TRUST=0;
+    const MAX_TRUST=100;
 
     public $translatedAttributes = ['Title', 'Description'];
 

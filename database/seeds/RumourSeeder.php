@@ -13,8 +13,7 @@ class RumourSeeder extends Seeder
      *
      * @return void
      */
-    const TRUST_MIN = 0;
-    const TRUST_MAX = 10;
+
 
     public function run()
     {
@@ -32,7 +31,7 @@ class RumourSeeder extends Seeder
                 $rumour->user_id = $users[$faker->numberBetween(0, $totalUsers)]->id;
             }
             $rumour->IsVisible = $faker->boolean();
-            $rumour->OwnTrust = $faker->numberBetween(self::TRUST_MIN, self::TRUST_MAX);
+            $rumour->OwnTrust = $faker->numberBetween(Rumour::MIN_TRUST, Rumour::MAX_TRUST);
 
             $title = $faker->sentence(5);
             $desc = $faker->sentence(50);
