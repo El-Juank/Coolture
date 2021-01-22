@@ -51,6 +51,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Location::class, 'DefaultLocation_id');
     }
+    public function Drop(){
+        //canviem les dades personals per unes fake
+    }
     public function ImgProfile()
     {
         if($this->ImgProfile_id==null){
