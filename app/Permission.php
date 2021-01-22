@@ -16,7 +16,7 @@ class Permission extends Model
     }
     public function GrantedBy(){
     
-        if($this->user_id==null)
+        if($this->GrantedBy_id==null)
         {
             $user=User::CommunityUser();
         }else{

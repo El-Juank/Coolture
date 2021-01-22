@@ -15,11 +15,24 @@ class Category extends Model
 
     public $translatedAttributes=['Name'];
 
-    public function Image(){
-        return $this->belongsTo(File::class,'Img_id');
+    public function Icon()
+    {
+        if($this->ImgIcon_id==null){
+            $img=File::ImgDefaultNotFound();
+        }else{
+            $img=$this->belongsTo(File::class,'ImgIcon_id');
+        }
+        return $img; 
     }
-    public function Icon(){
-        return $this->belongsTo(File::class,'ImgIcon_id');
+    public function Image()
+    {
+        if($this->Img_id==null){
+            $img=File::ImgDefaultNotFound();
+        }else{
+            $img=$this->belongsTo(File::class,'Img_id');
+        }
+        return $img; 
+        
     }
     public static function Categories(){
        

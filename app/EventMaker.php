@@ -42,13 +42,24 @@ class EventMaker extends Model
     public function ComunityManage(){
         return $this->user_id==null;
     }
-    public function ImgCover()
-    {
-        return $this->belongsTo(File::class, 'ImgCover_id');
-    }
     public function ImgProfile()
     {
-        return $this->belongsTo(File::class, 'ImgProfile_id');
+        if($this->ImgProfile_id==null){
+            $img=File::ImgDefaultProfile();
+        }else{
+            $img=$this->belongsTo(File::class, 'ImgProfile_id');
+        }
+        return $img; 
+    }
+    public function ImgCover()
+    {
+        if($this->ImgCover_id==null){
+            $img=File::ImgDefaultCover();
+        }else{
+            $img=$this->belongsTo(File::class, 'ImgCover_id');
+        }
+        return $img; 
+        
     }
 
     public function Followers(){

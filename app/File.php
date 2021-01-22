@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class File extends Model
 {
+    const IMG_PROFILE=3;
+    const IMG_COVER=1;
+    const IMG_NOTFOUND=2;
+
     public function Path(){
         return $this->belongsTo(Path::class);
     }
@@ -46,5 +50,14 @@ class File extends Model
                 $file->Purgue();
             }
         }
+    }
+    public static function ImgDefaultProfile(){
+        return File::find(self::IMG_PROFILE);
+    }
+    public static function ImgDefaultCover(){
+        return File::find(self::IMG_COVER);
+    }
+    public static function ImgDefaultNotFound(){
+        return File::find(self::IMG_NOTFOUND);
     }
 }
