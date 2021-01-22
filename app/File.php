@@ -39,12 +39,12 @@ class File extends Model
                     $esPotEsborrar=Event::where('ImgEvent_id',$file->id)->orWhere('ImgPreview_id',$file->id)->count()==0;
                     if(!$esPotEsborrar){
                         $esPotEsborrar=EventMaker::where('ImgProfile_id',$file->id)->orWhere('ImgCover_id',$file->id)->count()==0;
-         
+
                     }
                 }
 
             }
-            
+
             //per fer
             if($esPotEsborrar){
                 $file->Purgue();

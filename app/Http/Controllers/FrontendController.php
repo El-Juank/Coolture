@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\EventMaker;
 use App\EventMessage;
 use App\EventTranslation;
 use App\LikeEvent;
@@ -168,6 +169,29 @@ class FrontendController extends Controller
         $rumourmessage->save();
 
         return redirect("/rumours/{$rumourmessage->Rumour_id}");
+    }
+
+
+    //EventMaker (Pàgina detall d'aquell eventMaker amb els seus Events i Rumors)
+    public function eventmaker($id)
+    {
+        $eventmaker = EventMaker::find($id);
+        return view("frontend.eventmaker_detall")
+            ->with('eventmaker', $eventmaker);
+    }
+
+    public function follow($id){
+        $eventmaker = EventMaker::find($id);
+        $eventmaker->Follow(Auth::user());
+
+        return redirect("/eventmakers/{$eventmaker->id}");
+    }
+
+    public function unfollow($id){
+        $eventmaker = EventMaker::find($id);
+        $eventmaker->UnFollow(Auth::user());
+
+        return redirect("/eventmakers/{$eventmaker->id}");
     }
 
     //Controlador para la página "searchResult"

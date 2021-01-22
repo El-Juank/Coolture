@@ -42,18 +42,21 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::get('categories/{category}', 'FrontendController@category')->name('category');
 
     //Events
-    Route::get('events', 'FrontendController@events')->name('events');
+    //Route::get('events', 'FrontendController@events')->name('events');
     Route::get('events/{event}', 'FrontendController@event')->name('event');
 
 
-
     //Rumors (els que poden posar els usuaris)
-    Route::get('rumours', 'FrontendController@rumours')->name('rumours');
+    // Route::get('rumours', 'FrontendController@rumours')->name('rumours');
     Route::get('rumours/{rumour}', 'FrontendController@rumour')->name('rumour');
 
     //Buscador
     //Route::get('search', 'FrontendController@search')->name('search');
     Route::get('search/search_result', 'FrontendController@searchResult')->name('search_result');
+
+    //EventMaker (pàg artista)
+    // Route::get('eventmakers', 'FrontendController@eventmakers')->name('eventmakers');
+    Route::get('eventmakers/{eventmaker}', 'FrontendController@eventmaker')->name('eventmaker');
 
 
     // ------------ RELACIONADES AMB FUNCIONALITAT LOGIN------------ //
@@ -86,6 +89,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
         //Ruta per fer posts de missatges de RUMORS (només usuaris logguejats):
         Route::post('rumours/{rumour}/rumourmessage', 'FrontendController@rumourmessage')->name('rumourmessage');
+
+        //Ruta del botó FOLLOW:
+        Route::post('eventmakers/{eventmaker}/follow', 'FrontendController@follow')->name('follow');
+        //Ruta del botó UNFOLLOW:
+        Route::post('eventmakers/{eventmaker}/unfollow', 'FrontendController@unfollow')->name('unfollow');
 
 
     });
