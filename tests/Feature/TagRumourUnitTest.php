@@ -11,9 +11,9 @@ use App\TagRumour;
 class TagRumourUnitTest extends TestCase
 {
     public function testGetRumour() {
-        $this->assertTrue(TagRumour::get()->first()->Rumour()!=null);
+        $this->assertTrue(TagRumour::get()->first()->Rumour!=null);
     }
     public function testGetTag(){
-        $this->assertTrue(TagRumour::get()->first()->Tag()!=null);
+        $this->assertTrue(TagRumour::get()->first()->Tag!=null);
     }
 }

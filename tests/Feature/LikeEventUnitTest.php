@@ -11,9 +11,9 @@ use App\LikeEvent;
 class LikeEventUnitTest extends TestCase
 {
     public function testGetUser(){
-        $this->assertTrue(LikeEvent::get()->first()->User()!=null);
+        $this->assertTrue(LikeEvent::get()->first()->User!=null);
     }
     public function testGetEvent(){
-        $this->assertTrue(LikeEvent::get()->first()->Event()!=null);
+        $this->assertTrue(LikeEvent::get()->first()->Event!=null);
     }
 }

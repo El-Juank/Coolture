@@ -11,9 +11,9 @@ use App\NotificationChangeEventMaker;
 class NotificationChangeEventMakerUnitTest extends TestCase
 {
     public function testGetUser() {
-        $this->assertTrue(NotificationChangeEventMaker::get()->first()->User()!=null);
+        $this->assertTrue(NotificationChangeEventMaker::get()->first()->User!=null);
     }
     public function testGetEventMaker(){
-        $this->assertTrue(NotificationChangeEventMaker::get()->first()->EventMaker()!=null);
+        $this->assertTrue(NotificationChangeEventMaker::get()->first()->EventMaker!=null);
     }
 }

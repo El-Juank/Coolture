@@ -11,9 +11,9 @@ use App\NotificationChangeEvent;
 class NotificationChangeEventUnitTest extends TestCase
 {
     public function testGetUser() {
-        $this->assertTrue(NotificationChangeEvent::get()->first()->User()!=null);
+        $this->assertTrue(NotificationChangeEvent::get()->first()->User!=null);
     }
     public function testGetEvent(){
-        $this->assertTrue(NotificationChangeEvent::get()->first()->Event()!=null);
+        $this->assertTrue(NotificationChangeEvent::get()->first()->Event!=null);
     }
 }

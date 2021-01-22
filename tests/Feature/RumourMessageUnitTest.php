@@ -43,7 +43,7 @@ class RumourMessageUnitTest extends TestCase
     public function testGetRumour(){
         try{
             $correcte=false;
-            $correcte=RumourMessage::get()->first()->Rumour()!=null;
+            $correcte=RumourMessage::get()->first()->Rumour!=null;
 
         }finally{
             $this->assertTrue($correcte);

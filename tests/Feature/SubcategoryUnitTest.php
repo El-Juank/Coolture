@@ -11,9 +11,9 @@ use Tests\TestCase;
 class SubcategoryUnitTest extends TestCase
 {
     public function testGetCategory(){
-        $this->assertTrue(Subcategory::whereNotNull('Category_id')->first()->Category()!=null);
+        $this->assertTrue(Subcategory::whereNotNull('Category_id')->first()->Category!=null);
     }
     public function testGetEvenMaker(){
-        $this->assertTrue(Subcategory::whereNotNull('Event_Maker_id')->first()->EventMaker()!=null);
+        $this->assertTrue(Subcategory::whereNotNull('Event_Maker_id')->first()->EventMaker!=null);
     }
 }

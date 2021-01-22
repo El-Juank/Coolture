@@ -23,13 +23,15 @@ class RumourMessageSeeder extends Seeder
         for ($i = 0, $f = count($rumours); $i < $f; $i++) {
             $rumour = $rumours[$i];
             if ($faker->boolean() || $faker->boolean()) {
-                for ($i = 0, $f = $faker->numberBetween(0, $totalUsers); $i <= $f; $i++) {
+                for ($i = 0, $f = $faker->numberBetween(0, $totalUsers); $i <= $f && $i<self::MAX; $i++) {
 
                     $user =$users[$faker->numberBetween(0, $totalUsers)];
 
                     for ($j = 0, $jF = $faker->numberBetween(0, self::MAX); $j < $jF; $j++) {
                         $rumourMessage = new RumourMessage();
+                        if ($faker->boolean() || $faker->boolean()) {
                         $rumourMessage->user_id = $user->id;
+                        }
                         $rumourMessage->rumour_id = $rumour->id;
                         $message = $faker->sentence(10);
                         $rumourMessage->{'Message:ca'} = 'CA_' . $message . '_CA';

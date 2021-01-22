@@ -15,20 +15,24 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        $faker= Faker\Factory::create();
+        $faker = Faker\Factory::create();
 
-        $users=User::get();
-        $roles=Role::get();
-        $totalUsers=count($users)-1;
-        $totalRols=count($roles)-1;
-        for($i=0;$i<=$totalUsers;$i++){
-            for($j=0;$j<=$totalRols;$j++){
-                
-                if($faker->boolean()){
-                    $permission=new Permission();
-                    $permission->GrantedBy_id=$users[$faker->numberBetween(0,$totalUsers)]->id;
-                    $permission->role_id=$roles[$j]->id;
-                    $permission->user_id=$users[$i]->id;
+        $users = User::get();
+        $roles = Role::get();
+        $totalUsers = count($users) - 1;
+        $totalRols = count($roles) - 1;
+        for ($i = 0; $i <= $totalUsers; $i++) {
+            for ($j = 0; $j <= $totalRols; $j++) {
+
+                if ($faker->boolean()) {
+                    $permission = new Permission();
+                    if ($faker->boolean() || $faker->boolean()) {
+                        $permission->GrantedBy_id = $users[$faker->numberBetween(0, $totalUsers)]->id;
+                    }
+                    $permission->role_id = $roles[$j]->id;
+
+                    $permission->user_id = $users[$i]->id;
+
                     $permission->save();
                 }
             }

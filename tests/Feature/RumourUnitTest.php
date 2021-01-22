@@ -14,7 +14,7 @@ class RumourUnitTest extends TestCase
         $this->assertTrue(Rumour::whereNotNull('user_id')->first()->User()!=null);
     }
     public function testGetEvenMaker(){
-        $this->assertTrue(Rumour::whereNotNull('Event_Maker_id')->first()->EventMaker()!=null);
+        $this->assertTrue(Rumour::whereNotNull('Event_Maker_id')->first()->EventMaker!=null);
     }
     public function testGetUrlOfficialDenied(){
         $this->assertTrue(Rumour::whereNotNull('urlOfficialDenied_id')->first()->UrlOfficialDenied()!=null);

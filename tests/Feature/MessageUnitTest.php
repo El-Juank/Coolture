@@ -11,10 +11,10 @@ use App\Message;
 class MessageUnitTest extends TestCase
 {
     public function testGetFrom(){
-        $this->assertTrue(Message::get()->first()->From()!=null);
+        $this->assertTrue(Message::get()->first()->From!=null);
     }
     public function testGetTo(){
-        $this->assertTrue(Message::get()->first()->To()!=null);
+        $this->assertTrue(Message::get()->first()->To!=null);
     }
     public function testVisibilityTrue(){
         $this->assertTrue(Message::where('Visibility',true)->first()->Visibility);
