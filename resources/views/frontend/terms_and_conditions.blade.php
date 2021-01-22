@@ -972,4 +972,11 @@
             These terms are governed by Spanish law. The arts agree to submit, at their choice for the resolution of
             conflicts and expressly waiving any other jurisdiction, to the competent courts. </p>
     </div>
+
+    <script type="text/javascript">
+        setTimeout(function() {
+            $("#header").addClass("header-fixed");
+        }, 1);
+
+    </script>
 @endsection

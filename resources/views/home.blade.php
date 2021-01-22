@@ -48,7 +48,8 @@
                                             <tr>
                                                 <td>{{ $event->created_at }}</td>
                                                 <td>{{ $event->Title }}</td>
-                                                <!--<td>{{ $event->EventMaker->Name }}</td>-->
+                                                {{--<td>{{ $event->EventMaker->Name }}</td>
+                                                --}}
 
                                                 <td>
                                                     <a href="{{ route('events.edit', ['event' => $event->id]) }}"
@@ -93,7 +94,8 @@
                                             <tr>
                                                 <td>{{ $rumour->created_at }}</td>
                                                 <td>{{ $rumour->Title }}</td>
-                                                <!--<td>{{ $rumour->EventMaker->Name }}</td>-->
+                                                {{--<td>{{ $rumour->EventMaker->Name }}</td>
+                                                --}}
 
                                                 <td>
                                                     FUNCIONALITATS NO OPERATIVES ENCARA
