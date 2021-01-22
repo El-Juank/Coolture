@@ -13,10 +13,10 @@ class CreateEventMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('EventMessages', function (Blueprint $table) {
+        Schema::create('eventmessages', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('Event_id')->references('id')->on('Events')->onDelete('cascade');
+            $table->foreignId('event_id')->references('id')->on('events')->onDelete('cascade');
             $table->foreignId('user_id')->nullable()->references('id')->on('users')->onDelete('set null');
 
 
@@ -26,9 +26,9 @@ class CreateEventMessagesTable extends Migration
             $table->timestamps();
             
         });
-        Schema::create('EventMessage_translations', function (Blueprint $table) {
+        Schema::create('eventmessage_translations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('Event_Message_id')->references('id')->on('EventMessages')->onDelete('cascade');
+            $table->foreignId('event_message_id')->references('id')->on('eventmessages')->onDelete('cascade');
         
             $table->string('Message',750);
             $table->string('locale')->index();

@@ -13,9 +13,9 @@ class CreateRumourMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('RumourMessages', function (Blueprint $table) {
+        Schema::create('rumourmessages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('Rumour_id')->references('id')->on('Rumours')->onDelete('cascade');
+            $table->foreignId('rumour_id')->references('id')->on('rumours')->onDelete('cascade');
             $table->foreignId('user_id')->nullable()->references('id')->on('users')->onDelete('set null');
    
  
@@ -24,9 +24,9 @@ class CreateRumourMessagesTable extends Migration
 
             $table->timestamps();
         });
-        Schema::create('RumourMessage_translations', function (Blueprint $table) {
+        Schema::create('rumourmessage_translations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('Rumour_Message_id')->references('id')->on('RumourMessages')->onDelete('cascade');
+            $table->foreignId('rumour_message_id')->references('id')->on('rumourmessages')->onDelete('cascade');
         
             $table->string('Message',750);
             $table->string('locale')->index();
@@ -41,8 +41,8 @@ class CreateRumourMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('RumourMessage_translations');
-        Schema::dropIfExists('RumourMessages');
+        Schema::dropIfExists('rumourmessage_translations');
+        Schema::dropIfExists('rumourmessages');
 
     }
 }

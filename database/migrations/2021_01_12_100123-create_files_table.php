@@ -14,13 +14,13 @@ class FilesTable extends Migration
     const UNIQUE_RULE="unique_file_path_name_format";
     public function up()
     {
-        Schema::create('Files', function (Blueprint $table) {
+        Schema::create('files', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('Path_id')->references('id')->on('Paths')->onDelete('cascade');//aixi no repeteixo el path fins arribar al fitxer
+            $table->foreignId('path_id')->references('id')->on('paths')->onDelete('cascade');//aixi no repeteixo el path fins arribar al fitxer
             $table->string('Name',50);
             $table->string('Format',10);
             
-            $table->unique(['Path_id','Name','Format'],self::UNIQUE_RULE);
+            $table->unique(['path_id','Name','Format'],self::UNIQUE_RULE);
 
             $table->timestamps();
         });

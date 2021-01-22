@@ -13,16 +13,16 @@ class CreateLikesRumourTable extends Migration
      */
     public function up()
     {
-        Schema::create('LikesRumour', function (Blueprint $table) {
+        Schema::create('likesrumour', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('Rumour_id')->references('id')->on('Rumours')->onDelete('cascade');
+            $table->foreignId('rumour_id')->references('id')->on('rumours')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->boolean('Like');
             $table->boolean('Trust');
             
-            $table->unique(['Rumour_id','user_id']);
+            $table->unique(['rumour_id','user_id']);
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ class CreateLikesRumourTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('LikesRumour');
+        Schema::dropIfExists('likesrumour');
     }
 }

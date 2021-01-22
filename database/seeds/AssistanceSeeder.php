@@ -24,7 +24,7 @@ class AssistanceSeeder extends Seeder
 
                 $assistance = new Assistance();
                 $assistance->user_id = $users[$u]->id;
-                $assistance->Event_id = $events[$e]->id;
+                $assistance->event_id = $events[$e]->id;
                 $assistance->WantToAssist = $faker->boolean();
                 $assistance->Assisted = $faker->boolean();
 

@@ -13,13 +13,13 @@ class CreateRangesTable extends Migration
      */
     public function up()
     {
-        Schema::create('Ranges', function (Blueprint $table) {
+        Schema::create('ranges', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('Location_id')->references('id')->on('Locations')->onDelete('cascade');
-            $table->foreignId('Event_id')->references('id')->on('Events')->onDelete('cascade');
+            $table->foreignId('location_id')->references('id')->on('locations')->onDelete('cascade');
+            $table->foreignId('event_id')->references('id')->on('events')->onDelete('cascade');
             $table->decimal('Range',10,2);
-            $table->unique(['Location_id','Event_id']);
+            $table->unique(['location_id','event_id']);
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateRangesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Ranges');
+        Schema::dropIfExists('ranges');
     }
 }

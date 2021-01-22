@@ -24,7 +24,7 @@ class LikeEventMessageSeeder extends Seeder
                 if($faker->boolean()){
                     $like=new LikeEventMessage();
                     $like->user_id=$users[$j]->id;
-                    $like->Event_Message_id=$eventMessages[$i]->id;
+                    $like->event_message_id=$eventMessages[$i]->id;
                     $like->save();
                 }
             }

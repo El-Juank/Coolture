@@ -13,13 +13,13 @@ class CreateSubcategoriesTable extends Migration
      */
     public function up()
     {//ja que un EventMaker pot tenir moltes subCategories doncs
-        Schema::create('Subcategories', function (Blueprint $table) {
+        Schema::create('subcategories', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('Category_id')->references('id')->on('Categories')->onDelete('cascade');
-            $table->foreignId('Event_Maker_id')->references('id')->on('EventMakers')->onDelete('cascade');
+            $table->foreignId('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreignId('event_maker_id')->references('id')->on('eventmakers')->onDelete('cascade');
 
-            $table->unique(['Category_id','Event_Maker_id']);
+            $table->unique(['category_id','event_maker_id']);
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateSubcategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Subcategories');
+        Schema::dropIfExists('subcategories');
     }
 }

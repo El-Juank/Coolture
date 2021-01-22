@@ -13,14 +13,14 @@ class CreatePermissionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('Permissions', function (Blueprint $table) {
+        Schema::create('permissions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('Role_id')->references('id')->on('Roles')->onDelete('cascade');
+            $table->foreignId('role_id')->references('id')->on('roles')->onDelete('cascade');
 
             $table->foreignId('GrantedBy_id')->nullable()->references('id')->on('users')->onDelete('set null');//qui li ha donat el rol
         
-            $table->unique(['user_id','Role_id']);
+            $table->unique(['user_id','role_id']);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -33,6 +33,6 @@ class CreatePermissionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Permissions');
+        Schema::dropIfExists('permissions');
     }
 }

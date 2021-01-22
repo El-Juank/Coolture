@@ -13,25 +13,25 @@ class EventMakersTable extends Migration
      */
     public function up()
     {
-        Schema::create('EventMakers', function (Blueprint $table) {
+        Schema::create('eventMakers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->references('id')->on('users')->onDelete('set null');//si es null vol dir que s'en cuida la comunitat
-            $table->foreignId('ImgProfile_id')->nullable()->references('id')->on('Files')->onDelete('set null');
-            $table->foreignId('ImgCover_id')->nullable()->references('id')->on('Files')->onDelete('set null');
+            $table->foreignId('ImgProfile_id')->nullable()->references('id')->on('files')->onDelete('set null');
+            $table->foreignId('ImgCover_id')->nullable()->references('id')->on('files')->onDelete('set null');
 
             $table->softDeletes();
             $table->timestamps();
         });
         Schema::create('EventMaker_translations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('Event_Maker_id')->references('id')->on('EventMakers')->onDelete('cascade');
+            $table->foreignId('event_maker_id')->references('id')->on('eventmakers')->onDelete('cascade');
 
             $table->string('Name',50);
             $table->string('Description',500)->nullable();
 
             $table->string('locale')->index();
 
-            $table->unique(['Event_Maker_id','locale']);
+            $table->unique(['event_maker_id','locale']);
             $table->softDeletes();
             $table->timestamps();
         });

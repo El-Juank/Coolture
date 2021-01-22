@@ -30,7 +30,7 @@ class RumourMessageSeeder extends Seeder
                     for ($j = 0, $jF = $faker->numberBetween(0, self::MAX); $j < $jF; $j++) {
                         $rumourMessage = new RumourMessage();
                         $rumourMessage->user_id = $user->id;
-                        $rumourMessage->Rumour_id = $rumour->id;
+                        $rumourMessage->rumour_id = $rumour->id;
                         $message = $faker->sentence(10);
                         $rumourMessage->{'Message:ca'} = 'CA_' . $message . '_CA';
                         if ($faker->boolean()) {

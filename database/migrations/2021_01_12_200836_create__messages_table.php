@@ -13,7 +13,7 @@ class CreateMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('Messages', function (Blueprint $table) {
+        Schema::create('messages', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('FromUser_id')->nullable()->references('id')->on('users')->onDelete('set null');
@@ -34,6 +34,6 @@ class CreateMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Messages');
+        Schema::dropIfExists('messages');
     }
 }

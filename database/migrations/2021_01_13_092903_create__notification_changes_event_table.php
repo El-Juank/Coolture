@@ -13,12 +13,12 @@ class CreateNotificationChangesEventTable extends Migration
      */
     public function up()
     {
-        Schema::create('NotificationChangesEvent', function (Blueprint $table) {
+        Schema::create('notificationchangesevent', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('Event_id')->references('id')->on('Events')->onDelete('cascade');
+            $table->foreignId('event_id')->references('id')->on('events')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             //el camp update es el que s'ha de mirar per saber si l'usuari l'ha vist
-            $table->unique(['user_id','Event_id']);
+            $table->unique(['user_id','event_id']);
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateNotificationChangesEventTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('NotificationChangesEvent');
+        Schema::dropIfExists('notificationchangesevent');
     }
 }

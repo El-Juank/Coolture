@@ -29,8 +29,8 @@ class TagEventSeeder extends Seeder
                 }while(array_key_exists($tag->id,$dic));
                 $dic[$tag->id]=null;
 
-                $eventTag->Tag_id=$tag->id;
-                $eventTag->Event_id=$event->id;
+                $eventTag->tag_id=$tag->id;
+                $eventTag->event_id=$event->id;
                 $eventTag->save();
 
 

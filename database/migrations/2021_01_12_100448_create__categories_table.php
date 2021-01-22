@@ -13,10 +13,10 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('Categories', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ImgIcon_id')->nullable()->references('id')->on('Files')->onDelete('set null');
-            $table->foreignId('Img_id')->nullable()->references('id')->on('Files')->onDelete('set null');
+            $table->foreignId('ImgIcon_id')->nullable()->references('id')->on('files')->onDelete('set null');
+            $table->foreignId('Img_id')->nullable()->references('id')->on('files')->onDelete('set null');
        
 
             $table->softDeletes();
@@ -25,12 +25,12 @@ class CreateCategoriesTable extends Migration
         Schema::create('Category_translations', function (Blueprint $table) {
             $table->id();
           
-            $table->foreignId('Category_id')->references('id')->on('Categories')->onDelete('cascade');
+            $table->foreignId('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string('Name',50);
 
             $table->string('locale')->index();
 
-            $table->unique(['Category_id','locale']);
+            $table->unique(['category_id','locale']);
             $table->softDeletes();
             $table->timestamps();
         });

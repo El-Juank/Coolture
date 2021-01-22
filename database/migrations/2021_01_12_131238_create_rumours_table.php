@@ -13,10 +13,10 @@ class CreateRumoursTable extends Migration
      */
     public function up()
     {
-        Schema::create('Rumours', function (Blueprint $table) {
+        Schema::create('rumours', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->references('Id')->on('users')->onDelete('set null');
-            $table->foreignId('Event_Maker_id')->nullable()->references('Id')->on('EventMakers')->onDelete('set null');
+            $table->foreignId('event_maker_id')->nullable()->references('Id')->on('eventmakers')->onDelete('set null');
       
             $table->boolean('IsVisible');
             $table->integer('OwnTrust');
@@ -27,7 +27,7 @@ class CreateRumoursTable extends Migration
         });
         Schema::create('Rumour_translations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('Rumour_id')->references('id')->on('Rumours')->onDelete('cascade');
+            $table->foreignId('rumour_id')->references('id')->on('rumours')->onDelete('cascade');
        
             $table->string('Title',150);
             $table->string('Description',750);

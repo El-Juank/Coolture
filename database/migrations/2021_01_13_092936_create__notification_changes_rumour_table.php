@@ -13,13 +13,13 @@ class CreateNotificationChangesRumourTable extends Migration
      */
     public function up()
     {
-        Schema::create('NotificationChangesRumour', function (Blueprint $table) {
+        Schema::create('notificationchangesrumour', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('Rumour_id')->references('id')->on('Rumours')->onDelete('cascade');
+            $table->foreignId('rumour_id')->references('id')->on('rumours')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             //last update is last user sight
-            $table->unique(['user_id','Rumour_id']);
+            $table->unique(['user_id','rumour_id']);
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateNotificationChangesRumourTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('NotificationChangesRumour');
+        Schema::dropIfExists('notificationchangesrumour');
     }
 }

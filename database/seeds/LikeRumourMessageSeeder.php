@@ -24,7 +24,7 @@ class LikeRumourMessageSeeder extends Seeder
                 if($faker->boolean()){
                     $like=new LikeRumourMessage();
                     $like->user_id=$users[$j]->id;
-                    $like->Rumour_Message_id=$rumourMessages[$i]->id;
+                    $like->rumour_message_id=$rumourMessages[$i]->id;
                     $like->save();
                 }
             }

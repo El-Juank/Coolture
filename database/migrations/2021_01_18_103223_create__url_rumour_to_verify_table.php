@@ -13,9 +13,9 @@ class CreateUrlRumourToVerifyTable extends Migration
      */
     public function up()
     {
-        Schema::create('UrlRumoursToVerify', function (Blueprint $table) {
+        Schema::create('urlrumourstoverify', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('Rumour_id')->references('id')->on('Rumours')->onDelete('cascade');
+            $table->foreignId('rumour_id')->references('id')->on('rumours')->onDelete('cascade');
             $table->foreignId('user_id')->nullable()->references('id')->on('users')->onDelete('set null');//si eliminen el compte que no elimini tot el que ha donat a la comunitat
             $table->string('Url',500);
             $table->boolean('ToConfirmed');
@@ -32,6 +32,6 @@ class CreateUrlRumourToVerifyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('UrlRumoursToVerify');
+        Schema::dropIfExists('urlrumourstoverify');
     }
 }

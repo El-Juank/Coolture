@@ -52,7 +52,7 @@ class EventMaker extends Model
     }
 
     public function Followers(){
-        return $this->hasManyThrough(User::class,UserRange::class);
+        return $this->belongsToMany(User::class,UserRange::class);
     }
     public function Events(){
         return $this->hasMany(Event::class);
@@ -67,15 +67,15 @@ class EventMaker extends Model
     }
     public function Subcategories()
     {
-        return $this->hasManyThrough(Category::class,Subcategory::class);
+        return $this->belongsToMany(Category::class,Subcategory::class);
     }
     public function NotificationChangesList()
     {
-        return $this->hasManyThrough(User::class, NotificationChangeEventMaker::class);
+        return $this->belongsToMany(User::class, NotificationChangeEventMaker::class);
     }
     public function Locations()
     {
-        return $this->hasManyThrough(Location::class, Event::class);
+        return $this->belongsToMany(Location::class, Event::class);
     }
 
     public function EventTags(){
@@ -116,6 +116,11 @@ class EventMaker extends Model
 
     }
 
-
+    public function NotificationChangeSeen($user){
+        $notification=NotificationChangeEventMaker::where('event_maker_id',$this->id)->where('user_id',$user->id)->first();
+        if($notification!=null){
+            $notification->save();
+        }
+    }
 
 }

@@ -29,8 +29,8 @@ class TagRumourSeeder extends Seeder
                 }while(array_key_exists($tag->id,$dic));
                 $dic[$tag->id]=null;
 
-                $rumourTag->Tag_id=$tag->id;
-                $rumourTag->Rumour_id=$rumour->id;
+                $rumourTag->tag_id=$tag->id;
+                $rumourTag->rumour_id=$rumour->id;
                 $rumourTag->save();
 
 

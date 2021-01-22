@@ -24,11 +24,11 @@ class UsersTable extends Migration
             $table->string('email')->unique();
   
 
-            $table->foreignId('Country_id')->nullable()->references('id')->on('Locations')->onDelete('set null');
-            $table->foreignId('DefaultLocation_id')->nullable()->references('id')->on('Locations')->onDelete('set null');
-            $table->foreignId('UserVerified_id')->nullable()->references('id')->on('Users');//qui l'ha verificat si es null es que no ho està
-            $table->foreignId('ImgProfile_id')->nullable()->references('id')->on('Files')->onDelete('set null');
-            $table->foreignId('ImgCover_id')->nullable()->references('id')->on('Files')->onDelete('set null');
+            $table->foreignId('Country_id')->nullable()->references('id')->on('locations')->onDelete('set null');
+            $table->foreignId('DefaultLocation_id')->nullable()->references('id')->on('locations')->onDelete('set null');
+            $table->foreignId('UserVerified_id')->nullable()->references('id')->on('users');//qui l'ha verificat si es null es que no ho està
+            $table->foreignId('ImgProfile_id')->nullable()->references('id')->on('files')->onDelete('set null');
+            $table->foreignId('ImgCover_id')->nullable()->references('id')->on('files')->onDelete('set null');
 
             $table->date('BirthDate')->nullable();
             $table->boolean('Gender')->nullable();//si es null es que es other

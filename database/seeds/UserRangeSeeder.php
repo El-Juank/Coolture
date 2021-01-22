@@ -29,7 +29,7 @@ class UserRangeSeeder extends Seeder
                     $eventMaker=$eventMakers[$faker->numberBetween(0,$totalEventMakers)];
                 }while(array_key_exists($eventMaker->id,$dic));
                 $dic[$eventMaker->id]=null;
-                $userRange->Event_Maker_id=$eventMaker->id;
+                $userRange->event_maker_id=$eventMaker->id;
                 $userRange->Range=$faker->randomFloat(2,1,1000000);
                 $userRange->save();
 

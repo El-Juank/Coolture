@@ -26,11 +26,11 @@ class Event extends Model
     }
     public function EventMaker()
     {
-        return $this->belongsTo(EventMaker::class, 'Event_Maker_id');
+        return $this->belongsTo(EventMaker::class);
     }
     public function Location()
     {
-        return $this->belongsTo(Location::class, 'Location_id');
+        return $this->belongsTo(Location::class);
     }
     public function ImgEvent()
     {
@@ -55,19 +55,40 @@ class Event extends Model
     {
         return $this->hasMany(MessageEvent::class);
     }
+    public function NotificationChangeSeen($user){
+        $notification=NotificationChangeEvent::where('event_id',$this->id)->where('user_id',$user->id)->first();
+        if($notification!=null){
+            $notification->save();
+        }
+    }
+    public function SetLike($user){
+        $like=LikeEvent::where('user_id',$user->id)->where('event_id',$this->id)->first();
+        if($like==null){
+            $like=new LikeEvent();
+            $like->event_id=$this->id;
+            $like->user_id=$user->id;
+            $like->save();
+        }
+    }
+    public function UnsetLike($user){
+        $like=LikeEvent::where('user_id',$user->id)->where('event_id',$this->id)->first();
+        if($like!=null){
+            $like->delete();
+        }
+    }
 
     public function AssistanceUserList()
     {
-        return $this->hasManyThrough(User::class, Assistance::class);
+        return $this->belongsToMany(User::class, Assistance::class);
     }
 
     public function Tags()
     {
-        return $this->hasManyThrough(TagEvent::class, EventTag::class);
+        return $this->belongsToMany(TagEvent::class, EventTag::class);
     }
 
     public function NotificationChangesList()
     {
-        return $this->hasManyThrough(User::class, NotificationChangeEvent::class);
+        return $this->belongsToMany(User::class, NotificationChangeEvent::class);
     }
 }

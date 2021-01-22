@@ -26,13 +26,13 @@ class SubcategorySeeder extends Seeder
             $dic=array();
             for($i=0,$f=$faker->numberBetween(self::MIN,$totalCategories);$i<$f;$i++){
                 $subcategory=new Subcategory();
-                $subcategory->Event_Maker_id=$eventMaker->id;
+                $subcategory->event_maker_id=$eventMaker->id;
                 do{
                 $category_id=$categories[$faker->numberBetween(0,$totalCategories)]->id;
 
                 }while(array_key_exists($category_id,$dic));
                 $dic[$category_id]=null;//afegeixo el valor per no tornar-ho a repetir
-                $subcategory->Category_id=$category_id;
+                $subcategory->category_id=$category_id;
                 $subcategory->save();
             }
         }

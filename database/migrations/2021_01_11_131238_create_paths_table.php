@@ -13,7 +13,7 @@ class CreatePathsTable extends Migration
      */
     public function up()
     {
-        Schema::create('Paths', function (Blueprint $table) {
+        Schema::create('paths', function (Blueprint $table) {
             $table->id();
             $table->string('Url',250)->unique();
             $table->timestamps();

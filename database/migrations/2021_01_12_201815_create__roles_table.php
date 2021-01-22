@@ -13,16 +13,16 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('Roles', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
             $table->integer('Priority');
 
             $table->softDeletes();
             $table->timestamps();
         });
-        Schema::create('Role_translations', function (Blueprint $table) {
+        Schema::create('role_translations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('Role_id')->references('id')->on('Roles')->onDelete('cascade');
+            $table->foreignId('role_id')->references('id')->on('roles')->onDelete('cascade');
 
             $table->string('Name',50);
             $table->string('locale')->index();
@@ -39,8 +39,8 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Role_translations');
-        Schema::dropIfExists('Roles');
+        Schema::dropIfExists('role_translations');
+        Schema::dropIfExists('roles');
  
     }
 }

@@ -13,12 +13,12 @@ class CreateTagsRumourTable extends Migration
      */
     public function up()
     {
-        Schema::create('TagsRumour', function (Blueprint $table) {
+        Schema::create('tagsrumour', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('Rumour_id')->references('id')->on('Rumours')->onDelete('cascade');
-            $table->foreignId('Tag_id')->references('id')->on('Tags')->onDelete('cascade');
-            $table->unique(['Rumour_id','Tag_id']);
+            $table->foreignId('rumour_id')->references('id')->on('rumours')->onDelete('cascade');
+            $table->foreignId('tag_id')->references('id')->on('tags')->onDelete('cascade');
+            $table->unique(['rumour_id','tag_id']);
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateTagsRumourTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('TagsRumour');
+        Schema::dropIfExists('tagsrumour');
     }
 }

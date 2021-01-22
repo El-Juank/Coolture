@@ -22,14 +22,12 @@ class NotificationChangeRumourSeeder extends Seeder
             if($faker->boolean() && $faker->boolean()){//posso dos per que sigui més dificil que es doni
                 //faig canvis
                 $rumours[$i]->{'Description:ca'}='canvi_'.$rumours[$i]->{'Description:ca'}.'_canvi';
-                $rumours[$i]->{'Description:es'}='canvi_'.$rumours[$i]->{'Description:es'}.'_cambio';
-                $rumours[$i]->{'Description:en'}='canvi_'.$rumours[$i]->{'Description:en'}.'_change';
-                $rumours[$i]->save();
+                 $rumours[$i]->save();
                 for($j=0;$j<$jF;$j++){
                     if($faker->boolean()){
                         $notificationChangeVista=new NotificationChangeRumour();
                         $notificationChangeVista->user_id=$users[$j]->id;
-                        $notificationChangeVista->Rumour_id=$rumours[$i]->id;
+                        $notificationChangeVista->rumour_id=$rumours[$i]->id;
                         $notificationChangeVista->save();
                     }
 

@@ -13,12 +13,12 @@ class CreatePreferencesTable extends Migration
      */
     public function up()
     {
-        Schema::create('Preferences', function (Blueprint $table) {
+        Schema::create('preferences', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->json('UserConfig');
 
-            $table->unique('User_id');
+            $table->unique('user_id');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreatePreferencesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Preferences');
+        Schema::dropIfExists('preferences');
     }
 }

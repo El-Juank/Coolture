@@ -38,19 +38,21 @@ class EventMakerSeeder extends Seeder
             if ($faker->boolean()||$faker->boolean()||$faker->boolean()) {
                 $eventMaker->ImgCover_id = $imgsCover[$faker->numberBetween(0, $totalImgCovers)]->id;
             }
+            
             $name = $faker->name();
             $desc = $faker->sentence(25);
+
             if ($faker->boolean()) {
                 $eventMaker->{'Name:es'} = $name . '_ES';
-                $eventMaker->{'Description:es'} = $desc . '_ES';
+                $eventMaker->{'Description:es'} = 'ES_'.$desc . '_ES';
             }
 
             $eventMaker->{'Name:ca'} = $name . '_CA';
-            $eventMaker->{'Description:ca'} = $desc . '_CA';
+            $eventMaker->{'Description:ca'} = 'CA_'.$desc . '_CA';
             
             if ($faker->boolean()) {
                 $eventMaker->{'Name:en'} = $name . '_EN';
-                $eventMaker->{'Description:en'} = $desc . '_EN';
+                $eventMaker->{'Description:en'} = 'EN_'.$desc . '_EN';
             }
 
            

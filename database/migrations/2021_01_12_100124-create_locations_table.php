@@ -13,7 +13,7 @@ class LocationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('Locations', function (Blueprint $table) {
+        Schema::create('locations', function (Blueprint $table) {
             $table->id();
             $table->decimal('Lat',7,4);
             $table->decimal('Lon',7,4);
@@ -23,7 +23,7 @@ class LocationsTable extends Migration
         });
         Schema::create('Location_translations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('Location_id')->references('id')->on('Locations')->onDelete('cascade');
+            $table->foreignId('location_id')->references('id')->on('locations')->onDelete('cascade');
             $table->string('Name',50);
             $table->string('locale')->index();
 

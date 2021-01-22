@@ -15,16 +15,16 @@ class CreateAssistanceListTable extends Migration
      */
     public function up()
     {
-        Schema::create('AssistanceList', function (Blueprint $table) {
+        Schema::create('assistancelist', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('Event_id')->references('id')->on('Events')->onDelete('cascade');
+            $table->foreignId('event_id')->references('id')->on('events')->onDelete('cascade');
 
             $table->boolean('WantToAssist')->default(false);
             $table->boolean('Assisted')->default(false);
             
-            $table->unique(['Event_id','User_id']);
+            $table->unique(['event_id','user_id']);
 
             $table->timestamps();
         });
@@ -37,6 +37,6 @@ class CreateAssistanceListTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('AssistanceList');
+        Schema::dropIfExists('assistancelist');
     }
 }

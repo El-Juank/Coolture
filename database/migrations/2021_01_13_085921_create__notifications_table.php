@@ -13,14 +13,14 @@ class CreateNotificationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('Notifications', function (Blueprint $table) {
+        Schema::create('notifications', function (Blueprint $table) {
             $table->id();
             $table->softDeletes();
             $table->timestamps();
         });
-        Schema::create('Notification_translations', function (Blueprint $table) {
+        Schema::create('notification_translations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('Notification_id')->references('id')->on('Notifications')->onDelete('cascade');
+            $table->foreignId('notification_id')->references('id')->on('notifications')->onDelete('cascade');
             $table->string('Message',500);
             $table->string('locale')->index();
 
@@ -36,8 +36,8 @@ class CreateNotificationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Notification_translations');
-        Schema::dropIfExists('Notifications');
+        Schema::dropIfExists('notification_translations');
+        Schema::dropIfExists('notifications');
        
     }
 }

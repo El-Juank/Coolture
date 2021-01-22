@@ -13,15 +13,15 @@ class CreateUserRangesTable extends Migration
      */
     public function up()
     {
-        Schema::create('UserRanges', function (Blueprint $table) {
+        Schema::create('userranges', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('Event_Maker_id')->references('id')->on('EventMakers')->onDelete('cascade');
+            $table->foreignId('event_maker_id')->references('id')->on('eventmakers')->onDelete('cascade');
 
             $table->decimal('Range',9,2)->default(1000);
 
-            $table->unique(['user_id','Event_Maker_id']);
+            $table->unique(['user_id','event_maker_id']);
 
             $table->timestamps();
         });
@@ -34,6 +34,6 @@ class CreateUserRangesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('UserRanges');
+        Schema::dropIfExists('userranges');
     }
 }

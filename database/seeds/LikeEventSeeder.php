@@ -23,7 +23,7 @@ class LikeEventSeeder extends Seeder
                 if($faker->boolean()){
                     $like=new LikeEvent();
                     $like->user_id=$users[$j]->id;
-                    $like->Event_id=$events[$i]->id;
+                    $like->event_id=$events[$i]->id;
                     $like->save();
                 }
             }

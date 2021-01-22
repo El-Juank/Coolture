@@ -30,7 +30,7 @@ class EventMessageSeeder extends Seeder
                     for ($j = 0, $jF = $faker->numberBetween(0, self::MAX); $j < $jF; $j++) {
                         $eventMessage = new EventMessage();
                         $eventMessage->user_id = $user->id;
-                        $eventMessage->Event_id=$event->id;
+                        $eventMessage->event_id=$event->id;
                         $message = $faker->sentence(5);
                         $eventMessage->{'Message:ca'} = 'CA_' . $message . '_CA';
                         if ($faker->boolean()) {

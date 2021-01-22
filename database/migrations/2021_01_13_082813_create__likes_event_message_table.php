@@ -13,13 +13,13 @@ class CreateLikesEventMessageTable extends Migration
      */
     public function up()
     {
-        Schema::create('LikesEventMessage', function (Blueprint $table) {
+        Schema::create('likeseventmessage', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('Event_Message_id')->references('id')->on('EventMessages')->onDelete('cascade');
+            $table->foreignId('event_message_id')->references('id')->on('eventmessages')->onDelete('cascade');
 
-            $table->unique(['user_id','Event_Message_id']);
+            $table->unique(['user_id','event_message_id']);
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateLikesEventMessageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('LikesEventMessage');
+        Schema::dropIfExists('likeseventmessage');
     }
 }

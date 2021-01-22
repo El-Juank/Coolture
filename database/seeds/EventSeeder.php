@@ -34,9 +34,9 @@ class EventSeeder extends Seeder
 
         for($i=0;$i<15;$i++){
             $event=new Event();
-            $event->Event_Maker_id=$eventMakers[$faker->numberBetween(0,$totalEventMakers)]->id;
+            $event->event_maker_id=$eventMakers[$faker->numberBetween(0,$totalEventMakers)]->id;
             $event->user_id=$users[$faker->numberBetween(0,$totalUsers)]->id;
-            $event->Location_id=$locations[$faker->numberBetween(0,$totalLocations)]->id;
+            $event->location_id=$locations[$faker->numberBetween(0,$totalLocations)]->id;
             $event->ImgEvent_id=$imgsEvents[$faker->numberBetween(0,$totalImgsEvent)]->id;
             $event->ImgPreview_id=$imgsPreview[$faker->numberBetween(0,$totalImgsPreview)]->id;
 

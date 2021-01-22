@@ -26,7 +26,7 @@ class FileSeeder extends Seeder
                     $file = new File();
 
                     $campsFile = explode('.', $files[$j]);
-                    $file->Path_id = $paths[$i]->id;
+                    $file->path_id = $paths[$i]->id;
                     $file->Name = $campsFile[0];
                     $file->Format = $campsFile[1];
                     $file->save();

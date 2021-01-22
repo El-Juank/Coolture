@@ -11,7 +11,7 @@ class User extends Authenticatable
 {
     use Notifiable;
     use Translatable;
-    public const COMUNITY_ID=1;
+    public const COMUNITY_ID = 1;
 
 
     public $translatedAttributes = ['CanDelete', 'Description', 'Visible'];
@@ -70,23 +70,22 @@ class User extends Authenticatable
 
     public function AssitanceEventList()
     {
-        return $this->hasManyThrough(Event::class,Assistance::class);
+        return $this->belongsToMany(Event::class, Assistance::class);
     }
     public function Events()
     {
-        return $this->hasMany(Events::class);
-
+        return $this->hasMany(Event::class);
     }
     public function UrlRumoursToVerify()
     {
         return $this->hasMany(UrlRumourToVerify::class);
-
     }
-    public function UrlRumoursPendentToVerify(){
-        $pendentToVerify=[];
-        foreach($this->UrlRumourToVerify() as $url){
-            if(!$url->IsVerified()){
-                array_push($pendentToVerify,$url);
+    public function UrlRumoursPendentToVerify()
+    {
+        $pendentToVerify = [];
+        foreach ($this->UrlRumourToVerify() as $url) {
+            if (!$url->IsVerified()) {
+                array_push($pendentToVerify, $url);
             }
         }
         return $pendentToVerify;
@@ -125,19 +124,19 @@ class User extends Authenticatable
     }
     public function EventMakers()
     {
-        return $this->hasManyThrow(EventMaker::class,UserRange::class);
+        return $this->belongsToMany(EventMaker::class, UserRange::class);
     }
     public function Permissions()
     {
         return $this->hasMany(Permission::class);
     }
     public function PermissionsGranted()
-    {//per probar
-        return $this->hasMany(Permission::class,'GrantedBy_id');
+    {
+        return $this->hasMany(Permission::class, 'GrantedBy_id');
     }
     public function Roles()
     {
-        return $this->hasMany(Role::class);
+        return $this->belongsToMany(Role::class, Permission::class);
     }
 
     public function IsAdmin()
@@ -169,7 +168,7 @@ class User extends Authenticatable
     //falta testing
     public function NotificationChangesEvent($onlyUnRead = true)
     {
-
+    
         return $this->FilterOnlyUnRead(NotificationChangeEvent::class, $onlyUnRead);
     }
     public function NotificationChangesEventMaker($onlyUnRead = true)
@@ -180,23 +179,26 @@ class User extends Authenticatable
     public function NotificationChangesRumour($onlyUnRead = true)
     {
 
-        return $this->FilterOnlyUnRead(NotificationChangeRumour::class, $onlyUnRead);
+        return $this->FilterOnlyUnRead( NotificationChangeRumour::class, $onlyUnRead);
     }
 
     //aixi serveix per totes les notificacions
     private function FilterOnlyUnRead($notificationsType, $onlyUnRead)
     {
-        $notifications = $this->hasMany($notificationsType);
-        if ($onlyUnRead) {
-            $toShow = array();
-            foreach ($notifications as $notification) {
-                if ($notification->UnRead) {
-                    $toShow += [$notification];
-                }
+        $notifications = $this->hasMany($notificationsType)->get();
+
+        $toShow = array();
+        
+        foreach ($notifications as $notification) {
+        
+            if (!$onlyUnRead || $notification->UnRead()) {      
+                   
+                array_push($toShow,$notification);
             }
-        } else {
-            $toShow = $notifications;
         }
+ 
+     
+
         return $toShow;
     }
 
@@ -205,33 +207,35 @@ class User extends Authenticatable
         $canEdit = $userAdmin->IsAdmin();
         if ($canEdit) {
             //un administrador no pot deixar ell mateix el càrrec ha de ser un altre qui ho faci
-            $canEdit =! ($roleId == Role::ADMIN && $userToDelete->IsAdmin() && $userAdmin->id==$userToDelete->id);
-
+            $canEdit = !($roleId == Role::ADMIN && $userToDelete->IsAdmin() && $userAdmin->id == $userToDelete->id);
         }
         return $canEdit;
     }
-    public static function DeletePermission($userAdmin, $userToDelete,$roleId){
-        $deleted=$userToDelete->Is($roleId) && self::CanEditPermission($userAdmin,$userToDelete,$roleId);
-        if($deleted){
-           Permission::where('User_id',$userToDelete->id)
-                     ->where('Role_id',$roleId)
-                     ->delete();
+    public static function DeletePermission($userAdmin, $userToDelete, $roleId)
+    {
+        $deleted = $userToDelete->Is($roleId) && self::CanEditPermission($userAdmin, $userToDelete, $roleId);
+        if ($deleted) {
+            Permission::where('User_id', $userToDelete->id)
+                ->where('Role_id', $roleId)
+                ->delete();
         }
         return $deleted;
     }
-    public static function GrantPermission($userAdmin, $userToGrant,$roleId){
-        $granted=!$userToGrant->Is($roleId) && self::CanEditPermission($userAdmin,$userToGrant,$roleId);
-        if($granted){
-           $permission= new Permission();
-           $permission->GrantedBy_id=$userAdmin->id;
-           $permission->User_id=$userToGrant->id;
-           $permission->Role_id=$roleId;
+    public static function GrantPermission($userAdmin, $userToGrant, $roleId)
+    {
+        $granted = !$userToGrant->Is($roleId) && self::CanEditPermission($userAdmin, $userToGrant, $roleId);
+        if ($granted) {
+            $permission = new Permission();
+            $permission->GrantedBy_id = $userAdmin->id;
+            $permission->User_id = $userToGrant->id;
+            $permission->Role_id = $roleId;
 
-           $permission->save();
+            $permission->save();
         }
         return $granted;
     }
-    public static function CommunityUser(){
+    public static function CommunityUser()
+    {
         return User::find(self::COMUNITY_ID);
     }
 }

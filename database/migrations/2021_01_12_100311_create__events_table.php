@@ -17,29 +17,29 @@ class CreateEventsTable extends Migration
             $table->id();
 
             $table->foreignId('user_id')->nullable()->references('id')->on('users')->onDelete('set null');; //qui el pot editar/ qui l'ha fet
-            $table->foreignId('Event_Maker_id')->references('id')->on('EventMakers')->onDelete('cascade');
-            $table->foreignId('Location_id')->nullable()->references('id')->on('Locations')->onDelete('set null');
-            $table->foreignId('ImgEvent_id')->nullable()->references('id')->on('Files')->onDelete('set null');
-            $table->foreignId('ImgPreview_id')->nullable()->references('id')->on('Files')->onDelete('set null');
+            $table->foreignId('event_maker_id')->references('id')->on('eventmakers')->onDelete('cascade');
+            $table->foreignId('location_id')->nullable()->references('id')->on('locations')->onDelete('set null');
+            $table->foreignId('ImgEvent_id')->nullable()->references('id')->on('files')->onDelete('set null');
+            $table->foreignId('ImgPreview_id')->nullable()->references('id')->on('files')->onDelete('set null');
 
             $table->date('InitDate')->nullable();
             $table->datetime('Duration')->nullable();
 
-            $table->boolean('Published'); //per si es vol fer poc a poc fins publicar-ho
+            $table->boolean('Published')->default(false); //per si es vol fer poc a poc fins publicar-ho
 
             $table->softDeletes(); //per evitar problemes ja que hi ha molt derrere i s'ha de poder revisar
             $table->timestamps();
         });
-        Schema::create('Event_translations', function (Blueprint $table) {
+        Schema::create('event_translations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('Event_id')->references('id')->on('Events')->onDelete('cascade');
+            $table->foreignId('event_id')->references('id')->on('events')->onDelete('cascade');
 
             $table->string('Title', 150);
             $table->string('Description', 750)->nullable();
 
             $table->string('locale')->index();
 
-            $table->unique(['Event_id', 'locale']);
+            $table->unique(['event_id', 'locale']);
             $table->softDeletes(); //per evitar problemes ja que hi ha molt derrere i s'ha de poder revisar
             $table->timestamps();
         });

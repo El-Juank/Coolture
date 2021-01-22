@@ -13,14 +13,14 @@ class CreateNotificationChangesEventMakersTable extends Migration
      */
     public function up()
     {
-        Schema::create('NotificationChangesEventMaker', function (Blueprint $table) {
+        Schema::create('notificationchangeseventmaker', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('Event_Maker_id')->references('id')->on('EventMakers')->onDelete('cascade');
+            $table->foreignId('event_maker_id')->references('id')->on('eventmakers')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
 
             //last update is last user sight
-            $table->unique(['user_id','Event_Maker_id']);
+            $table->unique(['user_id','event_maker_id']);
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreateNotificationChangesEventMakersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('NotificationChangesEventMaker');
+        Schema::dropIfExists('notificationchangeseventmaker');
     }
 }
