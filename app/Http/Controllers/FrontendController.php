@@ -187,7 +187,7 @@ class FrontendController extends Controller
         $eventmaker = EventMaker::find($id);
         $eventmaker->Follow(Auth::user());
 
-        return redirect("/eventmakers/{$eventmaker->id}");
+        return redirect()->back();
     }
 
     public function unfollow($id)
@@ -195,7 +195,7 @@ class FrontendController extends Controller
         $eventmaker = EventMaker::find($id);
         $eventmaker->UnFollow(Auth::user());
 
-        return redirect("/eventmakers/{$eventmaker->id}");
+        return redirect()->back();
     }
 
     //Controlador para la página "searchResult"
