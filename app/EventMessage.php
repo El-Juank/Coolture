@@ -30,6 +30,27 @@ class EventMessage extends Model
     public function IsComunityManaged(){
         return $this->user_id==null;
     }
+     function GetLike($user){
+        return LikeEventMessage::where('user_id',$user->id)->where('event_message_id',$this->id)->first();
+    }
+    public function HasLike($user){
+        return $this->GetLike($user)!=null;
+    }
+    public function SetLike($user){
+        $like=$this->GetLike($user);
+        if($like==null){
+            $like=new LikeEventMessage();
+            $like->event_id=$this->id;
+            $like->user_id=$user->id;
+            $like->save();
+        }
+    }
+    public function UnsetLike($user){
+        $like=$this->GetLike($user);
+        if($like!=null){
+            $like->delete();
+        }
+    }
     public function Event(){
         return $this->belongsTo(Event::class);
     }

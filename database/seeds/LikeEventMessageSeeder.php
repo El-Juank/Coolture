@@ -13,6 +13,7 @@ class LikeEventMessageSeeder extends Seeder
      *
      * @return void
      */
+    const MAX=10;
     public function run()
     {
         $faker= Faker\Factory::create();
@@ -20,7 +21,7 @@ class LikeEventMessageSeeder extends Seeder
         $users=User::get();
         
         for($i=0,$iF=count($eventMessages),$jF=count($users);$i<$iF;$i++){
-            for($j=0;$j<$jF;$j++){
+            for($j=0;$j<$jF&&$j<self::MAX;$j++){
                 if($faker->boolean()){
                     $like=new LikeEventMessage();
                     $like->user_id=$users[$j]->id;

@@ -59,8 +59,14 @@ class Rumour extends Model
             $notification->save();
         }
     }
+    function GetLike($user){
+        return LikeRumour::where('user_id',$user->id)->where('rumour_id',$this->id)->first();
+    }
+    public function HasLike($user){
+        return $this->GetLike($user)!=null;
+    }
     public function SetLike($user){
-        $like=LikeRumour::where('user_id',$user->id)->where('rumour_id',$this->id)->first();
+        $like=$this->GetLike($user);
         if($like==null){
             $like=new LikeRumour();
             $like->event_id=$this->id;
@@ -69,7 +75,7 @@ class Rumour extends Model
         }
     }
     public function UnsetLike($user){
-        $like=LikeRumour::where('user_id',$user->id)->where('rumour_id',$this->id)->first();
+        $like=$this->GetLike($user);
         if($like!=null){
             $like->delete();
         }

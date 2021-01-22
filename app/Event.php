@@ -61,8 +61,11 @@ class Event extends Model
             $notification->save();
         }
     }
+    function GetLike($user){
+        return LikeEvent::where('user_id',$user->id)->where('event_id',$this->id)->first();
+    }
     public function SetLike($user){
-        $like=LikeEvent::where('user_id',$user->id)->where('event_id',$this->id)->first();
+        $like=$this->GetLike($user);
         if($like==null){
             $like=new LikeEvent();
             $like->event_id=$this->id;
@@ -70,8 +73,11 @@ class Event extends Model
             $like->save();
         }
     }
+    public function HasLike($user){
+        return $this->GetLike($user)!=null;
+    }
     public function UnsetLike($user){
-        $like=LikeEvent::where('user_id',$user->id)->where('event_id',$this->id)->first();
+        $like=$this->GetLike($user);
         if($like!=null){
             $like->delete();
         }

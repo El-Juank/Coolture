@@ -13,6 +13,7 @@ class LikeRumourMessageSeeder extends Seeder
      *
      * @return void
      */
+    const MAX=10;
     public function run()
     {
         $faker= Faker\Factory::create();
@@ -20,7 +21,7 @@ class LikeRumourMessageSeeder extends Seeder
         $users=User::get();
         
         for($i=0,$iF=count($rumourMessages),$jF=count($users);$i<$iF;$i++){
-            for($j=0;$j<$jF;$j++){
+            for($j=0;$j<$jF&&$j<self::MAX;$j++){
                 if($faker->boolean()){
                     $like=new LikeRumourMessage();
                     $like->user_id=$users[$j]->id;
