@@ -16,7 +16,7 @@ class PathUnitTest extends TestCase
     }
     public function testGetFiles()
     {
-        $files=Path::get()->first()->Files();
+        $files=Path::get()->first()->Files;
        $this->assertTrue($files!=null&&count($files)!=null);//posso null per que provi la funció count
     }
 }

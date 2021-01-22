@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 use App\Rumour;
+use App\UrlRumourToVerify;
 
 class RumourUnitTest extends TestCase
 {
@@ -17,17 +18,17 @@ class RumourUnitTest extends TestCase
         $this->assertTrue(Rumour::whereNotNull('Event_Maker_id')->first()->EventMaker!=null);
     }
     public function testGetUrlOfficialDenied(){
-        $this->assertTrue(Rumour::whereNotNull('urlOfficialDenied_id')->first()->UrlOfficialDenied()!=null);
+        $this->assertTrue(UrlRumourToVerify::where('ToConfirmed',false)->whereNotNull('VerifiedBy_id')->first()->Rumour->UrlOfficialDenied()!=null);
     }
     public function testGetUrlOfficialConfirmed(){
-        $this->assertTrue(Rumour::whereNotNull('urlOfficialConfirmed_id')->first()->UrlOfficialConfirmed()!=null); 
+        $this->assertTrue(UrlRumourToVerify::where('ToConfirmed',true)->whereNotNull('VerifiedBy_id')->first()->Rumour->UrlOfficialConfirmed()!=null); 
     }
 
     public function testGetUrlOfficialDeniedNull(){
-        $this->assertTrue(Rumour::whereNull('urlOfficialDenied_id')->first()->UrlOfficialDenied()==null);
+        $this->assertTrue(UrlRumourToVerify::where('ToConfirmed',false)->whereNull('VerifiedBy_id')->first()->Rumour->UrlOfficialDenied()==null);
     }
     public function testGetUrlOfficialConfirmedNull(){
-        $this->assertTrue(Rumour::whereNull('urlOfficialConfirmed_id')->first()->UrlOfficialConfirmed()==null); 
+        $this->assertTrue(UrlRumourToVerify::where('ToConfirmed',true)->whereNull('VerifiedBy_id')->first()->Rumour->UrlOfficialConfirmed()==null); 
     }
 
 }
