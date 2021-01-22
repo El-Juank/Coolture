@@ -44,6 +44,8 @@ class DatabaseSeeder extends Seeder
         $this->call(NotificationChangeEventMakerSeeder::class);
         $this->call(NotificationChangeRumourSeeder::class);
 
+        $this->call(UrlRumourToVerifySeeder::class);
+
         //fins aqui
       // $this->call(PreferenceSeeder::class);//s'ha de mirar com fer-ho desde el front end
 
