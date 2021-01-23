@@ -19,10 +19,10 @@ class MessageSeeder extends Seeder
         $faker = Faker\Factory::create();
         $users=User::get();
         $totalUsers=count($users)-1;
-        for($i=0;$i<100;$i++){
+        for($i=0;$i<15;$i++){
             $from=$users[$faker->numberBetween(0,$totalUsers)]->id;
             $to=$users[$faker->numberBetween(0,$totalUsers)]->id;
-            for($j=0;$j<10;$j++){
+            for($j=0;$j<4;$j++){
                 $message=new Message();
                 $message->FromUser_id=$from;
                 $message->ToUser_id=$to;

@@ -62,7 +62,14 @@ return [
     //Traduccions formularis
     "form_name" => "Nom",
     "form_title" => "Títol",
+    "write_title" => "Escriu un títol *",
     "form_user" => "Usuari",
+    "visible" => "Visible?",
+    "veracity" => "Veracitat",
+    "rumour_form" => "Rumor *",
+    "rumour_placeholder" => "Escriu el rumor *",
+    "rumour_error" => "Si us plau, escriu el rumor.",
+    "post_rumour" => "Publica el rumor",
 
     //Traduccions pàgina "Home" (Dashboard)
     "dash_profile" => "Perfil",
@@ -162,7 +169,7 @@ return [
     "post_rules_list_item13" => "Relacionados o recuperados de desastres naturales, escenas de crimen, accidentes o tragedias.",
 
     //Traduccions pàgina "Publica un concert"
-    "post_concert_seo_title" => "Publica un concert",
+    "post_concert_title" => "Publica un rumor",
 
     //Traduccions pàgina "Política de privacitat"
     "privacy_policy_title" => "Política de privacitat",

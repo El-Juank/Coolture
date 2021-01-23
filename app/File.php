@@ -14,13 +14,13 @@ class File extends Model
         return $this->belongsTo(Path::class);
     }
     public function Url(){
-        $path=$this->Path();
+        $path=$this->Path;
         return $path->Url.'\\'.$this->Name.'.'.$this->Format;
     }
     public function Purgue(){
         //esborro del disc
         $root = "public/";
-        $path=$this->Path();
+        $path=$this->Path;
          //esborro el fitxer del disc dur
         unlink($root.$path->Url.'/'.$this->Name.'.'.$this->Format);
         //esborro el path del fitxer de la BD
@@ -34,7 +34,7 @@ class File extends Model
             //mirar que no s'utilitzi a cap lloc
             $esPotEsborrar=User::where('ImgProfile_id',$file->id)->orWhere('ImgCover_id',$file->id)->count()==0;
             if(!$esPotEsborrar){
-                $esPotEsborrar=Category::where('Image_id',$file->id)->count()==0;
+                $esPotEsborrar=Category::where('Img_id',$file->id)->orWhere('ImgIcon_id',$file->id)->count()==0;
                 if(!$esPotEsborrar){
                     $esPotEsborrar=Event::where('ImgEvent_id',$file->id)->orWhere('ImgPreview_id',$file->id)->count()==0;
                     if(!$esPotEsborrar){
@@ -44,8 +44,6 @@ class File extends Model
                 }
 
             }
-
-            //per fer
             if($esPotEsborrar){
                 $file->Purgue();
             }

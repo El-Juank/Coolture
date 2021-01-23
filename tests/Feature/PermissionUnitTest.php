@@ -10,12 +10,12 @@ use App\Permission;
 class PermissionUnitTest extends TestCase
 {
     public function testGetUser(){
-        $this->assertTrue(Permission::get()->first()->User()!=null);
+        $this->assertTrue(Permission::get()->first()->User!=null);
     }
     public function testGetGrantedBy(){
         $this->assertTrue(Permission::get()->first()->GrantedBy()!=null);
     }
     public function testGetRole(){
-        $this->assertTrue(Permission::get()->first()->Role()!=null);
+        $this->assertTrue(Permission::get()->first()->Role!=null);
     }
 }

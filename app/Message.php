@@ -7,18 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 class Message extends Model
 {
     public function From(){
-        $user= $this->belongsTo(User::class, 'FromUser_id');
-        if($user==null)
+       
+        if($this->From_id==null)
         {
             $user=User::CommunityUser();
+        }else{
+            $user= $this->belongsTo(User::class, 'FromUser_id');
         }
         return $user;
     }
     public function To(){
-        $user= $this->belongsTo(User::class, 'ToUser_id');
-        if($user==null)
+        
+        if($this->To_id==null)
         {
             $user=User::CommunityUser();
+        }else{
+            $user= $this->belongsTo(User::class, 'ToUser_id');
         }
         return $user;
     }

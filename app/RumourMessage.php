@@ -25,8 +25,14 @@ class RumourMessage extends Model
         self::where('CanDelete',true)->delete();//mirar que funcioni
       
     }
+    function GetLike($user){
+        return LikeRumourMessage::where('user_id',$user->id)->where('rumour_message_id',$this->id)->first();
+    }
+    public function HasLike($user){
+        return $this->GetLike($user)!=null;
+    }
     public function SetLike($user){
-        $like=LikeRumourMessage::where('user_id',$user->id)->where('rumour_message_id',$this->id)->first();
+        $like=$this->GetLike($user);
         if($like==null){
             $like=new LikeRumourMessage();
             $like->event_id=$this->id;
@@ -35,7 +41,7 @@ class RumourMessage extends Model
         }
     }
     public function UnsetLike($user){
-        $like=LikeRumourMessage::where('user_id',$user->id)->where('rumour_message_id',$this->id)->first();
+        $like=$this->GetLike($user);
         if($like!=null){
             $like->delete();
         }

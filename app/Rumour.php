@@ -10,6 +10,8 @@ class Rumour extends Model
 {
     use Translatable;
     use SoftDeletes;
+    const MIN_TRUST=0;
+    const MAX_TRUST=100;
 
     public $translatedAttributes = ['Title', 'Description'];
 
@@ -38,7 +40,8 @@ class Rumour extends Model
     }
      function UrlOfficial($isConfirmed){
         return UrlRumourToVerify::where('Rumour_id',$this->id)
-                                ->where('IsConfirmed',$isConfirmed)
+                                ->where('ToConfirmed',$isConfirmed)
+                                ->whereNotNull('VerifiedBy_id')
                                 ->first();
     }
     public function StillAlive()
@@ -59,19 +62,63 @@ class Rumour extends Model
             $notification->save();
         }
     }
+    function GetLike($user){
+        return LikeRumour::where('user_id',$user->id)->where('rumour_id',$this->id)->first();
+    }
+    public function HasLike($user){
+        $like=$this->GetLike($user);
+        return $like!=null && $like->Like;
+    }
+    public function HasTrust($user){
+        $like=$this->GetLike($user);
+        return $like!=null && $like->Trust;
+    }
     public function SetLike($user){
-        $like=LikeRumour::where('user_id',$user->id)->where('rumour_id',$this->id)->first();
+        $like=$this->GetLike($user);
         if($like==null){
             $like=new LikeRumour();
             $like->event_id=$this->id;
             $like->user_id=$user->id;
+            $like->Like=true;
+            $like->save();
+        }else if(!$like->Like){
+            $like->Like=true;
             $like->save();
         }
     }
     public function UnsetLike($user){
-        $like=LikeRumour::where('user_id',$user->id)->where('rumour_id',$this->id)->first();
+        $like=$this->GetLike($user);
         if($like!=null){
+            if(!$like->Trust){
             $like->delete();
+            }else{
+                $like->Like=false;
+                $like->save();
+            }
+        }
+    }
+    public function SetTrust($user){
+        $like=$this->GetLike($user);
+        if($like==null){
+            $like=new LikeRumour();
+            $like->event_id=$this->id;
+            $like->user_id=$user->id;
+            $like->Trust=true;
+            $like->save();
+        }else if(!$like->Trust){
+            $like->Trust=true;
+            $like->save();
+        }
+    }
+    public function UnsetTrust($user){
+        $like=$this->GetLike($user);
+        if($like!=null){
+            if(!$like->Like){
+            $like->delete();
+            }else{
+                $like->Trust=false;
+                $like->save();
+            }
         }
     }
 }

@@ -25,7 +25,7 @@ class EventMessageSeeder extends Seeder
         for ($k = 0, $kF = count($events); $k < $kF; $k++) {
             $event = $events[$k];
             if ($faker->boolean() || $faker->boolean()) {
-                for ($i = 0, $f = $faker->numberBetween(0, $totalUsers); $i <= $f; $i++) {
+                for ($i = 0, $f = $faker->numberBetween(0, $totalUsers); $i <= $f && $i<self::MAX; $i++) {
                     $user = $users[$faker->numberBetween(0, $totalUsers)];
                     for ($j = 0, $jF = $faker->numberBetween(0, self::MAX); $j < $jF; $j++) {
                         $eventMessage = new EventMessage();

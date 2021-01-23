@@ -11,9 +11,9 @@ use App\LikeRumourMessage;
 class LikeRumourMessageUnitTest extends TestCase
 {
     public function testGetUser(){
-        $this->assertTrue(LikeRumourMessage::get()->first()->User()!=null);
+        $this->assertTrue(LikeRumourMessage::get()->first()->User!=null);
     }
     public function testGetRumourMessage(){
-        $this->assertTrue(LikeRumourMessage::get()->first()->RumourMessage()!=null);
+        $this->assertTrue(LikeRumourMessage::get()->first()->RumourMessage!=null);
     }
 }

@@ -11,10 +11,10 @@ use App\Range;
 class RangeUnitTest extends TestCase
 {
     public function testGetEvent(){
-        $this->assertTrue(Range::get()->first()->Event()!=null);
+        $this->assertTrue(Range::get()->first()->Event!=null);
     }
     public function testGetLocation(){
-        $this->assertTrue(Range::get()->first()->Location()!=null);
+        $this->assertTrue(Range::get()->first()->Location!=null);
     }
     public function testGetRange(){
         $this->assertTrue(Range::get()->first()->Range>0);

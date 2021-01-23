@@ -32,7 +32,7 @@ class RangeSeeder extends Seeder
                     }while(array_key_exists($idPos,$dic));
                     $dic[$idPos]=null;
                     $range->location_id = $locations[$idPos]->id;
-                    $range->Range = $faker->randomFloat(2, 1, 1000000);
+                    $range->Range = $faker->randomFloat(2, 1, 10000);
                     $range->save();
                 }
             }

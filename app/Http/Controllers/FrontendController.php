@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Event;
 use App\EventMaker;
 use App\EventMessage;
@@ -57,7 +58,9 @@ class FrontendController extends Controller
 
     public function postConcert()
     {
-        return view('frontend.post_concert');
+        $categories = Category::get();
+        return view('frontend.post_concert')
+            ->with('categories', $categories);
     }
 
     public function postConcertRules()
@@ -103,9 +106,9 @@ class FrontendController extends Controller
         $likes = LikeEvent::where('Event_id', $id)->count();
 
         //Informació localització
-        $lat=Event::find($id)->Location->Lat;
-        $lon=Event::find($id)->Location->Lon;
-        $city = Http::get('https://eu1.locationiq.com/v1/reverse.php?key=pk.e51380d19bd89346317f3ab725a12aaf&lat='.$lat.'&lon='.$lon.'&format=json&zoom=10');
+        $lat = Event::find($id)->Location->Lat;
+        $lon = Event::find($id)->Location->Lon;
+        $city = Http::get('https://eu1.locationiq.com/v1/reverse.php?key=pk.e51380d19bd89346317f3ab725a12aaf&lat=' . $lat . '&lon=' . $lon . '&format=json&zoom=10');
 
         $city = json_decode($city);
 
@@ -115,7 +118,6 @@ class FrontendController extends Controller
             ->with('messages', $messages)
             ->with('likes', $likes)
             ->with('city', $city);
-
     }
 
     public function eventmessage(Request $request, $id)
@@ -152,7 +154,7 @@ class FrontendController extends Controller
         return view('frontend.rumour_detall')
             ->with('rumour', $rumour)
             ->with('messages', $messages)
-            ->with('likes',$likes);
+            ->with('likes', $likes);
     }
 
     public function rumourmessage(Request $request, $id)
@@ -180,18 +182,20 @@ class FrontendController extends Controller
             ->with('eventmaker', $eventmaker);
     }
 
-    public function follow($id){
+    public function follow($id)
+    {
         $eventmaker = EventMaker::find($id);
         $eventmaker->Follow(Auth::user());
 
-        return redirect("/eventmakers/{$eventmaker->id}");
+        return redirect()->back();
     }
 
-    public function unfollow($id){
+    public function unfollow($id)
+    {
         $eventmaker = EventMaker::find($id);
         $eventmaker->UnFollow(Auth::user());
 
-        return redirect("/eventmakers/{$eventmaker->id}");
+        return redirect()->back();
     }
 
     // LIKES Event:
@@ -221,5 +225,4 @@ class FrontendController extends Controller
         return view('frontend.search_result')
             ->with('results', $results);
     }
-
 }

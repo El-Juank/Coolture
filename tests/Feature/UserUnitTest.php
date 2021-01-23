@@ -7,16 +7,21 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 use App\User;
+use App\RumourMessage;
+use App\Permission;
+use App\NotificationChangeEvent;
+use App\NotificationChangeRumour;
+use App\NotificationChangeEventMaker;
 
 class UserUnitTest extends TestCase
 {
     public function testGetCountry()
     {
-        $this->assertTrue(User::whereNotNull('Country_id')->first()->Country() != null);
+        $this->assertTrue(User::whereNotNull('Country_id')->first()->Country != null);
     }
     public function testGetDefaultLocation()
     {
-        $this->assertTrue(User::whereNotNull('Default_Location_id')->first()->DefaultLocation() != null);
+        $this->assertTrue(User::whereNotNull('DefaultLocation_id')->first()->DefaultLocation != null);
     }
     public function testGetImgProfile()
     {
@@ -28,13 +33,13 @@ class UserUnitTest extends TestCase
     }
     public function testGetVerifiedBy()
     {
-        $this->assertTrue(User::whereNotNull('VerifiedBy_id')->first()->VerifiedBy() != null);
+        $this->assertTrue(User::whereNotNull('UserVerified_id')->first()->VerifiedBy != null);
     }
-    public function testGetAssistenceEventList()
+    public function testGetAssitanceEventList()
     {
         try {
             $correcte=false;
-            $correcte = count(User::get()->first()->AssistanceEventList()) != null;
+            $correcte = count(User::find(2)->AssitanceEventList) != null;
         } finally {
             $this->assertTrue($correcte);
         }
@@ -43,7 +48,7 @@ class UserUnitTest extends TestCase
     {
         try {
             $correcte=false;
-            $correcte = count(User::get()->first()->Events()) != null;
+            $correcte = count(User::find(2)->Events) != null;
         }finally {
             $this->assertTrue($correcte);
         }
@@ -52,7 +57,7 @@ class UserUnitTest extends TestCase
     {
         try {
             $correcte=false;
-            $correcte = count(User::get()->first()->UrlRumoursToVerify()) != null;
+            $correcte = count(User::find(2)->UrlRumoursToVerify) != null;
         } finally {
             $this->assertTrue($correcte);
         }
@@ -61,16 +66,25 @@ class UserUnitTest extends TestCase
     {
         try {
             $correcte=false;
-            $correcte = count(User::get()->first()->UrlRumoursPendentToVerify()) != null;
+            $correcte = count(User::find(2)->UrlRumoursPendentToVerify()) != null;
         }finally {
             $this->assertTrue($correcte);
         }
     }
-    public function testGetMessages()
+    public function testGetMessagesFrom()
     {
         try {
             $correcte=false;
-            $correcte = count(User::get()->first()->Messages()) != null;
+            $correcte = count(User::find(2)->MessagesFrom) != null;
+        } finally {
+            $this->assertTrue($correcte);
+        }
+    }
+    public function testGetMessagesTo()
+    {
+        try {
+            $correcte=false;
+            $correcte = count(User::find(2)->MessagesTo) != null;
         } finally {
             $this->assertTrue($correcte);
         }
@@ -79,7 +93,7 @@ class UserUnitTest extends TestCase
     {
         try {
             $correcte=false;
-            $correcte = count(User::get()->first()->RumourMessages()) != null;
+            $correcte = count(RumourMessage::find(2)->User->RumourMessages) != null;
         }finally {
             $this->assertTrue($correcte);
         }
@@ -88,7 +102,7 @@ class UserUnitTest extends TestCase
     {
         try {
             $correcte=false;
-            $correcte = count(User::get()->first()->EventMessages()) != null;
+            $correcte = count(User::find(2)->EventMessages) != null;
         }finally {
             $this->assertTrue($correcte);
         }
@@ -97,7 +111,7 @@ class UserUnitTest extends TestCase
     {
         try {
             $correcte=false;
-            $correcte = count(User::get()->first()->LikeEvents()) != null;
+            $correcte = count(User::find(2)->LikeEvents) != null;
         }finally {
             $this->assertTrue($correcte);
         }
@@ -106,7 +120,7 @@ class UserUnitTest extends TestCase
     {
         try {
             $correcte=false;
-            $correcte = count(User::get()->first()->LikeEventMessages()) != null;
+            $correcte = count(User::find(2)->LikeEventMessages) != null;
         }finally {
             $this->assertTrue($correcte);
         }
@@ -115,7 +129,7 @@ class UserUnitTest extends TestCase
     {
         try {
             $correcte=false;
-            $correcte = count(User::get()->first()->LikeRumours()) != null;
+            $correcte = count(User::find(2)->LikeRumours) != null;
         }finally {
             $this->assertTrue($correcte);
         }
@@ -124,7 +138,7 @@ class UserUnitTest extends TestCase
     {
         try {
             $correcte=false;
-            $correcte = count(User::get()->first()->LikeRumourMessages()) != null;
+            $correcte = count(User::find(2)->LikeRumourMessages) != null;
         } finally {
             $this->assertTrue($correcte);
         }
@@ -133,7 +147,7 @@ class UserUnitTest extends TestCase
     {
         try {
             $correcte=false;
-            $correcte = count(User::get()->first()->Ranges()) != null;
+            $correcte = count(User::find(2)->Ranges) != null;
         }finally {
             $this->assertTrue($correcte);
         }
@@ -142,7 +156,7 @@ class UserUnitTest extends TestCase
     {
         try {
             $correcte=false;
-            $correcte = count(User::get()->first()->EventMakers()) != null;
+            $correcte = count(User::find(2)->EventMakers) != null;
         }finally {
             $this->assertTrue($correcte);
         }
@@ -151,7 +165,7 @@ class UserUnitTest extends TestCase
     {
         try {
             $correcte=false;
-            $correcte = count(User::get()->first()->Permissions()) != null;
+            $correcte = count(User::find(2)->Permissions)!= null;
         } finally {
             $this->assertTrue($correcte);
         }
@@ -160,7 +174,7 @@ class UserUnitTest extends TestCase
     {
         try {
             $correcte=false;
-            $correcte = count(User::get()->first()->PermissionGranted()) != null;
+            $correcte = count(Permission::whereNotNull('GrantedBy_id')->first()->GrantedBy->PermissionsGranted) != null;
         }finally {
             $this->assertTrue($correcte);
         }
@@ -169,7 +183,7 @@ class UserUnitTest extends TestCase
     {
         try {
             $correcte=false;
-            $correcte = count(User::get()->first()->Roles()) != null;
+            $correcte = count(User::find(2)->Roles) != null;
         }finally {
             $this->assertTrue($correcte);
         }
@@ -178,7 +192,7 @@ class UserUnitTest extends TestCase
     {
         try {
             $correcte=false;
-            $correcte = count(User::get()->first()->NotificationChangesEvent()) != null;
+            $correcte = count(NotificationChangeEvent::find(3)->User->NotificationChangesEvent(false)) != null;
         }finally {
             $this->assertTrue($correcte);
         }
@@ -187,7 +201,7 @@ class UserUnitTest extends TestCase
     {
         try {
             $correcte=false;
-            $correcte = count(User::get()->first()->NotificationChangesEventMaker()) != null;
+            $correcte = count(NotificationChangeEventMaker::find(2)->User->NotificationChangesEventMaker(false)) != null;
         } finally {
             $this->assertTrue($correcte);
         }
@@ -196,7 +210,7 @@ class UserUnitTest extends TestCase
     {
         try {
             $correcte=false;
-            $correcte = count(User::get()->first()->NotificationChangesRumour()) != null;
+            $correcte = count(NotificationChangeRumour::find(2)->User->NotificationChangesRumour(false)) != null;
         }finally {
             $this->assertTrue($correcte);
         }

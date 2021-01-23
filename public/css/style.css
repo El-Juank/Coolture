@@ -84,7 +84,7 @@ h6 {
 
 .generic-container {
     margin-top: 25vh;
-    margin-bottom: 10vh;
+    margin-bottom: 15vh;
 }
 
 .v-center {
@@ -102,6 +102,15 @@ h6 {
 
 .page-wrap {
     min-height: 100vh;
+}
+
+.img-circle {
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 4px;
+    border-radius: 50%;
+    border-bottom-right-radius: 0px;
+    width: 150px;
 }
 
 /* Prelaoder */
@@ -858,6 +867,34 @@ h6 {
     font-size: 15px;
     margin-bottom: 10px;
 }
+
+/*--------------------------------------------------------------
+# Publicar rumor
+--------------------------------------------------------------*/
+
+/*** Custom checkboxes (tencar/obrir ull) ***/
+
+.post-rumour input[type="checkbox"] {
+    display: none;
+} /* to hide the checkbox itself */
+.post-rumour input[type="checkbox"] + label:before {
+    font-family: FontAwesome;
+    display: inline-block;
+}
+
+.post-rumour input[type="checkbox"] + label:before {
+    content: "\f06e";
+} /* unchecked icon */
+.post-rumour input[type="checkbox"] + label:before {
+    letter-spacing: 10px;
+} /* space between checkbox and label */
+
+.post-rumour input[type="checkbox"]:checked + label:before {
+    content: "\f070";
+} /* checked icon */
+.post-rumour input[type="checkbox"]:checked + label:before {
+    letter-spacing: 5px;
+} /* allow space for check mark */
 
 /*--------------------------------------------------------------
 # Schedule Section
@@ -1811,6 +1848,12 @@ h6 {
 
 .nav-tabs {
     border-bottom: none;
+}
+
+@media (min-width: 768px) {
+    .dashboard-menu aside {
+        height: 100vh;
+    }
 }
 
 /*--------------------------------------------------------------

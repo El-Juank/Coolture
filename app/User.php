@@ -51,6 +51,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Location::class, 'DefaultLocation_id');
     }
+    public function Drop(){
+        //canviem les dades personals per unes fake
+    }
     public function ImgProfile()
     {
         if($this->ImgProfile_id==null){
@@ -94,16 +97,25 @@ class User extends Authenticatable
     public function UrlRumoursPendentToVerify()
     {
         $pendentToVerify = [];
-        foreach ($this->UrlRumourToVerify() as $url) {
+        foreach ($this->UrlRumoursToVerify as $url) {
             if (!$url->IsVerified()) {
                 array_push($pendentToVerify, $url);
             }
         }
         return $pendentToVerify;
     }
-    public function Messages()
+    public function Messages(){
+        //only first id!= from and To
+        //per fer
+        //quan s'elimini un usuari definitivament l'unic que farem será canviar les dades personals per altres faker
+    }
+    public function MessagesFrom()
     {
-        return $this->hasMany(Message::class);
+        return $this->hasMany(Message::class,'FromUser_id');
+    }
+    public function MessagesTo()
+    {
+        return $this->hasMany(Message::class,'ToUser_id');
     }
     public function RumourMessages()
     {

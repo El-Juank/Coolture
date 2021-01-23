@@ -10,9 +10,11 @@ class UrlRumourToVerify extends Model
     
     public function User()
     {
-        $user= $this->belongsTo(User::class);
-        if($user==null){
+       
+        if($this->user_id==null){
             $user=User::CommunityUser();
+        }else{
+            $user= $this->belongsTo(User::class);
         }
         return $user;
     }
