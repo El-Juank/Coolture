@@ -5,11 +5,13 @@
 @endsection
 
 @section('content')
-    <div class="container generic-container" data-aos="fade-up">
+    <div class="eventmaker-header" style="background-image:url('{{ asset('img/default/banner-not-available.svg') }}');">
+    </div>
+    <div class="container eventmaker-container" data-aos="fade-up">
         {{-- Informació EVENTMAKER --}}
         <div class="row">
             <div class="col-12 ml-auto mr-auto text-center">
-                <img src="" alt="Circle Image" class="img-circle p-0 img-responsive"
+                <img src="" alt="Circle Image" class="img-circle p-0 img-outline"
                     onerror="this.onerror=null;this.src='{{ asset('img/default/user-image-not-available.png') }}';">
             </div>
             <div class="col-12 ml-auto mr-auto text-center">
@@ -26,14 +28,14 @@
             {{-- Seguidors --}}
             <div class="col-12 ml-auto mr-auto text-center">
                 <strong>{{ count($eventmaker->Followers) }}</strong>
-                <p><strong>Followers</strong></p>
+                <p><strong>{{ __('lang.followers') }}</strong></p>
             </div>
 
             {{-- BOTÓ DE FOLLOW --}}
             <div class="col-6 d-flex flex-row-reverse mb-5">
                 <form action="{{ route('follow', ['eventmaker' => $eventmaker->id]) }}" method="post">
                     @csrf
-                    <input type="submit" value="Follow" class="btn btn-coolture">
+                    <input type="submit" value="{{ __('lang.follow') }}" class="btn btn-coolture">
                 </form>
             </div>
 
@@ -41,7 +43,7 @@
             <div class="col-6 d-flex flex-row mb-5">
                 <form action="{{ route('unfollow', ['eventmaker' => $eventmaker->id]) }}" method="post">
                     @csrf
-                    <input type="submit" value="Unfollow" class="btn btn-coolture">
+                    <input type="submit" value="{{ __('lang.unfollow') }}" class="btn btn-coolture">
                 </form>
             </div>
         </div>
@@ -67,7 +69,7 @@
                         <div class="row justify-content-center">
                             @foreach ($eventmaker->Events as $event)
                                 <a href="">
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-4 col-md-6">
                                         <div class="result" data-aos="fade-up" data-aos-delay="100">
                                             <img src="" alt="Rock" class="img-fluid"
                                                 onerror="this.onerror=null;this.src='{{ asset('img/default/image-not-available.png') }}';">
@@ -97,7 +99,7 @@
                         <div class="row justify-content-center">
                             @foreach ($eventmaker->Rumours as $rumour)
                                 <a href="">
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-4 col-md-6">
                                         <div class="result" data-aos="fade-up" data-aos-delay="100">
                                             <img src="" alt="" class="img-fluid"
                                                 onerror="this.onerror=null;this.src='{{ asset('img/default/image-not-available.png') }}';">

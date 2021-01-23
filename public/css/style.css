@@ -2067,3 +2067,27 @@ li.borderless {
     font-size: 15px;
     margin-right: 10px;
 }
+
+/**/
+
+.img-outline {
+    box-shadow: 0 0 0 5pt #fff;
+}
+
+.eventmaker-container {
+    margin-top: -10vh;
+    margin-bottom: 15vh;
+}
+
+.eventmaker-header {
+    height: 275px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: flex;
+    align-items: center;
+}

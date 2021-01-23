@@ -16,6 +16,10 @@ return [
     "password" => "Contrasenya",
     "yes" => "Si",
     "no" => "No",
+    "followers" => "Seguidors",
+    "follow" => "Seguir",
+    "unfollow" => "Deixar de seguir",
+    "or" => "o",
 
     //Traduccions "Header"
     "header_lang_spanish" => "Castellà",
@@ -58,6 +62,8 @@ return [
     "new_comment" => "Nou comentari",
     "comment_placeholder" => "Escriu el teu comentari",
     "post_comment" => "Publicar",
+    "to_leave_comment" => "per deixar un comentari",
+    "to_see_comments" => "per veure tots els comentaris",
 
     //Traduccions formularis
     "form_name" => "Nom",

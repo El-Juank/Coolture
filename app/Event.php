@@ -15,7 +15,7 @@ class Event extends Model
     public $translatedAttributes = ['Title', 'Description'];
     public function User()
     {
-     
+
         if($this->user_id==null)
         {
             $user=User::CommunityUser();
@@ -49,7 +49,7 @@ class Event extends Model
                 $img=File::ImgDefaultCover();
             }
             return $img;
-        
+
     }
 
 
@@ -113,7 +113,7 @@ class Event extends Model
     public function TotalAssisted(){
         return Assistance::where('event_id',$this->id)->where('Assisted',true)->count();
     }
-    
+
 
     public function Tags()
     {

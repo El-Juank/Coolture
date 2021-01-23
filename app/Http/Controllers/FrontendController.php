@@ -135,7 +135,7 @@ class FrontendController extends Controller
 
         $eventmessage->save();
 
-        return redirect("/events/{$eventmessage->Event_id}");
+        return redirect()->back();
     }
 
     public function rumour($id)
@@ -170,7 +170,7 @@ class FrontendController extends Controller
 
         $rumourmessage->save();
 
-        return redirect("/rumours/{$rumourmessage->Rumour_id}");
+        return redirect()->back();
     }
 
 
@@ -191,7 +191,7 @@ class FrontendController extends Controller
         return redirect()->back();
     }
 
-    // UNfollow a un Eventmaker
+    // Unfollow a un Eventmaker
     public function unfollow($id)
     {
         $eventmaker = EventMaker::find($id);

@@ -4,7 +4,7 @@ $locale = App::getLocale();
 }
 @endphp
 <header id="header">
-    <div class="container d-flex justify-content-center">
+    <div class="container d-flex justify-content-around">
         {{-- Logo responsiu --}}
         <div id="logo" class="pull-left ml-4">
             <a href="{{ url('/', $locale) }}" class="scrollto"><img src="{{ asset('img/logo.svg') }}" alt=""

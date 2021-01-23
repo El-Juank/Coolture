@@ -48,9 +48,11 @@
                                                 {{-- Veracitat
                                                 --}}
                                                 <div class="col-md-12">
+                                                    <label class="pull-left"
+                                                        for="formControlRange">{{ __('lang.veracity') }}</label>
+                                                </div>
+                                                <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label class="pull-left"
-                                                            for="formControlRange">{{ __('lang.veracity') }}</label>
                                                         <div class="row align-items-center">
                                                             <div class="col-1 p-0">
                                                                 <i class="fa fa-frown-o color-corp"
