@@ -49,13 +49,27 @@
                             {{-- LIKES TOTALS A L'EVENT --}}
                             <div class="pull-right h2">
 
-                                <form action="{{route('event_like', ['event' => $event->id])}}" method="post">
-                                    @csrf
-                                    <button type="submit" class="btn">
-                                        <i class="fa fa-thumbs-o-up"></i>
-                                        {{ $likes }}
-                                    </button>
-                                </form>
+                                @if ($event->HasLike(Auth::user()))
+                                    <form action="{{route('event_unlike', ['event' => $event->id])}}" method="post">
+                                        @csrf
+                                        <button type="submit" class="btn">
+                                            <i class="fa fa-thumbs-o-up"></i>
+                                            {{ $likes }}
+                                        </button>
+                                    </form>
+                                @else
+                                    <form action="{{route('event_like', ['event' => $event->id])}}" method="post">
+                                        @csrf
+                                        <button type="submit" class="btn">
+                                            <i class="fa fa-thumbs-o-up"></i>
+                                            {{ $likes }}
+                                        </button>
+                                    </form>
+                                @endif
+
+
+
+
 
                             </div>
                         </div>

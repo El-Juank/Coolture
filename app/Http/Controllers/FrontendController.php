@@ -182,6 +182,7 @@ class FrontendController extends Controller
             ->with('eventmaker', $eventmaker);
     }
 
+    // Follow a un Eventmaker
     public function follow($id)
     {
         $eventmaker = EventMaker::find($id);
@@ -190,6 +191,7 @@ class FrontendController extends Controller
         return redirect()->back();
     }
 
+    // UNfollow a un Eventmaker
     public function unfollow($id)
     {
         $eventmaker = EventMaker::find($id);
@@ -198,7 +200,7 @@ class FrontendController extends Controller
         return redirect()->back();
     }
 
-    // LIKES Event:
+    // EVENT - Funció de DONAR like:
     public function event_like($id)
     {
         Event::find($id)->SetLike(Auth::user());
@@ -206,7 +208,29 @@ class FrontendController extends Controller
         return redirect("/events/{$id}");
     }
 
-    // LIKES Rumors:
+    // EVENT - Funció de TREURE like:
+    public function event_unlike($id)
+    {
+        Event::find($id)->UnsetLike(Auth::user());
+
+        return redirect("/events/{$id}");
+    }
+
+    // RUMOUR - Funció de DONAR like:
+    public function rumour_like($id)
+    {
+        Rumour::find($id)->SetLike(Auth::user());
+
+        return redirect("/rumours/{$id}");
+    }
+
+    // RUMOUR - Funció de TREURE like:
+    public function rumour_unlike($id)
+    {
+        Rumour::find($id)->UnsetLike(Auth::user());
+
+        return redirect("/rumours/{$id}");
+    }
 
 
     //Controlador para la página "searchResult"

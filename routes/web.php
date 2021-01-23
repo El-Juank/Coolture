@@ -97,8 +97,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
         // Ruta like
         Route::post('events/{event}/like', 'FrontendController@event_like')->name('event_like');
-        Route::post('rumours/{rumour}/like', 'FrontendController@rumour_like')->name('rumour_like');
+        Route::post('events/{event}/unlike', 'FrontendController@event_unlike')->name('event_unlike');
 
+        Route::post('rumours/{rumour}/like', 'FrontendController@rumour_like')->name('rumour_like');
+        Route::post('rumours/{rumour}/unlike', 'FrontendController@rumour_unlike')->name('rumour_unlike');
 
 
 
