@@ -95,10 +95,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         //Ruta del botó UNFOLLOW:
         Route::post('eventmakers/{eventmaker}/unfollow', 'FrontendController@unfollow')->name('unfollow');
 
-        // Ruta like
+        //Events -> Rutes like
         Route::post('events/{event}/like', 'FrontendController@event_like')->name('event_like');
         Route::post('events/{event}/unlike', 'FrontendController@event_unlike')->name('event_unlike');
 
+        //Rumour -> Rutes like
         Route::post('rumours/{rumour}/like', 'FrontendController@rumour_like')->name('rumour_like');
         Route::post('rumours/{rumour}/unlike', 'FrontendController@rumour_unlike')->name('rumour_unlike');
 

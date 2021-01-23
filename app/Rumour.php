@@ -77,9 +77,10 @@ class Rumour extends Model
         $like=$this->GetLike($user);
         if($like==null){
             $like=new LikeRumour();
-            $like->event_id=$this->id;
+            $like->rumour_id=$this->id;
             $like->user_id=$user->id;
             $like->Like=true;
+            $like->Trust=true;
             $like->save();
         }else if(!$like->Like){
             $like->Like=true;
@@ -89,7 +90,7 @@ class Rumour extends Model
     public function UnsetLike($user){
         $like=$this->GetLike($user);
         if($like!=null){
-            if(!$like->Trust){
+            if($like->Trust==true){
             $like->delete();
             }else{
                 $like->Like=false;

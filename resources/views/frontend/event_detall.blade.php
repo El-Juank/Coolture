@@ -46,7 +46,8 @@
                             </ul>
                             {{--{{ $event->Location->Lat }}
                             {{ $event->Location->Lon }}--}}
-                            {{-- LIKES TOTALS A L'EVENT --}}
+
+                            {{-- LIKES TOTALS A L'EVENT + BOTO DE DONAR LIKE --}}
                             <div class="pull-right h2">
 
                                 @if ($event->HasLike(Auth::user()))
