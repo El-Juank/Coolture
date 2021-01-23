@@ -51,36 +51,39 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Location::class, 'DefaultLocation_id');
     }
-    public function Drop(){
+    public function Drop()
+    {
         //canviem les dades personals per unes fake
     }
     public function ImgProfile()
     {
-        if($this->ImgProfile_id==null){
-            $img=File::ImgDefaultProfile();
-        }else{
-            $img=$this->belongsTo(File::class, 'ImgProfile_id');
+        if ($this->ImgProfile_id == null) {
+            $img = File::ImgDefaultProfile();
+        } else {
+            $img = $this->belongsTo(File::class, 'ImgProfile_id');
         }
-        return $img; 
+        return $img;
     }
     public function ImgCover()
     {
-        if($this->ImgCover_id==null){
-            $img=File::ImgDefaultCover();
-        }else{
-            $img=$this->belongsTo(File::class, 'ImgCover_id');
+        if ($this->ImgCover_id == null) {
+            $img = File::ImgDefaultCover();
+        } else {
+            $img = $this->belongsTo(File::class, 'ImgCover_id');
         }
-        return $img; 
-        
+        return $img;
     }
-    public function IsFollowing($eventMaker){
-        return UserRange::where('user_id',$this->id)->where('event_maker_id',$eventMaker->id)->count()!=0;
+    public function IsFollowing($eventMaker)
+    {
+        return UserRange::where('user_id', $this->id)->where('event_maker_id', $eventMaker->id)->count() != 0;
     }
-    public function GetWantToAssist($event){
-        return Assistance::where('user_id',$this->id)->where('event_id',$event->id)->where('WantToAssist',true)->count()!=0;
+    public function GetWantToAssist($event)
+    {
+        return Assistance::where('user_id', $this->id)->where('event_id', $event->id)->where('WantToAssist', true)->count() != 0;
     }
-    public function GetAssisted($event){
-        return Assistance::where('user_id',$this->id)->where('event_id',$event->id)->where('Assisted',true)->count()!=0;
+    public function GetAssisted($event)
+    {
+        return Assistance::where('user_id', $this->id)->where('event_id', $event->id)->where('Assisted', true)->count() != 0;
     }
     public function VerifiedBy()
     {
@@ -113,18 +116,19 @@ class User extends Authenticatable
         }
         return $pendentToVerify;
     }
-    public function Messages(){
+    public function Messages()
+    {
         //only first id!= from and To
         //per fer
         //quan s'elimini un usuari definitivament l'unic que farem será canviar les dades personals per altres faker
     }
     public function MessagesFrom()
     {
-        return $this->hasMany(Message::class,'FromUser_id');
+        return $this->hasMany(Message::class, 'FromUser_id');
     }
     public function MessagesTo()
     {
-        return $this->hasMany(Message::class,'ToUser_id');
+        return $this->hasMany(Message::class, 'ToUser_id');
     }
     public function RumourMessages()
     {
@@ -196,10 +200,25 @@ class User extends Authenticatable
 
         return Permission::where('User_id', $this->id)->where('Role_id', $roleId)->count() == 1;
     }
+    public function NotificationChangeEvents()
+    {
+        foreach (NotificationChangeEvent::where('user_id', $this->id)->get() as $notification)
+            $notification->save();
+    }
+    public function NotificationChangeEventMakers()
+    {
+        foreach (NotificationChangeEventMaker::where('user_id', $this->id)->get() as $notification)
+            $notification->save();
+    }
+    public function NotificationChangeRumours()
+    {
+        foreach (NotificationChangeRumour::where('user_id', $this->id)->get() as $notification)
+            $notification->save();
+    }
 
     public function NotificationChangesEvent($onlyUnRead = true)
     {
-    
+
         return $this->FilterOnlyUnRead(NotificationChangeEvent::class, $onlyUnRead);
     }
     public function NotificationChangesEventMaker($onlyUnRead = true)
@@ -207,10 +226,11 @@ class User extends Authenticatable
 
         return $this->FilterOnlyUnRead(NotificationChangeEventMaker::class, $onlyUnRead);
     }
+
     public function NotificationChangesRumour($onlyUnRead = true)
     {
 
-        return $this->FilterOnlyUnRead( NotificationChangeRumour::class, $onlyUnRead);
+        return $this->FilterOnlyUnRead(NotificationChangeRumour::class, $onlyUnRead);
     }
 
     //aixi serveix per totes les notificacions
@@ -219,16 +239,16 @@ class User extends Authenticatable
         $notifications = $this->hasMany($notificationsType)->get();
 
         $toShow = array();
-        
+
         foreach ($notifications as $notification) {
-        
-            if (!$onlyUnRead || $notification->UnRead()) {      
-                   
-                array_push($toShow,$notification);
+
+            if (!$onlyUnRead || $notification->UnRead()) {
+
+                array_push($toShow, $notification);
             }
         }
- 
-     
+
+
 
         return $toShow;
     }

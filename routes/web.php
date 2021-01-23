@@ -64,7 +64,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
         // Pàgina principal de configuació: segons el rol de l'user tindrà més o menys funcionalitats
         Route::get('home', 'FrontendController@home')->name('home');
-
+        //no se si va aqui
+        Route::get('notifications', 'FrontendController@notifications')->name('notifications');
+        Route::get('eventNotification/{event}','FrontendController@eventNotification')->name('eventNotification');
+        Route::get('eventMakerNotification/{eventmaker}','FrontendController@eventMakerNotification')->name('eventMakerNotification');
+        Route::get('rumourNotification/{rumour}','FrontendController@rumourNotification')->name('rumourNotification');
+       
         //Editor perfil
         Route::resource('profile', 'ProfileController');
 

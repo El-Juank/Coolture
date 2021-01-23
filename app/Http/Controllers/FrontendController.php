@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Category;
 use App\Event;
 use App\EventMaker;
@@ -14,10 +15,12 @@ use App\Permission;
 use App\Rumour;
 use App\RumourMessage;
 use App\RumourTranslation;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
 
 class FrontendController extends Controller
 {
@@ -44,6 +47,44 @@ class FrontendController extends Controller
             ->with('permissions', $permissions)
             ->with('events', $events)
             ->with('rumours', $rumours);
+    }
+    public function notifications()
+    {
+        //ho posso aqui de moment
+        return view('profile.notifications')->with('user', Auth::user());
+    }
+    public function eventNotification($id)
+    {
+        if (is_numeric($id)) {
+            Event::find($id)->NotificationChangeSeen(Auth::user());
+            $result = redirect(route('event', ['event' => $id]));
+        } else {
+            Auth::user()->NotificationChangeEvents();
+            $result = redirect(route('notifications'));
+        }
+        return $result;
+    }
+    public function eventMakerNotification($id)
+    {
+        if (is_numeric($id)) {
+            EventMaker::find($id)->NotificationChangeSeen(Auth::user());
+            $result = redirect(route('eventmaker', ['eventmaker' => $id]));
+        } else {
+            Auth::user()->NotificationChangeEventMakers();
+            $result = redirect(route('notifications'));
+        }
+        return $result;
+    }
+    public function rumourNotification($id)
+    {
+        if (is_numeric($id)) {
+            Rumour::find($id)->NotificationChangeSeen(Auth::user());
+            $result = redirect(route('rumour', ['rumour' => $id]));
+        } else {
+            Auth::user()->NotificationChangeRumours();
+            $result = redirect(route('notifications'));
+        }
+        return $result;
     }
 
     public function howItWorks()
