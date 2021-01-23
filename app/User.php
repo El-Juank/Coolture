@@ -73,6 +73,15 @@ class User extends Authenticatable
         return $img; 
         
     }
+    public function IsFollowing($eventMaker){
+        return UserRange::where('user_id',$this->id)->where('event_maker_id',$eventMaker->id)->count()!=0;
+    }
+    public function GetWantToAssist($event){
+        return Assistance::where('user_id',$this->id)->where('event_id',$event->id)->where('WantToAssist',true)->count()!=0;
+    }
+    public function GetAssisted($event){
+        return Assistance::where('user_id',$this->id)->where('event_id',$event->id)->where('Assisted',true)->count()!=0;
+    }
     public function VerifiedBy()
     {
         return $this->belongsTo(User::class, 'UserVerified_id');
@@ -188,7 +197,6 @@ class User extends Authenticatable
         return Permission::where('User_id', $this->id)->where('Role_id', $roleId)->count() == 1;
     }
 
-    //falta testing
     public function NotificationChangesEvent($onlyUnRead = true)
     {
     

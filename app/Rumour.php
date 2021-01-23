@@ -80,7 +80,7 @@ class Rumour extends Model
             $like->rumour_id=$this->id;
             $like->user_id=$user->id;
             $like->Like=true;
-            $like->Trust=true;
+            $like->Trust=false;
             $like->save();
         }else if(!$like->Like){
             $like->Like=true;
@@ -105,6 +105,7 @@ class Rumour extends Model
             $like->event_id=$this->id;
             $like->user_id=$user->id;
             $like->Trust=true;
+            $like->Like=false;
             $like->save();
         }else if(!$like->Trust){
             $like->Trust=true;
@@ -121,5 +122,11 @@ class Rumour extends Model
                 $like->save();
             }
         }
+    }
+    public function TotalLikes(){
+        return LikeRumour::where('rumour_id',$this->id)->where('Like',true)->count();
+    }
+    public function TotalTrust(){
+        return LikeRumour::where('rumour_id',$this->id)->where('Trust',true)->count();
     }
 }

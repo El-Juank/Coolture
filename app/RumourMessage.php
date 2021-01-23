@@ -46,4 +46,8 @@ class RumourMessage extends Model
             $like->delete();
         }
     }
+    public function TotalLikes(){
+        return LikeRumourMessage::where('rumour_message_id',$this->id)->count();
+    }
+   
 }

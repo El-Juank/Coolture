@@ -58,9 +58,12 @@ class Event extends Model
         return $this->belongsToMany(User::class,Assistance::class);
     }
 
-    public function Likes()
+    public function UsersLiked()
     {
         return $this->belongsToMany(User::class,LikeEvent::class);
+    }
+    public function Likes(){
+        return LikeEvent::where('event_id',$this->id)->count();
     }
     public function Messages()
     {
@@ -104,6 +107,13 @@ class Event extends Model
     {
         return $this->belongsToMany(User::class, Assistance::class);
     }
+    public function TotalWantToAssist(){
+        return Assistance::where('event_id',$this->id)->where('WantToAssist',true)->count();
+    }
+    public function TotalAssisted(){
+        return Assistance::where('event_id',$this->id)->where('Assisted',true)->count();
+    }
+    
 
     public function Tags()
     {
