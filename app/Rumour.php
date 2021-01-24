@@ -90,14 +90,10 @@ class Rumour extends Model
     public function UnsetLike($user){
         $like=$this->GetLike($user);
         if($like!=null){
-            if($like->Trust==true){
             $like->delete();
-            }else{
-                $like->Like=false;
-                $like->save();
-            }
         }
     }
+
     public function SetTrust($user){
         $like=$this->GetLike($user);
         if($like==null){
