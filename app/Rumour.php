@@ -14,6 +14,12 @@ class Rumour extends Model
     const MAX_TRUST=100;
 
     public $translatedAttributes = ['Title', 'Description'];
+    public function GetTitle(){
+        return Translate::Get($this,'Title');
+    }
+    public function GetDescription(){
+        return Translate::Get($this,'Description');
+    }
 
     public function EventMaker()
     {

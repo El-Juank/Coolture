@@ -20,4 +20,7 @@ class Role extends Model
 
 
     public $translatedAttributes=['Name'];
+    public function GetName(){
+        return Translate::Get($this,'Name');
+    }
 }

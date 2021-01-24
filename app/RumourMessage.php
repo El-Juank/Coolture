@@ -11,6 +11,10 @@ class RumourMessage extends Model
     protected $table="RumourMessages";
 
     public $translatedAttributes=['Message'];
+    
+    public function GetMessage(){
+        return Translate::Get($this,'Message');
+    }
 
     public function User(){
         return $this->belongsTo(User::class);

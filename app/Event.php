@@ -13,6 +13,12 @@ class Event extends Model
     use SoftDeletes;
 
     public $translatedAttributes = ['Title', 'Description'];
+    public function GetTitle(){
+        return Translate::Get($this,'Title');
+    }
+    public function GetDescription(){
+        return Translate::Get($this,'Description');
+    }
     public function User()
     {
 

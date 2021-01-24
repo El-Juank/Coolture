@@ -13,4 +13,8 @@ class Notification extends Model
     use SoftDeletes;
 
     public $translatedAttributes=['Message'];
+    public function GetMessage(){
+        return Translate::Get($this,'Message');
+    }
+ 
 }

@@ -15,6 +15,9 @@ class EventMessage extends Model
 
 
     public $translatedAttributes=['Message'];
+    public function GetMessage(){
+        return Translate::Get($this,'Message');
+    }
 
     public function User()
     {

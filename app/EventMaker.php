@@ -16,7 +16,12 @@ class EventMaker extends Model
 
     public $translatedAttributes=['Name','Description'];
     protected $table="EventMakers";
-
+    public function GetName(){
+        return Translate::Get($this,'Name');
+    }
+    public function GetDescription(){
+        return Translate::Get($this,'Description');
+    }
     public function User()
     {
         

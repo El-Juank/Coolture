@@ -43,6 +43,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function GetCanDelete(){
+        return Translate::Get($this,'CanDelete');
+    }
+    public function GetDescription(){
+        return Translate::Get($this,'Description');
+    }
+    public function GetVisible(){
+        return Translate::Get($this,'Visible');
+    }
+
     public function Country()
     {
         return $this->belongsTo(Location::class, 'Country_id');
