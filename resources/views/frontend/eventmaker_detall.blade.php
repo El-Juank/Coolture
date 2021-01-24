@@ -31,21 +31,26 @@
                 <p><strong>{{ __('lang.followers') }}</strong></p>
             </div>
 
-            {{-- BOTÓ DE FOLLOW --}}
-            <div class="col-6 d-flex flex-row-reverse mb-5">
-                <form action="{{ route('follow', ['eventmaker' => $eventmaker->id]) }}" method="post">
-                    @csrf
-                    <input type="submit" value="{{ __('lang.follow') }}" class="btn btn-coolture">
-                </form>
-            </div>
+            @auth
+                @if (Auth::user()->IsFollowing($eventmaker))
+                    {{-- BOTÓ DE UNFOLLOW --}}
+                    <div class="col-12 d-flex flex-row mb-5 justify-content-center">
+                        <form action="{{ route('unfollow', ['eventmaker' => $eventmaker->id]) }}" method="post">
+                            @csrf
+                            <input type="submit" value="{{ __('lang.unfollow') }}" class="btn btn-coolture">
+                        </form>
+                    </div>
+                @else
+                    {{-- BOTÓ DE FOLLOW --}}
+                    <div class="col-12 d-flex flex-row-reverse mb-5 justify-content-center">
+                        <form action="{{ route('follow', ['eventmaker' => $eventmaker->id]) }}" method="post">
+                            @csrf
+                            <input type="submit" value="{{ __('lang.follow') }}" class="btn btn-coolture">
+                        </form>
+                    </div>
+                @endif
+            @endauth
 
-            {{-- BOTÓ DE UNFOLLOW --}}
-            <div class="col-6 d-flex flex-row mb-5">
-                <form action="{{ route('unfollow', ['eventmaker' => $eventmaker->id]) }}" method="post">
-                    @csrf
-                    <input type="submit" value="{{ __('lang.unfollow') }}" class="btn btn-coolture">
-                </form>
-            </div>
         </div>
 
         <div class="nav-tabs-navigation">
