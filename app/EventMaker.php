@@ -19,7 +19,7 @@ class EventMaker extends Model
 
     public function User()
     {
-        
+
         if($this->user_id==null)
         {
             $user=User::CommunityUser();
@@ -28,16 +28,16 @@ class EventMaker extends Model
         }
         return $user;
     }
-    public function Follow($user){
-       if(UserRange::where('user_id',$user->id)->count()==0){
+    public function Follow($user, $event_maker_id){
+       if(UserRange::where('user_id',$user->id)->where('event_maker_id', $event_maker_id)->count()==0){
            $userRange=new UserRange();
            $userRange->user_id=$user->id;
            $userRange->Event_Maker_id=$this->id;
            $userRange->save();
-       } 
+       }
     }
-    public function UnFollow($user){
-        UserRange::where('user_id',$user->id)->delete();
+    public function UnFollow($user, $event_maker_id ){
+        UserRange::where('user_id',$user->id)->where('event_maker_id', $event_maker_id)->delete();
      }
     public function ComunityManage(){
         return $this->user_id==null;
@@ -49,7 +49,7 @@ class EventMaker extends Model
         }else{
             $img=$this->belongsTo(File::class, 'ImgProfile_id');
         }
-        return $img; 
+        return $img;
     }
     public function ImgCover()
     {
@@ -58,8 +58,8 @@ class EventMaker extends Model
         }else{
             $img=$this->belongsTo(File::class, 'ImgCover_id');
         }
-        return $img; 
-        
+        return $img;
+
     }
 
     public function Followers(){

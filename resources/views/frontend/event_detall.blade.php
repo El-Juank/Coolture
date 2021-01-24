@@ -10,7 +10,7 @@
             <div class="container mb-5" data-aos="fade-up">
                 <div class="section-header">
                     <h2>{{ $event->Title }}</h2>
-                    <p>{{ $event->EventMaker->Name }}</p>
+                    <a href="{{route('eventmaker',['eventmaker' => $event->EventMaker->id])}}"><p>{{ $event->EventMaker->Name }}</p> </a>
                 </div>
 
                 <div class="row">
