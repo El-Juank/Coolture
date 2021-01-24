@@ -26,6 +26,7 @@
                 <div class="section-header">
                     <h2>{{ $rumour->Title }}</h2>
                     {{-- User que ha publicat el rumor --}}
+                    <a href="{{route('eventmaker',['eventmaker' => $rumour->EventMaker->id])}}"><p>{{ $rumour->EventMaker->Name }}</p> </a>
                     <p>{{ $rumour->User->name }}</p>
                 </div>
 

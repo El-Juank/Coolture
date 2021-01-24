@@ -85,7 +85,7 @@ class User extends Authenticatable
     }
     public function IsFollowing($eventMaker)
     {
-        return UserRange::where('user_id', $this->id)->where('event_maker_id', $eventMaker->id)->count() != 0;
+        return UserRange::where('user_id', $this->id)->where('event_maker_id', $eventMaker->id)->count();
     }
     public function GetWantToAssist($event)
     {

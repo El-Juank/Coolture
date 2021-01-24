@@ -32,7 +32,7 @@
             </div>
 
             @auth
-                @if (Auth::user()->IsFollowing($eventmaker))
+                @if ( Auth::user()->IsFollowing($eventmaker) )
                     {{-- BOTÓ DE UNFOLLOW --}}
                     <div class="col-12 d-flex flex-row mb-5 justify-content-center">
                         <form action="{{ route('unfollow', ['eventmaker' => $eventmaker->id]) }}" method="post">

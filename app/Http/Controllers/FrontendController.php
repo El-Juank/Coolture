@@ -219,6 +219,7 @@ class FrontendController extends Controller
     public function eventmaker($id)
     {
         $eventmaker = EventMaker::find($id);
+
         return view("frontend.eventmaker_detall")
             ->with('eventmaker', $eventmaker);
     }
@@ -227,7 +228,7 @@ class FrontendController extends Controller
     public function follow($id)
     {
         $eventmaker = EventMaker::find($id);
-        $eventmaker->Follow(Auth::user());
+        EventMaker::find($id)->Follow(Auth::user(), $eventmaker->id);
 
         return redirect()->back();
     }
@@ -236,7 +237,7 @@ class FrontendController extends Controller
     public function unfollow($id)
     {
         $eventmaker = EventMaker::find($id);
-        $eventmaker->UnFollow(Auth::user());
+        EventMaker::find($id)->UnFollow(Auth::user(), $eventmaker->id);
 
         return redirect()->back();
     }
