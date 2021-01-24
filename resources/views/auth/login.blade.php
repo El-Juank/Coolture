@@ -10,14 +10,14 @@
             <div class="col-md-8">
                 <div class="card text-center">
                     <div class="card-body">
-                        <h2 class="mt-3 mb-1">Benvingut de nou!</h2>
-                        <p class="text-secondary mb-5">Escriu les teves dedes avall</p>
+                        <h2 class="mt-3 mb-1">{{ __('lang.welcome_back') }}</h2>
+                        <p class="text-secondary mb-5">{{ __('lang.complete_data') }}</p>
                         <form method="POST" action="{{ LaravelLocalization::localizeUrl('login') }}">
                             @csrf
 
                             <div class="form-group row">
                                 <label for="email"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Correu Electrònic') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('lang.email') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
@@ -33,7 +33,7 @@
 
                             <div class="form-group row">
                                 <label for="password"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Contrasenya') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('lang.password') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -55,7 +55,7 @@
                                             {{ old('remember') ? 'checked' : '' }}>
 
                                         <label class="form-check-label" for="remember">
-                                            {{ __('Recorda\'m') }}
+                                            {{ __('lang.remember') }}
                                         </label>
                                     </div>
                                 </div>
@@ -64,13 +64,13 @@
                             <div class="form-group row">
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-login mb-2">
-                                        {{ __('Iniciar sessió') }}
+                                        {{ __('lang.header_login') }}
                                     </button>
                                     <br>
                                     @if (Route::has('password.request'))
                                         <a class="btn link"
                                             href="{{ LaravelLocalization::localizeUrl('password.request') }}">
-                                            {{ __('Has oblidat la teva contrasenya?') }}
+                                            {{ __('lang.forget_password') }}
                                         </a>
                                     @endif
                                 </div>

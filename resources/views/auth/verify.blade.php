@@ -1,25 +1,29 @@
 @extends('layouts.base')
 
+@section('seoTitle')
+    | {{ __('lang.header_verify') }}
+@endsection
+
 @section('content')
     <div class="container login-container">
         <div class="row justify-content-center" data-aos="fade-up">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+                    <div class="card-header">{{ __('lang.verify_email') }}</div>
 
                     <div class="card-body">
                         @if (session('resent'))
                             <div class="alert alert-success" role="alert">
-                                {{ __('A fresh verification link has been sent to your email address.') }}
+                                {{ __('lang.verification_link') }}
                             </div>
                         @endif
 
-                        {{ __('Before proceeding, please check your email for a verification link.') }}
-                        {{ __('If you did not receive the email') }},
+                        {{ __('lang.check_email') }}
+                        {{ __('lang.email_not_recived') }},
                         <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                             @csrf
                             <button type="submit"
-                                class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+                                class="btn btn-link p-0 m-0 align-baseline">{{ __('lang.send_another') }}</button>.
                         </form>
                     </div>
                 </div>

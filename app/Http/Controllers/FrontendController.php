@@ -246,7 +246,7 @@ class FrontendController extends Controller
     {
         Event::find($id)->SetLike(Auth::user());
 
-        return redirect("/events/{$id}");
+        return redirect()->back();
     }
 
     // EVENT - Funció de TREURE like:
@@ -254,7 +254,7 @@ class FrontendController extends Controller
     {
         Event::find($id)->UnsetLike(Auth::user());
 
-        return redirect("/events/{$id}");
+        return redirect()->back();
     }
 
     // RUMOUR - Funció de DONAR like:
@@ -262,7 +262,7 @@ class FrontendController extends Controller
     {
         Rumour::find($id)->SetLike(Auth::user());
 
-        return redirect("/rumours/{$id}");
+        return redirect()->back();
     }
 
     // RUMOUR - Funció de TREURE like:
@@ -270,7 +270,7 @@ class FrontendController extends Controller
     {
         Rumour::find($id)->UnsetLike(Auth::user());
 
-        return redirect("/rumours/{$id}");
+        return redirect()->back();
     }
 
 

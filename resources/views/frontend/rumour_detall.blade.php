@@ -67,20 +67,20 @@
 
                             {{-- LIKES TOTALS A L'RUMOUR + BOTO DE DONAR LIKE
                             --}}
-                            <div class="pull-right h2">
+                            <div class="pull-right pt-lg-5 h2">
                                 @auth
                                     @if ($rumour->HasLike(Auth::user()))
                                         <form action="{{ route('rumour_unlike', ['rumour' => $rumour->id]) }}" method="post">
                                             @csrf
-                                            <button type="submit" class="btn">
-                                                <i class="fa fa-thumbs-o-up"></i>
+                                            <button type="submit" class="btn btn-coolture">
+                                                <i class="fa fa-thumbs-o-down"></i>
                                                 {{ $likes }}
                                             </button>
                                         </form>
                                     @else
                                         <form action="{{ route('rumour_like', ['rumour' => $rumour->id]) }}" method="post">
                                             @csrf
-                                            <button type="submit" class="btn">
+                                            <button type="submit" class="btn btn-coolture">
                                                 <i class="fa fa-thumbs-o-up"></i>
                                                 {{ $likes }}
                                             </button>
@@ -89,10 +89,9 @@
                                 @endauth
 
                                 @guest
-                                    {{ $likes }}
                                     <a class="btn btn-coolture" href="#" data-toggle="modal"
                                         data-target="#modalRegisterCenter"><i class="fa fa-thumbs-o-up"
-                                            style="color: #fff !important;"></i></a>
+                                            style="color: #fff !important;"></i>{{ $likes }}</a>
                                 @endguest
                             </div>
                         </div>

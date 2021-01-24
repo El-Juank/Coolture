@@ -36,7 +36,7 @@
 
     <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
 
-    <!-- Vendor JS Files -->
+    <!-- Scripts -->
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('vendor/jquery.easing/jquery.easing.min.js') }}"></script>
@@ -47,7 +47,7 @@
     <script src="{{ asset('vendor/hoverIntent/hoverIntent.js') }}"></script>
     <script src="{{ asset('vendor/aos/aos.js') }}"></script>
 
-    <!-- Template Main JS File -->
+    <!-- Scripts propis -->
     <script src="{{ asset('js/main.js') }}"></script>
 
 </body>

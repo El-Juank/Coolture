@@ -50,8 +50,10 @@
 
                         <!-- Enllaç per tancar la sessió -->
                         <li class="nav-item">
+                            {{-- El confirm no acaba d'anar bé
+                            --}}
                             <a class="nav-link p-0 text-center" href="{{ LaravelLocalization::localizeUrl('logout') }}"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit(); return confirm('{{ __('lang.logout_confirm') }}');">
                                 <img src="{{ asset('img/icons/close.svg') }}">
                                 <span class="d-none d-md-inline">{{ __('lang.logout') }}</span></a>
                             <form id="logout-form" action="{{ LaravelLocalization::localizeUrl('logout') }}"

@@ -53,6 +53,24 @@ return [
     "footer_conditions" => "Condicions d'ús",
     "footer_privacity" => "Política de Privacitat",
 
+    //Traduccions pàgina login
+    "welcome_back" => "Benvingut de nou!",
+    "complete_data" => "Escriu les teves dades avall",
+    "remember" => "Recorda'm",
+    "forget_password" => "Has oblidat la teva contrasenya?",
+
+    //Traduccions pàgina register
+    "register_coolture" => "Registra't en Coolture",
+    "confirm_password" => "Confirma la contrasenya",
+
+    //Traduccions pàgina verificar
+    "header_verify" => "Verifica't",
+    "verify_email" => "Verify Your Email Address",
+    "verification_link" => "A fresh verification link has been sent to your email address.",
+    "check_email" => "Before proceeding, please check your email for a verification link.",
+    "email_not_recived" => "If you did not receive the email",
+    "send_another" => "Click here to request another",
+
     //Traduccions cercador
     "search_result" => "Resultats",
 
@@ -88,6 +106,7 @@ return [
     "post_event" => "Publicar esdeveniment",
     "your_posts" => "Les teves publicacions",
     "your_posts_tagline" => "Aquí podràs publicar esdeveniments i gestionar els que ja tens",
+    "logout_confirm" => "Estàs segur de que vols tencar la sessió?",
 
     //Traduccions perfil
     "profile_seo" => "Perfil de :name",
