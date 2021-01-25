@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Illuminate\Support\Facades\DB;
 
 
 class FrontendController extends Controller
@@ -36,12 +37,39 @@ class FrontendController extends Controller
 
     public function index()
     {
+        $total=4;
         $locale = App::getLocale();
+        $idsEvents=DB::table('LikesEvent')->select('event_id', DB::raw('count(id) as total'))
+        ->groupBy('event_id')->orderBy('total','DESC')->Take($total)->get();
+        $ids=[];
+        for($i=0,$f=count($idsEvents);$i<$f;$i++)
+            array_push($ids,$idsEvents[$i]->event_id);
+
+        $events=Event::whereIn('id',$ids)->get();
+
+        $idsRumours=DB::table('LikesRumour')->select('rumour_id', DB::raw('count(id) as total'))
+        ->groupBy('rumour_id')->orderBy('total','DESC')->Take($total)->get();
+        $ids=[];
+        for($i=0,$f=count($idsRumours);$i<$f;$i++)
+            array_push($ids,$idsRumours[$i]->rumour_id);
+
+        $rumours=Rumour::whereIn('id',$ids)->get();
+
+        $idsEventMakers=DB::table('UserRanges')->select('event_maker_id', DB::raw('count(id) as total'))
+        ->groupBy('event_maker_id')->orderBy('total','DESC')->Take($total)->get();
+        $ids=[];
+        for($i=0,$f=count($idsEventMakers);$i<$f;$i++)
+            array_push($ids,$idsEventMakers[$i]->event_maker_id);
+
+        $eventmakers=EventMaker::whereIn('id',$ids)->get();
 
 
         return view('index')
             ->with('locale', $locale)
-            ->with('categories',Category::all());
+            ->with('categories',Category::all())
+            ->with('events',$events)
+            ->with('rumours',$rumours)
+            ->with('eventmakers',$eventmakers);
     }
 
     public function home()

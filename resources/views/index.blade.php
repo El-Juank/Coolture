@@ -52,55 +52,20 @@
                 </div>
 
                 <div class="row">
-
+                @foreach($events as $event)
                     <a href="">
                         <div class="col-lg-3">
                             <div class="gender" data-aos="fade-up" data-aos-delay="100">
-                                <img src="{{ asset('img/gender/1.jpg') }}" alt="Rock" class="img-fluid"
-                                    onerror="this.onerror=null;this.src='{{ asset('img/image-not-available.png') }}';">
+                                <img src="{{ asset($event->ImgPreview->Url()) }}"  class="img-fluid"
+                                    >
                                 <div class="details">
-                                    <h3><a href="">Rock</a></h3>
-                                    <p>Quas alias incidunt</p>
+                                    <h3><a href="">{{$event->EventMaker->GetName()}}</a></h3>
+                                    <p>{{$event->GetTitle()}}</p>
                                 </div>
                             </div>
                         </div>
                     </a>
-                    <a href="">
-                        <div class="col-lg-3">
-                            <div class="gender" data-aos="fade-up" data-aos-delay="200">
-                                <img src="{{ asset('img/gender/2.jpg') }}" alt="Pop" class="img-fluid"
-                                    onerror="this.onerror=null;this.src='{{ asset('img/image-not-available.png') }}';">
-                                <div class="details">
-                                    <h3><a href="">Pop</a></h3>
-                                    <p>Consequuntur odio aut</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="">
-                        <div class="col-lg-3">
-                            <div class="gender" data-aos="fade-up" data-aos-delay="300">
-                                <img src="{{ asset('img/gender/3.jpg') }}" alt="Indie" class="img-fluid"
-                                    onerror="this.onerror=null;this.src='{{ asset('img/image-not-available.png') }}';">
-                                <div class="details">
-                                    <h3><a href="">Indie</a></h3>
-                                    <p>Fugiat laborum et</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="">
-                        <div class="col-lg-3">
-                            <div class="gender" data-aos="fade-up" data-aos-delay="100">
-                                <img src="{{ asset('img/gender/4.jpg') }}" alt="Electrònica" class="img-fluid"
-                                    onerror="this.onerror=null;this.src='{{ asset('img/image-not-available.png') }}';">
-                                <div class="details">
-                                    <h3><a href="">Electrònica</a></h3>
-                                    <p>Debitis iure vero</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -114,55 +79,22 @@
                 </div>
 
                 <div class="row">
-
+                @foreach($rumours as $rumour)
                     <a href="">
                         <div class="col-lg-3">
                             <div class="gender" data-aos="fade-up" data-aos-delay="100">
-                                <img src="{{ asset('img/gender/1.jpg') }}" alt="Rock" class="img-fluid"
-                                    onerror="this.onerror=null;this.src='{{ asset('img/image-not-available.png') }}';">
+                                <img src="{{ asset($rumour->ImgPreview->Url()) }}"  class="img-fluid"
+                                   >
                                 <div class="details">
-                                    <h3><a href="">Rock</a></h3>
-                                    <p>Quas alias incidunt</p>
+                                    <h3><a href="">@if($rumour->HasEventMaker()){{$rumour->EventMaker->GetName()}} @else ? @endif</a></h3>
+                                    <p>{{$rumour->GetTitle()}}</p>
                                 </div>
                             </div>
                         </div>
                     </a>
-                    <a href="">
-                        <div class="col-lg-3">
-                            <div class="gender" data-aos="fade-up" data-aos-delay="200">
-                                <img src="{{ asset('img/gender/2.jpg') }}" alt="Pop" class="img-fluid"
-                                    onerror="this.onerror=null;this.src='{{ asset('img/image-not-available.png') }}';">
-                                <div class="details">
-                                    <h3><a href="">Pop</a></h3>
-                                    <p>Consequuntur odio aut</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="">
-                        <div class="col-lg-3">
-                            <div class="gender" data-aos="fade-up" data-aos-delay="300">
-                                <img src="{{ asset('img/gender/3.jpg') }}" alt="Indie" class="img-fluid"
-                                    onerror="this.onerror=null;this.src='{{ asset('img/image-not-available.png') }}';">
-                                <div class="details">
-                                    <h3><a href="">Indie</a></h3>
-                                    <p>Fugiat laborum et</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="">
-                        <div class="col-lg-3">
-                            <div class="gender" data-aos="fade-up" data-aos-delay="100">
-                                <img src="{{ asset('img/gender/4.jpg') }}" alt="Electrònica" class="img-fluid"
-                                    onerror="this.onerror=null;this.src='{{ asset('img/image-not-available.png') }}';">
-                                <div class="details">
-                                    <h3><a href="">Electrònica</a></h3>
-                                    <p>Debitis iure vero</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                    @endforeach
+                   
+                 
                 </div>
             </div>
         </section>
@@ -176,55 +108,22 @@
                 </div>
 
                 <div class="row">
-
+                @foreach($eventmakers as $eventmaker)
                     <a href="">
                         <div class="col-lg-3">
                             <div class="gender" data-aos="fade-up" data-aos-delay="100">
-                                <img src="{{ asset('img/gender/1.jpg') }}" alt="Rock" class="img-fluid"
-                                    onerror="this.onerror=null;this.src='{{ asset('img/image-not-available.png') }}';">
+                                <img src="{{ asset($eventmaker->ImgProfile->Url()) }}" class="img-fluid"
+                                   >
                                 <div class="details">
-                                    <h3><a href="">Rock</a></h3>
-                                    <p>Quas alias incidunt</p>
+                                    <h3><a href="">{{$eventmaker->GetName()}}</a></h3>
+                                     <p>{{ \Illuminate\Support\Str::limit($eventmaker->GetDescription(), 100, $end = '...') }}</p>
                                 </div>
                             </div>
                         </div>
                     </a>
-                    <a href="">
-                        <div class="col-lg-3">
-                            <div class="gender" data-aos="fade-up" data-aos-delay="200">
-                                <img src="{{ asset('img/gender/2.jpg') }}" alt="Pop" class="img-fluid"
-                                    onerror="this.onerror=null;this.src='{{ asset('img/image-not-available.png') }}';">
-                                <div class="details">
-                                    <h3><a href="">Pop</a></h3>
-                                    <p>Consequuntur odio aut</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="">
-                        <div class="col-lg-3">
-                            <div class="gender" data-aos="fade-up" data-aos-delay="300">
-                                <img src="{{ asset('img/gender/3.jpg') }}" alt="Indie" class="img-fluid"
-                                    onerror="this.onerror=null;this.src='{{ asset('img/image-not-available.png') }}';">
-                                <div class="details">
-                                    <h3><a href="">Indie</a></h3>
-                                    <p>Fugiat laborum et</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="">
-                        <div class="col-lg-3">
-                            <div class="gender" data-aos="fade-up" data-aos-delay="100">
-                                <img src="{{ asset('img/gender/4.jpg') }}" alt="Electrònica" class="img-fluid"
-                                    onerror="this.onerror=null;this.src='{{ asset('img/image-not-available.png') }}';">
-                                <div class="details">
-                                    <h3><a href="">Electrònica</a></h3>
-                                    <p>Debitis iure vero</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                    @endforeach
+                  
+                   
                 </div>
             </div>
         </section>
