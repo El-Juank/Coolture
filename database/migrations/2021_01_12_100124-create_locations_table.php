@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use App\Location;
 class LocationsTable extends Migration
 {
     /**
@@ -30,6 +30,13 @@ class LocationsTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        $locations=['Espanya','Girona'];//aixi els ids existeixen
+        for($i=0,$f=count($locations);$i<$f;$i++){
+            $location=new Location();
+            $location->{'Name:ca'}=$locations[$i];
+            $location->save();
+        }
     }
 
     /**

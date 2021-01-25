@@ -1,28 +1,28 @@
 @extends('layouts.base')
 
 @section('seoTitle')
-    | {{ $eventmaker->Name }}
+    | {{ $eventmaker->GetName() }}
 @endsection
 
 @section('content')
-    <div class="eventmaker-header" style="background-image:url('{{ asset('img/default/banner-not-available.svg') }}');">
+    <div class="eventmaker-header" style="background-image:url('{{ asset($eventmaker->ImgCover->Url())}}');">
     </div>
     <div class="container eventmaker-container" data-aos="fade-up">
         {{-- Informació EVENTMAKER --}}
         <div class="row">
             <div class="col-12 ml-auto mr-auto text-center">
-                <img src="" alt="Circle Image" class="img-circle p-0 img-outline"
-                    onerror="this.onerror=null;this.src='{{ asset('img/default/user-image-not-available.png') }}';">
+                <img alt="Circle Image" class="img-circle p-0 img-outline"
+                    src='{{ asset($eventmaker->ImgProfile->Url())}} '>
             </div>
             <div class="col-12 ml-auto mr-auto text-center">
                 <div class="section-header">
-                    <h2>{{ $eventmaker->Name }}</h2>
+                    <h2>{{ $eventmaker->GetName() }}</h2>
                 </div>
             </div>
 
             {{-- Descripció --}}
             <div class="col-md-6 ml-auto mr-auto text-center">
-                <p>{{ $eventmaker->Description }}</p>
+                <p>{{ $eventmaker->GetDescription() }}</p>
             </div>
 
             {{-- Seguidors --}}
@@ -76,16 +76,16 @@
                                 <a href="">
                                     <div class="col-lg-4 col-md-6">
                                         <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                            <img src="" alt="Rock" class="img-fluid"
-                                                onerror="this.onerror=null;this.src='{{ asset('img/default/image-not-available.png') }}';">
+                                            <img  alt="Rock" class="img-fluid"
+                                                src='{{asset($event->ImgEvent->Url())}} '>
                                             <div class="details">
                                                 <h3><a
-                                                        href="{{ route('event', ['event' => $event->id]) }}">{{ $event->Title }}</a>
+                                                        href="{{ route('event', ['event' => $event->id]) }}">{{ $event->GetTitle() }}</a>
                                                 </h3>
                                                 {{-- Per limitar la mida dels
                                                 textos
                                                 --}}
-                                                <p>{{ \Illuminate\Support\Str::limit($event->Description, 100, $end = '...') }}
+                                                <p>{{ \Illuminate\Support\Str::limit($event->GetDescription(), 100, $end = '...') }}
                                                 </p>
                                             </div>
                                         </div>
@@ -106,16 +106,16 @@
                                 <a href="">
                                     <div class="col-lg-4 col-md-6">
                                         <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                            <img src="" alt="" class="img-fluid"
-                                                onerror="this.onerror=null;this.src='{{ asset('img/default/image-not-available.png') }}';">
+                                            <img  alt="" class="img-fluid"
+                                                src="{{asset(App\File::ImgRumourEventMaker()->Url())}}">
                                             <div class="details">
                                                 <h3><a
-                                                        href="{{ route('rumour', ['rumour' => $rumour->id]) }}">{{ $rumour->Title }}</a>
+                                                        href="{{ route('rumour', ['rumour' => $rumour->id]) }}">{{ $rumour->GetTitle() }}</a>
                                                 </h3>
                                                 {{-- Per limitar la mida dels
                                                 textos
                                                 --}}
-                                                <p>{{ \Illuminate\Support\Str::limit($rumour->Description, 100, $end = '...') }}
+                                                <p>{{ \Illuminate\Support\Str::limit($rumour->GetDescription(), 100, $end = '...') }}
                                                 </p>
                                             </div>
                                         </div>

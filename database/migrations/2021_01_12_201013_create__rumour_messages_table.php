@@ -16,7 +16,7 @@ class CreateRumourMessagesTable extends Migration
         Schema::create('rumourmessages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('rumour_id')->references('id')->on('rumours')->onDelete('cascade');
-            $table->foreignId('user_id')->nullable()->references('id')->on('users')->onDelete('set null');
+            $table->foreignId('user_id')->default(App\User::COMUNITY_ID)->references('id')->on('users')->onDelete('set default');
    
  
             $table->boolean('Visible')->default(true);

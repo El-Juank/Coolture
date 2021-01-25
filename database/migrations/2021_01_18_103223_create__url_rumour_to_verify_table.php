@@ -16,10 +16,10 @@ class CreateUrlRumourToVerifyTable extends Migration
         Schema::create('urlrumourstoverify', function (Blueprint $table) {
             $table->id();
             $table->foreignId('rumour_id')->references('id')->on('rumours')->onDelete('cascade');
-            $table->foreignId('user_id')->nullable()->references('id')->on('users')->onDelete('set null');//si eliminen el compte que no elimini tot el que ha donat a la comunitat
+            $table->foreignId('user_id')->default(App\User::COMUNITY_ID)->references('id')->on('users')->onDelete('set default');//si eliminen el compte que no elimini tot el que ha donat a la comunitat
             $table->string('Url',500);
             $table->boolean('ToConfirmed');
-            $table->foreignId('VerifiedBy_id')->nullable()->references('id')->on('users')->onDelete('set null');
+            $table->foreignId('VerifiedBy_id')->default(App\User::COMUNITY_ID)->references('id')->on('users')->onDelete('set default');
       
             $table->timestamps();
         });

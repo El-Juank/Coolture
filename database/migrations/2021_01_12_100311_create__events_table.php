@@ -16,11 +16,11 @@ class CreateEventsTable extends Migration
         Schema::create('Events', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('user_id')->nullable()->references('id')->on('users')->onDelete('set null');; //qui el pot editar/ qui l'ha fet
+            $table->foreignId('user_id')->default(App\User::COMUNITY_ID)->references('id')->on('users')->onDelete('set default');; //qui el pot editar/ qui l'ha fet
             $table->foreignId('event_maker_id')->references('id')->on('eventmakers')->onDelete('cascade');
-            $table->foreignId('location_id')->nullable()->references('id')->on('locations')->onDelete('set null');
-            $table->foreignId('ImgEvent_id')->nullable()->references('id')->on('files')->onDelete('set null');
-            $table->foreignId('ImgPreview_id')->nullable()->references('id')->on('files')->onDelete('set null');
+            $table->foreignId('location_id')->default(App\Location::DEFAULT_LOCATION)->references('id')->on('locations')->onDelete('set default');
+            $table->foreignId('ImgEvent_id')->default(App\File::IMG_COVER)->references('id')->on('files')->onDelete('set default');
+            $table->foreignId('ImgPreview_id')->default(App\File::IMG_PROFILE)->references('id')->on('files')->onDelete('set default');
 
             $table->date('InitDate')->nullable();
             $table->datetime('Duration')->nullable();

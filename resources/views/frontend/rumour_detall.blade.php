@@ -15,7 +15,7 @@
 @extends('layouts.base')
 
 @section('seoTitle')
-    | {{ $rumour->Title }}
+    | {{ $rumour->GetTitle() }}
 @endsection
 
 @section('content')
@@ -24,22 +24,23 @@
             <div class="container mb-5" data-aos="fade-up">
                 {{-- INFORMACIÓ SOBRE EL RUMOR --}}
                 <div class="section-header">
-                    <h2>{{ $rumour->Title }}</h2>
+                    <h2>{{ $rumour->GetTitle() }}</h2>
                     {{-- User que ha publicat el rumor --}}
-                    <a href="{{route('eventmaker',['eventmaker' => $rumour->EventMaker->id])}}"><p>{{ $rumour->EventMaker->Name }}</p> </a>
+                    <a href="{{ route('eventmaker', ['eventmaker' => $rumour->EventMaker->id]) }}">
+                        <p>{{ $rumour->EventMaker->GetName() }}</p>
+                    </a>
                     <p>{{ $rumour->User->name }}</p>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 mb-lg-1 mb-5">
-                        <img src="{{--{{ asset($rumour->ImgEvent->Url()) }}--}}"
-                            alt="{{ $rumour->Title }}" class="img-fluid"
-                            onerror="this.onerror=null;this.src='{{ asset('img/default/image-not-available.png') }}';">
+                        <img alt="{{ $rumour->GetTitle() }}" class="img-fluid"
+                            src='{{ asset(App\File::ImgRumourDetail()->Url()) }}'>
                     </div>
 
                     <div class="col-md-6">
                         <div class="details">
-                            <p>{{ $rumour->Description }}</p>
+                            <p>{{ $rumour->GetDescription() }}</p>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item borderless">
                                     <i class="fa fa-map-marker"></i>
@@ -115,8 +116,8 @@
                                     <fieldset>
                                         <div class="row">
                                             <div class="col-sm-3 col-lg-2 hidden-xs">
-                                                <img class="user-img" src="" alt=""
-                                                    onerror="this.onerror=null;this.src='{{ asset('img/default/user-image-not-available.png') }}';">
+                                                <img class="user-img" alt=""
+                                                    src='{{ asset($rumour->User->ImgProfile->Url()) }}'>
                                             </div>
                                             <div class="form-group col-xs-12 col-sm-9 col-lg-10">
                                                 <textarea name="rumourmessage_text" id="rumourmessage_text"
@@ -146,65 +147,44 @@
                             <h3>{{ $messages->count() }} {{ __('lang.event_comments') }}</h3>
 
                             {{-- MISSATGES DEL RUMOR --}}
+
+                            {{-- Si està logejat mostra'ls
+                            tots--}}
                             @auth
-                                {{-- Si està logejat mostra'ls
-                                tots--}}
-                                @forelse ($messages as $message)
-                                    <div class="media">
-                                        <a class="pull-left" href="#"><img class="media-object" src="" alt=""
-                                                onerror="this.onerror=null;this.src='{{ asset('img/default/user-image-not-available.png') }}';"></a>
-                                        <div class="media-body">
-                                            <h4 class="media-heading">{{ $message->User->name }}
-                                            </h4>
-                                            <p>{{ $message->Message }}</p>
-                                            <ul class="list-unstyled list-inline media-detail pull-left">
-                                                <li><i class="fa fa-calendar"></i>{{ $message->created_at->diffForHumans() }}</li>
-                                                {{--<li><i class="fa fa-thumbs-up"></i></li>
-                                                --}}
-                                            </ul>
-                                            {{--<ul
-                                                class="list-unstyled list-inline media-detail pull-right">
-                                                <li class=""><a href="">Like</a></li>
-                                            </ul>--}}
-                                        </div>
-                                    </div>
-                                @empty
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <p>{{ __('lang.empty_comments') }}</p>
-                                        </div>
-                                    </div>
-                                @endforelse
+                            <?php $mgs=$messages; ?>
                             @endauth
                             @guest
-                                {{-- Si no està logejat mostra nomès
-                                3--}}
-                                @forelse ($messages->take(3) as $message)
-                                    <div class="media">
-                                        <a class="pull-left" href="#"><img class="media-object" src="" alt=""
-                                                onerror="this.onerror=null;this.src='{{ asset('img/default/user-image-not-available.png') }}';"></a>
-                                        <div class="media-body">
-                                            <h4 class="media-heading">{{ $message->User->name }}
-                                            </h4>
-                                            <p>{{ $message->Message }}</p>
-                                            <ul class="list-unstyled list-inline media-detail pull-left">
-                                                <li><i class="fa fa-calendar"></i>{{ $message->created_at->diffForHumans() }}</li>
-                                                {{--<li><i class="fa fa-thumbs-up"></i></li>
-                                                --}}
-                                            </ul>
-                                            {{--<ul
-                                                class="list-unstyled list-inline media-detail pull-right">
-                                                <li class=""><a href="">Like</a></li>
-                                            </ul>--}}
-                                        </div>
+                             <?php $mgs=$messages->take(3); ?>
+                            @endguest
+                            @forelse ($mgs as $message)
+                                <div class="media">
+                            
+                                    <a class="pull-left" href="#"><img class="media-object"  alt=""
+                                           src='{{ asset($message->User->ImgProfile->Url()) }}'></a>
+                                        
+                                    <div class="media-body">
+                                        <h4 class="media-heading">{{ $message->User->name }}
+                                        </h4>
+                                        <p>{{ $message->GetMessage() }}</p>
+                                        <ul class="list-unstyled list-inline media-detail pull-left">
+                                            <li><i class="fa fa-calendar"></i>{{ $message->created_at->diffForHumans() }}</li>
+                                            {{--<li><i class="fa fa-thumbs-up"></i></li>
+                                            --}}
+                                        </ul>
+                                        {{--<ul
+                                            class="list-unstyled list-inline media-detail pull-right">
+                                            <li class=""><a href="">Like</a></li>
+                                        </ul>--}}
                                     </div>
-                                @empty
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <p>{{ __('lang.empty_comments') }}</p>
-                                        </div>
+                                </div>
+                            @empty
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <p>{{ __('lang.empty_comments') }}</p>
                                     </div>
-                                @endforelse
+                                </div>
+                            @endforelse
+                            @guest
                                 @if ($messages->count() >= 3)
                                     <div class="mt-5 mb-5 text-center">
                                         <div class="card pt-3 pb-3 d-flex align-items-center"

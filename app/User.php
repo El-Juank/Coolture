@@ -67,12 +67,8 @@ class User extends Authenticatable
     }
     public function ImgProfile()
     {
-        if ($this->ImgProfile_id == null) {
-            $img = File::ImgDefaultProfile();
-        } else {
-            $img = $this->belongsTo(File::class, 'ImgProfile_id');
-        }
-        return $img;
+       return $this->belongsTo(File::class, 'ImgProfile_id');
+      
     }
     public function ImgCover()
     {

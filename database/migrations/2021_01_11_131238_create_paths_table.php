@@ -18,6 +18,7 @@ class CreatePathsTable extends Migration
             $table->string('Url',250)->unique();
             $table->timestamps();
         });
+        PathSeeder::AddPath('default');
     }
 
     /**
