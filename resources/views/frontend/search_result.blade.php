@@ -54,12 +54,12 @@
                             @empty
                                 <div class="col-lg-3">
                                     <div class="result text-center mt-5" data-aos="fade-up" data-aos-delay="100">
-                                        <img class="img-fluid w-50" src="{{ asset('img/icons/not_found.svg') }}">
+                                        <img class="img-fluid w-50" src="{{ asset(App\File::ImgNotFound()->Url()) }}">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="result">
-                                        <h3 class="text-center">Sense resultats en aquesta cerca</h3>
+                                        <h3 class="text-center"> {{__('lang.search_no_results')}}</h3>
                                     </div>
                                 </div>
                             @endforelse
@@ -74,7 +74,7 @@
                                     <a href="">
                                         <div class="col-lg-4">
                                             <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                                <img src="{{ $rumourTranslation->Rumour->ImgPreview->Url() }}" alt="Rock"
+                                                <img src="{{ $rumourTranslation->Rumour->ImgPreview->Url() }}"
                                                     class="img-fluid">
                                                 <div class="details">
                                                     <h3><a
@@ -91,12 +91,12 @@
                                 @empty
                                     <div class="col-lg-3">
                                         <div class="result text-center mt-5" data-aos="fade-up" data-aos-delay="100">
-                                            <img class="img-fluid w-50" src="{{ asset('img/icons/not_found.svg') }}">
+                                            <img class="img-fluid w-50" src="{{ asset(App\File::ImgNotFound()->Url()) }}">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="result">
-                                            <h3 class="text-center">Sense resultats en aquesta cerca</h3>
+                                            <h3 class="text-center">{{ __('lang.search_no_results') }}</h3>
                                         </div>
                                     </div>
                                 @endforelse
