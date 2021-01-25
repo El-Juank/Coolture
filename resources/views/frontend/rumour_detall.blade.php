@@ -158,10 +158,10 @@
                             @endguest
                             @forelse ($mgs as $message)
                                 <div class="media">
-                            
+
                                     <a class="pull-left" href="#"><img class="media-object"  alt=""
                                            src='{{ asset($message->User->ImgProfile->Url()) }}'></a>
-                                        
+
                                     <div class="media-body">
                                         <h4 class="media-heading">{{ $message->User->name }}
                                         </h4>

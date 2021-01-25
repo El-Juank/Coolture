@@ -28,9 +28,9 @@
 <body>
     @include('partials.header')
 
-    <main>
-        @yield('content')
-    </main>
+
+    @yield('content')
+
 
     <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
 

@@ -10,13 +10,13 @@ $locale = App::getLocale();
             <a href="{{ url('/', $locale) }}" class="scrollto"><img src="{{ asset('img/logo.svg') }}" alt=""
                     title="Coolture Logo"></a>
         </div>
-        <div id="logo2" class="pull-left">
+        <div id="logo2" class="pull-left @guest ml-5 @endguest">
             <a href="{{ url('/', $locale) }}" class="scrollto"><img src="{{ asset('img/logo_small.svg') }}" alt=""
                     title="Coolture Logo"></a>
         </div>
 
         <nav class="ml-lg-5 ml-md-3 w-100">
-            <ul class="nav-menu">
+            <ul class="nav-menu float-sm-right float-lg-none">
                 {{-- Buscador d'esdeveniment/rumors --}}
                 <li class="search">
                     <form id="searcher" method="GET" action="{{ route('search_result') }}">
@@ -88,7 +88,8 @@ $locale = App::getLocale();
                 --}}
                 @guest
                     <li class="btn-login">
-                        <a href="#" data-toggle="modal" data-target="#modalRegisterCenter">
+                        <a href="#" data-toggle="modal" data-target="#modalRegisterCenter"
+                            title="{{ __('lang.header_login_register') }}">
                             <p>{{ __('lang.header_login_register') }}</p>
                             <i class="fa fa-user-o"></i>
                         </a>
@@ -98,13 +99,19 @@ $locale = App::getLocale();
 
                         <a class="nav-link p-0" href="{{ LaravelLocalization::localizeUrl('home') }}"
                             title="{{ __('lang.user_area') }}">
-                             <img class="user-profile-pic" src= "asset(Auth::user()->ImgProfile()->Url()) }}" alt="{{ Auth::user()->name }}" >
+                            <img class="user-profile-pic"
+                                src="{{-- asset(
+                                                                            Auth::user()->ImgProfile()->url()) --}}"
+                                onerror="this.src='{{ asset('img/default/user-image-not-available.png') }}';"
+                                alt="{{ Auth::user()->name }}">
                             <span class="ml-2">{{ Auth::user()->name }}</span>
                         </a>
                     </li>
-                    <li>
-                        <a
-                            href="{{ route('notifications') }}"><div class="notifications">{{ Auth::user()->TotalNotificationChanges() }}</a>
+                    <li class="nav-item user-notifications">
+                        <a href="{{ route('notifications') }}" title="{{ __('lang.notifications') }}">
+                            <img class="notifications" src="{{ asset('img/bell.svg') }}">
+                            <span class="ml-2">{{ Auth::user()->TotalNotificationChanges() }}</span>
+                        </a>
                     </li>
                 @endguest
             </ul>
