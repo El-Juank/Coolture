@@ -17,8 +17,8 @@ class CreateRumoursTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->default(App\User::COMUNITY_ID);
             $table->foreignId('event_maker_id')->references('id')->on('eventmakers')->onDelete('cascade');
-            $table->unsignedBigInteger('imgPreview')->default(App\File::IMG_PROFILE);
-            $table->unsignedBigInteger('imgCover')->default(App\File::IMG_COVER);
+            $table->unsignedBigInteger('ImgPreview_id')->default(App\File::IMG_PROFILE);
+            $table->unsignedBigInteger('ImgCover_id')->default(App\File::IMG_COVER);
             $table->boolean('IsVisible');
             $table->integer('OwnTrust');
 
