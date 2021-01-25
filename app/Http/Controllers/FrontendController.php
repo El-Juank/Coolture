@@ -18,6 +18,7 @@ use App\RumourMessage;
 use App\RumourTranslation;
 use App\UserRange;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -30,6 +31,17 @@ class FrontendController extends Controller
      *
      * @return void
      */
+
+
+
+    public function index()
+    {
+        $locale = App::getLocale();
+
+
+        return view('index')
+            ->with('locale', $locale);
+    }
 
     public function home()
     {

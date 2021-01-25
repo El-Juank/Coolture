@@ -98,12 +98,12 @@ $locale = App::getLocale();
 
                         <a class="nav-link p-0" href="{{ LaravelLocalization::localizeUrl('home') }}"
                             title="{{ __('lang.user_area') }}">
-                            <img class="user-profile-pic" src="{{asset(Auth::user()->ImgProfile()->Url()) }}" alt="{{ Auth::user()->name }}" >
+                             <img class="user-profile-pic" src= "asset(Auth::user()->ImgProfile()->Url()) }}" alt="{{ Auth::user()->name }}" >
                             <span class="ml-2">{{ Auth::user()->name }}</span>
                         </a>
                     </li>
                     <li>
-                        <a 
+                        <a
                             href="{{ route('notifications') }}"><div class="notifications">{{ Auth::user()->TotalNotificationChanges() }}</a>
                     </li>
                 @endguest
