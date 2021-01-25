@@ -17,7 +17,7 @@
 
                 <div class="row">
                     <div class="col-md-6 mb-lg-1 mb-5">
-                        <img src="{{ asset($event->ImgEvent()->Url()) }}" alt="{{ $event->GetTitle() }}" class="img-fluid">
+                        <img src="{{ asset($event->ImgEvent->Url()) }}" alt="{{ $event->GetTitle() }}" class="img-fluid">
                     </div>
 
                     <div class="col-md-6">
