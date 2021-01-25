@@ -39,8 +39,12 @@ return [
     //Traduccions pàgina "Home"
     "home_seo_title" => "Inici",
     "home_intro" => "Què et ve de gust escoltar?",
-    "home_featured_genders" => "Gèneres destacats",
-    "home_featured_genders_tagline" => "Els gèneres més escoltats del moment",
+    "home_featured_events" => "Esdeveniments destacats",
+    "home_featured_events_tagline" => "Els esdeveniments amb més likes del moment",
+    "home_featured_rumours" => "Rumors destacats",
+    "home_featured_rumours_tagline" => "Els rumors amb més likes del moment",
+    "home_featured_eventmakers" => "Artistes destacats",
+    "home_featured_eventmakers_tagline" => "Els artistes amb més seguidors del moment",
 
     //Traduccions pàgina "Footer"
     "footer_licence" => "Llicència MIT",

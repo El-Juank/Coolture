@@ -6,6 +6,7 @@ use App\User;
 use App\Category;
 use App\Event;
 use App\EventMaker;
+use App\EventMakerTranslation;
 use App\EventMessage;
 use App\EventTranslation;
 use App\LikeEvent;
@@ -17,6 +18,7 @@ use App\RumourMessage;
 use App\RumourTranslation;
 use App\UserRange;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -29,6 +31,17 @@ class FrontendController extends Controller
      *
      * @return void
      */
+
+
+
+    public function index()
+    {
+        $locale = App::getLocale();
+
+
+        return view('index')
+            ->with('locale', $locale);
+    }
 
     public function home()
     {
@@ -286,11 +299,11 @@ class FrontendController extends Controller
         //Agafem els events i els rumors
         $events = EventTranslation::where('locale', $locale)->where('Title', 'like', '%' . $title . '%')->get();
         $rumours = RumourTranslation::where('locale', $locale)->where('Title', 'like', '%' . $title . '%')->get();
-
-        //Els posem en una única col·lecció perque ens retorni els resultats barrejats
-        $results = collect($events)->merge($rumours);
+        $eventmakers = EventMakerTranslation::where('Name', 'like', '%' . $title . '%')->get();
 
         return view('frontend.search_result')
-            ->with('results', $results);
+            ->with('events', $events)
+            ->with('rumours', $rumours)
+            ->with('eventmakers', $eventmakers);
     }
 }

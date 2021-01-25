@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\App;
@@ -8,11 +9,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 //Prefix de l'idioma, translations implementat:
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
-    Route::get('/', function () {
-        $locale = App::getLocale();
-        return view('index')
-            ->with('locale', $locale);
-    });
+    Route::get('/', 'FrontendController@index')->name('index');
 
     Route::get('/test', 'Controller@test');
 
@@ -69,7 +66,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         Route::get('eventNotification/{event}','FrontendController@eventNotification')->name('eventNotification');
         Route::get('eventMakerNotification/{eventmaker}','FrontendController@eventMakerNotification')->name('eventMakerNotification');
         Route::get('rumourNotification/{rumour}','FrontendController@rumourNotification')->name('rumourNotification');
-       
+
         //Editor perfil
         Route::resource('profile', 'ProfileController');
 
