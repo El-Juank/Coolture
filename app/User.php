@@ -210,17 +210,24 @@ class User extends Authenticatable
 
         return Permission::where('User_id', $this->id)->where('Role_id', $roleId)->count() == 1;
     }
-    public function NotificationChangeEvents()
+    public function TotalNotificationChanges(){
+        $total=NotificationChangeEvent::where('user_id',$this->id)->count();
+        $total+=NotificationChangeEventMaker::where('user_id',$this->id)->count();
+        $total+=NotificationChangeRumour::where('user_id',$this->id)->count();
+        return $total;
+    }
+    public function ClearNotificationChangeEvents()
     {
         foreach (NotificationChangeEvent::where('user_id', $this->id)->get() as $notification)
             $notification->save();
     }
-    public function NotificationChangeEventMakers()
+    public function ClearNotificationChangeEventMakers()
     {
         foreach (NotificationChangeEventMaker::where('user_id', $this->id)->get() as $notification)
             $notification->save();
     }
-    public function NotificationChangeRumours()
+
+    public function ClearNotificationChangeRumours()
     {
         foreach (NotificationChangeRumour::where('user_id', $this->id)->get() as $notification)
             $notification->save();

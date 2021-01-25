@@ -59,7 +59,7 @@ class FrontendController extends Controller
             Event::find($id)->NotificationChangeSeen(Auth::user());
             $result = redirect(route('event', ['event' => $id]));
         } else {
-            Auth::user()->NotificationChangeEvents();
+            Auth::user()->ClearNotificationChangeEvents();
             $result = redirect(route('notifications'));
         }
         return $result;
@@ -70,7 +70,7 @@ class FrontendController extends Controller
             EventMaker::find($id)->NotificationChangeSeen(Auth::user());
             $result = redirect(route('eventmaker', ['eventmaker' => $id]));
         } else {
-            Auth::user()->NotificationChangeEventMakers();
+            Auth::user()->ClearNotificationChangeEventMakers();
             $result = redirect(route('notifications'));
         }
         return $result;
@@ -81,7 +81,7 @@ class FrontendController extends Controller
             Rumour::find($id)->NotificationChangeSeen(Auth::user());
             $result = redirect(route('rumour', ['rumour' => $id]));
         } else {
-            Auth::user()->NotificationChangeRumours();
+            Auth::user()->ClearNotificationChangeRumours();
             $result = redirect(route('notifications'));
         }
         return $result;

@@ -15,7 +15,7 @@ class File extends Model
     }
     public function Url(){
         $path=$this->Path;
-        return $path->Url.'\\'.$this->Name.'.'.$this->Format;
+        return $path->Url.'/'.$this->Name.'.'.$this->Format;
     }
     public function Purgue(){
         //esborro del disc
