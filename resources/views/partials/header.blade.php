@@ -10,13 +10,13 @@ $locale = App::getLocale();
             <a href="{{ url('/', $locale) }}" class="scrollto"><img src="{{ asset('img/logo.svg') }}" alt=""
                     title="Coolture Logo"></a>
         </div>
-        <div id="logo2" class="pull-left @guest ml-5 @endguest @auth ml-2 @endauth">
+        <div id="logo2" class="pull-left @guest ml-5 @endguest">
             <a href="{{ url('/', $locale) }}" class="scrollto"><img src="{{ asset('img/logo_small.svg') }}" alt=""
                     title="Coolture Logo"></a>
         </div>
 
         <nav class="ml-lg-5 ml-md-3 w-100">
-            <ul class="nav-menu float-sm-right float-lg-none">
+            <ul class="nav-menu">
                 {{-- Buscador d'esdeveniment/rumors --}}
                 <li class="search">
                     <form id="searcher" method="GET" action="{{ route('search_result') }}">
@@ -101,7 +101,7 @@ $locale = App::getLocale();
                             title="{{ __('lang.user_area') }}">
                             <img class="user-profile-pic"
                                 src="{{-- asset(
-                                                                                                        Auth::user()->ImgProfile()->url()) --}}"
+                                                                                                                Auth::user()->ImgProfile()->url()) --}}"
                                 onerror="this.src='{{ asset('img/default/user-image-not-available.png') }}';"
                                 alt="{{ Auth::user()->name }}">
                             <span class="ml-2">{{ Auth::user()->name }}</span>
