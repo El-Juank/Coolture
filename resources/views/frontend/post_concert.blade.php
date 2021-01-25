@@ -31,7 +31,7 @@
                                                             for="form_title">{{ __('lang.form_title') }} *</label>
                                                         <input id="form_title" type="text" name="title" class="form-control"
                                                             placeholder="{{ __('lang.write_title') }}" required="required"
-                                                            data-error="Valid email is required.">
+                                                            data-error="{{__('lang.error_input_email')}}">
                                                     </div>
                                                 </div>
                                                 {{-- Si es visible o no

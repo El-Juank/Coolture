@@ -228,4 +228,7 @@ return [
     "notifications_not_event_cachanges"=>"No hi ha notifications d'events",
     "notifications_not_rumour_cachanges"=>"No hi ha notifications de rumors",
     "notifications_not_event_maker_cachanges"=>"No hi ha notifications d'artistes",
+
+    //errors
+    "error_input_email"=>"Es imprescindible un correu!"
 ];
