@@ -6,6 +6,7 @@ use App\User;
 use App\Category;
 use App\Event;
 use App\EventMaker;
+use App\EventMakerTranslation;
 use App\EventMessage;
 use App\EventTranslation;
 use App\LikeEvent;
@@ -286,11 +287,11 @@ class FrontendController extends Controller
         //Agafem els events i els rumors
         $events = EventTranslation::where('locale', $locale)->where('Title', 'like', '%' . $title . '%')->get();
         $rumours = RumourTranslation::where('locale', $locale)->where('Title', 'like', '%' . $title . '%')->get();
-
-        //Els posem en una única col·lecció perque ens retorni els resultats barrejats
-        $results = collect($events)->merge($rumours);
+        $eventmakers = EventMakerTranslation::where('Name', 'like', '%' . $title . '%')->get();
 
         return view('frontend.search_result')
-            ->with('results', $results);
+            ->with('events', $events)
+            ->with('rumours', $rumours)
+            ->with('eventmakers', $eventmakers);
     }
 }
