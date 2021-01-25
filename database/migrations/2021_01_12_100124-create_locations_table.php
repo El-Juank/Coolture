@@ -15,8 +15,8 @@ class LocationsTable extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->decimal('Lat',7,4);
-            $table->decimal('Lon',7,4);
+            $table->decimal('Lat',7,4)->default(0);
+            $table->decimal('Lon',7,4)->default(0);
 
             $table->softDeletes();
             $table->timestamps();

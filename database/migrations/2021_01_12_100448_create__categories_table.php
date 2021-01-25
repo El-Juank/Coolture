@@ -15,8 +15,8 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ImgIcon_id')->default(App\File::IMG_PROFILE)->references('id')->on('files')->onDelete('set default');
-            $table->foreignId('Img_id')->default(App\File::IMG_COVER)->references('id')->on('files')->onDelete('set default');
+            $table->unsignedBigInteger('ImgIcon_id')->default(App\File::IMG_PROFILE);
+            $table->unsignedBigInteger('Img_id')->default(App\File::IMG_COVER);
        
 
             $table->softDeletes();

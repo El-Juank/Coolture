@@ -35,7 +35,8 @@ class FileSeeder extends Seeder
                 $file->path_id = $idPath;
                 $file->Name = $campsFile[0];
                 $file->Format = $campsFile[1];
-                $file->save();
+                if($file->Name!='')
+                    $file->save();
             }
         }
     }

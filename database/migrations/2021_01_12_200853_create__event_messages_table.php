@@ -17,7 +17,7 @@ class CreateEventMessagesTable extends Migration
             $table->id();
 
             $table->foreignId('event_id')->references('id')->on('events')->onDelete('cascade');
-            $table->foreignId('user_id')->default(App\User::COMUNITY_ID)->references('id')->on('users')->onDelete('set default');
+            $table->unsignedBigInteger('user_id')->default(App\User::COMUNITY_ID);
 
 
             $table->boolean('Visible')->default(true);

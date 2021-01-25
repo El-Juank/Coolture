@@ -26,7 +26,7 @@ class FilesTable extends Migration
 
             $table->timestamps();
         });
-        FileSeeder::AddFiles(Path::find(Path::DEFAULT_PATH_ID),Path::DEFAULT_PATH_ID);
+        FileSeeder::AddFiles(Path::find(Path::DEFAULT_PATH_ID)->Url,Path::DEFAULT_PATH_ID);
     }
 
     /**

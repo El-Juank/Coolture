@@ -15,10 +15,10 @@ class CreateRumoursTable extends Migration
     {
         Schema::create('rumours', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->default(App\User::COMUNITY_ID)->references('Id')->on('users')->onDelete('set default');
-            $table->foreignId('event_maker_id')->references('Id')->on('eventmakers')->onDelete('cascade');
-            $table->foreignId('imgPreview')->default(App\File::IMG_PROFILE)->references('id')->on('files')->onDelete('set default');
-            $table->foreignId('imgCover')->default(App\File::IMG_COVER)->references('id')->on('files')->onDelete('set default');
+            $table->unsignedBigInteger('user_id')->default(App\User::COMUNITY_ID);
+            $table->foreignId('event_maker_id')->references('id')->on('eventmakers')->onDelete('cascade');
+            $table->unsignedBigInteger('imgPreview')->default(App\File::IMG_PROFILE);
+            $table->unsignedBigInteger('imgCover')->default(App\File::IMG_COVER);
             $table->boolean('IsVisible');
             $table->integer('OwnTrust');
 

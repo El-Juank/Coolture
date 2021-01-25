@@ -40,21 +40,11 @@ class Event extends Model
     }
     public function ImgEvent()
     {
-        if($this->ImgEvent_id!=null){
-        $img= $this->belongsTo(File::class, 'ImgEvent_id');
-        }else{
-            $img=File::ImgDefaultCover();
-        }
-        return $img;
+        return $this->belongsTo(File::class, 'ImgEvent_id');
     }
     public function ImgPreview()
     {
-        if($this->ImgEvent_id!=null){
-            $img= $this->belongsTo(File::class, 'ImgPreview_id');
-            }else{
-                $img=File::ImgDefaultCover();
-            }
-            return $img;
+       return  $this->belongsTo(File::class, 'ImgPreview_id');
 
     }
 

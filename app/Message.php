@@ -8,23 +8,11 @@ class Message extends Model
 {
     public function From(){
        
-        if($this->From_id==null)
-        {
-            $user=User::CommunityUser();
-        }else{
-            $user= $this->belongsTo(User::class, 'FromUser_id');
-        }
-        return $user;
+      return $this->belongsTo(User::class, 'FromUser_id');
     }
     public function To(){
         
-        if($this->To_id==null)
-        {
-            $user=User::CommunityUser();
-        }else{
-            $user= $this->belongsTo(User::class, 'ToUser_id');
-        }
-        return $user;
+       return $this->belongsTo(User::class, 'ToUser_id');
     }
 
     public static function Purgue(){

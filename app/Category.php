@@ -21,21 +21,11 @@ class Category extends Model
 
     public function Icon()
     {
-        if($this->ImgIcon_id==null){
-            $img=File::ImgDefaultNotFound();
-        }else{
-            $img=$this->belongsTo(File::class,'ImgIcon_id');
-        }
-        return $img; 
+       return $this->belongsTo(File::class,'ImgIcon_id');
     }
     public function Image()
     {
-        if($this->Img_id==null){
-            $img=File::ImgDefaultNotFound();
-        }else{
-            $img=$this->belongsTo(File::class,'Img_id');
-        }
-        return $img; 
+       return $this->belongsTo(File::class,'Img_id');
         
     }
     public static function Categories(){

@@ -24,11 +24,11 @@ class UsersTable extends Migration
             $table->string('email')->unique();
   
 
-            $table->foreignId('Country_id')->default(App\Location::DEFAULT_COUNTRY)->references('id')->on('locations')->onDelete('set default');
-            $table->foreignId('DefaultLocation_id')->default(App\Location::DEFAULT_LOCATION)->references('id')->on('locations')->onDelete('set default');
+            $table->unsignedBigInteger('Country_id')->default(App\Location::DEFAULT_COUNTRY);
+            $table->unsignedBigInteger('DefaultLocation_id')->default(App\Location::DEFAULT_LOCATION);
     
-            $table->foreignId('ImgProfile_id')->default(App\File::IMG_PROFILE)->references('id')->on('files')->onDelete('set default');
-            $table->foreignId('ImgCover_id')->default(App\File::IMG_COVER)->references('id')->on('files')->onDelete('set default');
+            $table->unsignedBigInteger('ImgProfile_id')->default(App\File::IMG_PROFILE);
+            $table->unsignedBigInteger('ImgCover_id')->default(App\File::IMG_COVER);
 
             $table->date('BirthDate')->nullable();
             $table->boolean('Gender')->nullable();//si es null es que es other
@@ -39,7 +39,16 @@ class UsersTable extends Migration
 
             $table->softDeletes();
             $table->timestamps();
-        });
+/*
+    $table->foreign('Country_id')->constrained('locations')->onDelete('set default');
+            $table->foreign('DefaultLocation_id')->references('id')->on('locations')->onDelete('set default');
+            $table->foreign('ImgProfile_id')->references('id')->on('files')->onDelete('set default');
+            $table->foreign('ImgCover_id')->references('id')->on('files')->onDelete('set default');
+
+
+
+*/
+                });
  
         Schema::create('user_translations', function ($table) {
             $table->id();
@@ -53,14 +62,13 @@ class UsersTable extends Migration
         });
 
         $comunityUser= new User();
-        $comunityUser->id=User::COMUNITY_ID;
         $comunityUser->name='Community';
         $comunityUser->email='comunity@coolutre.com';
         $comunityUser->password=Hash::make(Faker\Factory::create()->word());
         $comunityUser->save();
 
         Schema::table('users',function ($table){
-            $table->foreignId('UserVerified_id')->default(1)->references('id')->on('users');//qui l'ha verificat si es null es que no ho està
+            $table->foreignId('UserVerified_id')->default(User::COMUNITY_ID)->references('id')->on('users');//qui l'ha verificat si es null es que no ho està
         });
     }
 
