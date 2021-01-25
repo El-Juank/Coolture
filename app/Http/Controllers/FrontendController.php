@@ -40,7 +40,8 @@ class FrontendController extends Controller
 
 
         return view('index')
-            ->with('locale', $locale);
+            ->with('locale', $locale)
+            ->with('categories',Category::all());
     }
 
     public function home()

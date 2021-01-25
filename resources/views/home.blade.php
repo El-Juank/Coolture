@@ -47,8 +47,8 @@
                                         @foreach ($events as $event)
                                             <tr>
                                                 <td>{{ $event->created_at }}</td>
-                                                <td>{{ $event->Title }}</td>
-                                                <td>{{ $event->EventMaker->Name }}</td>
+                                                <td>{{ $event->GetTitle() }}</td>
+                                                <td>{{ $event->EventMaker->GetName() }}</td>
 
 
                                                 <td>
@@ -95,8 +95,8 @@
                                                 <td>{{ $rumour->created_at }}</td>
                                                 <td>{{ $rumour->Title }}</td>
                                                 <td>
-                                                    @if ($rumour->EventMaker != null)
-                                                        {{ $rumour->EventMaker->Name }}
+                                                    @if ($rumour->HasEventMaker())
+                                                        {{ $rumour->EventMaker->GetName() }}
                                                     @else
                                                         -
                                                     @endif

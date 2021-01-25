@@ -28,7 +28,7 @@
                                 </thead>
                                 <tbody>
                                         <tr>
-                                            <td>{{ $userrange->EventMaker->Name }}</td>
+                                            <td>{{ $userrange->EventMaker->GetName() }}</td>
                                             <td>{{ ($userrange->Range)/10 }} km</td>
                                             <td>
                                                 {{-- BOTÓ DE UNFOLLOW --}}

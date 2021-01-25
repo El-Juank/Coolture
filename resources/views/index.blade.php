@@ -11,54 +11,20 @@
             <div class="col-md-10 col-md-offset-1">
                 <div id="gendersCarousel" class="carousel slide w-100" data-ride="carousel">
                     <div class="carousel-inner w-100" role="listbox">
-                        <div class="carousel-item active">
+                    <?php $first=true;?>
+                    @foreach($categories as $category)
+                        <div class="carousel-item @if($first) active @endif ">
+                         <?php $first=false; ?>
+
                             <div class="col-lg-2 col-6">
                                 <a href="">
-                                    <img class="img-fluid" src="{{ asset('img/icons/rock.svg') }}">
-                                    <h2>Rock</h2>
+                                    <img class="img-fluid" src="{{ asset($category->Icon->Url()) }}">
+                                    <h2>{{$category->GetName()}}</h2>
                                 </a>
                             </div>
                         </div>
-                        <div class="carousel-item">
-                            <div class="col-lg-2 col-6">
-                                <a href="">
-                                    <img class="img-fluid" src="{{ asset('img/icons/pop.svg') }}">
-                                    <h2>Pop</h2>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-lg-2 col-6">
-                                <a href="">
-                                    <img class="img-fluid" src="{{ asset('img/icons/indie.svg') }}">
-                                    <h2>Indie</h2>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-lg-2 col-6">
-                                <a href="">
-                                    <img class="img-fluid" src="{{ asset('img/icons/Reggae.svg') }}">
-                                    <h2>Reggae</h2>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-lg-2 col-6">
-                                <a href="">
-                                    <img class="img-fluid" src="{{ asset('img/icons/soul.svg') }}">
-                                    <h2>Soul</h2>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-lg-2 col-6">
-                                <a href="">
-                                    <img class="img-fluid" src="{{ asset('img/icons/jazz.svg') }}">
-                                    <h2>Jazz</h2>
-                                </a>
-                            </div>
-                        </div>
+                        @endforeach
+                       
                     </div>
 
                     <a class="carousel-control-prev w-auto" href="#gendersCarousel" role="button" data-slide="prev">
