@@ -14,11 +14,7 @@
                 <h2 class="mb-1">{{ __('lang.following_posts') }}</h2>
                 <p class="text-secondary">{{ __('lang.following_posts_tagline') }}</p>
 
-
-
-
-
-                @if ( $userranges)
+                @forelse ($userranges as $userrange)
                     <!-- Taula eventmakers follow -->
                     <div id="events" class="tab-pane active">
                         <div class="card-body table-responsive">
@@ -31,7 +27,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($userranges as $userrange)
                                         <tr>
                                             <td>{{ $userrange->EventMaker->Name }}</td>
                                             <td>{{ ($userrange->Range)/10 }} km</td>
@@ -46,13 +41,15 @@
                                             </td>
 
                                         </tr>
-                                    @endforeach
+
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
-                @else
+                @empty
+
+
                     <div class="card">
                         <div class="card-header">{{ __('Dashboard') }}</div>
 
@@ -67,7 +64,7 @@
 
                         </div>
                     </div>
-                @endif
+                @endforelse
 
 
             </div>
