@@ -27,19 +27,19 @@
                     {{-- Esdeveniments --}}
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                         <div class="row justify-content-center">
-                            @forelse ($events as $event)
+                            @forelse ($events as $eventTransition)
                                 <a href="">
                                     <div class="col-lg-4">
                                         <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                            <img src="{{asset($event->ImgPreview->Url())}}"  class="img-fluid"
+                                            <img src="{{asset($eventTransition->Event->ImgPreview->Url())}}"  class="img-fluid"
                                               >
                                             <div class="details">
                                                 <h3><a
-                                                        href="{{ route('event', ['event' => $event->id]) }}">{{ $event->GetTitle() }}</a>
+                                                        href="{{ route('event', ['event' => $eventTransition->Event->id]) }}">{{ $eventTransition->Event->GetTitle() }}</a>
                                                 </h3>
                                                 {{-- Per limitar la mida dels textos
                                                 --}}
-                                                <p>{{ \Illuminate\Support\Str::limit($event->GetDescription(), 100, $end = '...') }}</p>
+                                                <p>{{ \Illuminate\Support\Str::limit($eventTransition->Event->GetDescription(), 100, $end = '...') }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -62,19 +62,19 @@
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                             <div class="row justify-content-center">
-                                @forelse ($rumours as $rumour)
+                                @forelse ($rumours as $rumourTranslation)
                                     <a href="">
                                         <div class="col-lg-4">
                                             <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                                <img src="{{$rumour->ImgPreview->Url()}}" alt="Rock" class="img-fluid"
+                                                <img src="{{$rumourTranslation->Rumour->ImgPreview->Url()}}" alt="Rock" class="img-fluid"
                                                   >
                                                 <div class="details">
                                                     <h3><a
-                                                            href="{{ route('rumour', ['rumour' => $rumour->id]) }}">{{ $rumour->GetTitle() }}</a>
+                                                            href="{{ route('rumour', ['rumour' => $rumourTranslation->Rumour->id]) }}">{{ $rumourTranslation->Rumour->GetTitle() }}</a>
                                                     </h3>
                                                     {{-- Per limitar la mida dels textos
                                                     --}}
-                                                    <p>{{ \Illuminate\Support\Str::limit($rumour->GetDescription(), 100, $end = '...') }}</p>
+                                                    <p>{{ \Illuminate\Support\Str::limit($rumourTranslation->Rumour->GetDescription(), 100, $end = '...') }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -98,19 +98,19 @@
                     <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                             <div class="row justify-content-center">
-                                @forelse ($eventmakers as $eventmaker)
+                                @forelse ($eventmakers as $eventmakerTranslation)
                                     <a href="">
                                         <div class="col-lg-4">
                                             <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                                <img src="{{asset($eventmaker->ImgProfile->Url())}}" alt="Rock" class="img-fluid"
+                                                <img src="{{asset($eventmakerTranslation->EventMaker->ImgProfile->Url())}}" alt="Rock" class="img-fluid"
                                                    >
                                                 <div class="details">
                                                     <h3><a
-                                                            href="{{ route('eventmaker', ['eventmaker' => $eventmaker->id]) }}">{{ $eventmaker->GetName() }}</a>
+                                                            href="{{ route('eventmaker', ['eventmaker' => $eventmakerTranslation->EventMaker->id]) }}">{{ $eventmakerTranslation->EventMaker->GetName() }}</a>
                                                     </h3>
                                                     {{-- Per limitar la mida dels textos
                                                     --}}
-                                                    <p>{{ \Illuminate\Support\Str::limit($eventmaker->GetDescription(), 100, $end = '...') }}</p>
+                                                    <p>{{ \Illuminate\Support\Str::limit($eventmakerTranslation->EventMaker->GetDescription(), 100, $end = '...') }}</p>
                                                 </div>
                                             </div>
                                         </div>

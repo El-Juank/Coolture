@@ -9,7 +9,7 @@ class EventMakerTranslation extends Model
 {
     use SoftDeletes;
     protected $table="EventMaker_Translations";
-    public function EvemtMaker(){
+    public function EventMaker(){
         return $this->belongsTo(EventMaker::class);
     }
 }
