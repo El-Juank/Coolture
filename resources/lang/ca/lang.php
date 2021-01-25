@@ -20,6 +20,7 @@ return [
     "follow" => "Seguir",
     "unfollow" => "Deixar de seguir",
     "or" => "o",
+    "artists" => "Artistes",
 
     //Traduccions "Header"
     "header_lang_spanish" => "Castellà",
@@ -87,7 +88,7 @@ return [
     "post_comment" => "Publicar",
     "to_leave_comment" => "per deixar un comentari",
     "to_see_comments" => "per veure tots els comentaris",
-    "location_not_available"=>"Localitat no disponible",
+    "location_not_available" => "Localitat no disponible",
 
     //Traduccions formularis
     "form_name" => "Nom",
@@ -222,10 +223,11 @@ return [
     "page_not_found" => "Pàgina no trobada.",
 
     //Notificacions
-    "notifications_title"=>"Notificacions",
-    "notifications_zero"=>"No hi ha notificacions de canvis!",
-    "notifications_seen"=>"Vistos",
-    "notifications_not_event_cachanges"=>"No hi ha notifications d'events",
-    "notifications_not_rumour_cachanges"=>"No hi ha notifications de rumors",
-    "notifications_not_event_maker_cachanges"=>"No hi ha notifications d'artistes",
+    "notifications" => "Notificacions",
+    "notifications_title" => "Notificacions",
+    "notifications_zero" => "No hi ha cap notificació!",
+    "notifications_seen" => "Vistos",
+    "notifications_not_event_cachanges" => "No hi ha notifications d'events",
+    "notifications_not_rumour_cachanges" => "No hi ha notifications de rumors",
+    "notifications_not_event_maker_cachanges" => "No hi ha notifications d'artistes",
 ];

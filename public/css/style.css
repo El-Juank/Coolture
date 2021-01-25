@@ -99,6 +99,10 @@ h6 {
     height: 100vh;
 }
 
+.min-vh-60 {
+    min-height: 60vh;
+}
+
 .page-wrap {
     min-height: 100vh;
 }
@@ -112,7 +116,6 @@ h6 {
     width: 150px;
 }
 
-
 /* Prelaoder */
 
 #preloader {
@@ -125,7 +128,6 @@ h6 {
     overflow: visible;
     background: #fff url("../img/preloader.svg") no-repeat center center;
 }
-
 
 /* Back to top button */
 
@@ -168,7 +170,6 @@ h6 {
     color: #fff;
 }
 
-
 /* Sections Header
 --------------------------------*/
 
@@ -209,7 +210,6 @@ h6 {
 .section-with-bg {
     background-color: #f6f7fd;
 }
-
 
 /*--------------------------------------------------------------
 # Header
@@ -255,7 +255,7 @@ h6 {
 
 @media (max-width: 991px) {
     #header #logo {
-        margin-left: 5%;
+        /*margin-left: 5%;*/
         transition: all 0.5s;
     }
 }
@@ -280,21 +280,19 @@ h6 {
     }
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 715px) {
     #header #logo {
         display: none;
     }
     #header #logo2 {
         display: block;
-        margin-left: 5%;
+        /*margin-left: 5%;*/
     }
 }
-
 
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
-
 
 /* Nav Menu Essentials */
 
@@ -318,10 +316,9 @@ h6 {
     white-space: nowrap;
 }
 
-.nav-menu>li {
+.nav-menu > li {
     float: left;
 }
-
 
 /*.nav-menu li:hover > ul,
 .nav-menu li.sfHover > ul {
@@ -336,7 +333,6 @@ h6 {
 .nav-menu ul li {
     min-width: 180px;
 }
-
 
 /* Nav Menu Arrows */
 
@@ -357,7 +353,6 @@ h6 {
     content: "\f105";
 }
 
-
 /* Nav Meu Container */
 
 #nav-menu-container {
@@ -371,11 +366,14 @@ h6 {
     }
 }
 
-
 /* Nav Meu Styling */
 
-.nav-menu a {
+.dropdown a {
     padding: 8px;
+}
+
+.nav-menu a {
+    /*padding: 8px;*/
     text-decoration: none;
     display: inline-block;
     font-family: "Poppins", sans-serif;
@@ -385,9 +383,9 @@ h6 {
 }
 
 @media (max-width: 1199px) {
-    .nav-menu a {
+    /*.nav-menu a {
         padding: 8px 4px;
-    }
+    }*/
 }
 
 .nav-menu .menu-active a,
@@ -396,15 +394,14 @@ h6 {
 }
 
 @media (max-width: 486px) {
-    .nav-menu>li {
+    .nav-menu > li {
         margin-left: 0px !important;
     }
 }
 
-.nav-menu>li {
+.nav-menu > li {
     margin-left: 15px;
 }
-
 
 /*.nav-menu > li > a:before {
     content: "";
@@ -417,7 +414,6 @@ h6 {
     visibility: hidden;
     transition: all 0.3s ease-in-out 0s;
 }*/
-
 
 /*.nav-menu a:hover:before,
 .nav-menu li:hover > a:before,
@@ -501,7 +497,7 @@ h6 {
     border-radius: 3px;
 }
 
-.nav-menu ul li:hover>a {
+.nav-menu ul li:hover > a {
     background: var(--colorCorp);
     color: #fff;
 }
@@ -548,7 +544,6 @@ h6 {
     border-bottom-right-radius: 0px;
 }
 
-
 /*.nav-menu .dropdown:after {
     font-family: "FontAwesome";
     content: "\f078";
@@ -569,23 +564,39 @@ h6 {
     width: 48px;
     height: 48px;
     border-radius: 50%;
+    border-radius: 50%;
     background-color: var(--colorCorp);
     border-bottom-right-radius: 0px;
 }
 
-@media only screen and (max-width: 775px) {
+@media only screen and (max-width: 991px) {
     .nav-menu .user-profile a span {
         display: none;
     }
 }
 
+.notifications {
+    width: 48px;
+    height: auto;
+}
+
+.nav-menu .user-notifications a span {
+    position: absolute;
+    right: -5px;
+    border: 5px solid #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    background-color: #fff;
+    line-height: 11px;
+}
 
 /* Modal ("Popup per iniciar sessió/registrar-se") */
 
 .modal {
     overflow-y: auto;
 }
-
 
 /* Solucionem el problema de que al obrir el model se'ns mogui la pàgina */
 
@@ -627,7 +638,6 @@ h6 {
 .modal-content .login-terms a:hover {
     color: #607d8b;
 }
-
 
 /*--------------------------------------------------------------
 # Intro Section
@@ -707,7 +717,6 @@ h6 {
     }
 }
 
-
 /* Carousel genres */
 
 .carousel-item h2 {
@@ -717,7 +726,6 @@ h6 {
 #gendersCarousel img {
     width: 100px;
 }
-
 
 /* medium - display 2 (col-lg-6 | 100/2=50) */
 
@@ -731,7 +739,6 @@ h6 {
         transform: translateX(-50%);
     }
 }
-
 
 /* large - display 6 (col-lg-2 | 100/6=16.6) */
 
@@ -756,7 +763,6 @@ h6 {
 .carousel-inner .carousel-item-left {
     transform: translateX(0);
 }
-
 
 /*--------------------------------------------------------------
 # About Section
@@ -807,7 +813,6 @@ h6 {
     margin-bottom: 20px;
     color: #fff;
 }
-
 
 /*--------------------------------------------------------------
 # Featured Section
@@ -906,11 +911,9 @@ h6 {
     margin-bottom: 10px;
 }
 
-
 /*--------------------------------------------------------------
 # Publicar rumor
 --------------------------------------------------------------*/
-
 
 /*** Custom checkboxes (tencar/obrir ull) ***/
 
@@ -918,42 +921,36 @@ h6 {
     display: none;
 }
 
-
 /* to hide the checkbox itself */
 
-.post-rumour input[type="checkbox"]+label:before {
+.post-rumour input[type="checkbox"] + label:before {
     font-family: FontAwesome;
     display: inline-block;
 }
 
-.post-rumour input[type="checkbox"]+label:before {
+.post-rumour input[type="checkbox"] + label:before {
     content: "\f06e";
 }
 
-
 /* unchecked icon */
 
-.post-rumour input[type="checkbox"]+label:before {
+.post-rumour input[type="checkbox"] + label:before {
     letter-spacing: 10px;
 }
 
-
 /* space between checkbox and label */
 
-.post-rumour input[type="checkbox"]:checked+label:before {
+.post-rumour input[type="checkbox"]:checked + label:before {
     content: "\f070";
 }
 
-
 /* checked icon */
 
-.post-rumour input[type="checkbox"]:checked+label:before {
+.post-rumour input[type="checkbox"]:checked + label:before {
     letter-spacing: 5px;
 }
 
-
 /* allow space for check mark */
-
 
 /*--------------------------------------------------------------
 # Schedule Section
@@ -1076,7 +1073,6 @@ h6 {
     margin-bottom: 0;
 }
 
-
 /*--------------------------------------------------------------
 # Venue Section
 --------------------------------------------------------------*/
@@ -1148,7 +1144,6 @@ h6 {
     transform: scale(1.1);
 }
 
-
 /*--------------------------------------------------------------
 # Hotels Section
 --------------------------------------------------------------*/
@@ -1208,7 +1203,6 @@ h6 {
     font-size: 15px;
 }
 
-
 /*--------------------------------------------------------------
 # Gallery Section
 --------------------------------------------------------------*/
@@ -1255,7 +1249,6 @@ h6 {
     z-index: 1;
 }
 
-
 /*--------------------------------------------------------------
 # Sponsors Section
 --------------------------------------------------------------*/
@@ -1289,7 +1282,6 @@ h6 {
 #supporters img {
     transition: all 0.4s ease-in-out;
 }
-
 
 /*--------------------------------------------------------------
 # Pàgina "Com funciona"
@@ -1355,7 +1347,6 @@ h6 {
 .inner-link:hover {
     color: var(--colorCorpHover);
 }
-
 
 /*--------------------------------------------------------------
 # Subscribe Section
@@ -1428,7 +1419,6 @@ h6 {
         margin-top: 10px;
     }
 }
-
 
 /*--------------------------------------------------------------
 # Buy Tickets Section
@@ -1505,7 +1495,6 @@ h6 {
 #btn-login #buy-ticket-modal .btn:hover {
     background-color: #e0072f;
 }
-
 
 /*--------------------------------------------------------------
 # Contact Section
@@ -1587,7 +1576,7 @@ h6 {
     font-weight: 600;
 }
 
-#contact .php-email-form .error-message br+br {
+#contact .php-email-form .error-message br + br {
     margin-top: 25px;
 }
 
@@ -1671,7 +1660,6 @@ h6 {
         transform: rotate(360deg);
     }
 }
-
 
 /*--------------------------------------------------------------
 # Footer
@@ -1823,7 +1811,6 @@ h6 {
     color: #ddd;
 }
 
-
 /*--------------------------------------------------------------
 # Pàgina Login | Register
 --------------------------------------------------------------*/
@@ -1849,7 +1836,6 @@ h6 {
 .container-register .btn-register:hover {
     background-color: var(--colorCorpHover);
 }
-
 
 /*--------------------------------------------------------------
 # Dashboard / Home
@@ -1933,7 +1919,6 @@ h6 {
     }
 }
 
-
 /*--------------------------------------------------------------
 # Pàgina Normes de publicació
 --------------------------------------------------------------*/
@@ -1942,11 +1927,9 @@ h6 {
     padding: 10px;
 }
 
-
 /*--------------------------------------------------------------
 # Pàgina Privacitat
 --------------------------------------------------------------*/
-
 
 /*--------------------------------------------------------------
 # Pàgina Privacitat
@@ -2008,6 +1991,11 @@ h6 {
     bottom: 0;
 }
 
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: var(--colorCorp);
+}
 
 /*--------------------------------------------------------------
 # Secció comentaris
@@ -2099,7 +2087,7 @@ li.borderless {
     margin: 0;
 }
 
-#comments .media>.pull-left {
+#comments .media > .pull-left {
     margin-right: 20px;
 }
 
@@ -2149,7 +2137,6 @@ li.borderless {
     margin-right: 10px;
 }
 
-
 /**/
 
 .img-outline {
@@ -2174,15 +2161,14 @@ li.borderless {
     align-items: center;
 }
 
-
 /*Notifications*/
 
-.notifications {
+/*.notifications {
     width: 25px;
     display: block;
     height: 25px;
-    background: url('../img/bell.svg');
+    background: url("../img/bell.svg");
     color: white;
     text-decoration: none;
     padding-left: 20px;
-}
+} */
