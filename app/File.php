@@ -55,7 +55,7 @@ class File extends Model
     public static function ImgDefaultCover(){
         return File::find(self::IMG_COVER);
     }
-    public static function ImgDefaultNotFound(){
+    public static function ImgNotFound(){
         return File::find(self::IMG_NOTFOUND);
     }
     public static function ImgRumourEventMaker(){

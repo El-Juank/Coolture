@@ -31,15 +31,15 @@
                                 <a href="">
                                     <div class="col-lg-4">
                                         <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                            <img src="" alt="Rock" class="img-fluid"
-                                                onerror="this.onerror=null;this.src='{{ asset('img/default/image-not-available.png') }}';">
+                                            <img src="{{asset($event->ImgPreview->Url())}}"  class="img-fluid"
+                                              >
                                             <div class="details">
                                                 <h3><a
-                                                        href="{{ route('event', ['event' => $event->id]) }}">{{ $event->Title }}</a>
+                                                        href="{{ route('event', ['event' => $event->id]) }}">{{ $event->GetTitle() }}</a>
                                                 </h3>
                                                 {{-- Per limitar la mida dels textos
                                                 --}}
-                                                <p>{{ \Illuminate\Support\Str::limit($event->Description, 100, $end = '...') }}</p>
+                                                <p>{{ \Illuminate\Support\Str::limit($event->GetDescription(), 100, $end = '...') }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -47,12 +47,12 @@
                             @empty
                                 <div class="col-lg-3">
                                     <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                        <img class="img-fluid" src="{{ asset('img/icons/not_found.svg') }}">
+                                        <img class="img-fluid" src="{{ asset(App\File::ImgNotFound()->Url()) }}">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="result" >
-                                        <h3  class="text-center">Sense resultats en aquesta cerca</h3>
+                                        <h3  class="text-center">{{__('lang.search_no_results')}}</h3>
                                     </div>
                                 </div>
                             @endforelse
@@ -66,15 +66,15 @@
                                     <a href="">
                                         <div class="col-lg-4">
                                             <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                                <img src="" alt="Rock" class="img-fluid"
-                                                    onerror="this.onerror=null;this.src='{{ asset('img/default/image-not-available.png') }}';">
+                                                <img src="{{$rumour->ImgPreview->Url()}}" alt="Rock" class="img-fluid"
+                                                  >
                                                 <div class="details">
                                                     <h3><a
-                                                            href="{{ route('rumour', ['rumour' => $rumour->id]) }}">{{ $rumour->Title }}</a>
+                                                            href="{{ route('rumour', ['rumour' => $rumour->id]) }}">{{ $rumour->GetTitle() }}</a>
                                                     </h3>
                                                     {{-- Per limitar la mida dels textos
                                                     --}}
-                                                    <p>{{ \Illuminate\Support\Str::limit($rumour->Description, 100, $end = '...') }}</p>
+                                                    <p>{{ \Illuminate\Support\Str::limit($rumour->GetDescription(), 100, $end = '...') }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -82,12 +82,12 @@
                                 @empty
                                     <div class="col-lg-3">
                                         <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                            <img class="img-fluid" src="{{ asset('img/icons/not_found.svg') }}">
+                                            <img class="img-fluid" src="{{ asset(App\File::ImgNotFound()->Url()) }}">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="result" >
-                                            <h3  class="text-center">Sense resultats en aquesta cerca</h3>
+                                            <h3  class="text-center">{{__('lang.search_no_results')}}</h3>
                                         </div>
                                     </div>
                                 @endforelse
@@ -102,15 +102,15 @@
                                     <a href="">
                                         <div class="col-lg-4">
                                             <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                                <img src="" alt="Rock" class="img-fluid"
-                                                    onerror="this.onerror=null;this.src='{{ asset('img/default/image-not-available.png') }}';">
+                                                <img src="{{asset($eventmaker->ImgProfile->Url())}}" alt="Rock" class="img-fluid"
+                                                   >
                                                 <div class="details">
                                                     <h3><a
-                                                            href="{{ route('eventmaker', ['eventmaker' => $eventmaker->id]) }}">{{ $eventmaker->Name }}</a>
+                                                            href="{{ route('eventmaker', ['eventmaker' => $eventmaker->id]) }}">{{ $eventmaker->GetName() }}</a>
                                                     </h3>
                                                     {{-- Per limitar la mida dels textos
                                                     --}}
-                                                    <p>{{ \Illuminate\Support\Str::limit($eventmaker->Description, 100, $end = '...') }}</p>
+                                                    <p>{{ \Illuminate\Support\Str::limit($eventmaker->GetDescription(), 100, $end = '...') }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -118,12 +118,12 @@
                                 @empty
                                     <div class="col-lg-3">
                                         <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                            <img class="img-fluid" src="{{ asset('img/icons/not_found.svg') }}">
+                                            <img class="img-fluid" src="{{ asset(App\File::ImgNotFound()->Url()) }}">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="result" >
-                                            <h3  class="text-center">Sense resultats en aquesta cerca</h3>
+                                            <h3  class="text-center">{{__('lang.search_no_results')}}</h3>
                                         </div>
                                     </div>
                                 @endforelse

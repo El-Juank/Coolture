@@ -77,6 +77,7 @@ return [
 
     //Traduccions cercador
     "search_result" => "Resultats",
+    "search_no_results"=>"Sense resultats en aquesta cerca",
 
     //Traduccions pàgina detall
     "empty_comments" => "Encara no hi ha cap comentari. Sigues el primer en escriu-re'n un!",

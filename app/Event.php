@@ -22,13 +22,7 @@ class Event extends Model
     public function User()
     {
 
-        if($this->user_id==null)
-        {
-            $user=User::CommunityUser();
-        }else{
-            $user= $this->belongsTo(User::class);
-        }
-        return $user;
+        return  $this->belongsTo(User::class);
     }
     public function EventMaker()
     {

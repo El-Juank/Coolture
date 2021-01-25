@@ -20,19 +20,22 @@ class Rumour extends Model
     public function GetDescription(){
         return Translate::Get($this,'Description');
     }
+    public function ImgCover()
+    {
+        return $this->belongsTo(File::class, 'ImgCover_id');
+    }
+    public function ImgPreview()
+    {
+       return  $this->belongsTo(File::class, 'ImgPreview_id');
 
+    }
     public function EventMaker()
     {
         return $this->belongsTo(EventMaker::class, 'event_maker_id');
     }
     public function User()
     {
-        $user= $this->belongsTo(User::class);
-        if($user==null)
-        {
-            $user=User::CommunityUser();
-        }
-        return $user;
+        return $this->belongsTo(User::class);
     }
     public function HasEventMaker()
     {
