@@ -58,4 +58,10 @@ class File extends Model
     public static function ImgDefaultNotFound(){
         return File::find(self::IMG_NOTFOUND);
     }
+    public static function ImgRumourEventMaker(){
+        return File::find(self::IMG_NOTFOUND);
+    }
+    public static function ImgRumourDetail(){
+        return File::find(self::IMG_NOTFOUND);
+    }
 }

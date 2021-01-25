@@ -15,9 +15,9 @@ class EventMakersTable extends Migration
     {
         Schema::create('eventMakers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->references('id')->on('users')->onDelete('set null');//si es null vol dir que s'en cuida la comunitat
-            $table->foreignId('ImgProfile_id')->nullable()->references('id')->on('files')->onDelete('set null');
-            $table->foreignId('ImgCover_id')->nullable()->references('id')->on('files')->onDelete('set null');
+            $table->foreignId('user_id')->default(App\User::COMUNITY_ID)->references('id')->on('users')->onDelete('set default');//si es null vol dir que s'en cuida la comunitat
+            $table->foreignId('ImgProfile_id')->default(App\File::IMG_PROFILE)->references('id')->on('files')->onDelete('set default');
+            $table->foreignId('ImgCover_id')->default(App\File::IMG_COVER)->references('id')->on('files')->onDelete('set default');
 
             $table->softDeletes();
             $table->timestamps();

@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use App\Path;
+
 class FilesTable extends Migration
 {
     /**
@@ -24,6 +26,7 @@ class FilesTable extends Migration
 
             $table->timestamps();
         });
+        FileSeeder::AddFiles(Path::find(Path::DEFAULT_PATH_ID),Path::DEFAULT_PATH_ID);
     }
 
     /**
