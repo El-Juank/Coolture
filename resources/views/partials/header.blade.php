@@ -16,7 +16,7 @@ $locale = App::getLocale();
         </div>
 
         <nav class="ml-lg-5 ml-md-3 w-100">
-            <ul class="nav-menu float-sm-right float-lg-none">
+            <ul class="nav-menu">
                 {{-- Buscador d'esdeveniment/rumors --}}
                 <li class="search">
                     <form id="searcher" method="GET" action="{{ route('search_result') }}">
@@ -56,27 +56,27 @@ $locale = App::getLocale();
 
                             @switch(true)
                                 @case($locale == "ca")
-                                <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('en') }}"><img
-                                        src="{{ asset('img/flags/en.png') }}">
+                                <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('en') }}"
+                                    title="{{ __('lang.header_lang_english') }}"><img src="{{ asset('img/flags/en.png') }}">
                                     {{ __('lang.header_lang_english') }}</a>
-                                <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('es') }}"><img
-                                        src="{{ asset('img/flags/es.png') }}">
+                                <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('es') }}"
+                                    title="{{ __('lang.header_lang_spanish') }}"><img src="{{ asset('img/flags/es.png') }}">
                                     {{ __('lang.header_lang_spanish') }}</a>
                                 @break
                                 @case($locale == "es")
-                                <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('ca') }}"><img
-                                        src="{{ asset('img/flags/ca.png') }}">
+                                <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('ca') }}"
+                                    title="{{ __('lang.header_lang_catalan') }}"><img src="{{ asset('img/flags/ca.png') }}">
                                     {{ __('lang.header_lang_catalan') }}</a>
-                                <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('en') }}"><img
-                                        src="{{ asset('img/flags/en.png') }}">
+                                <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('en') }}"
+                                    title="{{ __('lang.header_lang_english') }}"><img src="{{ asset('img/flags/en.png') }}">
                                     {{ __('lang.header_lang_english') }}</a>
                                 @break
                                 @case($locale == "en")
-                                <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('ca') }}"><img
-                                        src="{{ asset('img/flags/ca.png') }}">
+                                <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('ca') }}"
+                                    title="{{ __('lang.header_lang_catalan') }}"><img src="{{ asset('img/flags/ca.png') }}">
                                     {{ __('lang.header_lang_catalan') }}</a>
-                                <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('es') }}"><img
-                                        src="{{ asset('img/flags/es.png') }}">
+                                <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('es') }}"
+                                    title="{{ __('lang.header_lang_spanish') }}"><img src="{{ asset('img/flags/es.png') }}">
                                     {{ __('lang.header_lang_spanish') }}</a>
                                 @break
                             @endswitch
@@ -101,7 +101,7 @@ $locale = App::getLocale();
                             title="{{ __('lang.user_area') }}">
                             <img class="user-profile-pic"
                                 src="{{-- asset(
-                                                                            Auth::user()->ImgProfile()->url()) --}}"
+                                                                                                                Auth::user()->ImgProfile()->url()) --}}"
                                 onerror="this.src='{{ asset('img/default/user-image-not-available.png') }}';"
                                 alt="{{ Auth::user()->name }}">
                             <span class="ml-2">{{ Auth::user()->name }}</span>
