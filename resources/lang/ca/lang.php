@@ -47,7 +47,7 @@ return [
     "footer_howitworks" => "Com funciona?",
     "footer_whoweare" => "Qui som?",
     "footer_support" => "Suport",
-    "footer_post" => "Publica un concert",
+    "footer_post" => "Publica un rumor",
     "footer_post_rules" => "Normes de publicació",
     "footer_legal" => "Legal",
     "footer_conditions" => "Condicions d'ús",
@@ -117,10 +117,10 @@ return [
     "delete_account_confirm" => "Estàs segur de que et vols donar de baixa?",
     "delete_account_confirm_tagline" => "El teu compte serà esborrat permanentment",
 
-    //Traduccions apartat "Esdeveniments en seguiment"
-    "following_posts" => "Esdeveniments que segueixes",
-    "following_posts_tagline" => "Aquests són els esdeveniments que més t'agraden",
-    "dash_events_edit" => "Editar esdeveniment",
+    //Traduccions apartat "Artistes en seguiment"
+    "following_posts" => "Artistes que segueixes",
+    "following_posts_tagline" => "Aquests són els artistes que més t'agraden",
+    "dash_events_edit" => "Editar artistes",
 
     //Traduccions pàgina "Gèneres"
     "gender_admin" => "Tots els gèneres",
