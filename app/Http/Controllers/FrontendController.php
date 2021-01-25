@@ -15,7 +15,7 @@ use App\Permission;
 use App\Rumour;
 use App\RumourMessage;
 use App\RumourTranslation;
-
+use App\UserRange;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -124,12 +124,14 @@ class FrontendController extends Controller
     {
         //Per veure els permissos de l'usuari
         $permissions = Permission::get();
-
+        $userranges = UserRange::where('user_id', Auth::user()->id)->get();
         $events = Event::find($id);
         $rumours = Rumour::find($id);
+
         return view('following')
             ->with('events', $events)
             ->with('rumours', $rumours)
+            ->with('userranges', $userranges)
             ->with('permissions', $permissions);
     }
 

@@ -39,7 +39,7 @@
                                         <tr>
                                             <th scope="col">{{ __('lang.created_at') }}</th>
                                             <th scope="col">{{ __('lang.form_title') }}</th>
-                                            <!--<th scope="col">EventMaker name</th>-->
+                                            <th scope="col">Artista</th>
                                             <th scope="col" class="w-20">Funcions</th>
                                         </tr>
                                     </thead>
@@ -48,8 +48,8 @@
                                             <tr>
                                                 <td>{{ $event->created_at }}</td>
                                                 <td>{{ $event->Title }}</td>
-                                                {{--<td>{{ $event->EventMaker->Name }}</td>
-                                                --}}
+                                                <td>{{ $event->EventMaker->Name }}</td>
+
 
                                                 <td>
                                                     <a href="{{ route('events.edit', ['event' => $event->id]) }}"
@@ -85,7 +85,7 @@
                                         <tr>
                                             <th scope="col">{{ __('lang.created_at') }}</th>
                                             <th scope="col">{{ __('lang.form_title') }}</th>
-                                            <!--<th scope="col">EventMaker rumor</th>-->
+                                            <th scope="col">Artista</th>
                                             <th scope="col">Funcions</th>
                                         </tr>
                                     </thead>
@@ -94,8 +94,14 @@
                                             <tr>
                                                 <td>{{ $rumour->created_at }}</td>
                                                 <td>{{ $rumour->Title }}</td>
-                                                {{--<td>{{ $rumour->EventMaker->Name }}</td>
-                                                --}}
+                                                <td>
+                                                    @if ($rumour->EventMaker != null)
+                                                        {{ $rumour->EventMaker->Name }}
+                                                    @else
+                                                        -
+                                                    @endif
+                                                </td>
+
 
                                                 <td>
                                                     FUNCIONALITATS NO OPERATIVES ENCARA
