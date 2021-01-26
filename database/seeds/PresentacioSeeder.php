@@ -17,8 +17,8 @@ class PresentacioSeeder extends Seeder
 
     const FORMAT_ICON_CATEGORY = 'svg';
     const FORMAT_IMG_CATEGORY = 'jpeg';
-    const FORMAT_IMG_PROFILE = 'jpeg';
-    const FORMAT_IMG_COVER = 'jpeg';
+    const FORMAT_IMG_PROFILE = 'jpg';
+    const FORMAT_IMG_COVER = 'jpg';
     const  FORMAT_IMG_EVENT = 'jpeg';
     const  FORMAT_IMG_PREVIEW = 'jpeg';
 
@@ -113,7 +113,7 @@ class PresentacioSeeder extends Seeder
                     $camps = [$linea];
                 }
                 for ($j = 0, $fJ = count($camps); $j < $fJ; $j++) {
-                    $message->translate(self::IDIOMES[$j])->Message=$camps[$j];
+                    $message->translate(self::IDIOMES[$j])->Message = $camps[$j];
                 }
                 $message->save();
             }
@@ -134,7 +134,7 @@ class PresentacioSeeder extends Seeder
                     $camps = [$linea];
                 }
                 for ($j = 0, $fJ = count($camps); $j < $fJ; $j++) {
-                    $message->translate(self::IDIOMES[$j])->Message=$camps[$j];
+                    $message->translate(self::IDIOMES[$j])->Message = $camps[$j];
                 }
                 $message->save();
             }
@@ -163,8 +163,14 @@ class PresentacioSeeder extends Seeder
         for ($i = 0, $f = count($descriptions); $i < $f; $i++) {
             if (!is_dir($descriptions[$i])) {
                 $user = new User();
-                $user->name = $faker->name();
-                $user->email = $faker->email();
+                if (is_numeric($descriptions[$i])) {
+                    $user->name = $faker->name();
+                    $user->email = $faker->email();
+                } else {
+                    $user->name = $descriptions[$i];
+                    $user->email = $descriptions[$i].'@email.com';
+                }
+                
                 $user->password = $password;
                 $user->Country_id = $locations[$faker->numberBetween(0, $totalLocations)]->id;
                 $user->DefaultLocation_id = $locations[$faker->numberBetween(0, $totalLocations)]->id;
@@ -236,7 +242,7 @@ class PresentacioSeeder extends Seeder
 
         for ($i = 0, $f = count($files); $i < $f; $i++) {
             if (!is_dir($files[$i])) {
-                $eventmakerT = EventMakerTranslation::where('Name', $files[$i])->first();
+                $eventmakerT = EventMakerTranslation::where('Name', str_replace('_', ' ', explode(self::SEPARADOR_IDIOMES, $files[$i])[0]))->first();
                 $rumour = new Rumour();
                 if ($eventmakerT != null) {
                     $rumour->event_maker_id = $eventmakerT->event_maker_id;
@@ -287,8 +293,12 @@ class PresentacioSeeder extends Seeder
 
         for ($i = 0, $f = count($files); $i < $f; $i++) {
             if (!is_dir($files[$i])) {
-                $camps = explode(self::SEPARADOR_IDIOMES, $files[$i]);
-                $eventmakerT = EventMakerTranslation::where('Name', $camps[0])->first();
+                if (str_contains($files[$i], self::SEPARADOR_IDIOMES)) {
+                    $camps = explode(self::SEPARADOR_IDIOMES, $files[$i]);
+                } else {
+                    $camps = [$files[$i]];
+                }
+                $eventmakerT = EventMakerTranslation::where('Name', str_replace('_', ' ',  $camps[0]))->first();
                 $event = new Event();
                 $event->event_maker_id = $eventmakerT->event_maker_id;
                 if (file_exists('public/' . $pathImgsEvent->Url . '/' . $files[$i] . '.' . self::FORMAT_IMG_EVENT)) {
@@ -336,7 +346,11 @@ class PresentacioSeeder extends Seeder
 
         for ($i = 0, $f = count($files); $i < $f; $i++) {
             if (!is_dir($files[$i])) {
-                $camps = explode(self::SEPARADOR_IDIOMES, $files[$i]);
+                if (str_contains($files[$i], self::SEPARADOR_IDIOMES)) {
+                    $camps = explode(self::SEPARADOR_IDIOMES, $files[$i]);
+                } else {
+                    $camps = [$files[$i]];
+                }
                 $eventmaker = new EventMaker();
                 if (file_exists('public/' . $pathImgsProfile->Url . '/' . $files[$i] . '.' . self::FORMAT_IMG_PROFILE)) {
 
@@ -360,9 +374,15 @@ class PresentacioSeeder extends Seeder
                 }
 
                 $descs = fopen($fullDir . $files[$i], "r");
-                for ($j = 0, $fJ = count($camps); $j < $fJ && !feof($descs); $j++) {
-                    $eventmaker->translate(self::IDIOMES[$j])->Name = $camps[$j];
+                $j = 0;
+                $fJ = count($camps) - 1;
+                while (!feof($descs)) {
+
+                    $eventmaker->translate(self::IDIOMES[$j])->Name = str_replace('_', ' ', $camps[$j]);
                     $eventmaker->translate(self::IDIOMES[$j])->Description = fgets($descs);
+                    if ($j < $fJ) {
+                        $j++;
+                    }
                 }
                 fclose($descs);
                 $eventmaker->save();
@@ -386,7 +406,11 @@ class PresentacioSeeder extends Seeder
 
         for ($i = 0, $f = count($files); $i < $f; $i++) {
             if (!is_dir($files[$i])) {
-                $camps = explode(self::SEPARADOR_IDIOMES, $files[$i]);
+                if (str_contains($files[$i], self::SEPARADOR_IDIOMES)) {
+                    $camps = explode(self::SEPARADOR_IDIOMES, $files[$i]);
+                } else {
+                    $camps = [$files[$i]];
+                }
                 $category = new Category();
                 if (file_exists('public/' . $pathIcon->Url . '/' . $files[$i] . '.' . self::FORMAT_ICON_CATEGORY)) {
 

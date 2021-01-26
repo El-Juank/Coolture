@@ -1,1 +1,2 @@
 0.0000(LAT);0.0000(LON);Català;Castellà*;Anglés*    ->aquesta fila es descarta, tot comença després, cada enter conta!!
+-3.74922;40.463667;Espanya;España;Spain
