@@ -39,15 +39,14 @@ class RumourController extends Controller
         $title = $request['title'];
         $IsVisible = $request['IsVisible'];
         $OwnTrust = $request['OwnTrust'];
-        $description = $request['description'];
-        $lang=App::getLocale();    
+        $description = $request['description'];   
         //Crear  i posa valors del formulari
         $rumour = new Rumour();
         $rumour->user_id = $user_id;
-        $rumour->translate($lang)->{'Title'} = $title;
+        $rumour->Title = $title;
         $rumour->IsVisible = $IsVisible;
         $rumour->OwnTrust = $OwnTrust;
-        $rumour->translate($lang)->{'Description'} = $description;
+        $rumour->Description = $description;
 
         //Guarda
         $rumour->save();
