@@ -14,6 +14,7 @@ use App\RumourTranslation;
 use App\UserRange;
 use App\Rumour;
 use App\Permission;
+use App\LikeRumour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
