@@ -39,20 +39,20 @@ class RumourController extends Controller
         $IsVisible = $request['IsVisible'];
         $OwnTrust = $request['OwnTrust'];
         $description = $request['description'];
-
+        $lang=app()->getLocale();    
         //Crear  i posa valors del formulari
         $rumour = new Rumour;
         $rumour->user_id = $user_id;
-        $rumour->Title = $title;
+        $rumour->translate($lang)->{'Title'} = $title;
         $rumour->IsVisible = $IsVisible;
         $rumour->OwnTrust = $OwnTrust;
-        $rumour->Description = $description;
+        $rumour->translate($lang)->{'Description'} = $description;
 
         //Guarda
         $rumour->save();
 
         //Mostra index
-        return redirect()->route('home');
+        return redirect()->route('rumour',['rumour'=>$rumour->id]);
     }
 
 
