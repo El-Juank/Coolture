@@ -134,6 +134,7 @@ return [
     "following_posts" => "Artists you follow",
     "following_posts_tagline" => "These are the artists you like most",
     "dash_events_edit" => "Edit Artists",
+    "km_following" => "Following km",
 
     //Traduccions pàgina "Gèneres"
     "gender_admin" => "All genders",

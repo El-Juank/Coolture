@@ -135,6 +135,7 @@ return [
     "following_posts" => "Artistes que segueixes",
     "following_posts_tagline" => "Aquests són els artistes que més t'agraden",
     "dash_events_edit" => "Editar artistes",
+    "km_following" => "Km de seguiment",
 
     //Traduccions pàgina "Gèneres"
     "gender_admin" => "Tots els gèneres",
