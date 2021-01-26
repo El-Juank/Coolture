@@ -19,8 +19,11 @@ return [
     "followers" => "Seguidors",
     "follow" => "Seguir",
     "unfollow" => "Deixar de seguir",
+    "following" => "Seguint",
     "or" => "o",
     "artists" => "Artistes",
+    "no_following" => "Encara no segueixes a ningú!",
+    "and" => "i",
 
     //Traduccions "Header"
     "header_lang_spanish" => "Castellà",
@@ -90,6 +93,8 @@ return [
     "to_leave_comment" => "per deixar un comentari",
     "to_see_comments" => "per veure tots els comentaris",
     "location_not_available" => "Localitat no disponible",
+    "active_notifications" => "Activar notificacions",
+    "deactive_notifications" => "Desactivar notificacions",
 
     //Traduccions formularis
     "form_name" => "Nom",
@@ -112,7 +117,7 @@ return [
     "dash_users" => "Usuaris",
     "logout" => "Tancar sessió",
     "post_event" => "Publicar esdeveniment",
-    "post_rumour" =>"Publicar rumor",
+    "post_rumour" => "Publicar rumor",
     "your_posts" => "Les teves publicacions",
     "your_posts_tagline" => "Aquí podràs publicar esdeveniments i gestionar els que ja tens",
     "logout_confirm" => "Estàs segur de que vols tencar la sessió?",
@@ -232,6 +237,6 @@ return [
     "notifications_not_event_cachanges" => "No hi ha notifications d'events",
     "notifications_not_rumour_cachanges" => "No hi ha notifications de rumors",
     "notifications_not_event_maker_cachanges" => "No hi ha notifications d'artistes",
-    "error_input_email"=>"Es imprescindible un correu!",
+    "error_input_email" => "Es imprescindible un correu!",
 
 ];

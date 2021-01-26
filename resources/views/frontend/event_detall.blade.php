@@ -19,7 +19,7 @@
                                 @csrf
                                 <button type="submit" class="btn btn-coolture">
                                     <i class="fa fa-bell-slash"></i>
-                                    Desactivar notificacions
+                                    {{ __('lang.deactive_notifications') }}
                                 </button>
                             </form>
                         @else
@@ -27,7 +27,7 @@
                                 @csrf
                                 <button type="submit" class="btn btn-coolture">
                                     <i class="fa fa-bell"></i>
-                                   Activar notificacions
+                                    {{ __('lang.active_notifications') }}
                                 </button>
                             </form>
                         @endif
@@ -115,9 +115,7 @@
                                     <fieldset>
                                         <div class="row">
                                             <div class="col-sm-3 col-lg-2 hidden-xs">
-                                                <img class="user-img" alt="" src='{{ asset(
-                                                            Auth::user()->ImgProfile->Url(),
-                                                        ) }}'>
+                                                <img class="user-img" alt="" src='{{ asset(Auth::user()->ImgProfile->Url()) }}'>
                                             </div>
                                             <div class="form-group col-xs-12 col-sm-9 col-lg-10">
                                                 <textarea name="eventmessage_text" id="eventmessage_text"
@@ -136,10 +134,10 @@
                                     <div class="card pt-3 pb-3 d-flex align-items-center" style="background-color: #f6f7fd;">
                                         <p class="pt-5 pb-4"><a href="{{ LaravelLocalization::localizeUrl('register') }}"
                                                 class="link">{{ __('lang.header_register') }}</a>
-                                            o <a href="{{ LaravelLocalization::localizeUrl('login') }}"
+                                                {{ __('lang.or') }} <a href="{{ LaravelLocalization::localizeUrl('login') }}"
                                                 class="link">{{ __('lang.header_login') }}</a>
-                                            per deixar
-                                            un comentari</p>
+                                            {{ __('lang.to_leave_comment') }}
+                                        </p>
                                     </div>
                                 </div>
                             @endguest
@@ -151,8 +149,8 @@
                                 @forelse ($messages as $message)
                                     <div class="media">
 
-                                        <a class="pull-left" href="#"><img class="media-object"  alt=""
-                                            src='{{ asset($message->User->ImgProfile->Url()) }}'></a>
+                                        <a class="pull-left" href="#"><img class="media-object" alt=""
+                                                src='{{ asset($message->User->ImgProfile->Url()) }}'></a>
 
                                         <div class="media-body">
                                             <h4 class="media-heading">{{ $message->User->name }}
@@ -178,33 +176,33 @@
                                 @endforelse
 
                             @endauth
-                                @guest
-                                    @if ($messages->count() >= 3)
-                                        <div class="mt-5 mb-5 text-center">
-                                            <div class="card pt-3 pb-3 d-flex align-items-center"
-                                                style="background-color: #f6f7fd;">
-                                                <p class="pt-5 pb-4"><a href="{{ LaravelLocalization::localizeUrl('register') }}"
-                                                        class="link">{{ __('lang.header_register') }}</a>
-                                                    {{ __('lang.or') }} <a href="{{ LaravelLocalization::localizeUrl('login') }}"
-                                                        class="link">{{ __('lang.header_login') }}</a>
-                                                    {{ __('lang.to_see_comments') }}
-                                                </p>
-                                            </div>
+                            @guest
+                                @if ($messages->count() >= 3)
+                                    <div class="mt-5 mb-5 text-center">
+                                        <div class="card pt-3 pb-3 d-flex align-items-center"
+                                            style="background-color: #f6f7fd;">
+                                            <p class="pt-5 pb-4"><a href="{{ LaravelLocalization::localizeUrl('register') }}"
+                                                    class="link">{{ __('lang.header_register') }}</a>
+                                                {{ __('lang.or') }} <a href="{{ LaravelLocalization::localizeUrl('login') }}"
+                                                    class="link">{{ __('lang.header_login') }}</a>
+                                                {{ __('lang.to_see_comments') }}
+                                            </p>
                                         </div>
-                                    @endif
-                                @endguest
-                            </div>
+                                    </div>
+                                @endif
+                            @endguest
                         </div>
                     </div>
-                </section>
-
+                </div>
             </section>
-        </main>
 
-        <script type="text/javascript">
-            setTimeout(function() {
-                $("#header").addClass("header-fixed");
-            }, 1);
+        </section>
+    </main>
 
-        </script>
-    @endsection
+    <script type="text/javascript">
+        setTimeout(function() {
+            $("#header").addClass("header-fixed");
+        }, 1);
+
+    </script>
+@endsection

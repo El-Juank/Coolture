@@ -36,7 +36,7 @@
                                 @csrf
                                 <button type="submit" class="btn btn-coolture">
                                     <i class="fa fa-bell-slash"></i>
-                                    Desactivar notificacions
+                                    {{ __('lang.deactive_notifications') }}
                                 </button>
                             </form>
                         @else
@@ -44,7 +44,7 @@
                                 @csrf
                                 <button type="submit" class="btn btn-coolture">
                                     <i class="fa fa-bell"></i>
-                                    Activar notificacions
+                                    {{ __('lang.active_notifications') }}
                                 </button>
                             </form>
                         @endif
@@ -124,8 +124,7 @@
                 <div class="container">
                     <div class="row">
 
-                        {{-- FORMULARI PER CREAR MISSATGE DEL
-                        RUMOUR--}}
+                        {{-- FORMULARI PER CREAR MISSATGE DEL RUMOUR--}}
                         {{-- Cal posar la caixa amb els errors--}}
                         <div class="col-12">
                             @auth
@@ -167,8 +166,7 @@
 
                             {{-- MISSATGES DEL RUMOR --}}
 
-                            {{-- Si està logejat mostra'ls
-                            tots--}}
+                            {{-- Si està logejat mostra'ls tots--}}
                             @auth
                             <?php $mgs=$messages; ?>
                             @endauth

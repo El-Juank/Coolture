@@ -19,8 +19,11 @@ return [
     "followers" => "Seguidores",
     "follow" => "Seguir",
     "unfollow" => "Dejar de seguir",
+    "following" => "Siguiendo",
     "or" => "o",
     "artists" => "Artistas",
+    "no_following" => "¡Todavia no sigues a nadie!",
+    "and" => "y",
 
     //Traduccions "Header"
     "header_lang_spanish" => "Español",
@@ -46,6 +49,7 @@ return [
     "home_featured_rumours_tagline" => "Los rumores con más likes del momento",
     "home_featured_eventmakers" => "Artistas destacados",
     "home_featured_eventmakers_tagline" => "Los artistas con más seguidores del momento",
+    "home_see_all" => "Ver todos",
 
     //Traduccions pàgina "Footer"
     "footer_licence" => "Licencia MIT",
@@ -89,6 +93,8 @@ return [
     "to_leave_comment" => "para dejar un comentario",
     "to_see_comments" => "para ver todos los comentarios",
     "location_not_available" => "Localidad no disponible",
+    "active_notifications" => "Activar notificaciones",
+     "deactive_notifications" => "Desactivar notificaciones",
 
     //Traduccions formularis
     "form_name" => "Nombre",
@@ -113,7 +119,7 @@ return [
     "post_event" => "Publicar evento",
     "your_posts" => "Tus publicaciones",
     "your_posts_tagline" => "Aquí podrás publicar eventos y gestionar los que ya tienes",
-    "logout_confirm" => "¿Estás seguro de que quieres Tengo la sesión?",
+    "logout_confirm" => "¿Estás seguro de que quieres cerrar la sesión?",
 
     //Traduccions perfil
     "profile_seo" => "Perfil de :name",

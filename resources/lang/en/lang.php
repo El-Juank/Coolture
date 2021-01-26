@@ -19,8 +19,11 @@ return [
     "followers" => "Followers",
     "follow" => "Follow",
     "unfollow" => "Unfollow",
+    "following" => "Following",
     "or" => "or",
     "artists" => "Artists",
+    "no_following" => "You don't follow anyone yet!",
+    "and" => "and",
 
     //Traduccions "Header"
     "header_lang_spanish" => "Spanish",
@@ -46,6 +49,7 @@ return [
     "home_featured_rumours_tagline" => "Most liked rumors of the moment",
     "home_featured_eventmakers" => "Featured Artists",
     "home_featured_eventmakers_tagline" => "The most followed artists of the moment",
+    "home_see_all" => "See all",
 
     //Traduccions pàgina "Footer"
     "footer_licence" => "MIT License",
@@ -89,6 +93,8 @@ return [
     "to_leave_comment" => "to leave a comment",
     "to_see_comments" => "to see all comments",
     "location_not_available" => "Location not available",
+    "active_notifications" => "Activate notifications",
+    "deactive_notifications" => "Disable notifications",
 
     //Traduccions formularis
     "form_name" => "Name",
