@@ -24,7 +24,7 @@ class EventUnitTest extends TestCase
     {
         $this->assertTrue(Event::where('Location_id','<>',Location::DEFAULT_LOCATION)->first()->Location != null);
     }
-    public function testGetLocationNull()
+    public function testGetLocationDefault()
     {
         $this->assertTrue(Event::where('Location_id',Location::DEFAULT_LOCATION)->first()->Location != null);
     }
@@ -32,16 +32,16 @@ class EventUnitTest extends TestCase
     {
         try {
             $correcte = false;
-            $correcte = Event::where('ImgPreview_id','<>',File::IMG_PRFILE)->first()->ImgPreview != null;
+            $correcte = Event::where('ImgPreview_id','<>',File::IMG_PROFILE)->first()->ImgPreview != null;
         } finally {
             $this->assertTrue($correcte);
         }
     }
-    public function testImgPreviewNull()
+    public function testImgPreviewDefault()
     {
         try {
             $correcte = false;
-            $event=Event::where('ImgPreview_id',File::IMG_PRFILE)->first();
+            $event=Event::where('ImgPreview_id',File::IMG_PROFILE)->first();
             $correcte =  $event->ImgPreview!=null;
         } finally {
             $this->assertTrue($correcte);
@@ -51,7 +51,7 @@ class EventUnitTest extends TestCase
     {
         try {
             $correcte = false;
-            $correcte = Event::whereNotNull('ImgEvent_id')->first()->ImgEvent() != null;
+            $correcte = Event::where('ImgEvent_id','<>',File::IMG_PROFILE)->first()->ImgEvent != null;
         }finally {
             $this->assertTrue($correcte);
         }
@@ -60,8 +60,8 @@ class EventUnitTest extends TestCase
     {
         try {
             $correcte = false;
-            $event=Event::whereNull('ImgEvent_id')->first();
-            $correcte = $event->ImgEvent_id == null && $event->ImgEvent()!=null;
+            $event=Event::where('ImgEvent_id',File::IMG_PROFILE)->first();
+            $correcte = $event->ImgEvent!=null;
         }finally {
             $this->assertTrue($correcte);
         }
@@ -70,7 +70,7 @@ class EventUnitTest extends TestCase
     {
         try {
             $correcte = false;
-            count(Event::get()->first()->Users);
+            count(Event::first()->Users);
             $correcte=true;
         } finally {
             $this->assertTrue($correcte);
@@ -80,7 +80,7 @@ class EventUnitTest extends TestCase
     {
         try {
             $correcte = false;
-            count(Event::get()->first()->Likes);
+            count(Event::first()->Likes);
             $correcte=true;
         }finally {
             $this->assertTrue($correcte);
@@ -90,7 +90,7 @@ class EventUnitTest extends TestCase
     {
         try {
             $correcte = false;
-            count(Event::get()->first()->Messages);
+            count(Event::first()->Messages);
             $correcte=true;
         } finally {
             $this->assertTrue($correcte);
@@ -101,7 +101,7 @@ class EventUnitTest extends TestCase
     {
         try {
             $correcte = false;
-            count(Event::get()->first()->AssistanceUserList);
+            count(Event::first()->AssistanceUserList);
             $correcte=true;
         } finally {
             $this->assertTrue($correcte);
@@ -111,7 +111,7 @@ class EventUnitTest extends TestCase
     {
         try {
             $correcte = false;
-            count(Event::get()->first()->Tags);
+            count(Event::first()->Tags);
             $correcte=true;
         } finally {
             $this->assertTrue($correcte);
@@ -121,7 +121,7 @@ class EventUnitTest extends TestCase
     {
         try {
             $correcte = false;
-            count(Event::get()->first()->NotificationChangesList);
+            count(Event::first()->NotificationChangesList);
             $correcte=true;
         }  finally {
             $this->assertTrue($correcte);

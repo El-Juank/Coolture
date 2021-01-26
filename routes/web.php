@@ -48,6 +48,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::get('rumours/{rumour}', 'FrontendController@rumour')->name('rumour');
 
     //Buscador
+    Route::get('categorySearch/{category}', 'FrontendController@CategorySearch')->name('categorySearch');
     //Route::get('search', 'FrontendController@search')->name('search');
     Route::get('search/search_result', 'FrontendController@searchResult')->name('search_result');
 

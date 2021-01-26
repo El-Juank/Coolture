@@ -17,7 +17,7 @@
                          <?php $first=false; ?>
 
                             <div class="col-lg-2 col-6">
-                                <a href="">
+                                <a href="{{route('categorySearch',['category'=>$category->id])}}">
                                     <img class="img-fluid" src="{{ asset($category->Icon->Url()) }}">
                                     <h2>{{$category->GetName()}}</h2>
                                 </a>
@@ -53,7 +53,7 @@
 
                 <div class="row">
                 @foreach($events as $event)
-                    <a href="">
+                    <a href="{{route('event',['event'=>$event->id])}}">
                         <div class="col-lg-3">
                             <div class="gender" data-aos="fade-up" data-aos-delay="100">
                                 <img src="{{ asset($event->ImgPreview->Url()) }}"  class="img-fluid"
@@ -80,7 +80,7 @@
 
                 <div class="row">
                 @foreach($rumours as $rumour)
-                    <a href="">
+                    <a href="{{route('rumour',['rumour'=>$rumour->id])}}">
                         <div class="col-lg-3">
                             <div class="gender" data-aos="fade-up" data-aos-delay="100">
                                 <img src="{{ asset($rumour->ImgPreview->Url()) }}"  class="img-fluid"
@@ -109,7 +109,7 @@
 
                 <div class="row">
                 @foreach($eventmakers as $eventmaker)
-                    <a href="">
+                    <a href="{{route('eventmaker',['eventmaker'=>$eventmaker->id])}}">
                         <div class="col-lg-3">
                             <div class="gender" data-aos="fade-up" data-aos-delay="100">
                                 <img src="{{ asset($eventmaker->ImgProfile->Url()) }}" class="img-fluid"

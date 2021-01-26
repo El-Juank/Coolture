@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Subcategory;
 use App\Category;
 use App\Event;
 use App\EventMaker;
@@ -319,6 +319,18 @@ class FrontendController extends Controller
     }
 
 
+    public function CategorySearch($id){
+        $subCategories =Subcategory::where('category_id',$id)->get();
+        $idsEventMakers=[];
+        foreach($subCategories as $subcategory){
+            array_push($idsEventMakers,$subcategory->EventMaker->id);
+        }
+        $eventmakers=EventMaker::whereIn('id',$idsEventMakers)->get();
+        return view('frontend.search_category')
+                ->with('eventmakers',$eventmakers);
+
+
+    }
     //Controlador para la página "searchResult"
     public function searchResult()
     {
