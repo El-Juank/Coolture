@@ -23,7 +23,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">{{ __('lang.artists') }}</th>
-                                        <th scope="col">Km de seguiment</th>
+                                        <th scope="col">{{ __('lang.km_following') }}</th>
                                         <th scope="col" class="w-20">{{ __('lang.following') }}</th>
                                     </tr>
                                 </thead>
