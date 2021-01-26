@@ -18,7 +18,7 @@ class CreateNotificationChangesEventMakersTable extends Migration
 
             $table->foreignId('event_maker_id')->references('id')->on('eventmakers')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-
+            $table->boolean('dummy')->default(false);
             //last update is last user sight
             $table->unique(['user_id','event_maker_id']);
             $table->timestamps();

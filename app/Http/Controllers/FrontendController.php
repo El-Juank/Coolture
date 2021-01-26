@@ -318,6 +318,33 @@ class FrontendController extends Controller
         return redirect()->back();
     }
 
+    public function eventNotify($id){
+        Event::find($id)->SetNotify(Auth::user());
+        return redirect()->back();
+    }
+    public function eventUnNotify($id){
+        Event::find($id)->UnsetNotify(Auth::user());
+        return redirect()->back();
+    }
+    public function eventMakerNotify($id){
+        EventMaker::find($id)->SetNotify(Auth::user());
+        return redirect()->back();
+    }
+    public function eventMakerUnNotify($id){
+        EventMaker::find($id)->UnsetNotify(Auth::user());
+        return redirect()->back();
+    }
+  
+
+    public function rumourUnNotify($id){
+        Rumour::find($id)->UnsetNotify(Auth::user());
+        return redirect()->back();
+    }
+    public function rumourNotify($id){
+        Rumour::find($id)->SetNotify(Auth::user());
+        return redirect()->back();
+    }
+
 
     public function CategorySearch($id)
     {

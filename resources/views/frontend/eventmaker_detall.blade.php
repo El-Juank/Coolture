@@ -5,14 +5,14 @@
 @endsection
 
 @section('content')
-    <div class="eventmaker-header" style="background-image:url('{{ asset($eventmaker->ImgCover->Url())}}');">
+    <div class="eventmaker-header" style="background-image:url('{{ asset($eventmaker->ImgCover->Url()) }}');">
     </div>
     <div class="container eventmaker-container" data-aos="fade-up">
         {{-- Informació EVENTMAKER --}}
         <div class="row">
             <div class="col-12 ml-auto mr-auto text-center">
                 <img alt="Circle Image" class="img-circle p-0 img-outline"
-                    src='{{ asset($eventmaker->ImgProfile->Url())}} '>
+                    src='{{ asset($eventmaker->ImgProfile->Url()) }} '>
             </div>
             <div class="col-12 ml-auto mr-auto text-center">
                 <div class="section-header">
@@ -30,9 +30,26 @@
                 <strong>{{ count($eventmaker->Followers) }}</strong>
                 <p><strong>{{ __('lang.followers') }}</strong></p>
             </div>
-
             @auth
-                @if ( Auth::user()->IsFollowing($eventmaker) )
+                @if ($eventmaker->IsNotified(Auth::user()))
+                    <form action="{{ route('eventmaker_unNotify', ['eventmaker' => $eventmaker->id]) }}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-coolture">
+                            <i class="fa fa-thumbs-o-down"></i>
+                            UnNotify
+                        </button>
+                    </form>
+                @else
+                    <form action="{{ route('eventmaker_notify', ['eventmaker' => $eventmaker->id]) }}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-coolture">
+                            <i class="fa fa-thumbs-o-up"></i>
+                            Notify
+                        </button>
+                    </form>
+                @endif
+
+                @if (Auth::user()->IsFollowing($eventmaker))
                     {{-- BOTÓ DE UNFOLLOW --}}
                     <div class="col-12 d-flex flex-row mb-5 justify-content-center">
                         <form action="{{ route('unfollow', ['eventmaker' => $eventmaker->id]) }}" method="post">
@@ -76,8 +93,7 @@
                                 <a href="">
                                     <div class="col-lg-4 col-md-6">
                                         <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                            <img  alt="Rock" class="img-fluid"
-                                                src='{{asset($event->ImgEvent->Url())}} '>
+                                            <img alt="Rock" class="img-fluid" src='{{ asset($event->ImgEvent->Url()) }} '>
                                             <div class="details">
                                                 <h3><a
                                                         href="{{ route('event', ['event' => $event->id]) }}">{{ $event->GetTitle() }}</a>
@@ -106,8 +122,8 @@
                                 <a href="">
                                     <div class="col-lg-4 col-md-6">
                                         <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                            <img  alt="" class="img-fluid"
-                                                src="{{asset(App\File::ImgRumourEventMaker()->Url())}}">
+                                            <img alt="" class="img-fluid"
+                                                src="{{ asset(App\File::ImgRumourEventMaker()->Url()) }}">
                                             <div class="details">
                                                 <h3><a
                                                         href="{{ route('rumour', ['rumour' => $rumour->id]) }}">{{ $rumour->GetTitle() }}</a>

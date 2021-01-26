@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+//use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
-use App\EventMaker;
+
 
 class Controller extends BaseController
 {
@@ -14,9 +15,13 @@ class Controller extends BaseController
 
     public function test(){
        
-        return view('test')->with('eventMaker',EventMaker::find(1));
+        return view('test');
     }
-
+  /*  public function logout(){
+        Auth::logout();
+        return view('index');
+    }
+*/
     function getSubDirectories($dir)
 {
     $subDir = array();

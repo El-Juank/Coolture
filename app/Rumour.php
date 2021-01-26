@@ -68,7 +68,28 @@ class Rumour extends Model
     public function NotificationChangeSeen($user){
         $notification=NotificationChangeRumour::where('rumour_id',$this->id)->where('user_id',$user->id)->first();
         if($notification!=null){
+            $notification->dummy = !($notification->dummy==1);
             $notification->save();
+        }
+    }
+    function GetNotify($user){
+        return NotificationChangeRumour::where('rumour_id',$this->id)->where('user_id',$user->id)->first();
+    }
+    public function IsNotified($user){
+        return $this->GetNotify($user)!=null;
+    }
+    public function SetNotify($user){
+        if($this->GetNotify($user)==null){
+            $notification=new NotificationChangeRumour();
+            $notification->rumour_id=$this->id;
+            $notification->user_id=$user->id;
+            $notification->save();
+        }
+    }
+    public function UnsetNotify($user){
+        $notification=$this->GetNotify($user);
+        if($notification!=null){
+            $notification->delete();
         }
     }
     function GetLike($user){

@@ -202,27 +202,57 @@ class User extends Authenticatable
         return Permission::where('User_id', $this->id)->where('Role_id', $roleId)->count() == 1;
     }
     public function TotalNotificationChanges(){
-        $total=NotificationChangeEvent::where('user_id',$this->id)->count();
-        $total+=NotificationChangeEventMaker::where('user_id',$this->id)->count();
-        $total+=NotificationChangeRumour::where('user_id',$this->id)->count();
+        $total=0;
+        foreach(NotificationChangeEvent::where('user_id',$this->id)->get() as $notification)
+        {
+            $event=Event::find($notification->event_id);
+            if($notification->updated_at->lt($event->updated_at))
+            {
+                $total++;
+            }
+        }
+        foreach(NotificationChangeEventMaker::where('user_id',$this->id)->get() as $notification)
+        {
+            $eventmaker=EventMaker::find($notification->event_maker_id);
+            if($notification->updated_at->lt($eventmaker->updated_at))
+            {
+                $total++;
+            }
+        }
+        foreach(NotificationChangeRumour::where('user_id',$this->id)->get() as $notification)
+        {
+            $rumour=Rumour::find($notification->rumour_id);
+            if($notification->updated_at->lt($rumour->updated_at))
+            {
+                $total++;
+            }
+        }
         return $total;
     }
     public function ClearNotificationChangeEvents()
     {
         foreach (NotificationChangeEvent::where('user_id', $this->id)->get() as $notification)
+        {
+            $notification->dummy = !($notification->dummy==1);
             $notification->save();
+       }
     }
     public function ClearNotificationChangeEventMakers()
     {
         foreach (NotificationChangeEventMaker::where('user_id', $this->id)->get() as $notification)
-            $notification->save();
+           {$notification->dummy = !($notification->dummy==1);
+                $notification->save();
+           }
     }
 
     public function ClearNotificationChangeRumours()
     {
         foreach (NotificationChangeRumour::where('user_id', $this->id)->get() as $notification)
+        {$notification->dummy = !($notification->dummy==1);
             $notification->save();
+       }
     }
+
 
     public function NotificationChangesEvent($onlyUnRead = true)
     {

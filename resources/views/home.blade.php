@@ -29,6 +29,9 @@
                                 href="#rumours">{{ __('lang.rumours') }}</a></li>
                     </ul>
                 </div>
+               <!-- <form action="{route('logout')}}" method="post">
+                <input type='submit' class="btn btn-primary" value="{__('lang.logout')}}"></input>
+               </form>-->
                 <div class="card">
                     <div class="tab-content">
                         <!-- Taula events -->

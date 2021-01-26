@@ -18,6 +18,7 @@ class CreateNotificationChangesEventTable extends Migration
             $table->foreignId('event_id')->references('id')->on('events')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             //el camp update es el que s'ha de mirar per saber si l'usuari l'ha vist
+            $table->boolean('dummy')->default(false);
             $table->unique(['user_id','event_id']);
             $table->timestamps();
         });

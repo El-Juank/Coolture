@@ -41,6 +41,26 @@ class EventMaker extends Model
     {
         UserRange::where('user_id', $user->id)->where('event_maker_id', $event_maker_id)->delete();
     }
+    function GetNotify($user){
+        return NotificationChangeEventMaker::where('event_maker_id',$this->id)->where('user_id',$user->id)->first();
+    }
+    public function IsNotified($user){
+        return $this->GetNotify($user)!=null;
+    }
+    public function SetNotify($user){
+        if($this->GetNotify($user)==null){
+            $notification=new NotificationChangeEventMaker();
+            $notification->event_maker_id=$this->id;
+            $notification->user_id=$user->id;
+            $notification->save();
+        }
+    }
+    public function UnsetNotify($user){
+        $notification=$this->GetNotify($user);
+        if($notification!=null){
+            $notification->delete();
+        }
+    }
     public function ComunityManage()
     {
         return $this->user_id == User::COMUNITY_ID;
@@ -131,6 +151,7 @@ class EventMaker extends Model
     {
         $notification = NotificationChangeEventMaker::where('event_maker_id', $this->id)->where('user_id', $user->id)->first();
         if ($notification != null) {
+            $notification->dummy = !($notification->dummy==1);
             $notification->save();
         }
     }

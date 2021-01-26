@@ -1,1 +1,0 @@
-Nom:{{$eventMaker->GetName()}}<br>

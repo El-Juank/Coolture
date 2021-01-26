@@ -41,6 +41,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     //Events
     //Route::get('events', 'FrontendController@events')->name('events');
     Route::get('events/{event}', 'FrontendController@event')->name('event');
+    Route::post('eventmakers/eventmaker_unNotify/{eventmaker}', 'FrontendController@eventmakerUnNotify')->name('eventmaker_unNotify');
+    Route::post('eventmakers/eventmaker_notify/{eventmaker}', 'FrontendController@eventmakerNotify')->name('eventmaker_notify');
+
+    Route::post('events/event_unNotify/{event}', 'FrontendController@eventUnNotify')->name('event_unNotify');
+    Route::post('events/event_notify/{event}', 'FrontendController@eventNotify')->name('event_notify');
+
+    Route::post('events/rumour_unNotify/{rumour}', 'FrontendController@rumourUnNotify')->name('rumour_unNotify');
+    Route::post('events/rumour_notify/{rumour}', 'FrontendController@rumourNotify')->name('rumour_notify');
 
 
     //Rumors (els que poden posar els usuaris)
@@ -59,6 +67,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
     // ------------ RELACIONADES AMB FUNCIONALITAT LOGIN------------ //
     Route::group(['middleware' => 'auth'], function () {
+
+      //  Route::post('logout','Controller@logout')->name('logout');
 
         // Pàgina principal de configuació: segons el rol de l'user tindrà més o menys funcionalitats
         Route::get('home', 'FrontendController@home')->name('home');

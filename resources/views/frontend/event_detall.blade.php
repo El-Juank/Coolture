@@ -13,6 +13,25 @@
                     <a href="{{ route('eventmaker', ['eventmaker' => $event->EventMaker->id]) }}">
                         <p>{{ $event->EventMaker->GetName() }}</p>
                     </a>
+                    @auth
+                        @if ($event->IsNotified(Auth::user()))
+                            <form action="{{ route('event_unNotify', ['event' => $event->id]) }}" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-coolture">
+                                    <i class="fa fa-thumbs-o-down"></i>
+                                    UnNotify
+                                </button>
+                            </form>
+                        @else
+                            <form action="{{ route('event_notify', ['event' => $event->id]) }}" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-coolture">
+                                    <i class="fa fa-thumbs-o-up"></i>
+                                   Notify
+                                </button>
+                            </form>
+                        @endif
+                    @endauth
                 </div>
 
                 <div class="row">
@@ -27,7 +46,7 @@
                                 <li class="list-group-item borderless">
                                     <i class="fa fa-map-marker"></i>
                                     @if (isset($city->error))
-                                     {{  __('lang.location_not_available') }}
+                                        {{ __('lang.location_not_available') }}
                                     @else
                                         {{ $city->display_name }}
                                     @endif
@@ -96,7 +115,9 @@
                                     <fieldset>
                                         <div class="row">
                                             <div class="col-sm-3 col-lg-2 hidden-xs">
-                                                <img class="user-img" alt="" src='{{ asset( Auth::user()->ImgProfile()->Url() ) }}' >
+                                                <img class="user-img" alt="" src='{{ asset(
+                                                            Auth::user()->ImgProfile->Url(),
+                                                        ) }}'>
                                             </div>
                                             <div class="form-group col-xs-12 col-sm-9 col-lg-10">
                                                 <textarea name="eventmessage_text" id="eventmessage_text"
@@ -128,27 +149,7 @@
                             {{-- MOSTRA MISSATGES DE L'EVENT --}}
 
                             @auth
-                            <?php
-                                $mgs=$messages;
-                             ?>
-                            @endauth
-                            @guest
-                            <?php
-                                $mgs=$messages->take(3);
-                            ?>
-                            @endguest
-            
-                            @forelse ($mgs as $message)
-                                <div class="media">
-                                    <a class="pull-left" href="#"><img class="media-object" alt=""
-                                            src='{{ asset($message->User->ImgProfile->Url()) }}'></a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">{{ $message->User->name }}
-                                        </h4>
-                                        <p>{{ $message->GetMessage() }}</p>
-                                        <ul class="list-unstyled list-inline media-detail pull-left">
-                                            <li><i class="fa fa-calendar"></i>{{ $message->created_at->diffForHumans() }}</li>
-                                            {{--<li><i class="fa fa-thumbs-up"></i></li>
+                                {{--<li><i class="fa fa-thumbs-up"></i></li>
                                             --}}
                                         </ul>
                                         {{--<ul
@@ -158,15 +159,15 @@
                                     </div>
                                 </div>
 
-                            @empty
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <p>{{ __('lang.empty_comments') }}</p>
+                              {{--  @empty
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <p>{{ __('lang.empty_comments') }}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            @endforelse
-
-                          
+                                @endforelse
+                                --}}
+                            @endauth
                                 @guest
                                     @if ($messages->count() >= 3)
                                         <div class="mt-5 mb-5 text-center">

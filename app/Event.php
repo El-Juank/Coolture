@@ -62,21 +62,44 @@ class Event extends Model
     {
         return $this->hasMany(EventMessage::class);
     }
-    public function NotificationChangeSeen($user){
-        $notification=NotificationChangeEvent::where('event_id',$this->id)->where('user_id',$user->id)->first();
-        if($notification!=null){
-            $notification->save();
-        }
-    }
+
     public function UserWantToAssist($user){
         return Assistance::where('user_id',$user->id)->where('event_id',$this->id)->where('WantToAssist',true)->count()!=0;
     }
     public function UserAssisted($user){
         return Assistance::where('user_id',$user->id)->where('event_id',$this->id)->where('Assisted',true)->count()!=0;
     }
+    function GetNotify($user){
+        return NotificationChangeEvent::where('event_id',$this->id)->where('user_id',$user->id)->first();
+    }
+    public function IsNotified($user){
+        return $this->GetNotify($user)!=null;
+    }
+    public function NotificationChangeSeen($user){
+        $notification=$this->GetNotify($user);
+        if($notification!=null){
+            $notification->dummy = !($notification->dummy==1);
+            $notification->save();
+        }
+    }
+    public function SetNotify($user){
+        if($this->GetNotify($user)==null){
+            $notification=new NotificationChangeEvent();
+            $notification->event_id=$this->id;
+            $notification->user_id=$user->id;
+            $notification->save();
+        }
+    }
+    public function UnsetNotify($user){
+        $notification=$this->GetNotify($user);
+        if($notification!=null){
+            $notification->delete();
+        }
+    }
     function GetLike($user){
         return LikeEvent::where('user_id',$user->id)->where('event_id',$this->id)->first();
     }
+  
     public function SetLike($user){
         $like=$this->GetLike($user);
         if($like==null){

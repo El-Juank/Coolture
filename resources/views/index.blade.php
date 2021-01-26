@@ -59,7 +59,7 @@
                                 <img src="{{ asset($event->ImgPreview->Url()) }}"  class="img-fluid"
                                     >
                                 <div class="details">
-                                    <h3><a href="">{{$event->EventMaker->GetName()}}</a></h3>
+                                    <h3><a href="{{route('event',['event'=>$event->id])}}">{{$event->EventMaker->GetName()}}</a></h3>
                                     <p>{{$event->GetTitle()}}</p>
                                 </div>
                             </div>
@@ -86,7 +86,7 @@
                                 <img src="{{ asset($rumour->ImgPreview->Url()) }}"  class="img-fluid"
                                    >
                                 <div class="details">
-                                    <h3><a href="">@if($rumour->HasEventMaker()){{$rumour->EventMaker->GetName()}} @else ? @endif</a></h3>
+                                    <h3><a href="{{route('rumour',['rumour'=>$rumour->id])}}">@if($rumour->HasEventMaker()){{$rumour->EventMaker->GetName()}} @else ? @endif</a></h3>
                                     <p>{{$rumour->GetTitle()}}</p>
                                 </div>
                             </div>
@@ -115,7 +115,7 @@
                                 <img src="{{ asset($eventmaker->ImgProfile->Url()) }}" class="img-fluid"
                                    >
                                 <div class="details">
-                                    <h3><a href="">{{$eventmaker->GetName()}}</a></h3>
+                                    <h3><a href="{{route('eventmaker',['eventmaker'=>$eventmaker->id])}}">{{$eventmaker->GetName()}}</a></h3>
                                      <p>{{ \Illuminate\Support\Str::limit($eventmaker->GetDescription(), 100, $end = '...') }}</p>
                                 </div>
                             </div>

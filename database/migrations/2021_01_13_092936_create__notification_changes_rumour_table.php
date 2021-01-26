@@ -19,6 +19,7 @@ class CreateNotificationChangesRumourTable extends Migration
             $table->foreignId('rumour_id')->references('id')->on('rumours')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             //last update is last user sight
+            $table->boolean('dummy')->default(false);
             $table->unique(['user_id','rumour_id']);
             $table->timestamps();
         });

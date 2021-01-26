@@ -30,6 +30,25 @@
                         <p>{{ $rumour->EventMaker->GetName() }}</p>
                     </a>
                     <p>{{ $rumour->User->name }}</p>
+                     @auth
+                        @if ($rumour->IsNotified(Auth::user()))
+                            <form action="{{ route('rumour_unNotify', ['rumour' => $rumour->id]) }}" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-coolture">
+                                    <i class="fa fa-thumbs-o-down"></i>
+                                    UnNotify
+                                </button>
+                            </form>
+                        @else
+                            <form action="{{ route('rumour_notify', ['rumour' => $rumour->id]) }}" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-coolture">
+                                    <i class="fa fa-thumbs-o-up"></i>
+                                   Notify
+                                </button>
+                            </form>
+                        @endif
+                    @endauth
                 </div>
 
                 <div class="row">
