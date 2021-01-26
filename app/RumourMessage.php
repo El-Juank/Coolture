@@ -20,7 +20,7 @@ class RumourMessage extends Model
         return $this->belongsTo(User::class);
     }
     public function IsComunityManaged(){
-        return $this->user_id==null;
+        return $this->user_id==User::COMUNITY_ID;
     }
     public function Rumour(){
         return $this->belongsTo(Rumour::class);

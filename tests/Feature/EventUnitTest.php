@@ -7,6 +7,8 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 use App\Event;
+use App\Location;
+use App\File;
 
 class EventUnitTest extends TestCase
 {
@@ -20,17 +22,17 @@ class EventUnitTest extends TestCase
     }
     public function testGetLocation()
     {
-        $this->assertTrue(Event::whereNotNull('Location_id')->first()->Location != null);
+        $this->assertTrue(Event::where('Location_id','<>',Location::DEFAULT_LOCATION)->first()->Location != null);
     }
     public function testGetLocationNull()
     {
-        $this->assertTrue(Event::whereNull('Location_id')->first()->Location == null);
+        $this->assertTrue(Event::where('Location_id',Location::DEFAULT_LOCATION)->first()->Location != null);
     }
     public function testImgPreview()
     {
         try {
             $correcte = false;
-            $correcte = Event::whereNotNull('ImgPreview_id')->first()->ImgPreview() != null;
+            $correcte = Event::where('ImgPreview_id','<>',File::IMG_PRFILE)->first()->ImgPreview != null;
         } finally {
             $this->assertTrue($correcte);
         }
@@ -39,8 +41,8 @@ class EventUnitTest extends TestCase
     {
         try {
             $correcte = false;
-            $event=Event::whereNull('ImgPreview_id')->first();
-            $correcte = $event->ImgPreview_id == null && $event->ImgPreview()!=null;
+            $event=Event::where('ImgPreview_id',File::IMG_PRFILE)->first();
+            $correcte =  $event->ImgPreview!=null;
         } finally {
             $this->assertTrue($correcte);
         }

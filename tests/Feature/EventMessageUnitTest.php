@@ -7,13 +7,14 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 use App\EventMessage;
+use App\User;
 
 class EventMessageUnitTest extends TestCase
 {
     public function testGetUser(){
         try{
             $correcte=false;
-            $correcte=EventMessage::get()->first()->User()!=null;
+            $correcte=EventMessage::first()->User()!=null;
 
         }finally{
             $this->assertTrue($correcte);
@@ -23,7 +24,7 @@ class EventMessageUnitTest extends TestCase
     public function testIsComunityManagedTrue(){
         try{
             $correcte=false;
-            $correcte=EventMessage::whereNull('user_id')->first()->IsComunityManaged();
+            $correcte=EventMessage::where('user_id',User::COMUNITY_ID)->first()->IsComunityManaged();
 
         }finally{
             $this->assertTrue($correcte);
@@ -33,7 +34,7 @@ class EventMessageUnitTest extends TestCase
     public function testIsComunityManagedFalse(){
         try{
             $correcte=false;
-            $correcte=EventMessage::whereNotNull('user_id')->first()->IsComunityManaged();
+            $correcte=EventMessage::where('user_id','<>',User::COMUNITY_ID)->first()->IsComunityManaged();
 
         }finally{
             $this->assertFalse($correcte);
@@ -43,7 +44,7 @@ class EventMessageUnitTest extends TestCase
     public function testGetEvent(){
         try{
             $correcte=false;
-            $correcte=EventMessage::get()->first()->Event!=null;
+            $correcte=EventMessage::first()->Event!=null;
 
         }finally{
             $this->assertTrue($correcte);

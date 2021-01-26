@@ -25,7 +25,7 @@ class EventMessage extends Model
      return  $this->belongsTo(User::class);
     }
     public function IsComunityManaged(){
-        return $this->user_id==null;
+        return $this->user_id==User::COMUNITY_ID;
     }
      function GetLike($user){
         return LikeEventMessage::where('user_id',$user->id)->where('event_message_id',$this->id)->first();

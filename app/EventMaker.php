@@ -43,7 +43,7 @@ class EventMaker extends Model
     }
     public function ComunityManage()
     {
-        return $this->user_id == null;
+        return $this->user_id == User::COMUNITY_ID;
     }
     public function ImgProfile()
     {

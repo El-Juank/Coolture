@@ -24,6 +24,9 @@ class Event extends Model
 
         return  $this->belongsTo(User::class);
     }
+    public function ComunityManage(){
+        return $this->user_id==User::COMUNITY_ID;
+    }
     public function EventMaker()
     {
         return $this->belongsTo(EventMaker::class);
