@@ -37,15 +37,15 @@
                                 <a href="">
                                     <div class="col-lg-4">
                                         <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                            <img src="{{ asset($eventTransition->Event->ImgPreview->Url()) }}"
+                                            <img src="{{ asset($eventTransition->ImgPreview->Url()) }}"
                                                 class="img-fluid">
                                             <div class="details">
                                                 <h3><a
-                                                        href="{{ route('event', ['event' => $eventTransition->Event->id]) }}">{{ $eventTransition->Event->GetTitle() }}</a>
+                                                        href="{{ route('event', ['event' => $eventTransition->id]) }}">{{ $eventTransition->GetTitle() }}</a>
                                                 </h3>
                                                 {{-- Per limitar la mida dels textos
                                                 --}}
-                                                <p>{{ \Illuminate\Support\Str::limit($eventTransition->Event->GetDescription(), 100, $end = '...') }}
+                                                <p>{{ \Illuminate\Support\Str::limit($eventTransition->GetDescription(), 100, $end = '...') }}
                                                 </p>
                                             </div>
                                         </div>
@@ -74,15 +74,15 @@
                                     <a href="">
                                         <div class="col-lg-4">
                                             <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                                <img src="{{ $rumourTranslation->Rumour->ImgPreview->Url() }}"
+                                                <img src="{{ $rumourTranslation->ImgPreview->Url() }}"
                                                     class="img-fluid">
                                                 <div class="details">
                                                     <h3><a
-                                                            href="{{ route('rumour', ['rumour' => $rumourTranslation->Rumour->id]) }}">{{ $rumourTranslation->Rumour->GetTitle() }}</a>
+                                                            href="{{ route('rumour', ['rumour' => $rumourTranslation->id]) }}">{{ $rumourTranslation->GetTitle() }}</a>
                                                     </h3>
                                                     {{-- Per limitar la mida dels textos
                                                     --}}
-                                                    <p>{{ \Illuminate\Support\Str::limit($rumourTranslation->Rumour->GetDescription(), 100, $end = '...') }}
+                                                    <p>{{ \Illuminate\Support\Str::limit($rumourTranslation->GetDescription(), 100, $end = '...') }}
                                                     </p>
                                                 </div>
                                             </div>
@@ -112,15 +112,15 @@
                                     <a href="">
                                         <div class="col-lg-4">
                                             <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                                <img src="{{ asset($eventmakerTranslation->EventMaker->ImgProfile->Url()) }}"
+                                                <img src="{{ asset($eventmakerTranslation->ImgProfile->Url()) }}"
                                                     alt="Rock" class="img-fluid">
                                                 <div class="details">
                                                     <h3><a
-                                                            href="{{ route('eventmaker', ['eventmaker' => $eventmakerTranslation->EventMaker->id]) }}">{{ $eventmakerTranslation->EventMaker->GetName() }}</a>
+                                                            href="{{ route('eventmaker', ['eventmaker' => $eventmakerTranslation->id]) }}">{{ $eventmakerTranslation->GetName() }}</a>
                                                     </h3>
                                                     {{-- Per limitar la mida dels textos
                                                     --}}
-                                                    <p>{{ \Illuminate\Support\Str::limit($eventmakerTranslation->EventMaker->GetDescription(), 100, $end = '...') }}
+                                                    <p>{{ \Illuminate\Support\Str::limit($eventmakerTranslation->GetDescription(), 100, $end = '...') }}
                                                     </p>
                                                 </div>
                                             </div>

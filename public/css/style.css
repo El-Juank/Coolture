@@ -116,6 +116,7 @@ h6 {
     width: 150px;
 }
 
+
 /* Prelaoder */
 
 #preloader {
@@ -128,6 +129,7 @@ h6 {
     overflow: visible;
     background: #fff url("../img/preloader.svg") no-repeat center center;
 }
+
 
 /* Back to top button */
 
@@ -170,6 +172,7 @@ h6 {
     color: #fff;
 }
 
+
 /* Sections Header
 --------------------------------*/
 
@@ -210,6 +213,7 @@ h6 {
 .section-with-bg {
     background-color: #f6f7fd;
 }
+
 
 /*--------------------------------------------------------------
 # Header
@@ -290,9 +294,11 @@ h6 {
     }
 }
 
+
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
+
 
 /* Nav Menu Essentials */
 
@@ -316,9 +322,10 @@ h6 {
     white-space: nowrap;
 }
 
-.nav-menu > li {
+.nav-menu>li {
     float: left;
 }
+
 
 /*.nav-menu li:hover > ul,
 .nav-menu li.sfHover > ul {
@@ -333,6 +340,7 @@ h6 {
 .nav-menu ul li {
     min-width: 180px;
 }
+
 
 /* Nav Menu Arrows */
 
@@ -353,6 +361,7 @@ h6 {
     content: "\f105";
 }
 
+
 /* Nav Meu Container */
 
 #nav-menu-container {
@@ -365,6 +374,7 @@ h6 {
         display: none;
     }
 }
+
 
 /* Nav Meu Styling */
 
@@ -394,14 +404,15 @@ h6 {
 }
 
 @media (max-width: 486px) {
-    .nav-menu > li {
+    .nav-menu>li {
         margin-left: 0px !important;
     }
 }
 
-.nav-menu > li {
+.nav-menu>li {
     margin-left: 10px;
 }
+
 
 /*.nav-menu > li > a:before {
     content: "";
@@ -414,6 +425,7 @@ h6 {
     visibility: hidden;
     transition: all 0.3s ease-in-out 0s;
 }*/
+
 
 /*.nav-menu a:hover:before,
 .nav-menu li:hover > a:before,
@@ -497,7 +509,7 @@ h6 {
     border-radius: 3px;
 }
 
-.nav-menu ul li:hover > a {
+.nav-menu ul li:hover>a {
     background: var(--colorCorp);
     color: #fff;
 }
@@ -543,6 +555,7 @@ h6 {
     border-radius: 50%;
     border-bottom-right-radius: 0px;
 }
+
 
 /*.nav-menu .dropdown:after {
     font-family: "FontAwesome";
@@ -592,11 +605,13 @@ h6 {
     line-height: 11px;
 }
 
+
 /* Modal ("Popup per iniciar sessió/registrar-se") */
 
 .modal {
     overflow-y: auto;
 }
+
 
 /* Solucionem el problema de que al obrir el model se'ns mogui la pàgina */
 
@@ -638,6 +653,7 @@ h6 {
 .modal-content .login-terms a:hover {
     color: #607d8b;
 }
+
 
 /*--------------------------------------------------------------
 # Intro Section
@@ -717,6 +733,7 @@ h6 {
     }
 }
 
+
 /* Carousel genres */
 
 .carousel-item h2 {
@@ -726,6 +743,7 @@ h6 {
 #gendersCarousel img {
     width: 100px;
 }
+
 
 /* medium - display 2 (col-lg-6 | 100/2=50) */
 
@@ -739,6 +757,7 @@ h6 {
         transform: translateX(-50%);
     }
 }
+
 
 /* large - display 6 (col-lg-2 | 100/6=16.6) */
 
@@ -763,6 +782,7 @@ h6 {
 .carousel-inner .carousel-item-left {
     transform: translateX(0);
 }
+
 
 /*--------------------------------------------------------------
 # About Section
@@ -813,6 +833,7 @@ h6 {
     margin-bottom: 20px;
     color: #fff;
 }
+
 
 /*--------------------------------------------------------------
 # Featured Section
@@ -911,9 +932,11 @@ h6 {
     margin-bottom: 10px;
 }
 
+
 /*--------------------------------------------------------------
 # Publicar rumor
 --------------------------------------------------------------*/
+
 
 /*** Custom checkboxes (tencar/obrir ull) ***/
 
@@ -921,36 +944,42 @@ h6 {
     display: none;
 }
 
+
 /* to hide the checkbox itself */
 
-.post-rumour input[type="checkbox"] + label:before {
+.post-rumour input[type="checkbox"]+label:before {
     font-family: FontAwesome;
     display: inline-block;
 }
 
-.post-rumour input[type="checkbox"] + label:before {
+.post-rumour input[type="checkbox"]+label:before {
     content: "\f06e";
 }
 
+
 /* unchecked icon */
 
-.post-rumour input[type="checkbox"] + label:before {
+.post-rumour input[type="checkbox"]+label:before {
     letter-spacing: 10px;
 }
 
+
 /* space between checkbox and label */
 
-.post-rumour input[type="checkbox"]:checked + label:before {
+.post-rumour input[type="checkbox"]:checked+label:before {
     content: "\f070";
 }
 
+
 /* checked icon */
 
-.post-rumour input[type="checkbox"]:checked + label:before {
+.post-rumour input[type="checkbox"]:checked+label:before {
     letter-spacing: 5px;
 }
 
+
 /* allow space for check mark */
+
 
 /*--------------------------------------------------------------
 # Schedule Section
@@ -1073,6 +1102,7 @@ h6 {
     margin-bottom: 0;
 }
 
+
 /*--------------------------------------------------------------
 # Venue Section
 --------------------------------------------------------------*/
@@ -1144,6 +1174,7 @@ h6 {
     transform: scale(1.1);
 }
 
+
 /*--------------------------------------------------------------
 # Hotels Section
 --------------------------------------------------------------*/
@@ -1203,6 +1234,7 @@ h6 {
     font-size: 15px;
 }
 
+
 /*--------------------------------------------------------------
 # Gallery Section
 --------------------------------------------------------------*/
@@ -1249,6 +1281,7 @@ h6 {
     z-index: 1;
 }
 
+
 /*--------------------------------------------------------------
 # Sponsors Section
 --------------------------------------------------------------*/
@@ -1282,6 +1315,7 @@ h6 {
 #supporters img {
     transition: all 0.4s ease-in-out;
 }
+
 
 /*--------------------------------------------------------------
 # Pàgina "Com funciona"
@@ -1347,6 +1381,7 @@ h6 {
 .inner-link:hover {
     color: var(--colorCorpHover);
 }
+
 
 /*--------------------------------------------------------------
 # Subscribe Section
@@ -1419,6 +1454,7 @@ h6 {
         margin-top: 10px;
     }
 }
+
 
 /*--------------------------------------------------------------
 # Buy Tickets Section
@@ -1495,6 +1531,7 @@ h6 {
 #btn-login #buy-ticket-modal .btn:hover {
     background-color: #e0072f;
 }
+
 
 /*--------------------------------------------------------------
 # Contact Section
@@ -1576,7 +1613,7 @@ h6 {
     font-weight: 600;
 }
 
-#contact .php-email-form .error-message br + br {
+#contact .php-email-form .error-message br+br {
     margin-top: 25px;
 }
 
@@ -1660,6 +1697,7 @@ h6 {
         transform: rotate(360deg);
     }
 }
+
 
 /*--------------------------------------------------------------
 # Footer
@@ -1811,6 +1849,7 @@ h6 {
     color: #ddd;
 }
 
+
 /*--------------------------------------------------------------
 # Pàgina Login | Register
 --------------------------------------------------------------*/
@@ -1836,6 +1875,7 @@ h6 {
 .container-register .btn-register:hover {
     background-color: var(--colorCorpHover);
 }
+
 
 /*--------------------------------------------------------------
 # Dashboard / Home
@@ -1919,6 +1959,7 @@ h6 {
     }
 }
 
+
 /*--------------------------------------------------------------
 # Pàgina Normes de publicació
 --------------------------------------------------------------*/
@@ -1927,9 +1968,11 @@ h6 {
     padding: 10px;
 }
 
+
 /*--------------------------------------------------------------
 # Pàgina Privacitat
 --------------------------------------------------------------*/
+
 
 /*--------------------------------------------------------------
 # Pàgina Privacitat
@@ -1992,10 +2035,11 @@ h6 {
 }
 
 .nav-pills .nav-link.active,
-.nav-pills .show > .nav-link {
+.nav-pills .show>.nav-link {
     color: #fff;
     background-color: var(--colorCorp);
 }
+
 
 /*--------------------------------------------------------------
 # Secció comentaris
@@ -2087,7 +2131,7 @@ li.borderless {
     margin: 0;
 }
 
-#comments .media > .pull-left {
+#comments .media>.pull-left {
     margin-right: 20px;
 }
 
@@ -2137,6 +2181,7 @@ li.borderless {
     margin-right: 10px;
 }
 
+
 /**/
 
 .img-outline {
@@ -2161,14 +2206,5 @@ li.borderless {
     align-items: center;
 }
 
-/*Notifications*/
 
-/*.notifications {
-    width: 25px;
-    display: block;
-    height: 25px;
-    background: url("../img/bell.svg");
-    color: white;
-    text-decoration: none;
-    padding-left: 20px;
-} */
+/*resultats category search*/

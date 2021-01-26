@@ -37,39 +37,39 @@ class FrontendController extends Controller
 
     public function index()
     {
-        $total=4;
+        $total = 4;
         $locale = App::getLocale();
-        $idsEvents=DB::table('LikesEvent')->select('event_id', DB::raw('count(id) as total'))
-        ->groupBy('event_id')->orderBy('total','DESC')->Take($total)->get();
-        $ids=[];
-        for($i=0,$f=count($idsEvents);$i<$f;$i++)
-            array_push($ids,$idsEvents[$i]->event_id);
+        $idsEvents = DB::table('LikesEvent')->select('event_id', DB::raw('count(id) as total'))
+            ->groupBy('event_id')->orderBy('total', 'DESC')->Take($total)->get();
+        $ids = [];
+        for ($i = 0, $f = count($idsEvents); $i < $f; $i++)
+            array_push($ids, $idsEvents[$i]->event_id);
 
-        $events=Event::whereIn('id',$ids)->get();
+        $events = Event::whereIn('id', $ids)->get();
 
-        $idsRumours=DB::table('LikesRumour')->select('rumour_id', DB::raw('count(id) as total'))
-        ->groupBy('rumour_id')->orderBy('total','DESC')->Take($total)->get();
-        $ids=[];
-        for($i=0,$f=count($idsRumours);$i<$f;$i++)
-            array_push($ids,$idsRumours[$i]->rumour_id);
+        $idsRumours = DB::table('LikesRumour')->select('rumour_id', DB::raw('count(id) as total'))
+            ->groupBy('rumour_id')->orderBy('total', 'DESC')->Take($total)->get();
+        $ids = [];
+        for ($i = 0, $f = count($idsRumours); $i < $f; $i++)
+            array_push($ids, $idsRumours[$i]->rumour_id);
 
-        $rumours=Rumour::whereIn('id',$ids)->get();
+        $rumours = Rumour::whereIn('id', $ids)->get();
 
-        $idsEventMakers=DB::table('UserRanges')->select('event_maker_id', DB::raw('count(id) as total'))
-        ->groupBy('event_maker_id')->orderBy('total','DESC')->Take($total)->get();
-        $ids=[];
-        for($i=0,$f=count($idsEventMakers);$i<$f;$i++)
-            array_push($ids,$idsEventMakers[$i]->event_maker_id);
+        $idsEventMakers = DB::table('UserRanges')->select('event_maker_id', DB::raw('count(id) as total'))
+            ->groupBy('event_maker_id')->orderBy('total', 'DESC')->Take($total)->get();
+        $ids = [];
+        for ($i = 0, $f = count($idsEventMakers); $i < $f; $i++)
+            array_push($ids, $idsEventMakers[$i]->event_maker_id);
 
-        $eventmakers=EventMaker::whereIn('id',$ids)->get();
+        $eventmakers = EventMaker::whereIn('id', $ids)->get();
 
 
         return view('index')
             ->with('locale', $locale)
-            ->with('categories',Category::all())
-            ->with('events',$events)
-            ->with('rumours',$rumours)
-            ->with('eventmakers',$eventmakers);
+            ->with('categories', Category::all())
+            ->with('events', $events)
+            ->with('rumours', $rumours)
+            ->with('eventmakers', $eventmakers);
     }
 
     public function home()
@@ -319,17 +319,29 @@ class FrontendController extends Controller
     }
 
 
-    public function CategorySearch($id){
-        $subCategories =Subcategory::where('category_id',$id)->get();
-        $idsEventMakers=[];
-        foreach($subCategories as $subcategory){
-            array_push($idsEventMakers,$subcategory->EventMaker->id);
+    public function CategorySearch($id)
+    {
+        $subCategories = Subcategory::where('category_id', $id)->get();
+        $idsEventMakers = [];
+        $rumours = [];
+        $events = [];
+        foreach ($subCategories as $subcategory) {
+            array_push($idsEventMakers, $subcategory->EventMaker->id);
         }
-        $eventmakers=EventMaker::whereIn('id',$idsEventMakers)->get();
-        return view('frontend.search_category')
-                ->with('eventmakers',$eventmakers);
+        $eventmakers = EventMaker::whereIn('id', $idsEventMakers)->get();
 
-
+        foreach ($eventmakers as $eventmaker) {
+            foreach (Rumour::where('event_maker_id', $eventmaker->id)->get() as $rumour) {
+                array_push($rumours, $rumour);
+            }
+            foreach (Event::where('event_maker_id', $eventmaker->id)->get() as $event) {
+                array_push($events, $event);
+            }
+        }
+        return view('frontend.search_result')
+            ->with('events', $events)
+            ->with('rumours', $rumours)
+            ->with('eventmakers', $eventmakers);
     }
     //Controlador para la página "searchResult"
     public function searchResult()
@@ -338,10 +350,22 @@ class FrontendController extends Controller
         $locale = LaravelLocalization::getCurrentLocale(); //Agafar l'idioma de l'usuari
 
         //Agafem els events i els rumors
-        $events = EventTranslation::where('locale', $locale)->where('Title', 'like', '%' . $title . '%')->get();
-        $rumours = RumourTranslation::where('locale', $locale)->where('Title', 'like', '%' . $title . '%')->get();
-        $eventmakers = EventMakerTranslation::where('Name', 'like', '%' . $title . '%')->get();
+        $eventsTranslate = EventTranslation::where('locale', $locale)->where('Title', 'like', '%' . $title . '%')->get();
+        $rumoursTranslate = RumourTranslation::where('locale', $locale)->where('Title', 'like', '%' . $title . '%')->get();
+        $eventmakersTranslate = EventMakerTranslation::where('Name', 'like', '%' . $title . '%')->get();
 
+        $events = [];
+        $rumours = [];
+        $eventmakers = [];
+        foreach ($eventsTranslate as $eventT) {
+            array_push($events, $eventT->Event);
+        }
+        foreach ($rumoursTranslate as $rumourT) {
+            array_push($rumours, $rumourT->Rumour);
+        }
+        foreach ($eventmakersTranslate as $eventmakerT) {
+            array_push($eventmakers, $eventmakerT->EventMaker);
+        }
         return view('frontend.search_result')
             ->with('events', $events)
             ->with('rumours', $rumours)
