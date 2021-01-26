@@ -8,26 +8,26 @@
     <main id="main" class="main-page">
         <section id="event-details">
             <div class="container mb-5" data-aos="fade-up">
-                <div class="section-header">
+                <div class="section-header text-center">
                     <h2>{{ $event->GetTitle() }}</h2>
                     <a href="{{ route('eventmaker', ['eventmaker' => $event->EventMaker->id]) }}">
                         <p>{{ $event->EventMaker->GetName() }}</p>
-                    </a>
+                    </a><br>
                     @auth
                         @if ($event->IsNotified(Auth::user()))
                             <form action="{{ route('event_unNotify', ['event' => $event->id]) }}" method="post">
                                 @csrf
                                 <button type="submit" class="btn btn-coolture">
-                                    <i class="fa fa-thumbs-o-down"></i>
-                                    UnNotify
+                                    <i class="fa fa-bell-slash"></i>
+                                    Desactivar notificacions
                                 </button>
                             </form>
                         @else
                             <form action="{{ route('event_notify', ['event' => $event->id]) }}" method="post">
                                 @csrf
                                 <button type="submit" class="btn btn-coolture">
-                                    <i class="fa fa-thumbs-o-up"></i>
-                                   Notify
+                                    <i class="fa fa-bell"></i>
+                                   Activar notificacions
                                 </button>
                             </form>
                         @endif
@@ -147,8 +147,35 @@
                             <h3>{{ $messages->count() }} {{ __('lang.event_comments') }}</h3>
 
                             {{-- MOSTRA MISSATGES DE L'EVENT --}}
-
                             @auth
+                                @forelse ($messages as $message)
+                                    <div class="media">
+
+                                        <a class="pull-left" href="#"><img class="media-object"  alt=""
+                                            src='{{ asset($message->User->ImgProfile->Url()) }}'></a>
+
+                                        <div class="media-body">
+                                            <h4 class="media-heading">{{ $message->User->name }}
+                                            </h4>
+                                            <p>{{ $message->GetMessage() }}</p>
+                                            <ul class="list-unstyled list-inline media-detail pull-left">
+                                                <li><i class="fa fa-calendar"></i>{{ $message->created_at->diffForHumans() }}</li>
+                                                {{--<li><i class="fa fa-thumbs-up"></i></li>
+                                                --}}
+                                            </ul>
+                                            {{--<ul
+                                                class="list-unstyled list-inline media-detail pull-right">
+                                                <li class=""><a href="">Like</a></li>
+                                            </ul>--}}
+                                        </div>
+                                    </div>
+                                @empty
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <p>{{ __('lang.empty_comments') }}</p>
+                                        </div>
+                                    </div>
+                                @endforelse
                                 {{--<li><i class="fa fa-thumbs-up"></i></li>
                                             --}}
                                         </ul>

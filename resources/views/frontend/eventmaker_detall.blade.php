@@ -29,45 +29,45 @@
             <div class="col-12 ml-auto mr-auto text-center">
                 <strong>{{ count($eventmaker->Followers) }}</strong>
                 <p><strong>{{ __('lang.followers') }}</strong></p>
+
+                @auth
+                    @if ($eventmaker->IsNotified(Auth::user()))
+                        <form action="{{ route('eventmaker_unNotify', ['eventmaker' => $eventmaker->id]) }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-coolture">
+                                <i class="fa fa-bell-slash"></i>
+                                Desactivar notificacions
+                            </button>
+                        </form> <br>
+                    @else
+                        <form action="{{ route('eventmaker_notify', ['eventmaker' => $eventmaker->id]) }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-coolture">
+                                <i class="fa fa-bell"></i>
+                                Activar notificacions
+                            </button>
+                        </form><br>
+                    @endif
+
+                    @if (Auth::user()->IsFollowing($eventmaker))
+                        {{-- BOTÓ DE UNFOLLOW --}}
+                        <div class="col-12 d-flex flex-row mb-5 justify-content-center">
+                            <form action="{{ route('unfollow', ['eventmaker' => $eventmaker->id]) }}" method="post">
+                                @csrf
+                                <input type="submit" value="{{ __('lang.unfollow') }}" class="btn btn-coolture">
+                            </form>
+                        </div>
+                    @else
+                        {{-- BOTÓ DE FOLLOW --}}
+                        <div class="col-12 d-flex flex-row-reverse mb-5 justify-content-center">
+                            <form action="{{ route('follow', ['eventmaker' => $eventmaker->id]) }}" method="post">
+                                @csrf
+                                <input type="submit" value="{{ __('lang.follow') }}" class="btn btn-coolture">
+                            </form>
+                        </div>
+                    @endif
+                @endauth
             </div>
-            @auth
-                @if ($eventmaker->IsNotified(Auth::user()))
-                    <form action="{{ route('eventmaker_unNotify', ['eventmaker' => $eventmaker->id]) }}" method="post">
-                        @csrf
-                        <button type="submit" class="btn btn-coolture">
-                            <i class="fa fa-thumbs-o-down"></i>
-                            UnNotify
-                        </button>
-                    </form>
-                @else
-                    <form action="{{ route('eventmaker_notify', ['eventmaker' => $eventmaker->id]) }}" method="post">
-                        @csrf
-                        <button type="submit" class="btn btn-coolture">
-                            <i class="fa fa-thumbs-o-up"></i>
-                            Notify
-                        </button>
-                    </form>
-                @endif
-
-                @if (Auth::user()->IsFollowing($eventmaker))
-                    {{-- BOTÓ DE UNFOLLOW --}}
-                    <div class="col-12 d-flex flex-row mb-5 justify-content-center">
-                        <form action="{{ route('unfollow', ['eventmaker' => $eventmaker->id]) }}" method="post">
-                            @csrf
-                            <input type="submit" value="{{ __('lang.unfollow') }}" class="btn btn-coolture">
-                        </form>
-                    </div>
-                @else
-                    {{-- BOTÓ DE FOLLOW --}}
-                    <div class="col-12 d-flex flex-row-reverse mb-5 justify-content-center">
-                        <form action="{{ route('follow', ['eventmaker' => $eventmaker->id]) }}" method="post">
-                            @csrf
-                            <input type="submit" value="{{ __('lang.follow') }}" class="btn btn-coolture">
-                        </form>
-                    </div>
-                @endif
-            @endauth
-
         </div>
 
         <div class="nav-tabs-navigation">
