@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\App;
 
 use App\Permission;
 use App\Rumour;
@@ -39,9 +40,9 @@ class RumourController extends Controller
         $IsVisible = $request['IsVisible'];
         $OwnTrust = $request['OwnTrust'];
         $description = $request['description'];
-        $lang=app()->getLocale();    
+        $lang=App::getLocale();    
         //Crear  i posa valors del formulari
-        $rumour = new Rumour;
+        $rumour = new Rumour();
         $rumour->user_id = $user_id;
         $rumour->translate($lang)->{'Title'} = $title;
         $rumour->IsVisible = $IsVisible;
@@ -51,7 +52,7 @@ class RumourController extends Controller
         //Guarda
         $rumour->save();
 
-        //Mostra index
+        //Mostra el rumor
         return redirect()->route('rumour',['rumour'=>$rumour->id]);
     }
 
