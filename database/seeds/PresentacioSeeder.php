@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Seeder;
 use Faker\Factory;
 
@@ -16,34 +17,216 @@ class PresentacioSeeder extends Seeder
 
     const FORMAT_ICON_CATEGORY = 'svg';
     const FORMAT_IMG_CATEGORY = 'jpeg';
-    const FORMAT_IMG_PROFILE = 'jpeg';
-    const FORMAT_IMG_COVER = 'jpeg';
+    const FORMAT_IMG_PROFILE = 'jpg';
+    const FORMAT_IMG_COVER = 'jpg';
     const  FORMAT_IMG_EVENT = 'jpeg';
     const  FORMAT_IMG_PREVIEW = 'jpeg';
 
     const IDIOMES = ['ca', 'es', 'en'];
     const SEPARADOR_IDIOMES = '.';
+    const SEPARADOR_LOCATION = ';';
+    const SEPARADOR_MESSAGES = ';';
+
+    const PROBABILITAT_GENERE = 100;
 
     public function run()
     {
 
-        //llegeixo les carpetes y les seves dades
-        self::UsersSeed();
-        self::CategoriesSeed();
-        self::EventMakersSeed();
         self::LocationsSeed();
-        self::EventsSeed();
+        self::CategoriesSeed();
+        self::UsersSeed();
+        self::EventMakersSeed();
         self::RumoursSeed();
+        self::EventsSeed();
+
+        $this->call(RoleSeeder::class);
+        $this->call(PermissionSeeder::class);
+
+        self::MessagesSeeder();
+
+        $this->call(LikeEventSeeder::class);
+        $this->call(LikeRumourSeeder::class);
+        $this->call(LikeEventMessageSeeder::class);
+        $this->call(LikeRumourMessageSeeder::class);
+        $this->call(AssistanceSeeder::class);
+
+        $this->call(MessageSeeder::class);
+        $this->call(RangeSeeder::class);
+        $this->call(SubcategorySeeder::class);
+        $this->call(TagSeeder::class);
+        $this->call(TagEventSeeder::class);
+        self::TagsSeeder();
+        $this->call(UserRangeSeeder::class);
+        $this->call(NotificationSeeder::class);
+        $this->call(NotificationChangeEventSeeder::class);
+        $this->call(NotificationChangeEventMakerSeeder::class);
+        $this->call(NotificationChangeRumourSeeder::class);
+
+        $this->call(UrlRumourToVerifySeeder::class);
+
+        //llegeixo les carpetes y les seves dades
+
+
+
+
         //poso els altres seeders fakers
     }
-    static function UsersSeed(){}
-    static function LocationsSeed(){}
+    static function TagsSeeder()
+    {
+        //llegeixo paraules
+        $tags = fopen('public/' . self::ROOT . 'Tags.txt', 'r');
+        while (!feof($tags)) {
+            $tag = new Tag();
+            $tag->Name = fgets($tags);
+            $tag->save();
+        }
+        fclose($tags);
+    }
+    static function MessagesSeeder()
+    {
+        $faker = Factory::create();
+        $dirEvents = 'public/' . self::ROOT . 'Events';
+        $dirRumours = 'public/' . self::ROOT . 'Rumours';
+
+        $fEvents = scandir($dirEvents);
+        $fRumours = scandir($dirRumours);
+
+        $events = Event::all();
+        $rumours = Rumour::all();
+        $users = User::all();
+
+        $totalEvents = count($events) - 1;
+        $totalRumours = count($rumours) - 1;
+        $totalUsers = count($users) - 1;
+        //rumours
+        for ($i = 0, $f = count($fRumours); $i < $f; $i++) {
+            $rumour = $rumours[$faker->numberBetween(0, $totalRumours)];
+            $fRumour = fopen($fRumours[$f], 'r');
+            while (!feof($fRumour)) {
+                $message = new RumourMessage();
+                $message->rumour_id = $rumour->id;
+                $message->user_id = $users[$faker->numberBetween(0, $totalUsers)]->id;
+                $linea = fgets($fRumour);
+                if (str_contains($linea, self::SEPARADOR_MESSAGES)) {
+                    $camps = explode(self::SEPARADOR_MESSAGES, $linea);
+                } else {
+                    $camps = [$linea];
+                }
+                for ($j = 0, $fJ = count($camps); $j < $fJ; $j++) {
+                    $message->translate(self::IDIOMES[$j])->Message = $camps[$j];
+                }
+                $message->save();
+            }
+            fclose($fRumour);
+        }
+        //events
+        for ($i = 0, $f = count($fEvents); $i < $f; $i++) {
+            $event = $events[$faker->numberBetween(0, $totalEvents)];
+            $fEvent = fopen($fEvents[$f], 'r');
+            while (!feof($fEvent)) {
+                $message = new EventMessage();
+                $message->event_id = $event->id;
+                $message->user_id = $users[$faker->numberBetween(0, $totalUsers)]->id;
+                $linea = fgets($fEvent);
+                if (str_contains($linea, self::SEPARADOR_MESSAGES)) {
+                    $camps = explode(self::SEPARADOR_MESSAGES, $linea);
+                } else {
+                    $camps = [$linea];
+                }
+                for ($j = 0, $fJ = count($camps); $j < $fJ; $j++) {
+                    $message->translate(self::IDIOMES[$j])->Message = $camps[$j];
+                }
+                $message->save();
+            }
+            fclose($fEvent);
+        }
+    }
+    static function UsersSeed()
+    {
+        $faker = Factory::create();
+        $password = Hash::make('coolture');
+        $locations = Location::all();
+        $totalLocations = count($locations);
+        $dir = self::ROOT . 'Rumours';
+        $fullDir = 'public/' . $dir;
+        $descriptions = scandir($fullDir);
+
+
+        $pathImgsCover = new Path();
+        $pathImgsCover->Url = $dir . 'ImgsCover';
+        $pathImgsCover->save();
+
+        $pathImgsProfile = new Path();
+        $pathImgsProfile->Url = $dir . 'ImgsProfile';
+        $pathImgsProfile->save();
+        //entro Usuaris
+        for ($i = 0, $f = count($descriptions); $i < $f; $i++) {
+            if (!is_dir($descriptions[$i])) {
+                $user = new User();
+                if (is_numeric($descriptions[$i])) {
+                    $user->name = $faker->name();
+                    $user->email = $faker->email();
+                } else {
+                    $user->name = $descriptions[$i];
+                    $user->email = $descriptions[$i].'@email.com';
+                }
+                
+                $user->password = $password;
+                $user->Country_id = $locations[$faker->numberBetween(0, $totalLocations)]->id;
+                $user->DefaultLocation_id = $locations[$faker->numberBetween(0, $totalLocations)]->id;
+                $user->BirthDate = $faker->date();
+                $num = $faker->numberBetween(0, self::PROBABILITAT_GENERE);
+                if ($num > 0) { //si es 0 es null
+                    $user->Gender = $num < (self::PROBABILITAT_GENERE / 2); //si es mes petit de 5 es home, si no es home
+                }
+                if (file_exists('public/' . $pathImgsCover->Url . '/' . $descriptions[$i] . '.' . self::FORMAT_IMG_COVER)) {
+                    $img = new File();
+                    $img->path_id = $pathImgsCover->id;
+                    $img->Name = $descriptions[$i];
+                    $img->Format = self::FORMAT_IMG_COVER;
+                    $img->save();
+                    $user->imgCover_id = $img->id;
+                }
+                if (file_exists('public/' . $pathImgsProfile->Url . '/' . $descriptions[$i]) . '.' . self::FORMAT_IMG_PROFILE) {
+                    $img = new File();
+                    $img->path_id = $pathImgsProfile->id;
+                    $img->Name = $descriptions[$i];
+                    $img->Format = self::FORMAT_IMG_PROFILE;
+                    $img->save();
+                    $user->imgProfile_id = $img->id;
+                }
+                $desc = fopen($fullDir . $descriptions[$i], 'r');
+                for ($j = 0, $fJ = count(self::IDIOMES); $i < $fJ && !feof($desc); $i++) {
+                    $user->translate(self::IDIOMES[$j])->Description = fgets($desc);
+                }
+                fclose($desc);
+                $user->save();
+            }
+        }
+        //valido alguns
+    }
+    static function LocationsSeed()
+    {
+        $locations = fopen('public/' . self::ROOT . 'Locations.txt', 'r');
+        fgets($locations); //ometo la capçalera
+        while (!feof($locations)) {
+            $camps = explode(self::SEPARADOR_LOCATION, fgets($locations));
+            $location = new Location();
+            $location->Lat = $camps[0];
+            $location->Lon = $camps[1];
+            for ($i = 2, $f = count($camps), $j = 0; $i < $f; $i++, $j++) {
+                $location->translate(self::IDIOMES[$j])->Name = $camps[$i];
+            }
+            $location->save();
+        }
+        fclose($locations);
+    }
     static function RumoursSeed()
     {
         $faker = Factory::create();
 
         $locations = Location::all();
-        $totalLocations = count($locations);
+        $totalLocations = count($locations) - 1;
 
         $dir = self::ROOT . 'Rumours';
         $fullDir = 'public/' . $dir;
@@ -59,7 +242,7 @@ class PresentacioSeeder extends Seeder
 
         for ($i = 0, $f = count($files); $i < $f; $i++) {
             if (!is_dir($files[$i])) {
-                $eventmakerT = EventMakerTranslation::where('Name', $files[$i])->first();
+                $eventmakerT = EventMakerTranslation::where('Name', str_replace('_', ' ', explode(self::SEPARADOR_IDIOMES, $files[$i])[0]))->first();
                 $rumour = new Rumour();
                 if ($eventmakerT != null) {
                     $rumour->event_maker_id = $eventmakerT->event_maker_id;
@@ -110,8 +293,12 @@ class PresentacioSeeder extends Seeder
 
         for ($i = 0, $f = count($files); $i < $f; $i++) {
             if (!is_dir($files[$i])) {
-                $camps = explode(self::SEPARADOR_IDIOMES, $files[$i]);
-                $eventmakerT = EventMakerTranslation::where('Name', $camps[0])->first();
+                if (str_contains($files[$i], self::SEPARADOR_IDIOMES)) {
+                    $camps = explode(self::SEPARADOR_IDIOMES, $files[$i]);
+                } else {
+                    $camps = [$files[$i]];
+                }
+                $eventmakerT = EventMakerTranslation::where('Name', str_replace('_', ' ',  $camps[0]))->first();
                 $event = new Event();
                 $event->event_maker_id = $eventmakerT->event_maker_id;
                 if (file_exists('public/' . $pathImgsEvent->Url . '/' . $files[$i] . '.' . self::FORMAT_IMG_EVENT)) {
@@ -159,7 +346,11 @@ class PresentacioSeeder extends Seeder
 
         for ($i = 0, $f = count($files); $i < $f; $i++) {
             if (!is_dir($files[$i])) {
-                $camps = explode(self::SEPARADOR_IDIOMES, $files[$i]);
+                if (str_contains($files[$i], self::SEPARADOR_IDIOMES)) {
+                    $camps = explode(self::SEPARADOR_IDIOMES, $files[$i]);
+                } else {
+                    $camps = [$files[$i]];
+                }
                 $eventmaker = new EventMaker();
                 if (file_exists('public/' . $pathImgsProfile->Url . '/' . $files[$i] . '.' . self::FORMAT_IMG_PROFILE)) {
 
@@ -183,9 +374,15 @@ class PresentacioSeeder extends Seeder
                 }
 
                 $descs = fopen($fullDir . $files[$i], "r");
-                for ($j = 0, $fJ = count($camps); $j < $fJ && !feof($descs); $j++) {
-                    $eventmaker->translate(self::IDIOMES[$j])->Name = $camps[$j];
+                $j = 0;
+                $fJ = count($camps) - 1;
+                while (!feof($descs)) {
+
+                    $eventmaker->translate(self::IDIOMES[$j])->Name = str_replace('_', ' ', $camps[$j]);
                     $eventmaker->translate(self::IDIOMES[$j])->Description = fgets($descs);
+                    if ($j < $fJ) {
+                        $j++;
+                    }
                 }
                 fclose($descs);
                 $eventmaker->save();
@@ -209,7 +406,11 @@ class PresentacioSeeder extends Seeder
 
         for ($i = 0, $f = count($files); $i < $f; $i++) {
             if (!is_dir($files[$i])) {
-                $camps = explode(self::SEPARADOR_IDIOMES, $files[$i]);
+                if (str_contains($files[$i], self::SEPARADOR_IDIOMES)) {
+                    $camps = explode(self::SEPARADOR_IDIOMES, $files[$i]);
+                } else {
+                    $camps = [$files[$i]];
+                }
                 $category = new Category();
                 if (file_exists('public/' . $pathIcon->Url . '/' . $files[$i] . '.' . self::FORMAT_ICON_CATEGORY)) {
 
