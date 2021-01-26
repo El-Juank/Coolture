@@ -176,24 +176,7 @@
                                         </div>
                                     </div>
                                 @endforelse
-                                {{--<li><i class="fa fa-thumbs-up"></i></li>
-                                            --}}
-                                        </ul>
-                                        {{--<ul
-                                            class="list-unstyled list-inline media-detail pull-right">
-                                            <li class=""><a href="">Like</a></li>
-                                        </ul>--}}
-                                    </div>
-                                </div>
 
-                              {{--  @empty
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <p>{{ __('lang.empty_comments') }}</p>
-                                        </div>
-                                    </div>
-                                @endforelse
-                                --}}
                             @endauth
                                 @guest
                                     @if ($messages->count() >= 3)

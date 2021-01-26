@@ -136,7 +136,7 @@
                                         <div class="row">
                                             <div class="col-sm-3 col-lg-2 hidden-xs">
                                                 <img class="user-img" alt=""
-                                                    src='{{ asset($rumour->User->ImgProfile->Url()) }}'>
+                                                    src='{{ asset(Auth::user()->ImgProfile->Url()) }}'>
                                             </div>
                                             <div class="form-group col-xs-12 col-sm-9 col-lg-10">
                                                 <textarea name="rumourmessage_text" id="rumourmessage_text"
