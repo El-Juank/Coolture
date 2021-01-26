@@ -18,8 +18,8 @@
 
                             <div class="col-lg-2 col-6">
                                 <a href="{{route('categorySearch',['category'=>$category->id])}}">
-                                    <img class="img-fluid" src="{{ asset($category->Icon->Url()) }}">
-                                    <h2>{{$category->GetName()}}</h2>
+                                    <img class="img-fluid genre-icon" src="{{ asset($category->Icon->Url()) }}">
+                                    <h3 class="text-white">{{$category->GetName()}}</h3>
                                 </a>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                     </a>
 
                 </div>
-                <a class="btn btn-primary btn-lg btn-block" href="{{ route('search_result' ) }}" role="button">{{__('lang.home_see_all')}}</a>
+                <a href="{{ route('search_result' ) }}" class="about-btn scrollto mt-4">{{__('lang.home_see_all')}}</a>
             </div>
 
         </div>
@@ -45,21 +45,19 @@
 
     <main id="main">
 
-        {{-- Aquesta secció s'ha de fer dinàmica --}}
+        {{-- Esdeveniments destacats --}}
         <section id="featured-genders">
             <div class="container" data-aos="fade-up">
                 <div class="section-header">
                     <h2>{{ __('lang.home_featured_events') }}</h2>
                     <p>{{ __('lang.home_featured_events_tagline') }}</p>
                 </div>
-
                 <div class="row">
                 @foreach($events as $event)
                     <a href="{{route('event',['event'=>$event->id])}}">
                         <div class="col-lg-3">
                             <div class="gender" data-aos="fade-up" data-aos-delay="100">
-                                <img src="{{ asset($event->ImgPreview->Url()) }}"  class="img-fluid"
-                                    >
+                                <img src="{{ asset($event->ImgPreview->Url()) }}"  class="img-fluid">
                                 <div class="details">
                                     <h3><a href="{{route('event',['event'=>$event->id])}}">{{$event->EventMaker->GetName()}}</a></h3>
                                     <p>{{$event->GetTitle()}}</p>
@@ -67,13 +65,13 @@
                             </div>
                         </div>
                     </a>
-                    @endforeach
+                @endforeach
                 </div>
             </div>
         </section>
 
-        {{-- Aquesta secció s'ha de fer dinàmica --}}
-        <section id="featured-genders">
+        {{-- Rumors destacats --}}
+        <section id="featured-genders" class="section-with-bg">
             <div class="container" data-aos="fade-up">
                 <div class="section-header">
                     <h2>{{ __('lang.home_featured_rumours') }}</h2>
@@ -85,8 +83,7 @@
                     <a href="{{route('rumour',['rumour'=>$rumour->id])}}">
                         <div class="col-lg-3">
                             <div class="gender" data-aos="fade-up" data-aos-delay="100">
-                                <img src="{{ asset($rumour->ImgPreview->Url()) }}"  class="img-fluid"
-                                   >
+                                <img src="{{ asset($rumour->ImgPreview->Url()) }}"  class="img-fluid">
                                 <div class="details">
                                     <h3><a href="{{route('rumour',['rumour'=>$rumour->id])}}">@if($rumour->HasEventMaker()){{$rumour->EventMaker->GetName()}} @else ? @endif</a></h3>
                                     <p>{{$rumour->GetTitle()}}</p>
@@ -94,28 +91,24 @@
                             </div>
                         </div>
                     </a>
-                    @endforeach
-
-
+                @endforeach
                 </div>
             </div>
         </section>
 
-        {{-- Aquesta secció s'ha de fer dinàmica --}}
+        {{-- Artistes destacats --}}
         <section id="featured-genders">
             <div class="container" data-aos="fade-up">
                 <div class="section-header">
                     <h2>{{ __('lang.home_featured_eventmakers') }}</h2>
                     <p>{{ __('lang.home_featured_eventmakers_tagline') }}</p>
                 </div>
-
                 <div class="row">
                 @foreach($eventmakers as $eventmaker)
                     <a href="{{route('eventmaker',['eventmaker'=>$eventmaker->id])}}">
                         <div class="col-lg-3">
                             <div class="gender" data-aos="fade-up" data-aos-delay="100">
-                                <img src="{{ asset($eventmaker->ImgProfile->Url()) }}" class="img-fluid"
-                                   >
+                                <img src="{{ asset($eventmaker->ImgProfile->Url()) }}" class="img-fluid">
                                 <div class="details">
                                     <h3><a href="{{route('eventmaker',['eventmaker'=>$eventmaker->id])}}">{{$eventmaker->GetName()}}</a></h3>
                                      <p>{{ \Illuminate\Support\Str::limit($eventmaker->GetDescription(), 100, $end = '...') }}</p>
@@ -123,9 +116,7 @@
                             </div>
                         </div>
                     </a>
-                    @endforeach
-
-
+                @endforeach
                 </div>
             </div>
         </section>

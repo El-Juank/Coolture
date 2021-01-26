@@ -84,8 +84,7 @@ $locale = App::getLocale();
                     </div>
                 </li>
 
-                {{-- Botó inici sessió o usuari en funció de si ha iniciat sessió
-                --}}
+                {{-- Botó inici sessió o usuari en funció de si ha iniciat sessió --}}
                 @guest
                     <li class="btn-login">
                         <a href="#" data-toggle="modal" data-target="#modalRegisterCenter"
@@ -100,8 +99,7 @@ $locale = App::getLocale();
                         <a class="nav-link p-0" href="{{ LaravelLocalization::localizeUrl('home') }}"
                             title="{{ __('lang.user_area') }}">
                             <img class="user-profile-pic"
-                                src="{{-- asset(
-                                                                                                                Auth::user()->ImgProfile()->url()) --}}"
+                                src="{{-- asset(Auth::user()->ImgProfile()->url()) --}}"
                                 onerror="this.src='{{ asset('img/default/user-image-not-available.png') }}';"
                                 alt="{{ Auth::user()->name }}">
                             <span class="ml-2">{{ Auth::user()->name }}</span>
@@ -119,8 +117,7 @@ $locale = App::getLocale();
     </div>
 </header>
 
-{{-- Model de Bootsrap amb els links per inicar sessió o registrar-se
---}}
+{{-- Model de Bootsrap amb els links per inicar sessió o registrar-se --}}
 @guest
     <div class="modal fade" id="modalRegisterCenter" tabindex="-1" role="dialog" aria-labelledby="modalRegisterCenterTitle"
         aria-hidden="true">
@@ -142,7 +139,7 @@ $locale = App::getLocale();
                     <div class="login-terms">
                         <p class="mb-1">{{ __('lang.header_register_message') }}</p>
                         <p><a href="{{ route('terms_and_conditions') }}"
-                                rel="nofollow">{{ __('lang.header_conditions') }}</a>&nbsp;i&nbsp;<a
+                                rel="nofollow">{{ __('lang.header_conditions') }}</a>&nbsp;{{ __('lang.and') }}&nbsp;<a
                                 href="{{ route('privacy_policy') }}" rel="nofollow">{{ __('lang.header_privacity') }}</a>
                         </p>
                     </div>
