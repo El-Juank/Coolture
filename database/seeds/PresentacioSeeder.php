@@ -25,6 +25,7 @@ class PresentacioSeeder extends Seeder
     const IDIOMES = ['ca', 'es', 'en'];
     const SEPARADOR_IDIOMES = '.';
     const SEPARADOR_LOCATION = ';';
+    const SEPARADOR_MESSAGES = ';';
 
     const PROBABILITAT_GENERE = 100;
 
@@ -83,8 +84,62 @@ class PresentacioSeeder extends Seeder
     }
     static function MessagesSeeder()
     {
-        //events
+        $faker = Factory::create();
+        $dirEvents = 'public/' . self::ROOT . 'Events';
+        $dirRumours = 'public/' . self::ROOT . 'Rumours';
+
+        $fEvents = scandir($dirEvents);
+        $fRumours = scandir($dirRumours);
+
+        $events = Event::all();
+        $rumours = Rumour::all();
+        $users = User::all();
+
+        $totalEvents = count($events) - 1;
+        $totalRumours = count($rumours) - 1;
+        $totalUsers = count($users) - 1;
         //rumours
+        for ($i = 0, $f = count($fRumours); $i < $f; $i++) {
+            $rumour = $rumours[$faker->numberBetween(0, $totalRumours)];
+            $fRumour = fopen($fRumours[$f], 'r');
+            while (!feof($fRumour)) {
+                $message = new RumourMessage();
+                $message->rumour_id = $rumour->id;
+                $message->user_id = $users[$faker->numberBetween(0, $totalUsers)]->id;
+                $linea = fgets($fRumour);
+                if (str_contains($linea, self::SEPARADOR_MESSAGES)) {
+                    $camps = explode(self::SEPARADOR_MESSAGES, $linea);
+                } else {
+                    $camps = [$linea];
+                }
+                for ($j = 0, $fJ = count($camps); $j < $fJ; $j++) {
+                    $message->translate(self::IDIOMES[$j])->Message=$camps[$j];
+                }
+                $message->save();
+            }
+            fclose($fRumour);
+        }
+        //events
+        for ($i = 0, $f = count($fEvents); $i < $f; $i++) {
+            $event = $events[$faker->numberBetween(0, $totalEvents)];
+            $fEvent = fopen($fEvents[$f], 'r');
+            while (!feof($fEvent)) {
+                $message = new EventMessage();
+                $message->event_id = $event->id;
+                $message->user_id = $users[$faker->numberBetween(0, $totalUsers)]->id;
+                $linea = fgets($fEvent);
+                if (str_contains($linea, self::SEPARADOR_MESSAGES)) {
+                    $camps = explode(self::SEPARADOR_MESSAGES, $linea);
+                } else {
+                    $camps = [$linea];
+                }
+                for ($j = 0, $fJ = count($camps); $j < $fJ; $j++) {
+                    $message->translate(self::IDIOMES[$j])->Message=$camps[$j];
+                }
+                $message->save();
+            }
+            fclose($fEvent);
+        }
     }
     static function UsersSeed()
     {
@@ -165,7 +220,7 @@ class PresentacioSeeder extends Seeder
         $faker = Factory::create();
 
         $locations = Location::all();
-        $totalLocations = count($locations);
+        $totalLocations = count($locations) - 1;
 
         $dir = self::ROOT . 'Rumours';
         $fullDir = 'public/' . $dir;
