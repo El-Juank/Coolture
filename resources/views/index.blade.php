@@ -24,7 +24,7 @@
                             </div>
                         </div>
                         @endforeach
-                       
+
                     </div>
 
                     <a class="carousel-control-prev w-auto" href="#gendersCarousel" role="button" data-slide="prev">
@@ -35,7 +35,9 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
+
                 </div>
+                <a class="btn btn-primary btn-lg btn-block" href="{{ route('search_result' ) }}" role="button">{{__('lang.home_see_all')}}</a>
             </div>
 
         </div>
@@ -93,8 +95,8 @@
                         </div>
                     </a>
                     @endforeach
-                   
-                 
+
+
                 </div>
             </div>
         </section>
@@ -122,8 +124,8 @@
                         </div>
                     </a>
                     @endforeach
-                  
-                   
+
+
                 </div>
             </div>
         </section>

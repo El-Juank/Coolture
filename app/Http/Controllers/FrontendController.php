@@ -332,7 +332,7 @@ class FrontendController extends Controller
         EventMaker::find($id)->UnsetNotify(Auth::user());
         return redirect()->back();
     }
-  
+
 
     public function rumourUnNotify($id){
         Rumour::find($id)->UnsetNotify(Auth::user());
@@ -371,7 +371,13 @@ class FrontendController extends Controller
     //Controlador para la página "searchResult"
     public function searchResult()
     {
-        $title = $_GET["title"];
+
+        if(isset($_GET["title"])){
+            $title = $_GET["title"];
+        }else{
+            $title = "";
+        }
+
         $locale = LaravelLocalization::getCurrentLocale(); //Agafar l'idioma de l'usuari
 
         //Agafem els events i els rumors

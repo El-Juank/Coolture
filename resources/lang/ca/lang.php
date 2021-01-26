@@ -46,6 +46,7 @@ return [
     "home_featured_rumours_tagline" => "Els rumors amb més likes del moment",
     "home_featured_eventmakers" => "Artistes destacats",
     "home_featured_eventmakers_tagline" => "Els artistes amb més seguidors del moment",
+    "home_see_all" => "Veure tots",
 
     //Traduccions pàgina "Footer"
     "footer_licence" => "Llicència MIT",
