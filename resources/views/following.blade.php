@@ -14,7 +14,7 @@
                 <h2 class="mb-1">{{ __('lang.following_posts') }}</h2>
                 <p class="text-secondary">{{ __('lang.following_posts_tagline') }}</p>
 
-                @forelse ($userranges as $userrange)
+
                     <!-- Taula eventmakers follow -->
                     <div id="events" class="tab-pane active">
                         <div class="card-body table-responsive">
@@ -27,44 +27,49 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @forelse ($userranges as $userrange)
+
+                                            <tr>
+                                                <td>{{ $userrange->EventMaker->GetName() }}</td>
+                                                <td>{{ ($userrange->Range)/10 }} km</td>
+                                                <td>
+                                                    {{-- BOTÓ DE UNFOLLOW --}}
+                                                    <div class="col-12 d-flex flex-row justify-content-center">
+                                                        <form action="{{ route('unfollow', ['eventmaker' => $userrange->EventMaker->id]) }}" method="post">
+                                                            @csrf
+                                                            <input type="submit" value="{{ __('lang.unfollow') }}" class="btn btn-coolture">
+                                                        </form>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                    @empty
+
                                         <tr>
-                                            <td>{{ $userrange->EventMaker->GetName() }}</td>
-                                            <td>{{ ($userrange->Range)/10 }} km</td>
-                                            <td>
-                                                {{-- BOTÓ DE UNFOLLOW --}}
-                                                <div class="col-12 d-flex flex-row justify-content-center">
-                                                    <form action="{{ route('unfollow', ['eventmaker' => $userrange->EventMaker->id]) }}" method="post">
-                                                        @csrf
-                                                        <input type="submit" value="{{ __('lang.unfollow') }}" class="btn btn-coolture">
-                                                    </form>
-                                                </div>
+                                            <td colspan="3" class="text-center">
+                                                @if (session('status'))
+                                                    <div class="alert alert-success" role="alert">
+                                                        {{ session('status') }}
+                                                    </div>
+                                                @endif
+
+                                                {{ __('Encara no segueixes a ningú!') }}
                                             </td>
+
 
                                         </tr>
 
+                                    @endforelse
                                 </tbody>
+
                             </table>
                         </div>
                     </div>
 
-                @empty
 
 
-                    <div class="card">
-                        <div class="card-header">{{ __('Dashboard') }}</div>
 
-                        <div class="card-body">
-                            @if (session('status'))
-                                <div class="alert alert-success" role="alert">
-                                    {{ session('status') }}
-                                </div>
-                            @endif
 
-                            {{ __('Start following your favourite artists!') }}
-
-                        </div>
-                    </div>
-                @endforelse
 
 
             </div>

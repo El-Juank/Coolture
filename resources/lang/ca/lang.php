@@ -46,6 +46,7 @@ return [
     "home_featured_rumours_tagline" => "Els rumors amb més likes del moment",
     "home_featured_eventmakers" => "Artistes destacats",
     "home_featured_eventmakers_tagline" => "Els artistes amb més seguidors del moment",
+    "home_see_all" => "Veure tots",
 
     //Traduccions pàgina "Footer"
     "footer_licence" => "Llicència MIT",
@@ -111,6 +112,7 @@ return [
     "dash_users" => "Usuaris",
     "logout" => "Tancar sessió",
     "post_event" => "Publicar esdeveniment",
+    "post_rumour" =>"Publicar rumor",
     "your_posts" => "Les teves publicacions",
     "your_posts_tagline" => "Aquí podràs publicar esdeveniments i gestionar els que ja tens",
     "logout_confirm" => "Estàs segur de que vols tencar la sessió?",

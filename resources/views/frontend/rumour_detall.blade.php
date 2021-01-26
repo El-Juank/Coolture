@@ -23,7 +23,7 @@
         <section id="event-details">
             <div class="container mb-5" data-aos="fade-up">
                 {{-- INFORMACIÓ SOBRE EL RUMOR --}}
-                <div class="section-header">
+                <div class="section-header text-center">
                     <h2>{{ $rumour->GetTitle() }}</h2>
                     {{-- User que ha publicat el rumor --}}
                     <a href="{{ route('eventmaker', ['eventmaker' => $rumour->EventMaker->id]) }}">
@@ -35,16 +35,16 @@
                             <form action="{{ route('rumour_unNotify', ['rumour' => $rumour->id]) }}" method="post">
                                 @csrf
                                 <button type="submit" class="btn btn-coolture">
-                                    <i class="fa fa-thumbs-o-down"></i>
-                                    UnNotify
+                                    <i class="fa fa-bell-slash"></i>
+                                    Desactivar notificacions
                                 </button>
                             </form>
                         @else
                             <form action="{{ route('rumour_notify', ['rumour' => $rumour->id]) }}" method="post">
                                 @csrf
                                 <button type="submit" class="btn btn-coolture">
-                                    <i class="fa fa-thumbs-o-up"></i>
-                                   Notify
+                                    <i class="fa fa-bell"></i>
+                                    Activar notificacions
                                 </button>
                             </form>
                         @endif
@@ -136,7 +136,7 @@
                                         <div class="row">
                                             <div class="col-sm-3 col-lg-2 hidden-xs">
                                                 <img class="user-img" alt=""
-                                                    src='{{ asset($rumour->User->ImgProfile->Url()) }}'>
+                                                    src='{{ asset(Auth::user()->ImgProfile->Url()) }}'>
                                             </div>
                                             <div class="form-group col-xs-12 col-sm-9 col-lg-10">
                                                 <textarea name="rumourmessage_text" id="rumourmessage_text"

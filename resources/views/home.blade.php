@@ -18,15 +18,15 @@
                     </div>
                     <div class="col-3 justify-content-end v-center">
                         <a href="{{ route('post_concert') }}"
-                            class="btn btn-coolture btn-post">{{ __('lang.post_event') }}</a>
+                            class="btn btn-coolture btn-post">{{ __('lang.post_rumour') }}</a>
                     </div>
                 </div>
                 <div class="container">
                     <ul class="nav nav-tabs">
                         <li class="nav-item active"><a class="nav-link active" data-toggle="tab"
-                                href="#events">{{ __('lang.events') }}</a></li>
-                        <li class="nav-item"><a class="nav-link" data-toggle="tab"
                                 href="#rumours">{{ __('lang.rumours') }}</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab"
+                                href="#events">{{ __('lang.events') }}</a></li>
                     </ul>
                 </div>
                <!-- <form action="{route('logout')}}" method="post">
@@ -34,8 +34,61 @@
                </form>-->
                 <div class="card">
                     <div class="tab-content">
+
+                        <!-- Taula rumors -->
+                        <div id="rumours" class="tab-pane active">
+                            <div class="card-body table-responsive">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">{{ __('lang.created_at') }}</th>
+                                            <th scope="col">{{ __('lang.form_title') }}</th>
+                                            <th scope="col">Artista</th>
+                                            <th scope="col">Funcions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($rumours as $rumour)
+                                            <tr>
+                                                <td>{{ $rumour->created_at }}</td>
+                                                <td>{{ $rumour->Title }}</td>
+                                                <td>
+
+                                                    {{ $rumour->EventMaker->GetName() }}
+
+                                                </td>
+
+
+                                                <td>
+                                                    <a
+                                                        href="{{ route('rumours.edit', ['rumour' => $rumour->id]) }}"
+                                                        class="btn btn-info btn-sm">Editar</a>
+
+                                                    @if (is_null($rumour->deleted_at))
+                                                        <form
+                                                            action="{{ route('rumours.destroy', ['rumour' => $rumour->id]) }}"
+                                                            method="POST" style="display:inline">
+                                                            @csrf
+                                                            <input type="hidden" name="_method" value="DELETE">
+                                                            <input type="submit" value="Eliminar" class="btn btn-danger btn-sm"
+                                                                onclick="return confirm('{{ __('lang.delete_rumour_confirm') }}')">
+                                                        </form>
+                                                        @else
+                                                        <a href="{{ route('rumours.restore', ['rumour' => $rumour->id]) }}"
+                                                            class="btn btn-success btn-sm">Recuperar</a>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+
                         <!-- Taula events -->
-                        <div id="events" class="tab-pane active">
+                        <div id="events" class="tab-pane fade ">
                             <div class="card-body table-responsive">
                                 <table class="table table-striped table-hover">
                                     <thead>
@@ -80,58 +133,7 @@
                             </div>
                         </div>
 
-                        <!-- Taula rumors -->
-                        <div id="rumours" class="tab-pane fade">
-                            <div class="card-body table-responsive">
-                                <table class="table table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">{{ __('lang.created_at') }}</th>
-                                            <th scope="col">{{ __('lang.form_title') }}</th>
-                                            <th scope="col">Artista</th>
-                                            <th scope="col">Funcions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($rumours as $rumour)
-                                            <tr>
-                                                <td>{{ $rumour->created_at }}</td>
-                                                <td>{{ $rumour->Title }}</td>
-                                                <td>
-                                                    @if ($rumour->HasEventMaker())
-                                                        {{ $rumour->EventMaker->GetName() }}
-                                                    @else
-                                                        -
-                                                    @endif
-                                                </td>
 
-
-                                                <td>
-                                                    FUNCIONALITATS NO OPERATIVES ENCARA
-                                                    {{-- <a
-                                                        href="{{ route('rumours.edit', ['rumour' => $rumour->id]) }}"
-                                                        class="btn btn-info">Editar</a>
-
-                                                    @if (is_null($rumour->deleted_at))
-                                                        <form
-                                                            action="{{ route('rumours.destroy', ['rumour' => $rumour->id]) }}"
-                                                            method="POST" style="display:inline">
-                                                            @csrf
-                                                            <input type="hidden" name="_method" value="DELETE">
-                                                            <input type="submit" value="Eliminar" class="btn btn-danger"
-                                                                onclick="return confirm('{{ __('lang.delete_rumour_confirm') }}')">
-                                                        </form>
-                                                        @else
-                                                        <a href="{{ route('rumours.restore', ['rumour' => $rumour->id]) }}"
-                                                            class="btn btn-success">Recuperar</a>
-                                                    @endif --}}
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

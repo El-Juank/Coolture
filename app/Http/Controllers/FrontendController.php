@@ -8,7 +8,8 @@ use App\Event;
 use App\EventMaker;
 use App\EventMakerTranslation;
 use App\EventMessage;
-use App\EventTranslation; 
+use App\EventTranslation;
+use App\LikeEvent;
 use App\RumourMessage;
 use App\RumourTranslation;
 use App\UserRange;
@@ -208,7 +209,7 @@ class FrontendController extends Controller
     public function eventmessage(Request $request, $id)
     {
         $request->validate([
-            'eventmessage_text' => 'required|min:4',
+            'eventmessage_text' => 'required',
         ]);
 
         $eventmessage = new EventMessage;
@@ -245,7 +246,7 @@ class FrontendController extends Controller
     public function rumourmessage(Request $request, $id)
     {
         $request->validate([
-            'rumourmessage_text' => 'required|min:4',
+            'rumourmessage_text' => 'required',
         ]);
 
         $rumourmessage = new RumourMessage;
@@ -334,7 +335,7 @@ class FrontendController extends Controller
         EventMaker::find($id)->UnsetNotify(Auth::user());
         return redirect()->back();
     }
-  
+
 
     public function rumourUnNotify($id){
         Rumour::find($id)->UnsetNotify(Auth::user());
@@ -373,7 +374,13 @@ class FrontendController extends Controller
     //Controlador para la página "searchResult"
     public function searchResult()
     {
-        $title = $_GET["title"];
+
+        if(isset($_GET["title"])){
+            $title = $_GET["title"];
+        }else{
+            $title = "";
+        }
+
         $locale = LaravelLocalization::getCurrentLocale(); //Agafar l'idioma de l'usuari
 
         //Agafem els events i els rumors

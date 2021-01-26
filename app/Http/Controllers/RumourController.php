@@ -39,7 +39,7 @@ class RumourController extends Controller
         $title = $request['title'];
         $IsVisible = $request['IsVisible'];
         $OwnTrust = $request['OwnTrust'];
-        $description = $request['description'];   
+        $description = $request['description'];
         //Crear  i posa valors del formulari
         $rumour = new Rumour();
         $rumour->user_id = $user_id;
@@ -69,7 +69,7 @@ class RumourController extends Controller
 
         //Validació:
         $validated = $request->validate([
-            'name' => 'required|min:4',
+            'name' => 'required',
         ]);
 
 
