@@ -8,7 +8,8 @@ use App\Event;
 use App\EventMaker;
 use App\EventMakerTranslation;
 use App\EventMessage;
-use App\EventTranslation; 
+use App\EventTranslation;
+use App\LikeEvent;
 use App\RumourMessage;
 use App\RumourTranslation;
 use App\UserRange;
@@ -206,7 +207,7 @@ class FrontendController extends Controller
     public function eventmessage(Request $request, $id)
     {
         $request->validate([
-            'eventmessage_text' => 'required|min:4',
+            'eventmessage_text' => 'required',
         ]);
 
         $eventmessage = new EventMessage;
@@ -243,7 +244,7 @@ class FrontendController extends Controller
     public function rumourmessage(Request $request, $id)
     {
         $request->validate([
-            'rumourmessage_text' => 'required|min:4',
+            'rumourmessage_text' => 'required',
         ]);
 
         $rumourmessage = new RumourMessage;

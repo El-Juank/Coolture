@@ -31,7 +31,7 @@ class EventController extends Controller
     {
         //Validity rules
         $validated = $request->validate([
-            'name' => 'required|min:4',
+            'name' => 'required',
         ]);
 
         //Capta camps del formulari
@@ -64,7 +64,7 @@ class EventController extends Controller
 
         //Validació:
         $validated = $request->validate([
-            'name' => 'required|min:4',
+            'name' => 'required',
         ]);
 
 
