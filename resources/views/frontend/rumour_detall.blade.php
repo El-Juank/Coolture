@@ -155,7 +155,7 @@
                             @forelse ($mgs as $message)
                                 <div class="media">
 
-                                    <a class="pull-left" href="#"><img class="media-object"  alt=""
+                                    <a class="pull-left" href="#"><img class="media-object"  alt="{{$message->User->name}}"
                                            src='{{ asset($message->User->ImgProfile->Url()) }}'></a>
 
                                     <div class="media-body">
@@ -180,7 +180,7 @@
                                 </div>
                             @endforelse
                             @guest
-                                @if ($messages->count() >= 3)
+                                @if ($messages->count() > 3)
                                     <div class="mt-5 mb-5 text-center">
                                         <div class="card pt-3 pb-3 d-flex align-items-center"
                                             style="background-color: #f6f7fd;">
