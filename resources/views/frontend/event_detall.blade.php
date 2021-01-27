@@ -44,31 +44,33 @@
                             <p>{{ $event->GetDescription() }}</p>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item borderless">
-                                <!--
-                                    <i class="fa fa-map-marker"></i>
-                                    @if (isset($city->error))
-                                        {{ __('lang.location_not_available') }}
+                                    <!--
+                                        <i class="fa fa-map-marker"></i>
+                                        @if (isset($city->error))
+                                            {{ __('lang.location_not_available') }}
                                     @else
-                                        {{ $city->display_name }}
-                                    @endif
-                                </li>
+                                            {{ $city->display_name }}
+                                        @endif
+                                    </li>
+                                    <li class="list-group-item borderless">
+                                        <i class="fa fa-calendar"></i>
+                                        {{ $event->InitDate }}
+                                    </li>
+                                    <li class="list-group-item borderless">
+                                        <i class="fa fa-clock-o"></i>
+                                        {{ $event->Duration }}
+                                    </li>
+                                    -->
+                                    {{--
                                 <li class="list-group-item borderless">
-                                    <i class="fa fa-calendar"></i>
-                                    {{ $event->InitDate }}
-                                </li>
-                                <li class="list-group-item borderless">
-                                    <i class="fa fa-clock-o"></i>
-                                    {{ $event->Duration }}
-                                </li>
-                                -->
-                                {{--<li class="list-group-item borderless">
                                     {{ $event->Published }}
                                 </li>--}}
                             </ul>
                             {{--{{ $event->Location->Lat }}
                             {{ $event->Location->Lon }}--}}
 
-                            {{-- LIKES TOTALS A L'EVENT + BOTO DE DONAR LIKE --}}
+                            {{-- LIKES TOTALS A L'EVENT + BOTO DE DONAR LIKE
+                            --}}
                             <div class="pull-right pt-lg-5 h2">
                                 @auth
                                     @if ($event->HasLike(Auth::user()))
@@ -135,7 +137,7 @@
                                     <div class="card pt-3 pb-3 d-flex align-items-center" style="background-color: #f6f7fd;">
                                         <p class="pt-5 pb-4"><a href="{{ LaravelLocalization::localizeUrl('register') }}"
                                                 class="link">{{ __('lang.header_register') }}</a>
-                                                {{ __('lang.or') }} <a href="{{ LaravelLocalization::localizeUrl('login') }}"
+                                            {{ __('lang.or') }} <a href="{{ LaravelLocalization::localizeUrl('login') }}"
                                                 class="link">{{ __('lang.header_login') }}</a>
                                             {{ __('lang.to_leave_comment') }}
                                         </p>
@@ -147,35 +149,41 @@
 
                             {{-- MOSTRA MISSATGES DE L'EVENT --}}
                             @auth
-                                @forelse ($messages as $message)
-                                    <div class="media">
-
-                                        <a class="pull-left" href="#"><img class="media-object" alt=""
-                                                src='{{ asset($message->User->ImgProfile->Url()) }}'></a>
-
-                                        <div class="media-body">
-                                            <h4 class="media-heading">{{ $message->User->name }}
-                                            </h4>
-                                            <p>{{ $message->GetMessage() }}</p>
-                                            <ul class="list-unstyled list-inline media-detail pull-left">
-                                                <li><i class="fa fa-calendar"></i>{{ $message->created_at->diffForHumans() }}</li>
-                                                {{--<li><i class="fa fa-thumbs-up"></i></li>--}}
-                                            </ul>
-                                            {{--<ul
-                                                class="list-unstyled list-inline media-detail pull-right">
-                                                <li class=""><a href="">Like</a></li>
-                                            </ul>--}}
-                                        </div>
-                                    </div>
-                                @empty
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <p>{{ __('lang.empty_comments') }}</p>
-                                        </div>
-                                    </div>
-                                @endforelse
-
+                            <?php $mgs=$messages; ?>
                             @endauth
+                            @guest
+                             <?php $mgs=$messages->take(3); ?>
+                            @endguest
+                            @forelse ($mgs as $message)
+                                <div class="media">
+
+                                    <a class="pull-left" href="#"><img class="media-object" alt=""
+                                            src='{{ asset($message->User->ImgProfile->Url()) }}'></a>
+
+                                    <div class="media-body">
+                                        <h4 class="media-heading">{{ $message->User->name }}
+                                        </h4>
+                                        <p>{{ $message->GetMessage() }}</p>
+                                        <ul class="list-unstyled list-inline media-detail pull-left">
+                                            <li><i class="fa fa-calendar"></i>{{ $message->created_at->diffForHumans() }}</li>
+                                            {{--<li><i class="fa fa-thumbs-up"></i></li>
+                                            --}}
+                                        </ul>
+                                        {{--<ul
+                                            class="list-unstyled list-inline media-detail pull-right">
+                                            <li class=""><a href="">Like</a></li>
+                                        </ul>--}}
+                                    </div>
+                                </div>
+
+                            @empty
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <p>{{ __('lang.empty_comments') }}</p>
+                                    </div>
+                                </div>
+                            @endforelse
+
                             @guest
                                 @if ($messages->count() >= 3)
                                     <div class="mt-5 mb-5 text-center">
