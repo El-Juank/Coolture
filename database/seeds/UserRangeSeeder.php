@@ -23,12 +23,12 @@ class UserRangeSeeder extends Seeder
         foreach($users as $user){
             $dic=[];
             for($i=0,$f=$faker->numberBetween(0,$totalEventMakers);$i<$f;$i++){
+
                 $userRange=new UserRange();
                 $userRange->user_id=$user->id;
                 do{
                     $eventMaker=$eventMakers[$faker->numberBetween(0,$totalEventMakers)];
-                }while(array_key_exists($eventMaker->id,$dic));
-                $dic[$eventMaker->id]=null;
+                }while(UserRange::where('user_id',$user->id)->where('event_maker_id',$eventMaker->id)->count()!=0);
                 $userRange->event_maker_id=$eventMaker->id;
                 $userRange->Range=$faker->randomFloat(2,1,1000000);
                 $userRange->save();

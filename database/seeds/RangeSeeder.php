@@ -30,7 +30,7 @@ class RangeSeeder extends Seeder
                     do{
                         $idPos=$faker->numberBetween(0, $totalLocations);
                     }while(array_key_exists($idPos,$dic));
-                    $dic[$idPos]=null;
+                    $dic[$idPos]=$idPos;
                     $range->location_id = $locations[$idPos]->id;
                     $range->Range = $faker->randomFloat(2, 1, 10000);
                     $range->save();
