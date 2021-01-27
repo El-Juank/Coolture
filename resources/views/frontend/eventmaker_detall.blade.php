@@ -36,7 +36,7 @@
                             @csrf
                             <button type="submit" class="btn btn-coolture">
                                 <i class="fa fa-bell-slash"></i>
-                                Desactivar notificacions
+                                {{__('lang.deactive_notifications')}}
                             </button>
                         </form> <br>
                     @else
@@ -44,7 +44,7 @@
                             @csrf
                             <button type="submit" class="btn btn-coolture">
                                 <i class="fa fa-bell"></i>
-                                Activar notificacions
+                                  {{__('lang.active_notifications')}}
                             </button>
                         </form><br>
                     @endif
