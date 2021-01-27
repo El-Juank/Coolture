@@ -114,6 +114,8 @@ h6 {
     border-radius: 50%;
     border-bottom-right-radius: 0px;
     width: 150px;
+    height: 150px;
+    object-fit: cover;
 }
 
 .img-fluid {

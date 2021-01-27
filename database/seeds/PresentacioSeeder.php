@@ -274,7 +274,7 @@ class PresentacioSeeder extends Seeder
         echo 'Rumour Seed start##';
         $faker = Factory::create();
 
-     
+
         $dir = self::ROOT . 'Rumours/';
         $fullDir = 'public/' . $dir;
         $files = scandir($fullDir);
@@ -453,7 +453,7 @@ class PresentacioSeeder extends Seeder
                     $eventmaker->Follow($users[$faker->numberBetween(0,$totalUsers)],$eventmaker->id);
                 }
             }
-           
+
 
         }
         echo 'EventMaker Seed Complete##';

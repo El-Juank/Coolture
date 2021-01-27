@@ -191,7 +191,7 @@ return [
     "post_rules_title" => "Posting Rules",
     "post_rules_intro" => "If the content you post on Coolture violates any of these rules of coexistence, or is contrary to current legal or good law, we will remove it and send you an email stating why Please note that if the breach is serious or is repeated, we may disable your user.",
     "post_rules_list_title" => "Below you will find much of the content that",
-    "post_rules_list_title_strong" => "You cannot post to Coolture",
+    "post_rules_list_title_strong" => " you cannot post to Coolture",
     "post_rules_list_item1" => "Search ads (buy, search ...).",
     "post_rules_list_item2" => "Illegal and / or dangerous actions.",
     "post_rules_list_item3" => "Jokes, fake, dishonest, ambiguous, incorrect or misleading content or redirect to unauthorized content.",

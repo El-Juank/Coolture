@@ -94,7 +94,7 @@ return [
     "to_see_comments" => "para ver todos los comentarios",
     "location_not_available" => "Localidad no disponible",
     "active_notifications" => "Activar notificaciones",
-     "deactive_notifications" => "Desactivar notificaciones",
+    "deactive_notifications" => "Desactivar notificaciones",
 
     //Traduccions formularis
     "form_name" => "Nombre",
@@ -189,6 +189,25 @@ return [
     "Faq5_answer" => "Sigue los acontecimiento que te interesa así como a tus artistas favoritos y sé el primero en enterarte de cualquier novedad.",
     "Faq6" => "Quiero buscar gente con la que ir a un evento, como puedo hacerlo?",
     "Faq6_answer" => "Encontrarás una sección de comentarios abajo de cada publicación de eventos. En este chat público podrás hablar con más seguidores del evento.",
+
+    // Traducciones página "Normas de publicación"
+    "post_rules_title" => "Normas de publicación",
+    "post_rules_intro" => "Si el contenido que publicas en Coolture incumple alguna de estas reglas de convivencia, o va en contra de las disposiciones legales vigentes o de buenas costumbres, lo retiraremos y te enviaremos un correo electrónico indicando el motivo por el que se ha retirado. Ten en cuenta que, si el incumplimiento es grave o el realizas de forma reiterada, podemos desactivar tu usuario. ",
+    "post_rules_list_title" => "A continuación encontrarás gran parte del contenido que ",
+    "post_rules_list_title_strong" => "no puedes publicar en Coolture",
+    "post_rules_list_item1" => "Anuncios de búsqueda (compro, busco ...).",
+    "post_rules_list_item2" => "Acciones ilegales y / o peligrosas.",
+    "post_rules_list_item3" => "Bromas, contenido falso, deshonesto, ambiguo, incorrecto o que induzca a engaño o redirija a contenidos no permitidos.",
+    "post_rules_list_item4" => "Publicidad, spamming, cadenas de correos, esquemas piramidales, marketing multinivel, amenazas y / o fraude.",
+    "post_rules_list_item5" => "Enlace para dirigir tráfico a otras páginas web o apps.",
+    "post_rules_list_item6" => "Entradas a eventos, entradas generales y billetes de transporte.",
+    "post_rules_list_item7" => "Infracción a la propiedad intelectual o los derechos industriales, incluyendo patentes, marcas registradas, derechos de autor o secretos comerciales.",
+    "post_rules_list_item8" => "Infracción a los derechos de privacidad.",
+    "post_rules_list_item9" => "Nudo de personas en las que aparecen visiblemente partes explícitas. Se permite publicar fotografías de pinturas, esculturas y otras obras de arte que muestren desnudos.",
+    "post_rules_list_item10" => "Denunciar el comportamiento de otros usuarios de la aplicación. En caso de tener problemas con algún comprador o vendedor, puedes denunciarlo desde la conversación que haya mantenido.",
+    "post_rules_list_item11" => "No está permitida cualquier manifestación de discriminación, intolerancia y / o ofensas raciales.",
+    "post_rules_list_item12" => "No se permite la publicación de anuncios el contenido promueva, apoye o conmemore grupos de odio o intolerancia.",
+    "post_rules_list_item13" => "relacionados o recuperados de desastres naturales, escenas de crimen, accidentes o tragedias.",
 
     //Traduccions pàgina "Publica un concert"
     "post_concert_title" => "Publica un rumor",
