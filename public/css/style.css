@@ -876,6 +876,7 @@ h6 {
     position: relative;
     overflow: hidden;
     margin-bottom: 30px;
+    width: 100%;
 }
 
 #featured-genders .gender .details {
