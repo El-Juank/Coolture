@@ -106,8 +106,12 @@ $locale = App::getLocale();
                     </li>
                     <li class="nav-item user-notifications">
                         <a href="{{ route('notifications') }}" title="{{ __('lang.notifications') }}">
+                            
                             <img class="notifications" src="{{ asset('img/bell.svg') }}">
-                            <span class="ml-2">{{ Auth::user()->TotalNotificationChanges() }}</span>
+                            <?php $total=Auth::user()->TotalNotificationChanges();?>
+                            @if($total>0)
+                               <span class="ml-2">{{ $total }}</span>
+                            @endif
                         </a>
                     </li>
                 @endguest
