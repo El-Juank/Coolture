@@ -26,8 +26,8 @@ class UserRangeSeeder extends Seeder
             $dic=[];
             $total=0;
             foreach(UserRange::where('user_id',$user->id)->get() as $uRange){
-                $dic[$uRange->event_maker_id]=null;
-            }
+                $dic[$uRange->event_maker_id]=null;//array_push i despres un whereNotIn i llestos
+            }//aqui fer un random amb els eventmakers que no estan a l'array
             for($i=0,$f=$faker->numberBetween(0,3);$i<$f;$i++){
 
                 $userRange=new UserRange();

@@ -57,10 +57,12 @@ class PresentacioSeeder extends Seeder
         $this->call(RoleSeeder::class);
         $this->call(PermissionSeeder::class);
 
-        self::MessagesSeed();
-
         $this->call(LikeEventSeeder::class);
         $this->call(LikeRumourSeeder::class);
+
+        self::MessagesSeed();
+
+
         $this->call(LikeEventMessageSeeder::class);
         $this->call(LikeRumourMessageSeeder::class);
         $this->call(AssistanceSeeder::class);
@@ -120,21 +122,25 @@ class PresentacioSeeder extends Seeder
         $fEvents = scandir($dirEvents);
         $fRumours = scandir($dirRumours);
 
-        $events = Event::all();
-        $rumours = Rumour::all();
+        $totalFEvents=count($fEvents);
+        $totalFRumours=count($fRumours);
+
+        $events =  DB::table('LikesEvent')->select('event_id', DB::raw('count(id) as total'))
+                            ->groupBy('event_id')->orderBy('total', 'DESC')->take($totalFEvents)->get();
+        $rumours = DB::table('LikesRumour')->select('rumour_id', DB::raw('count(id) as total'))
+                            ->groupBy('rumour_id')->orderBy('total', 'DESC')->take($totalFRumours)->get();
         $users = User::all();
 
-        $totalEvents = count($events) - 1;
-        $totalRumours = count($rumours) - 1;
         $totalUsers = count($users) - 1;
         //rumours
-        for ($i = 0, $f = count($fRumours); $i < $f; $i++) {
+        for ($i = 0,$k=0; $i < $totalFRumours; $i++) {
             if(!is_dir($dirRumours.'/'.$fRumours[$i])){
-            $rumour = $rumours[$faker->numberBetween(0, $totalRumours)];
+            $rumour_id = $rumours[$k]->rumour_id;
+            $k++;
             $fRumour = fopen($dirRumours.'/'.$fRumours[$i], 'r');
             while (!feof($fRumour)) {
                 $message = new RumourMessage();
-                $message->rumour_id = $rumour->id;
+                $message->rumour_id = $rumour_id;
                 $message->user_id = $users[$faker->numberBetween(0, $totalUsers)]->id;
                 $linea = fgets($fRumour);
                 if (str_contains($linea, self::SEPARADOR_MESSAGES)) {
@@ -150,13 +156,14 @@ class PresentacioSeeder extends Seeder
             fclose($fRumour);
         }}
         //events
-        for ($i = 0, $f = count($fEvents); $i < $f; $i++) {
+        for ($i = 0,$k=0; $i < $totalFEvents; $i++) {
             if(!is_dir($dirEvents.'/'.$fEvents[$i])){
-            $event = $events[$faker->numberBetween(0, $totalEvents)];
+            $event_id = $events[$k]->event_id;
+            $k++;
             $fEvent = fopen($dirEvents.'/'.$fEvents[$i], 'r');
             while (!feof($fEvent)) {
                 $message = new EventMessage();
-                $message->event_id = $event->id;
+                $message->event_id = $event_id;
                 $message->user_id = $users[$faker->numberBetween(0, $totalUsers)]->id;
                 $linea = fgets($fEvent);
                 if (str_contains($linea, self::SEPARADOR_MESSAGES)) {
