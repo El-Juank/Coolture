@@ -40,11 +40,10 @@
                                         <div class="result" data-aos="fade-up" data-aos-delay="100">
                                             <img src="{{ asset($eventTransition->ImgPreview->Url()) }}" class="img-fluid img-bg">
                                             <div class="details">
-                                                <h3><a href="{{ route('event', ['event' => $eventTransition->id]) }}">{{ $eventTransition->GetTitle() }}</a>
+                                                <h3><a href="{{ route('event', ['event' => $eventTransition->id]) }}">{{ \Illuminate\Support\Str::limit($eventTransition->GetTitle(), 25, $end = '...') }}</a>
                                                 </h3>
                                                 {{-- Per limitar la mida dels textos --}}
-                                                <p>{{ \Illuminate\Support\Str::limit($eventTransition->GetDescription(), 100, $end = '...') }}
-                                                </p>
+                                                <p>{{ \Illuminate\Support\Str::limit($eventTransition->GetDescription(), 40, $end = '...') }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -75,10 +74,10 @@
                                             <div class="result" data-aos="fade-up" data-aos-delay="100">
                                                 <img src="{{asset( $rumourTranslation->ImgPreview->Url() )}}" class="img-fluid img-bg">
                                                 <div class="details">
-                                                    <h3><a href="{{ route('rumour', ['rumour' => $rumourTranslation->id]) }}">{{ $rumourTranslation->GetTitle() }}</a>
+                                                    <h3><a href="{{ route('rumour', ['rumour' => $rumourTranslation->id]) }}">{{ \Illuminate\Support\Str::limit($rumourTranslation->GetTitle(), 25, $end = '...') }}</a>
                                                     </h3>
                                                     {{-- Per limitar la mida dels textos --}}
-                                                    <p>{{ \Illuminate\Support\Str::limit($rumourTranslation->GetDescription(), 100, $end = '...') }}
+                                                    <p>{{ \Illuminate\Support\Str::limit($rumourTranslation->GetDescription(), 40, $end = '...') }}
                                                     </p>
                                                 </div>
                                             </div>
@@ -111,10 +110,10 @@
                                             <div class="result" data-aos="fade-up" data-aos-delay="100">
                                                 <img src="{{ asset($eventmakerTranslation->ImgProfile->Url()) }}" alt="{{ $eventmakerTranslation->GetName() }}" class="img-fluid img-bg">
                                                 <div class="details">
-                                                    <h3><a href="{{ route('eventmaker', ['eventmaker' => $eventmakerTranslation->id]) }}">{{ $eventmakerTranslation->GetName() }}</a>
+                                                    <h3><a href="{{ route('eventmaker', ['eventmaker' => $eventmakerTranslation->id]) }}">{{ \Illuminate\Support\Str::limit($eventmakerTranslation->GetName(), 25, $end = '...') }}</a>
                                                     </h3>
                                                     {{-- Per limitar la mida dels textos --}}
-                                                    <p>{{ \Illuminate\Support\Str::limit($eventmakerTranslation->GetDescription(), 100, $end = '...') }}
+                                                    <p>{{ \Illuminate\Support\Str::limit($eventmakerTranslation->GetDescription(), 40, $end = '...') }}
                                                     </p>
                                                 </div>
                                             </div>

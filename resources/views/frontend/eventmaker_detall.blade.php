@@ -95,11 +95,10 @@
                                         <div class="result bg-coolture" data-aos="fade-up" data-aos-delay="100">
                                             <img alt="Rock" class="img-fluid img-bg" src='{{ asset($event->ImgPreview->Url()) }} '>
                                             <div class="details">
-                                                <h3><a href="{{ route('event', ['event' => $event->id]) }}">{{ $event->GetTitle() }}</a>
+                                                <h3><a href="{{ route('event', ['event' => $event->id]) }}">{{ \Illuminate\Support\Str::limit($event->GetTitle(), 25, $end = '...') }}</a>
                                                 </h3>
                                                 {{-- Per limitar la mida dels textos --}}
-                                                <p>{{ \Illuminate\Support\Str::limit($event->GetDescription(), 100, $end = '...') }}
-                                                </p>
+                                                <p>{{ \Illuminate\Support\Str::limit($event->GetDescription(), 40, $end = '...') }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -128,12 +127,10 @@
                                             <img alt="" class="img-fluid"
                                                 src="{{asset($rumour->ImgPreview->Url())}}">
                                             <div class="details">
-                                                <h3><a
-                                                        href="{{ route('rumour', ['rumour' => $rumour->id]) }}">{{ $rumour->GetTitle() }}</a>
+                                                <h3><a href="{{ route('rumour', ['rumour' => $rumour->id]) }}">{{ \Illuminate\Support\Str::limit($rumour->GetTitle(), 25, $end = '...') }}</a>
                                                 </h3>
                                                 {{-- Per limitar la mida dels textos --}}
-                                                <p>{{ \Illuminate\Support\Str::limit($rumour->GetDescription(), 100, $end = '...') }}
-                                                </p>
+                                                <p>{{ \Illuminate\Support\Str::limit($rumour->GetDescription(), 40, $end = '...') }}</p>
                                             </div>
                                         </div>
                                     </div>
