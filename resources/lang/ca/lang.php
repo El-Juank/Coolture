@@ -95,6 +95,8 @@ return [
     "location_not_available" => "Localitat no disponible",
     "active_notifications" => "Activar notificacions",
     "deactive_notifications" => "Desactivar notificacions",
+    "no_events_yet" => "Encara no hi ha cap event",
+    "no_rumours_yet" => "Encara no hi ha cap rumor",
 
     //Traduccions formularis
     "form_name" => "Nom",

@@ -89,7 +89,7 @@
                 <section id="results">
                     <div class="container" data-aos="fade-up">
                         <div class="row justify-content-center">
-                            @foreach ($eventmaker->Events as $event)
+                            @forelse ($eventmaker->Events as $event)
                                 <a href="">
                                     <div class="col-lg-4 col-md-6 d-md-flex align-items-stretch">
                                         <div class="result" data-aos="fade-up" data-aos-delay="100">
@@ -104,7 +104,13 @@
                                         </div>
                                     </div>
                                 </a>
-                            @endforeach
+                                @empty
+                                <div class="col-lg-12">
+                                    <div class="result">
+                                        <h4 class="text-center pt-3"> {{ __('lang.no_events_yet') }}</h4>
+                                    </div>
+                                </div>
+                            @endforelse
                         </div>
                     </div>
                 </section>
@@ -115,8 +121,8 @@
                 <section id="results">
                     <div class="container" data-aos="fade-up">
                         <div class="row justify-content-center">
-                            @foreach ($eventmaker->Rumours as $rumour)
-                                <a href="">
+                            @forelse($eventmaker->Rumours as $rumour)
+                                <a href="{{ route('rumour', ['rumour' => $rumour->id]) }}">
                                     <div class="col-lg-4 col-md-6 d-md-flex align-items-stretch">
                                         <div class="result" data-aos="fade-up" data-aos-delay="100">
                                             <img alt="" class="img-fluid"
@@ -125,16 +131,20 @@
                                                 <h3><a
                                                         href="{{ route('rumour', ['rumour' => $rumour->id]) }}">{{ $rumour->GetTitle() }}</a>
                                                 </h3>
-                                                {{-- Per limitar la mida dels
-                                                textos
-                                                --}}
+                                                {{-- Per limitar la mida dels textos --}}
                                                 <p>{{ \Illuminate\Support\Str::limit($rumour->GetDescription(), 100, $end = '...') }}
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
-                            @endforeach
+                                @empty
+                                <div class="col-lg-12">
+                                    <div class="result">
+                                        <h4 class="text-center pt-3"> {{ __('lang.no_rumours_yet') }}</h4>
+                                    </div>
+                                </div>
+                            @endforelse
                         </div>
                     </div>
                 </section>

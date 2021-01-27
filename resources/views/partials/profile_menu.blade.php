@@ -1,7 +1,7 @@
 <div class="container-fluid dashboard-menu">
     <div class="row flex-column flex-md-row">
         <aside class="col-12 col-md-2 p-0 bg-light flex-shrink-1">
-            <nav class="navbar navbar-expand bg-light flex-md-column flex-row align-items-center py-2">
+            <nav class="navbar navbar-expand bg-light flex-md-column flex-row d-flex align-items-center py-2">
                 <div class="collapse navbar-collapse ">
                     <ul class="flex-md-column flex-row navbar-nav navbar-menu w-100 justify-content-around"
                         data-aos="fade-up">
