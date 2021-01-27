@@ -62,30 +62,10 @@
                             <p>{{ $rumour->GetDescription() }}</p>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item borderless">
-                                    <i class="fa fa-map-marker"></i>
-                                    Els rumours no tenen CITY ni dates... però cal posar funcionalitat de confirmar o algo
-                                    així...?
-                                    {{-- @if (isset($city->error))
-                                        Localitat no disponible
-                                        @else
-                                        {{ $city->display_name }}
-                                    @endif --}}
-                                </li>
-                                <li class="list-group-item borderless">
-                                    <i class="fa fa-calendar"></i>
-                                    {{ $rumour->InitDate }}
-                                </li>
-                                <li class="list-group-item borderless">
-                                    <i class="fa fa-clock-o"></i>
-                                    {{ $rumour->Duration }}
-                                </li>
-                                {{--<li class="list-group-item borderless">
-                                    {{ $rumour->Published }}
-                                </li>--}}
+                              
+                           
                             </ul>
-                            {{--{{ $rumour->Location->Lat }}
-                            {{ $rumour->Location->Lon }}--}}
-
+                          
                             {{-- LIKES TOTALS A L'RUMOUR + BOTO DE DONAR LIKE
                             --}}
                             <div class="pull-right pt-lg-5 h2">
