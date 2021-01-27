@@ -29,11 +29,11 @@ class PresentacioSeeder extends Seeder
     const ROOT = 'dataSeeds/';
 
     const FORMAT_ICON_CATEGORY = 'svg';
-    const FORMAT_IMG_CATEGORY = 'jpeg';
-    const FORMAT_IMG_PROFILE = 'jpg';
-    const FORMAT_IMG_COVER = 'jpg';
-    const  FORMAT_IMG_EVENT = 'jpeg';
-    const  FORMAT_IMG_PREVIEW = 'jpeg';
+    const FORMAT_IMG_CATEGORY = 'png';
+    const FORMAT_IMG_PROFILE = 'png';
+    const FORMAT_IMG_COVER = 'png';
+    const  FORMAT_IMG_EVENT = 'png';
+    const  FORMAT_IMG_PREVIEW = 'png';
 
     const IDIOMES = ['ca', 'es', 'en'];
     const SEPARADOR_IDIOMES = '.';
