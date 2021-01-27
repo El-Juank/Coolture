@@ -385,7 +385,7 @@ class FrontendController extends Controller
         //Agafem els events i els rumors
         $eventsTranslate = EventTranslation::where('locale', $locale)->where('Title', 'like', '%' . $title . '%')->get();
         $rumoursTranslate = RumourTranslation::where('locale', $locale)->where('Title', 'like', '%' . $title . '%')->get();
-        $eventmakersTranslate = EventMakerTranslation::where('Name', 'like', '%' . $title . '%')->get();
+        $eventmakersTranslate = EventMakerTranslation::where('locale', $locale)->where('Name', 'like', '%' . $title . '%')->get();
 
         $events = [];
         $rumours = [];

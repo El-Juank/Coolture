@@ -54,7 +54,7 @@
                 <div class="row">
                     <div class="col-md-6 mb-lg-1 mb-5">
                         <img alt="{{ $rumour->GetTitle() }}" class="img-fluid"
-                            src='{{ asset(App\File::ImgRumourDetail()->Url()) }}'>
+                            src='{{ asset($rumour->ImgCover->Url())}}'>
                     </div>
 
                     <div class="col-md-6">

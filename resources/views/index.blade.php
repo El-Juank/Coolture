@@ -85,8 +85,8 @@
                             <div class="gender" data-aos="fade-up" data-aos-delay="100">
                                 <img src="{{ asset($rumour->ImgPreview->Url()) }}"  class="img-fluid">
                                 <div class="details">
-                                    <h3><a href="{{route('rumour',['rumour'=>$rumour->id])}}">@if($rumour->HasEventMaker()){{$rumour->EventMaker->GetName()}} @else ? @endif</a></h3>
-                                    <p>{{$rumour->GetTitle()}}</p>
+                                    <h3><a href="{{route('rumour',['rumour'=>$rumour->id])}}">{{$rumour->GetTitle()}}</a></h3>
+                                    <p>@if($rumour->HasEventMaker()){{$rumour->EventMaker->GetName()}} @else ??? @endif</p>
                                 </div>
                             </div>
                         </div>

@@ -93,7 +93,7 @@
                                 <a href="">
                                     <div class="col-lg-4 col-md-6">
                                         <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                            <img alt="Rock" class="img-fluid" src='{{ asset($event->ImgEvent->Url()) }} '>
+                                            <img alt="Rock" class="img-fluid" src='{{ asset($event->ImgPreview->Url()) }} '>
                                             <div class="details">
                                                 <h3><a
                                                         href="{{ route('event', ['event' => $event->id]) }}">{{ $event->GetTitle() }}</a>
@@ -123,7 +123,7 @@
                                     <div class="col-lg-4 col-md-6">
                                         <div class="result" data-aos="fade-up" data-aos-delay="100">
                                             <img alt="" class="img-fluid"
-                                                src="{{ asset(App\File::ImgRumourEventMaker()->Url()) }}">
+                                                src="{{asset($rumour->ImgPreview->Url())}}">
                                             <div class="details">
                                                 <h3><a
                                                         href="{{ route('rumour', ['rumour' => $rumour->id]) }}">{{ $rumour->GetTitle() }}</a>

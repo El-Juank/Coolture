@@ -74,7 +74,7 @@
                                     <a href="{{ route('rumour', ['rumour' => $rumourTranslation->id]) }}">
                                         <div class="col-lg-4">
                                             <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                                <img src="{{ $rumourTranslation->ImgPreview->Url() }}" class="img-fluid">
+                                                <img src="{{asset( $rumourTranslation->ImgPreview->Url() )}}" class="img-fluid">
                                                 <div class="details">
                                                     <h3><a href="{{ route('rumour', ['rumour' => $rumourTranslation->id]) }}">{{ $rumourTranslation->GetTitle() }}</a>
                                                     </h3>

@@ -387,6 +387,9 @@ class PresentacioSeeder extends Seeder
     static function EventMakersSeed()
     {
         echo 'EventMaker Seed start##';
+        $faker= Faker\Factory::create();
+        $users=User::all();
+        $totalUsers=count($users)-1;
         $dir = self::ROOT . 'EventMakers/';
         $fullDir = 'public/' . $dir;
         $files = scandir($fullDir);
@@ -431,19 +434,27 @@ class PresentacioSeeder extends Seeder
                     $descs = fopen($fullDir . $files[$i], "r");
                     $j = 0;
                     $fJ = count($camps) - 1;
+                    $k=0;
                     while (!feof($descs)) {
 
-                        $eventmaker->translateOrNew(self::IDIOMES[$j])->Name = str_replace('_', ' ', $camps[$j]);
-                        $eventmaker->translateOrNew(self::IDIOMES[$j])->Description = fgets($descs);
+                        $eventmaker->translateOrNew(self::IDIOMES[$k])->Name = str_replace('_', ' ', $camps[$j]);
+                        $eventmaker->translateOrNew(self::IDIOMES[$k])->Description = fgets($descs);
                         if ($j < $fJ) {
                             $j++;
                         }
+                        $k++;
                     }
                 } finally {
                     fclose($descs);
                 }
                 $eventmaker->save();
+                echo 'Part Follow '.$eventmaker->Name;
+                for($u=0,$uF=$faker->numberBetween(0,$totalUsers);$u<$uF;$u++){
+                    $eventmaker->Follow($users[$faker->numberBetween(0,$totalUsers)],$eventmaker->id);
+                }
             }
+           
+
         }
         echo 'EventMaker Seed Complete##';
     }
