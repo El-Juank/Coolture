@@ -90,7 +90,7 @@
                     <div class="container" data-aos="fade-up">
                         <div class="row justify-content-center">
                             @forelse ($eventmaker->Events as $event)
-                                <a href="">
+                                <a href="{{ route('event', ['event' => $event->id]) }}">
                                     <div class="col-lg-4 col-md-6 d-md-flex align-items-stretch">
                                         <div class="result" data-aos="fade-up" data-aos-delay="100">
                                             <img alt="Rock" class="img-fluid img-bg" src='{{ asset($event->ImgPreview->Url()) }} '>
