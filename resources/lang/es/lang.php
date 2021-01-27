@@ -34,7 +34,7 @@ return [
     "header_login_register" => "Regístrate o inicia sesión",
     "user_area" => "Ir al perfil",
     "header_welcome" => "Bienvenido a Coolture",
-    "header_login" => "Iniciar sessión",
+    "header_login" => "Iniciar sesión",
     "header_register" => "Regístrate",
     "header_register_message" => "Registrándote aceptas nuestras",
     "header_conditions" => "Condiciones de uso",
