@@ -44,6 +44,7 @@
                             <p>{{ $event->GetDescription() }}</p>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item borderless">
+                                <!--
                                     <i class="fa fa-map-marker"></i>
                                     @if (isset($city->error))
                                         {{ __('lang.location_not_available') }}
@@ -59,6 +60,7 @@
                                     <i class="fa fa-clock-o"></i>
                                     {{ $event->Duration }}
                                 </li>
+                                -->
                                 {{--<li class="list-group-item borderless">
                                     {{ $event->Published }}
                                 </li>--}}
