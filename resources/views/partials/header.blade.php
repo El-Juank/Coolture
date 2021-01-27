@@ -99,8 +99,7 @@ $locale = App::getLocale();
                         <a class="nav-link p-0" href="{{ LaravelLocalization::localizeUrl('home') }}"
                             title="{{ __('lang.user_area') }}">
                             <img class="user-profile-pic"
-                                src="{{-- asset(Auth::user()->ImgProfile()->url()) --}}"
-                                onerror="this.src='{{ asset('img/default/user-image-not-available.png') }}';"
+                                src=" {{asset(Auth::user()->ImgProfile->Url())}}"
                                 alt="{{ Auth::user()->name }}">
                             <span class="ml-2">{{ Auth::user()->name }}</span>
                         </a>

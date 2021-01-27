@@ -9,7 +9,6 @@ use App\EventMaker;
 use App\EventMakerTranslation;
 use App\EventMessage;
 use App\EventTranslation;
-use App\LikeEvent;
 use App\RumourMessage;
 use App\RumourTranslation;
 use App\UserRange;

@@ -45,7 +45,7 @@ class PresentacioSeeder extends Seeder
     public function run()
     {
 
-        self::DeleteData();
+        //self::DeleteData();//em faltaria possar la informació per defecte
         echo 'seeding start##';
         self::LocationsSeed();
         self::CategoriesSeed();
@@ -79,13 +79,6 @@ class PresentacioSeeder extends Seeder
 
         $this->call(UrlRumourToVerifySeeder::class);
 
-        //llegeixo les carpetes y les seves dades
-
-
-
-
-        //poso els altres seeders fakers
-        echo 'seeding complete##';
     }
     public static function DeleteData()
     {
@@ -102,6 +95,7 @@ class PresentacioSeeder extends Seeder
         }
         Schema::enableForeignKeyConstraints();
         echo 'delete data complete##';
+        //faltaria possar la informació per defecte
     }
     static function TagsSeed()
     {
@@ -120,8 +114,8 @@ class PresentacioSeeder extends Seeder
     {
         echo 'Message Seed init##';
         $faker = Factory::create();
-        $dirEvents = 'public/' . self::ROOT . 'Events';
-        $dirRumours = 'public/' . self::ROOT . 'Rumours';
+        $dirEvents = 'public/' . self::ROOT . 'Messages/Events';
+        $dirRumours = 'public/' . self::ROOT . 'Messages/Rumours';
 
         $fEvents = scandir($dirEvents);
         $fRumours = scandir($dirRumours);
@@ -135,8 +129,9 @@ class PresentacioSeeder extends Seeder
         $totalUsers = count($users) - 1;
         //rumours
         for ($i = 0, $f = count($fRumours); $i < $f; $i++) {
+            if(!is_dir($dirRumours.'/'.$fRumours[$i])){
             $rumour = $rumours[$faker->numberBetween(0, $totalRumours)];
-            $fRumour = fopen($fRumours[$f], 'r');
+            $fRumour = fopen($dirRumours.'/'.$fRumours[$i], 'r');
             while (!feof($fRumour)) {
                 $message = new RumourMessage();
                 $message->rumour_id = $rumour->id;
@@ -153,11 +148,12 @@ class PresentacioSeeder extends Seeder
                 $message->save();
             }
             fclose($fRumour);
-        }
+        }}
         //events
         for ($i = 0, $f = count($fEvents); $i < $f; $i++) {
+            if(!is_dir($dirEvents.'/'.$fEvents[$i])){
             $event = $events[$faker->numberBetween(0, $totalEvents)];
-            $fEvent = fopen($fEvents[$f], 'r');
+            $fEvent = fopen($dirEvents.'/'.$fEvents[$i], 'r');
             while (!feof($fEvent)) {
                 $message = new EventMessage();
                 $message->event_id = $event->id;
@@ -174,7 +170,7 @@ class PresentacioSeeder extends Seeder
                 $message->save();
             }
             fclose($fEvent);
-        }
+        }}
         echo 'Message Seed Complete##';
     }
     static function UsersSeed()
@@ -183,7 +179,7 @@ class PresentacioSeeder extends Seeder
         $faker = Factory::create();
         $password = Hash::make('coolture');
         $locations = Location::all();
-        $totalLocations = count($locations);
+        $totalLocations = count($locations)-1;
         $dir = self::ROOT . 'Users/';
         $fullDir = 'public/' . $dir;
         $descriptions = scandir($fullDir);
@@ -219,7 +215,7 @@ class PresentacioSeeder extends Seeder
                 if ($num > 0) { //si es 0 es null
                     $user->Gender = $num < (self::PROBABILITAT_GENERE / 2); //si es mes petit de 5 es home, si no es home
                 }
-                if (file_exists('public/' . $pathImgsCover->Url . '/' . $descriptions[$i]) . '.' . self::FORMAT_IMG_COVER) {
+                if (file_exists('public/' . $pathImgsCover->Url . '/' . $descriptions[$i] . '.' . self::FORMAT_IMG_COVER)) {
                     $img = new File();
                     $img->path_id = $pathImgsCover->id;
                     $img->Name = $descriptions[$i];
@@ -278,9 +274,7 @@ class PresentacioSeeder extends Seeder
         echo 'Rumour Seed start##';
         $faker = Factory::create();
 
-        $locations = Location::all();
-        $totalLocations = count($locations) - 1;
-
+     
         $dir = self::ROOT . 'Rumours/';
         $fullDir = 'public/' . $dir;
         $files = scandir($fullDir);
@@ -300,18 +294,18 @@ class PresentacioSeeder extends Seeder
                 if ($eventmakerT != null) {
                     $rumour->event_maker_id = $eventmakerT->event_maker_id;
                 }
-                if (file_exists('public/' . $pathImgsCover->Url . '/' . $files[$i])) {
+                if (file_exists('public/' . $pathImgsCover->Url . '/' . $files[$i].'.'.self::FORMAT_IMG_COVER)) {
                     $img = new File();
                     $img->path_id = $pathImgsCover->id;
-                    $img->Name = str_replace(self::FORMAT_IMG_COVER, '', $files[$i]);
+                    $img->Name =  $files[$i];
                     $img->Format = self::FORMAT_IMG_COVER;
                     $img->save();
                     $rumour->imgCover_id = $img->id;
                 }
-                if (file_exists('public/' . $pathImgsPreview->Url . '/' . $files[$i])) {
+                if (file_exists('public/' . $pathImgsPreview->Url . '/' . $files[$i]).'.'.self::FORMAT_IMG_PREVIEW) {
                     $img = new File();
                     $img->path_id = $pathImgsPreview->id;
-                    $img->Name = str_replace(self::FORMAT_IMG_PREVIEW, '', $files[$i]);
+                    $img->Name =  $files[$i];
                     $img->Format = self::FORMAT_IMG_PREVIEW;
                     $img->save();
                     $rumour->imgPreview_id = $img->id;
@@ -358,23 +352,23 @@ class PresentacioSeeder extends Seeder
                 $eventmakerT = EventMakerTranslation::where('Name', str_replace('_', ' ',  $camps[0]))->first();
                 $event = new Event();
                 $event->event_maker_id = $eventmakerT->event_maker_id;
-                if (file_exists('public/' . $pathImgsEvent->Url . '/' . $files[$i])) {
+                if (file_exists('public/' . $pathImgsEvent->Url . '/' . $files[$i].'.'.self::FORMAT_IMG_EVENT)) {
 
                     $img = new File();
                     $img->path_id = $pathImgsEvent->id;
-                    $img->Name = str_replace(self::FORMAT_IMG_EVENT, '', $files[$i]);
+                    $img->Name =$files[$i];
                     $img->Format = self::FORMAT_IMG_EVENT;
                     $img->save();
-                    $event->imgEvent_id = $img->id;
+                    $event->ImgEvent_id = $img->id;
                 }
-                if (file_exists('public/' . $pathImgsPreview->Url . '/' . $files[$i])) {
+                if (file_exists('public/' . $pathImgsPreview->Url . '/' . $files[$i].'.'.self::FORMAT_IMG_PREVIEW)) {
 
                     $img = new File();
                     $img->path_id = $pathImgsPreview->id;
-                    $img->Name = str_replace(self::FORMAT_IMG_PREVIEW, '', $files[$i]);
+                    $img->Name = $files[$i];
                     $img->Format = self::FORMAT_IMG_PREVIEW;
                     $img->save();
-                    $event->imgPreview_id = $img->id;
+                    $event->ImgPreview_id = $img->id;
                 }
                 try {
                     $data = fopen($fullDir . $files[$i], 'r');
@@ -413,7 +407,7 @@ class PresentacioSeeder extends Seeder
                     $camps = [$files[$i]];
                 }
                 $eventmaker = new EventMaker();
-                if (file_exists('public/' . $pathImgsProfile->Url . '/' . $files[$i])) {
+                if (file_exists('public/' . $pathImgsProfile->Url . '/' . $camps[0].'.'.self::FORMAT_IMG_PROFILE)) {
 
                     $img = new File();
                     $img->path_id = $pathImgsProfile->id;
@@ -423,7 +417,7 @@ class PresentacioSeeder extends Seeder
 
                     $eventmaker->ImgProfile_id = $img->id;
                 }
-                if (file_exists('public/' . $pathImgsCover->Url . '/' . $files[$i])) {
+                if (file_exists('public/' . $pathImgsCover->Url . '/' . $camps[0].'.'.self::FORMAT_IMG_COVER)) {
 
                     $img = new File();
                     $img->path_id = $pathImgsCover->id;
@@ -477,7 +471,7 @@ class PresentacioSeeder extends Seeder
                     $camps = [$files[$i]];
                 }
                 $category = new Category();
-                if (file_exists('public/' . $pathIcon->Url . '/' . $files[$i] . '.' . self::FORMAT_ICON_CATEGORY)) {
+                if (file_exists('public/' . $pathIcon->Url . '/' . $camps[0] . '.' . self::FORMAT_ICON_CATEGORY)) {
 
                     $imgIcon = new File();
                     $imgIcon->path_id = $pathIcon->id;
