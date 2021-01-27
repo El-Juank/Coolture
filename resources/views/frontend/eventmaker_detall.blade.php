@@ -92,7 +92,7 @@
                             @forelse ($eventmaker->Events as $event)
                                 <a href="{{ route('event', ['event' => $event->id]) }}">
                                     <div class="col-lg-4 col-md-6 d-md-flex align-items-stretch">
-                                        <div class="result" data-aos="fade-up" data-aos-delay="100">
+                                        <div class="result bg-coolture" data-aos="fade-up" data-aos-delay="100">
                                             <img alt="Rock" class="img-fluid img-bg" src='{{ asset($event->ImgPreview->Url()) }} '>
                                             <div class="details">
                                                 <h3><a href="{{ route('event', ['event' => $event->id]) }}">{{ $event->GetTitle() }}</a>
@@ -124,7 +124,7 @@
                             @forelse($eventmaker->Rumours as $rumour)
                                 <a href="{{ route('rumour', ['rumour' => $rumour->id]) }}">
                                     <div class="col-lg-4 col-md-6 d-md-flex align-items-stretch">
-                                        <div class="result" data-aos="fade-up" data-aos-delay="100">
+                                        <div class="result bg-coolture" data-aos="fade-up" data-aos-delay="100">
                                             <img alt="" class="img-fluid"
                                                 src="{{asset($rumour->ImgPreview->Url())}}">
                                             <div class="details">
