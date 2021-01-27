@@ -103,9 +103,9 @@ return [
     "form_user" => "User",
     "visible" => "Visible?",
     "veracity" => "Veracity",
-    "rumor_form" => "Rumor *",
-    "rumor_placeholder" => "Write rumor *",
-    "rumor_error" => "Please enter the rumor.",
+    "rumour_form" => "Rumour *",
+    "rumour_placeholder" => "Write rumor *",
+    "rumour_error" => "Please enter the rumor.",
     "post_rumour" => "Post the rumor",
 
     //Traduccions pàgina "Home" (Dashboard)
@@ -155,7 +155,7 @@ return [
     "event_admin_tagline" => "Events are handled here",
     "add_event" => "Add Event",
     "delete_event_confirm" => "Are you sure you want to delete this event?",
-    "delete_rumour_confirm" => "Are you sure you want to delete this rumor?",
+    "delete_rumour_confirm" => "Are you sure you want to delete this rumour?",
 
     //Traduccions pàgina "Usuaris"
     "user_admin" => "Users",

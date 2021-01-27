@@ -68,15 +68,14 @@
                             {{--{{ $event->Location->Lat }}
                             {{ $event->Location->Lon }}--}}
 
-                            {{-- LIKES TOTALS A L'EVENT + BOTO DE DONAR LIKE
-                            --}}
+                            {{-- LIKES TOTALS A L'EVENT + BOTO DE DONAR LIKE --}}
                             <div class="pull-right pt-lg-5 h2">
                                 @auth
                                     @if ($event->HasLike(Auth::user()))
                                         <form action="{{ route('event_unlike', ['event' => $event->id]) }}" method="post">
                                             @csrf
                                             <button type="submit" class="btn btn-coolture">
-                                                <i class="fa fa-thumbs-o-down"></i>
+                                                <i class="fa fa-thumbs-o-down pr-2"></i>
                                                 {{ $likes }}
                                             </button>
                                         </form>
@@ -84,7 +83,7 @@
                                         <form action="{{ route('event_like', ['event' => $event->id]) }}" method="post">
                                             @csrf
                                             <button type="submit" class="btn btn-coolture">
-                                                <i class="fa fa-thumbs-o-up"></i>
+                                                <i class="fa fa-thumbs-o-up pr-2"></i>
                                                 {{ $likes }}
                                             </button>
                                         </form>
@@ -93,7 +92,7 @@
 
                                 @guest
                                     <a class="btn btn-coolture" href="#" data-toggle="modal"
-                                        data-target="#modalRegisterCenter"><i class="fa fa-thumbs-o-up"
+                                        data-target="#modalRegisterCenter"><i class="fa fa-thumbs-o-up pr-2"
                                             style="color: #fff !important;"></i> {{ $likes }}</a>
                                 @endguest
                             </div>
@@ -160,8 +159,7 @@
                                             <p>{{ $message->GetMessage() }}</p>
                                             <ul class="list-unstyled list-inline media-detail pull-left">
                                                 <li><i class="fa fa-calendar"></i>{{ $message->created_at->diffForHumans() }}</li>
-                                                {{--<li><i class="fa fa-thumbs-up"></i></li>
-                                                --}}
+                                                {{--<li><i class="fa fa-thumbs-up"></i></li>--}}
                                             </ul>
                                             {{--<ul
                                                 class="list-unstyled list-inline media-detail pull-right">

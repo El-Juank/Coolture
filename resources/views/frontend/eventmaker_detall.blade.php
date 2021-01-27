@@ -93,14 +93,11 @@
                                 <a href="">
                                     <div class="col-lg-4 col-md-6">
                                         <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                            <img alt="Rock" class="img-fluid" src='{{ asset($event->ImgPreview->Url()) }} '>
+                                            <img alt="Rock" class="img-fluid img-bg" src='{{ asset($event->ImgPreview->Url()) }} '>
                                             <div class="details">
-                                                <h3><a
-                                                        href="{{ route('event', ['event' => $event->id]) }}">{{ $event->GetTitle() }}</a>
+                                                <h3><a href="{{ route('event', ['event' => $event->id]) }}">{{ $event->GetTitle() }}</a>
                                                 </h3>
-                                                {{-- Per limitar la mida dels
-                                                textos
-                                                --}}
+                                                {{-- Per limitar la mida dels textos --}}
                                                 <p>{{ \Illuminate\Support\Str::limit($event->GetDescription(), 100, $end = '...') }}
                                                 </p>
                                             </div>
