@@ -91,7 +91,7 @@
                         <div class="row justify-content-center">
                             @foreach ($eventmaker->Events as $event)
                                 <a href="">
-                                    <div class="col-lg-4 col-md-6">
+                                    <div class="col-lg-4 col-md-6 d-md-flex align-items-stretch">
                                         <div class="result" data-aos="fade-up" data-aos-delay="100">
                                             <img alt="Rock" class="img-fluid img-bg" src='{{ asset($event->ImgPreview->Url()) }} '>
                                             <div class="details">
@@ -117,7 +117,7 @@
                         <div class="row justify-content-center">
                             @foreach ($eventmaker->Rumours as $rumour)
                                 <a href="">
-                                    <div class="col-lg-4 col-md-6">
+                                    <div class="col-lg-4 col-md-6 d-md-flex align-items-stretch">
                                         <div class="result" data-aos="fade-up" data-aos-delay="100">
                                             <img alt="" class="img-fluid"
                                                 src="{{asset($rumour->ImgPreview->Url())}}">

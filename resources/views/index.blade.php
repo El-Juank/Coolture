@@ -50,7 +50,7 @@
                 <div class="row">
                 @foreach($events as $event)
                     <a href="{{route('event',['event'=>$event->id])}}">
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 d-md-flex align-items-stretch">
                             <div class="gender" data-aos="fade-up" data-aos-delay="100">
                                 <img src="{{ asset($event->ImgPreview->Url()) }}"  class="img-fluid img-bg">
                                 <div class="details">
@@ -75,7 +75,7 @@
                 <div class="row">
                 @foreach($rumours as $rumour)
                     <a href="{{route('rumour',['rumour'=>$rumour->id])}}">
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 d-md-flex align-items-stretch">
                             <div class="gender" data-aos="fade-up" data-aos-delay="100">
                                 <img src="{{ asset($rumour->ImgPreview->Url()) }}"  class="img-fluid img-bg">
                                 <div class="details">
@@ -100,7 +100,7 @@
                 <div class="row">
                 @foreach($eventmakers as $eventmaker)
                     <a href="{{route('eventmaker',['eventmaker'=>$eventmaker->id])}}">
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 d-md-flex align-items-stretch">
                             <div class="gender" data-aos="fade-up" data-aos-delay="100">
                                 <img src="{{ asset($eventmaker->ImgProfile->Url()) }}" class="img-fluid img-bg">
                                 <div class="details">
