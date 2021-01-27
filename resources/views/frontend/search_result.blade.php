@@ -36,14 +36,13 @@
                         <div class="row justify-content-center">
                             @forelse ($events as $eventTransition)
                                 <a href="{{ route('event', ['event' => $eventTransition->id]) }}">
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-4 col-md-6 d-md-flex align-items-stretch">
                                         <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                            <img src="{{ asset($eventTransition->ImgPreview->Url()) }}" class="img-fluid ">
+                                            <img src="{{ asset($eventTransition->ImgPreview->Url()) }}" class="img-fluid img-bg">
                                             <div class="details">
                                                 <h3><a href="{{ route('event', ['event' => $eventTransition->id]) }}">{{ $eventTransition->GetTitle() }}</a>
                                                 </h3>
-                                                {{-- Per limitar la mida dels textos
-                                                --}}
+                                                {{-- Per limitar la mida dels textos --}}
                                                 <p>{{ \Illuminate\Support\Str::limit($eventTransition->GetDescription(), 100, $end = '...') }}
                                                 </p>
                                             </div>
@@ -72,9 +71,9 @@
                             <div class="row justify-content-center">
                                 @forelse ($rumours as $rumourTranslation)
                                     <a href="{{ route('rumour', ['rumour' => $rumourTranslation->id]) }}">
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-4 col-md-6 d-md-flex align-items-stretch">
                                             <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                                <img src="{{asset( $rumourTranslation->ImgPreview->Url() )}}" class="img-fluid">
+                                                <img src="{{asset( $rumourTranslation->ImgPreview->Url() )}}" class="img-fluid img-bg">
                                                 <div class="details">
                                                     <h3><a href="{{ route('rumour', ['rumour' => $rumourTranslation->id]) }}">{{ $rumourTranslation->GetTitle() }}</a>
                                                     </h3>
@@ -108,10 +107,9 @@
                             <div class="row justify-content-center">
                                 @forelse ($eventmakers as $eventmakerTranslation)
                                     <a href="{{ route('eventmaker', ['eventmaker' => $eventmakerTranslation->id]) }}">
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-4 col-md-6 d-md-flex align-items-stretch">
                                             <div class="result" data-aos="fade-up" data-aos-delay="100">
-                                                <img src="{{ asset($eventmakerTranslation->ImgProfile->Url()) }}" alt="Rock"
-                                                    class="img-fluid">
+                                                <img src="{{ asset($eventmakerTranslation->ImgProfile->Url()) }}" alt="{{ $eventmakerTranslation->GetName() }}" class="img-fluid img-bg">
                                                 <div class="details">
                                                     <h3><a href="{{ route('eventmaker', ['eventmaker' => $eventmakerTranslation->id]) }}">{{ $eventmakerTranslation->GetName() }}</a>
                                                     </h3>

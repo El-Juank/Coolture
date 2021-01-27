@@ -120,6 +120,18 @@ h6 {
     object-fit: cover;
 }
 
+.img-bg {
+    background-color: var(--colorCorp);
+}
+
+@media (max-width: 768px) {
+    .img-bg {
+        height: 529px !important;
+        width: 529px !important;
+        object-fit: cover;
+    }
+}
+
 /* Prelaoder */
 
 #preloader {
