@@ -51,7 +51,7 @@
                 @foreach($events as $event)
                     <a href="{{route('event',['event'=>$event->id])}}">
                         <div class="col-lg-3 d-md-flex align-items-stretch">
-                            <div class="gender" data-aos="fade-up" data-aos-delay="100">
+                            <div class="gender bg-coolture" data-aos="fade-up" data-aos-delay="100">
                                 <img src="{{ asset($event->ImgPreview->Url()) }}"  class="img-fluid img-bg">
                                 <div class="details">
                                     <h3><a href="{{route('event',['event'=>$event->id])}}">{{$event->EventMaker->GetName()}}</a></h3>
@@ -76,7 +76,7 @@
                 @foreach($rumours as $rumour)
                     <a href="{{route('rumour',['rumour'=>$rumour->id])}}">
                         <div class="col-lg-3 d-md-flex align-items-stretch">
-                            <div class="gender" data-aos="fade-up" data-aos-delay="100">
+                            <div class="gender bg-coolture" data-aos="fade-up" data-aos-delay="100">
                                 <img src="{{ asset($rumour->ImgPreview->Url()) }}"  class="img-fluid img-bg">
                                 <div class="details">
                                     <h3><a href="{{route('rumour',['rumour'=>$rumour->id])}}">{{$rumour->GetTitle()}}</a></h3>
@@ -101,7 +101,7 @@
                 @foreach($eventmakers as $eventmaker)
                     <a href="{{route('eventmaker',['eventmaker'=>$eventmaker->id])}}">
                         <div class="col-lg-3 d-md-flex align-items-stretch">
-                            <div class="gender" data-aos="fade-up" data-aos-delay="100">
+                            <div class="gender bg-coolture" data-aos="fade-up" data-aos-delay="100">
                                 <img src="{{ asset($eventmaker->ImgProfile->Url()) }}" class="img-fluid img-bg">
                                 <div class="details">
                                     <h3><a href="{{route('eventmaker',['eventmaker'=>$eventmaker->id])}}">{{$eventmaker->GetName()}}</a></h3>

@@ -134,6 +134,10 @@ h6 {
     }
 }
 
+.bg-coolture {
+    background-color: var(--colorCorp);
+}
+
 /* Prelaoder */
 
 #preloader {
@@ -2107,6 +2111,7 @@ h6 {
     border-radius: 50%;
     border-bottom-right-radius: 0px;
     max-width: 100px;
+    height: auto;
 }
 
 li.borderless {
