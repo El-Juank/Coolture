@@ -54,7 +54,7 @@
                             <div class="gender bg-coolture" data-aos="fade-up" data-aos-delay="100">
                                 <img src="{{ asset($event->ImgPreview->Url()) }}"  class="img-fluid img-bg">
                                 <div class="details">
-                                    <h3><a href="{{route('event',['event'=>$event->id])}}">{{$event->EventMaker->GetName()}}</a></h3>
+                                    <h3><a href="{{route('event',['event'=>$event->id])}}">{{ \Illuminate\Support\Str::limit($event->EventMaker->GetName(), 15, $end = '...') }}</a></h3>
                                     <p>{{$event->GetTitle()}}</p>
                                 </div>
                             </div>
@@ -79,7 +79,7 @@
                             <div class="gender bg-coolture" data-aos="fade-up" data-aos-delay="100">
                                 <img src="{{ asset($rumour->ImgPreview->Url()) }}"  class="img-fluid img-bg">
                                 <div class="details">
-                                    <h3><a href="{{route('rumour',['rumour'=>$rumour->id])}}">{{$rumour->GetTitle()}}</a></h3>
+                                    <h3><a href="{{route('rumour',['rumour'=>$rumour->id])}}">{{ \Illuminate\Support\Str::limit($rumour->GetTitle(), 15, $end = '...') }}</a></h3>
                                     <p>@if($rumour->HasEventMaker()){{$rumour->EventMaker->GetName()}} @else ??? @endif</p>
                                 </div>
                             </div>
@@ -104,8 +104,8 @@
                             <div class="gender bg-coolture" data-aos="fade-up" data-aos-delay="100">
                                 <img src="{{ asset($eventmaker->ImgProfile->Url()) }}" class="img-fluid img-bg">
                                 <div class="details">
-                                    <h3><a href="{{route('eventmaker',['eventmaker'=>$eventmaker->id])}}">{{$eventmaker->GetName()}}</a></h3>
-                                     <p>{{ \Illuminate\Support\Str::limit($eventmaker->GetDescription(), 100, $end = '...') }}</p>
+                                    <h3><a href="{{route('eventmaker',['eventmaker'=>$eventmaker->id])}}">{{ \Illuminate\Support\Str::limit($eventmaker->GetName(), 15, $end = '...') }}</a></h3>
+                                     <p>{{ \Illuminate\Support\Str::limit($eventmaker->GetDescription(), 50, $end = '...') }}</p>
                                 </div>
                             </div>
                         </div>
