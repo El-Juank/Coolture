@@ -2155,7 +2155,8 @@ li.borderless {
 #comments .media img {
     border-radius: 50%;
     border-bottom-right-radius: 0px;
-    max-width: 100px;
+    width: 100px;
+    height: 100px;
 }
 
 #comments .media h4 {
