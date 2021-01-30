@@ -21,9 +21,11 @@ return [
     "unfollow" => "Dejar de seguir",
     "following" => "Siguiendo",
     "or" => "o",
+    "artist" => "Artista",
     "artists" => "Artistas",
-    "no_following" => "¡Todavia no sigues a nadie!",
     "and" => "y",
+    "functions" => "Funciones",
+
 
     //Traduccions "Header"
     "header_lang_spanish" => "Español",
@@ -122,6 +124,8 @@ return [
     "your_posts" => "Tus publicaciones",
     "your_posts_tagline" => "Aquí podrás publicar eventos y gestionar los que ya tienes",
     "logout_confirm" => "¿Estás seguro de que quieres cerrar la sesión?",
+    "no_rumour_post" => "Aun no has publicado ningún rumor",
+    "no_event" => "Aun no tienes ningún evento",
 
     //Traduccions perfil
     "profile_seo" => "Perfil de :name",
@@ -137,6 +141,7 @@ return [
     "following_posts_tagline" => "Estos son los artistas que más te gustan",
     "dash_events_edit" => "Editar artistas",
     "km_following" => "Km de seguimiento",
+    "no_following" => "¡Todavia no sigues a nadie!",
 
     //Traduccions pàgina "Gèneres"
     "gender_admin" => "Todos los géneros",

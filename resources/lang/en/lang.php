@@ -21,9 +21,10 @@ return [
     "unfollow" => "Unfollow",
     "following" => "Following",
     "or" => "or",
+    "artist" => "Artist",
     "artists" => "Artists",
-    "no_following" => "You don't follow anyone yet!",
     "and" => "and",
+    "functions" => "Functions",
 
     //Traduccions "Header"
     "header_lang_spanish" => "Spanish",
@@ -31,7 +32,7 @@ return [
     "header_lang_catalan" => "Catalan",
     "header_search" => "Search",
     "lang_picker" => "Choose Language",
-    "header_login_register" => "Log in or log in",
+    "header_login_register" => "Sign up or login",
     "user_area" => "Go to profile",
     "header_welcome" => "Welcome to Coolture",
     "header_login" => "Login",
@@ -122,6 +123,8 @@ return [
     "your_posts" => "Your posts",
     "your_posts_tagline" => "Here you can post events and manage existing ones",
     "logout_confirm" => "Are you sure you want to log out?",
+    "no_rumour_post" => "You haven't posted any rumors yet",
+    "no_event" => "You haven't any event",
 
     //Traduccions perfil
     "profile_seo" => "Profile of: name",
@@ -137,6 +140,7 @@ return [
     "following_posts_tagline" => "These are the artists you like most",
     "dash_events_edit" => "Edit Artists",
     "km_following" => "Following km",
+    "no_following" => "You don't follow anyone yet!",
 
     //Traduccions pàgina "Gèneres"
     "gender_admin" => "All genders",

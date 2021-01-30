@@ -21,9 +21,10 @@ return [
     "unfollow" => "Deixar de seguir",
     "following" => "Seguint",
     "or" => "o",
+    "artist" => "Artista",
     "artists" => "Artistes",
-    "no_following" => "Encara no segueixes a ningú!",
     "and" => "i",
+    "functions" => "Funcions",
 
     //Traduccions "Header"
     "header_lang_spanish" => "Castellà",
@@ -123,6 +124,8 @@ return [
     "your_posts" => "Les teves publicacions",
     "your_posts_tagline" => "Aquí podràs publicar esdeveniments i gestionar els que ja tens",
     "logout_confirm" => "Estàs segur de que vols tencar la sessió?",
+    "no_rumour_post" => "Encara no has publicat cap rumor",
+    "no_event" => "Encara no tens cap esdeveniment",
 
     //Traduccions perfil
     "profile_seo" => "Perfil de :name",
@@ -138,6 +141,7 @@ return [
     "following_posts_tagline" => "Aquests són els artistes que més t'agraden",
     "dash_events_edit" => "Editar artistes",
     "km_following" => "Km de seguiment",
+    "no_following" => "Encara no segueixes a ningú!",
 
     //Traduccions pàgina "Gèneres"
     "gender_admin" => "Tots els gèneres",

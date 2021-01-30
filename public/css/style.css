@@ -346,11 +346,6 @@ h6 {
     float: left;
 }
 
-/*.nav-menu li:hover > ul,
-.nav-menu li.sfHover > ul {
-    display: block;
-}*/
-
 .nav-menu ul ul {
     top: 0;
     left: 100%;
@@ -379,19 +374,6 @@ h6 {
     content: "\f105";
 }
 
-/* Nav Meu Container */
-
-#nav-menu-container {
-    float: right;
-    margin: 0;
-}
-
-@media (max-width: 991px) {
-    #nav-menu-container {
-        display: none;
-    }
-}
-
 /* Nav Meu Styling */
 
 .dropdown a {
@@ -399,19 +381,12 @@ h6 {
 }
 
 .nav-menu a {
-    /*padding: 8px;*/
     text-decoration: none;
     display: inline-block;
     font-family: "Poppins", sans-serif;
     font-weight: 600;
     font-size: 14px;
     outline: none;
-}
-
-@media (max-width: 1199px) {
-    /*.nav-menu a {
-        padding: 8px 4px;
-    }*/
 }
 
 .nav-menu .menu-active a,
@@ -424,29 +399,6 @@ h6 {
         margin-left: 0px !important;
     }
 }
-
-/*.navbar > li {
-    margin-left: 10px;
-}*/
-
-/*.nav-menu > li > a:before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--colorCorp);
-    visibility: hidden;
-    transition: all 0.3s ease-in-out 0s;
-}*/
-
-/*.nav-menu a:hover:before,
-.nav-menu li:hover > a:before,
-.nav-menu .menu-active > a:before {
-    visibility: visible;
-    width: 100%;
-}*/
 
 .navbar .btn-login a {
     height: 48px;
@@ -536,14 +488,6 @@ h6 {
 .navbar #btn-language img {
     margin: -8px -9px;
 }
-
-/*.navbar .dropdown:after {
-    font-family: "FontAwesome";
-    content: "\f078";
-    display: inline-block;
-    padding-right: 3px;
-    vertical-align: middle;
-}*/
 
 .navbar #btn-language img {
     width: 40px;

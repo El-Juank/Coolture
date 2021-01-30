@@ -12,7 +12,7 @@ $locale = App::getLocale();
                     <a href="{{ url('/', $locale) }}" class="scrollto"><img src="{{ asset('img/logo.svg') }}" alt=""
                             title="Coolture Logo"></a>
                 </div>
-                <div id="logo2" class="">
+                <div id="logo2" class="mr-3">
                     <a href="{{ url('/', $locale) }}" class="scrollto"><img src="{{ asset('img/logo_small.svg') }}"
                             alt="" title="Coolture Logo"></a>
                 </div>
@@ -34,7 +34,7 @@ $locale = App::getLocale();
             <div class="navbar-collapse collapse w-50 order-3 dual-collapse2">
                 <ul class="navbar-nav ml-auto">
                     {{-- Selector d'idioma --}}
-                    <li class="ml-lg-3 ml-1">
+                    <li class="ml-lg-3 ml-1 mr-1">
                         <div class="dropdown">
                             <button id="btn-language" class="btn" type="button" id="dropdownMenuButton"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
