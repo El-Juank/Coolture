@@ -267,7 +267,8 @@ h6 {
 #header.header-fixed {
     background: rgba(6, 12, 34, 0.98);
     height: 70px;
-    padding: 11px 0;
+    /*padding: 11px 0;*/
+    padding: 0;
     transition: all 0.5s;
 }
 
@@ -309,6 +310,9 @@ h6 {
     #header #logo2 {
         display: block;
         /*margin-left: 5%;*/
+    }
+    #logo_header {
+        width: 20% !important;
     }
 }
 
@@ -391,7 +395,7 @@ h6 {
 /* Nav Meu Styling */
 
 .dropdown a {
-    padding: 8px;
+    padding: 8px 16px;
 }
 
 .nav-menu a {
@@ -421,9 +425,9 @@ h6 {
     }
 }
 
-.nav-menu > li {
+/*.navbar > li {
     margin-left: 10px;
-}
+}*/
 
 /*.nav-menu > li > a:before {
     content: "";
@@ -444,7 +448,7 @@ h6 {
     width: 100%;
 }*/
 
-.nav-menu li.btn-login a {
+.navbar .btn-login a {
     height: 48px;
     width: auto;
     color: #fff;
@@ -458,38 +462,33 @@ h6 {
     font-size: 13px;
 }
 
-.nav-menu li.btn-login a:hover {
+.navbar .btn-login a:hover {
     background: none;
 }
 
-.nav-menu li.btn-login:hover a:before,
-.nav-menu li.btn-login.menu-active a:before {
+.navbar .btn-login:hover a:before,
+.navbar .btn-login.menu-active a:before {
     visibility: hidden;
 }
 
-.nav-menu li.btn-login a p {
+.navbar li.btn-login a p {
     transition: all 0.5s;
 }
 
-.nav-menu li.btn-login a i {
+.navbar .btn-login a i {
     display: none;
-    -webkit-text-stroke: 0.5px var(--colorCorp);
-}
-
-.nav-menu li.btn-login a i:hover {
-    -webkit-text-stroke: 0.5px rgba(6, 12, 34, 0.98);
 }
 
 @media (max-width: 991px) {
-    .nav-menu li.btn-login a {
+    .navbar li.btn-login a {
         height: 48px;
         width: 48px;
     }
-    .nav-menu li.btn-login a p {
+    .navbar .btn-login a span {
         display: none;
         transition: all 0.5s;
     }
-    .nav-menu li.btn-login a i {
+    .navbar .btn-login a i {
         display: block;
         font-size: 25px;
         margin-top: -6px;
@@ -497,52 +496,20 @@ h6 {
     }
 }
 
-.nav-menu ul {
-    margin: 4px 0 0 0;
-    padding: 10px;
-    box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
-    background: #fff;
-    border-radius: 3px;
-}
-
-.nav-menu ul li {
+.navbar ul li {
     transition: 0.3s;
 }
 
-.nav-menu ul li a {
-    padding: 10px;
-    color: #060c22;
-    transition: 0.3s;
-    display: block;
-    font-size: 13px;
-    text-transform: none;
-    border-radius: 3px;
-}
-
-.nav-menu ul li:hover > a {
-    background: var(--colorCorp);
-    color: #fff;
-}
-
-.nav-menu ul ul {
-    margin: 0;
-}
-
-.nav-menu .search {
-    width: 55%;
-    transition: all 0.5s;
-}
-
-.nav-menu #searcher input[type="search"] {
+.navbar #searcher input[type="search"] {
     background-color: rgba(255, 255, 255, 0);
     color: #fff;
 }
 
-.nav-menu #btn-search {
+.navbar #btn-search {
     padding: 0px 10px;
 }
 
-.nav-menu #btn-search:hover {
+.navbar #btn-search:hover {
     color: var(--colorCorp);
 }
 
@@ -550,15 +517,15 @@ h6 {
     min-width: 120px;
 }
 
-.nav-menu .dropdown-item {
+.navbar .dropdown-item {
     display: block !important;
 }
 
-.nav-menu .dropdown-item img {
-    width: 20px;
+.navbar .dropdown-item img {
+    width: 20px !important;
 }
 
-.nav-menu #btn-language {
+.navbar #btn-language {
     background-color: var(--colorCorp);
     height: 48px !important;
     width: 48px !important;
@@ -566,7 +533,11 @@ h6 {
     border-bottom-right-radius: 0px;
 }
 
-/*.nav-menu .dropdown:after {
+.navbar #btn-language img {
+    margin: -8px -9px;
+}
+
+/*.navbar .dropdown:after {
     font-family: "FontAwesome";
     content: "\f078";
     display: inline-block;
@@ -574,15 +545,15 @@ h6 {
     vertical-align: middle;
 }*/
 
-.nav-menu #btn-language img {
+.navbar #btn-language img {
     width: 40px;
 }
 
-.nav-menu .user-profile a:hover {
+.navbar .user-profile a:hover {
     color: var(--colorCorpHover);
 }
 
-.nav-menu .user-profile-pic {
+.navbar .user-profile-pic {
     width: 48px;
     height: 48px;
     border-radius: 50%;
@@ -593,7 +564,7 @@ h6 {
 }
 
 @media only screen and (max-width: 991px) {
-    .nav-menu .user-profile a span {
+    .navbar .user-profile a span {
         display: none;
     }
 }
@@ -603,7 +574,7 @@ h6 {
     height: auto;
 }
 
-.nav-menu .user-notifications a span {
+.navbar .user-notifications a span {
     position: absolute;
     right: -5px;
     border: 5px solid #fff;
