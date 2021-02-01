@@ -1,72 +1,52 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<p align="center"><a href="https://github.com/El-Juank/Coolture" target="_blank"><img src="https://raw.githubusercontent.com/El-Juank/Coolture/0643c6c9af41458f4e5189aa33de32af45ce13df/public/img/logo.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+<div align="center">
 
-## Init Project
+[![Contributors](https://img.shields.io/github/contributors/El-Juank/Coolture.svg?style=for-the-badge&color=f82249)](https://github.com/El-Juank/Coolture/graphs/contributors)
+[![Stargazers](https://img.shields.io/github/stars/El-Juank/Coolture.svg?style=for-the-badge&color=f82249&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAAvCAMAAABE+WOeAAABqlBMVEUAAAD4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4Ikn4IknpDNroAAAAjXRSTlMAAQIDBAUGBwgKDA4QERITFBcZGh0eHyMkJSgpKistMDE1Nzg8P0JDR0hJTlBRU1RXWFlfYGNnaGprbG1udnh5ent8fn+AgoOIioyOk5SVlpeZmp6goaKjpKWpqqussLK0tba3uL7AwcTIycvNz9DS09TV2Nrc3d7g4+Tl6Ons7e/w8fP09/j5+vv8/f4HLHNVAAAB00lEQVR42pTSA5PlQBhG4bO2bdu2bdu2rbFn3t+8u3OTVPum8pS/nKi7CczecfHp1z/Nv788ObdtOiXmnPgp27djM0hbeF+BvpvziJtwVVG9Z8cQsbJBKT8XEzisOnp2evWgi6rvGI7TKnMIyz6V22TyJb0q1z63yEf9VMKNTzI+DiFzKpkP65ZlDzXTe4pBT4ObD5opW9v4Wn/BTNYfabZzVstxFGBcpxm8YPSRVpNzQI7GYcB2WVbA+ONtRY5/otYCz2R5NQAYf7I9y3nt9bdgRJdsq+k3cUctH9Dm9Q0DWSrHmwEYU+Sby265VmMsl28jZ+R6P9D06/rkOcJteTZgzPavnueRPKexzb8r23WeePm9objm20+8y90w9y16bPWXS3OYeLC76DlSLx8ye83+Ky9b7O/ZmM63fO6R5y7TvHzQjNX7L42s9TelsOe7cg/mrD5w422H/ttb699F+3PKWS9vGAkM6oj2C+UpXjBd0Z73CjWNhlWJfoMijsCeRD/wg0LNo7mc6Fkcf8GLVM95hVrHtyT74W8VuqZkz9RfKmf1zG2o1jPrR7WeSc+r9Qw+2lmph5kPq/Ww4FZnpR7Gbr3TUNp7/k1E3cTa3hUrMAQA6bFYvAw6MtAAAAAASUVORK5CYII=)](https://github.com/El-Juank/Coolture/stargazers)
+[![MIT License](https://img.shields.io/badge/LICENSE-MIT-f82249.svg?style=for-the-badge)](https://github.com/El-Juank/Coolture/blob/main/LICENSE)
 
-mysql->create dataBase
-project->.env.exemple->copy and rename to .env
-project->.env-> configure access to database
-VSCode->Project->Terminal->composer install
-VSCode->Project->Terminal->php artisan key:generate
-VSCode->Project->Terminal->php artisan migrate
-VSCode->Project->Terminal->php artisan //insertar comando para hacer el SEED generico
-move project to htdocs to run with Xampp
+</div>
 
-## About Laravel
+<!-- ABOUT THE PROJECT -->
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## About Coolture
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+[![Coolture screenshot](https://raw.githubusercontent.com/El-Juank/Coolture/main/public/img/screenshot.png)](https://github.com/El-Juank/Coolture)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Coolture is a platform that allows you to search for all kinds of cultural events.
 
-## Learning Laravel
+-   You are not going to stand idly by again; Do different searches and you will have in your hand all the available events that you want filtered by category, distance and date.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-   Be on alert! Select your favorite events and categories, they will be automatically added to your profile and you will be notified when there is any news.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Built With
 
-## Laravel Sponsors
+Coolture was built mainly using the following frameworks:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+-   <a href="https://laravel.com" style="color:#f82249">Laravel</a>
+-   <a href="https://getbootstrap.com" style="color:#f82249">Bootstrap</a>
+-   <a href="https://jquery.com" style="color:#f82249">JQuery</a>
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<!-- LICENSE -->
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Distributed under the MIT License. See <span style="color:#f82249">LICENSE</span> for more information.
+
+<!-- CONTACT -->
+
+## Contact
+
+Project Link: <a href="https://github.com/El-Juank/Coolture" style="color:#f82249">https://github.com/El-Juank/Coolture</a>
+
+<!-- ACKNOWLEDGEMENTS -->
+
+## Acknowledgements
+
+-   <a href="https://michalsnik.github.io/aos/" style="color:#f82249">AOS</a>
+-   <a href="https://fontawesome.com" style="color:#f82249">Font Awesome</a>
+-   <a href="https://connoratherton.com/loaders" style="color:#f82249">Loaders.css</a>
+-   <a href="https://owlcarousel2.github.io/OwlCarousel2/" style="color:#f82249">Owl Carousel</a>
+-   <a href="https://github.com/cferdinandi/smooth-scroll" style="color:#f82249">Smooth Scroll</a>
+-   <a href="https://veno.es/venobox/" style="color:#f82249">Venobox</a>
