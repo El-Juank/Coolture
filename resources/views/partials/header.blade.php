@@ -1,6 +1,6 @@
 @php
 if (!isset($locale)) {
-$locale = App::getLocale();
+    $locale = App::getLocale();
 }
 @endphp
 <header id="header">
@@ -23,8 +23,9 @@ $locale = App::getLocale();
                     @csrf
                     <div class="input-group border rounded-pill p-1">
                         <div class="input-group-prepend border-0">
-                            <button id="btn-search" type="button" class="btn link color-corp"><i
-                                    class="fa fa-search"></i></button>
+                            <button id="btn-search" type="button" class="btn link color-corp">
+                                <i class="fa fa-search"></i>
+                            </button>
                         </div>
                         <input type="search" name="title" id="title" placeholder="{{ __('lang.header_search') }}"
                             aria-describedby="btn-search" class="form-control bg-none border-0">
@@ -32,9 +33,9 @@ $locale = App::getLocale();
                 </form>
             </div>
             <div class="navbar-collapse collapse w-50 order-3 dual-collapse2">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto @if($locale !='ca' || $locale !='es') mr-auto @endif">
                     {{-- Selector d'idioma --}}
-                    <li class="ml-lg-3 ml-1 mr-1">
+                    <li class="ml-lg-3 ml-2 mr-1">
                         <div class="dropdown">
                             <button id="btn-language" class="btn" type="button" id="dropdownMenuButton"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
@@ -92,28 +93,31 @@ $locale = App::getLocale();
 
                     {{-- Botó inici sessió o usuari en funció de si ha iniciat sessió --}}
                     @guest
-                    <li class="btn-login d-flex justify-content-center ml-lg-3 ml-2">
-                        <a href="#" class="text-nowrap" data-toggle="modal" data-target="#modalRegisterCenter" title="{{ __('lang.header_login_register') }}">
-                            <span>{{ __('lang.header_login_register') }}</span>
-                            <i class="fa fa-user-o"></i>
-                        </a>
-                    </li>
+                        <li class="btn-login d-flex justify-content-center ml-lg-3 ml-2">
+                            <a href="#" class="text-nowrap" data-toggle="modal" data-target="#modalRegisterCenter"
+                                title="{{ __('lang.header_login_register') }}">
+                                <span>{{ __('lang.header_login_register') }}</span>
+                                <i class="fa fa-user-o"></i>
+                            </a>
+                        </li>
                     @else
-                    <li class="nav-item user-profile ml-lg-3 ml-1">
-                        <a class="nav-link p-0 text-nowrap" href="{{ LaravelLocalization::localizeUrl('home') }}" title="{{ __('lang.user_area') }}">
-                            <img class="user-profile-pic" src="{{asset(Auth::user()->ImgProfile->Url())}}" alt="{{ Auth::user()->name }}">
-                            <span class="">{{ Auth::user()->name }}</span>
-                        </a>
-                    </li>
-                    <li class="nav-item user-notifications ml-lg-3 ml-1">
-                        <a href="{{ route('notifications') }}" title="{{ __('lang.notifications') }}">
-                            <img class="notifications" src="{{ asset('img/bell.svg') }}">
-                            <?php $total=Auth::user()->TotalNotificationChanges();?>
-                            @if($total>0)
-                                <span class="ml-2">{{ $total }}</span>
-                            @endif
-                        </a>
-                    </li>
+                        <li class="nav-item user-profile ml-lg-3 ml-1 mr-1">
+                            <a class="nav-link p-0 text-nowrap" href="{{ LaravelLocalization::localizeUrl('home') }}"
+                                title="{{ __('lang.user_area') }}">
+                                <img class="user-profile-pic" src="{{ asset(Auth::user()->ImgProfile->Url()) }}"
+                                    alt="{{ Auth::user()->name }}">
+                                <span class="">{{ Auth::user()->name }}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item user-notifications ml-lg-3 ml-1">
+                            <a href="{{ route('notifications') }}" title="{{ __('lang.notifications') }}">
+                                <img class="notifications" src="{{ asset('img/bell.svg') }}">
+                                <?php $total = Auth::user()->TotalNotificationChanges(); ?>
+                                @if ($total > 0)
+                                    <span class="ml-2">{{ $total }}</span>
+                                @endif
+                            </a>
+                        </li>
                     @endguest
                 </ul>
             </div>
@@ -144,7 +148,8 @@ $locale = App::getLocale();
                         <p class="mb-1">{{ __('lang.header_register_message') }}</p>
                         <p><a href="{{ route('terms_and_conditions') }}"
                                 rel="nofollow">{{ __('lang.header_conditions') }}</a>&nbsp;{{ __('lang.and') }}&nbsp;<a
-                                href="{{ route('privacy_policy') }}" rel="nofollow">{{ __('lang.header_privacity') }}</a>
+                                href="{{ route('privacy_policy') }}"
+                                rel="nofollow">{{ __('lang.header_privacity') }}</a>
                         </p>
                     </div>
                 </div>

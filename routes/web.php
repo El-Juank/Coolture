@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\App;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 //Prefix de l'idioma, translations implementat:
-Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeCookieRedirect', 'localizationRedirect']], function () {
 
     Route::get('/', 'FrontendController@index')->name('index');
 
@@ -68,15 +68,15 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     // ------------ RELACIONADES AMB FUNCIONALITAT LOGIN------------ //
     Route::group(['middleware' => 'auth'], function () {
 
-      //  Route::post('logout','Controller@logout')->name('logout');
+        //  Route::post('logout','Controller@logout')->name('logout');
 
         // Pàgina principal de configuació: segons el rol de l'user tindrà més o menys funcionalitats
         Route::get('home', 'FrontendController@home')->name('home');
         //no se si va aqui
         Route::get('notifications', 'FrontendController@notifications')->name('notifications');
-        Route::get('eventNotification/{event}','FrontendController@eventNotification')->name('eventNotification');
-        Route::get('eventMakerNotification/{eventmaker}','FrontendController@eventMakerNotification')->name('eventMakerNotification');
-        Route::get('rumourNotification/{rumour}','FrontendController@rumourNotification')->name('rumourNotification');
+        Route::get('eventNotification/{event}', 'FrontendController@eventNotification')->name('eventNotification');
+        Route::get('eventMakerNotification/{eventmaker}', 'FrontendController@eventMakerNotification')->name('eventMakerNotification');
+        Route::get('rumourNotification/{rumour}', 'FrontendController@rumourNotification')->name('rumourNotification');
 
         //Editor perfil
         Route::resource('profile', 'ProfileController');
@@ -115,8 +115,5 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         //Rumour -> Rutes like
         Route::post('rumours/{rumour}/like', 'FrontendController@rumour_like')->name('rumour_like');
         Route::post('rumours/{rumour}/unlike', 'FrontendController@rumour_unlike')->name('rumour_unlike');
-
-
-
     });
 });

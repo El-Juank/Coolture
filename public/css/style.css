@@ -435,6 +435,7 @@ h6 {
     .navbar li.btn-login a {
         height: 48px;
         width: 48px;
+        border-bottom-right-radius: 0px;
     }
     .navbar .btn-login a span {
         display: none;
